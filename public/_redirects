@@ -2,8 +2,10 @@
 # Format: <from> <to> <status>
 # Order matters — first match wins.
 
-# Apex → www (canonical)
-https://thewellnesswaymason.com/* https://www.thewellnesswaymason.com/:splat 301!
+# Apex → www (canonical) — handled by Cloudflare Custom Domains in Phase 10.
+# Cloudflare Pages rejects absolute-URL source paths in _redirects until the
+# custom domain is attached, so this rule is set up via the Custom Domains UI
+# when thewellnesswaymason.com is moved to Cloudflare DNS (registrar transfer).
 
 # Decap CMS — production builds emit /admin (no trailing slash) due to
 # build.format: 'file'. Redirect /admin/ → /admin for users who type the slash.
