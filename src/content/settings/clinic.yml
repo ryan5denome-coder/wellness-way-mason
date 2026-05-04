@@ -1,0 +1,37 @@
+name: "The Wellness Way - Mason"
+tagline: "We Test. We Do Not Guess. We Restore Your Health."
+addressLine1: "5382 Cox-Smith Rd, Suite A"
+city: "Mason"
+state: "OH"
+zip: "45040"
+phone: "(283) 223-8376"
+phoneTel: "+12832238376"
+email: "mason@thewellnessway.com"
+# Hours match the GBP listing exactly — continuous hours (no midday break shown)
+# so Google recommends the clinic during all business hours. Ryan-confirmed
+# 2026-05-04. The clinic is in fact closed for a midday break Mon/Wed/Thu but
+# that's not displayed on web surfaces; patients book appointments and breaks
+# are managed at the booking level.
+hours:
+  - day: "Monday"
+    hours: "8:00am–5:00pm"
+  - day: "Tuesday"
+    hours: "2:00pm–6:00pm"
+  - day: "Wednesday"
+    hours: "8:00am–5:00pm"
+  - day: "Thursday"
+    hours: "8:00am–5:00pm"
+  - day: "Friday"
+    hours: "8:00am–12:00pm"
+  - day: "Saturday"
+    hours: "By appointment"
+  - day: "Sunday"
+    hours: "Closed"
+gbpUrl: "https://share.google/FKDLtEeW0g7tmvcUC"
+bookingUrl: "https://neoplatform.com/dd6a54e3c98/self-registration"
+facebookUrl: "https://www.facebook.com/people/The-Wellness-Way-Mason/61574457118997/"
+instagramUrl: "https://instagram.com/_chiroryan_"
+linkedinUrl: "https://www.linkedin.com/in/ryan-denome-687899313/"
+ga4Id: ""
+metaPixelId: ""
+gtmId: ""

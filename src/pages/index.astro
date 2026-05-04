@@ -1,17 +1,1181 @@
 ---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import BlogPostCard from '../components/BlogPostCard.astro';
+import HoursTable from '../components/HoursTable.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { clinic } from '../lib/site';
+import pediatricAdjustment from '../assets/clinic/pediatric-adjustment.jpg';
+import adultAdjustment from '../assets/clinic/adult-adjustment.jpg';
+import twwSupplements from '../assets/clinic/tww-supplements-shelf.jpg';
+import pediatricPlayRoom from '../assets/clinic/pediatric-play-room.jpg';
 
+const featured = (await getCollection('posts'))
+  .sort((a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0))
+  .slice(0, 3);
+
+// Conditions list — links each item to /find-my-condition with anchor where one
+// exists, otherwise the general page. Chiropractic-first ordering for local SEO.
+const conditions: { label: string; href: string }[] = [
+  { label: 'Back pain', href: '/find-my-condition#joint-and-muscle-pain' },
+  { label: 'Neck pain', href: '/find-my-condition#joint-and-muscle-pain' },
+  { label: 'Sciatica', href: '/find-my-condition#joint-and-muscle-pain' },
+  { label: 'Headaches', href: '/find-my-condition#joint-and-muscle-pain' },
+  { label: 'Sports injury & recovery', href: '/our-services#chiropractic' },
+  { label: 'Pregnancy & Webster Technique', href: '/our-services#chiropractic' },
+  { label: 'Pediatric care', href: '/our-services#chiropractic' },
+  { label: 'Hormone imbalance', href: '/find-my-condition#hormone-imbalance' },
+  { label: 'Thyroid dysfunction', href: '/find-my-condition#thyroid' },
+  { label: 'Digestive issues', href: '/find-my-condition#digestive-issues' },
+  { label: 'Autoimmune patterns', href: '/find-my-condition#autoimmune' },
+  { label: 'Fatigue & low energy', href: '/find-my-condition#fatigue' },
+];
+
+const fourSteps = [
+  {
+    n: 1,
+    title: 'A New Perspective',
+    body: "You're more than a patient — you're a person with a unique story. Your first visit is a fresh perspective, guided by a clinician who challenges the idea that you have to settle for limiting health challenges.",
+  },
+  {
+    n: 2,
+    title: 'We Test',
+    body: "Advanced lab work paired with comprehensive tools to uncover the missing piece — what's actually driving your symptoms instead of just managing what shows up on the surface.",
+  },
+  {
+    n: 3,
+    title: 'We Discover',
+    body: "We work to understand your unique physiology — walking you through a clear analysis of your results, what's actually happening, why, and what your body needs to heal. Your Health Restoration Plan.",
+  },
+  {
+    n: 4,
+    title: 'We Guide',
+    body: "Hands-on chiropractic care, customized nutrition, supplement protocols, and lifestyle support — built to fit your physiology and the patterns we found together.",
+  },
+];
+
+const twoArms = [
+  {
+    eyebrow: 'Arm 1',
+    title: 'Chiropractic',
+    slogan: 'We Do Health Differently',
+    body: 'Manual, specific adjustments for the conditions chiropractors are known for — back pain, neck pain, sciatica, headaches, sports injury, prenatal (Webster Technique), and pediatric care.',
+    callout: 'Soft tissue work, cupping, and scraping are included with every adjustment. We don\'t upcharge for adjunctive techniques.',
+    cta: { label: 'Book a chiropractic visit', href: 'BOOKING' },
+  },
+  {
+    eyebrow: 'Arm 2',
+    title: 'Health Restoration',
+    slogan: 'Test, Don\'t Guess',
+    body: 'Comprehensive lab testing paired with nutrition guidance, supplement protocols, and lifestyle support — for patients ready to look at the patterns underneath persistent symptoms.',
+    callout: 'New patient visits are flat $99. Lab work and supplements are billed separately so you stay in control of what you spend.',
+    cta: { label: 'Book health restoration', href: 'BOOKING' },
+  },
+];
+
+const threeTs = [
+  {
+    title: 'Traumas',
+    short: 'Physical stress your body has absorbed.',
+    body: "Old injuries, repetitive strain, the way you sit at your desk, structural compensations from years of holding tension. The body remembers, and what it cannot process, it stores. Chiropractic adjustments and movement assessment reveal what is still held in your structure.",
+    image: 'https://static.wixstatic.com/media/629639_a8ac235fb57c4339befe58bf3c2f412b~mv2.jpg',
+    alt: 'Active outdoor lifestyle representing physical patterns',
+  },
+  {
+    title: 'Toxins',
+    short: 'Chemical stress accumulates quietly.',
+    body: 'From what you eat, breathe, and put on your skin. Food sensitivities, environmental exposures, medication side effects — they accumulate. Comprehensive lab work shows where your body is fighting battles you did not know you had.',
+    image: 'https://static.wixstatic.com/media/629639_b5daf194450e49debbf23d16ce5025de~mv2.jpg',
+    alt: 'Air pollution as a toxin example',
+  },
+  {
+    title: 'Thoughts',
+    short: 'Emotional stress is physiological.',
+    body: 'It shows up as nervous-system dysregulation, hormone shifts, sleep disturbance, and gut symptoms. Restoring health means addressing the stress patterns your nervous system is still running — not just the body parts they affect.',
+    image: 'https://static.wixstatic.com/media/629639_d42f91a91e9d440180bc5ff809f382a8~mv2.jpg',
+    alt: 'Emotional stress patterns',
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Chiropractic Care & Holistic Wellness in Mason, Ohio"
+  description="The Wellness Way Mason offers chiropractic care and wellness testing in Mason, OH. We address thyroid, gut health, and hormone concerns — serving Cincinnati, West Chester, Loveland, and Lebanon."
+>
+  <!-- Section 1: Hero — full-bleed photo background with overlay -->
+  <section class="hero-bleed" aria-label="Hero">
+    <Image
+      class="hero-bleed-image"
+      src={pediatricAdjustment}
+      alt="Gentle pediatric chiropractic adjustment at The Wellness Way - Mason"
+      widths={[640, 960, 1280, 1920, 2560]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      quality={82}
+    />
+    <div class="hero-bleed-scrim" aria-hidden="true"></div>
+    <div class="hero-bleed-inner">
+      <div class="hero-bleed-text">
+        <p class="hero-eyebrow">Chiropractic Care in Mason, OH</p>
+        <h1 class="hero-headline">Common is <em>not normal.</em></h1>
+        <p class="hero-positioning">Health restoration starts here.</p>
+        <p class="hero-lede">
+          A chiropractic clinic in Mason, OH built around manual, specific adjustments —
+          and a deeper layer of health restoration when your body is asking for more.
+          We test before we guess. We work alongside your medical team. We help your body
+          do what it was designed to do: heal.
+        </p>
+        <div class="hero-bleed-ctas">
+          <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+            Book a Consultation
+          </Button>
+          <Button href="/our-approach" variant="inverse" size="lg" iconAfter>
+            See our approach
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1.5: Problem / Solution — empathic bridge into the 3 T's -->
+  <SectionContainer width="default" spacing="lg" background="paper">
+    <div class="ps-grid">
+      <div class="ps-col ps-problem">
+        <p class="eyebrow" data-reveal>If this sounds familiar</p>
+        <h2 data-reveal>You've been bounced from doctor to doctor — and you're still tired.</h2>
+        <p data-reveal="up-sm">
+          Your labs came back "normal." Another specialist sent you home with another prescription.
+          Someone told you to "manage your stress" and didn't say how. You're exhausted, in pain,
+          or just <em>off</em> — and you're starting to wonder if anyone is actually listening to
+          what your body has been saying.
+        </p>
+        <p data-reveal="up-sm">
+          You're not imagining it. And you're not alone.
+        </p>
+      </div>
+      <div class="ps-col ps-solution">
+        <p class="eyebrow" data-reveal>How we work differently</p>
+        <h2 data-reveal>Your body is the smoke alarm. We look for the fire.</h2>
+        <p data-reveal="up-sm">
+          Symptoms are signals — your body trying to tell you something is off. As a chiropractic
+          physician working alongside your existing PCP and specialists, we run comprehensive
+          functional testing that goes deeper than a standard panel — labs that ask <em>why</em>
+          your body is doing what it's doing, and what's actually connecting these symptoms to
+          each other.
+        </p>
+        <p data-reveal="up-sm">
+          Then we sit down with you and build a plan together — one that addresses the underlying
+          drivers, not just the alarm. Test, don't guess.
+        </p>
+        <p class="ps-bridge" data-reveal="up-sm">
+          Here's how we look at the patterns underneath.
+        </p>
+      </div>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 1.7: Lab partners strip — trust signal for "we test" claim -->
+  <SectionContainer width="default" spacing="md" background="paper-soft" ariaLabel="Lab partners">
+    <div class="lab-strip">
+      <p class="lab-strip-eyebrow" data-reveal>Lab partners we trust</p>
+      <ul class="lab-strip-list" role="list">
+        <li><img src="/images/partners/access.png" alt="Access Medical Labs" loading="lazy" width="548" height="130" /></li>
+        <li><img src="/images/partners/dutch.svg" alt="Dutch Test by Precision Analytical" loading="lazy" /></li>
+        <li><img src="/images/partners/genova.svg" alt="Genova Diagnostics" loading="lazy" /></li>
+        <li><img src="/images/partners/immunolabs.jpg" alt="ImmunoLabs" loading="lazy" width="340" height="100" /></li>
+        <li><img src="/images/partners/mosaic.svg" alt="Mosaic Diagnostics — OAT and heavy metal testing" loading="lazy" /></li>
+      </ul>
+      <p class="lab-strip-caption" data-reveal="up-sm">
+        We partner with leading lab companies — Access, Dutch, Genova, ImmunoLabs, and Mosaic
+        (for OAT and heavy metal panels) — so health restoration sees the depth standard panels miss.
+      </p>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 2: The 3 T's — image-led, alternating layout -->
+  <SectionContainer width="default" spacing="xl" background="paper-soft">
+    <div class="section-head">
+      <p class="eyebrow">The Wellness Way Approach</p>
+      <h2>Traumas. Toxins. Thoughts.</h2>
+      <p class="section-lede">
+        Three categories of stress that interact with everything from your hormones to your nervous
+        system to your immune response. We test for the patterns underneath your symptoms — instead
+        of just managing the symptoms themselves.
+      </p>
+    </div>
+    <div class="three-ts">
+      {threeTs.map((t, i) => (
+        <article class={`t-row ${i % 2 ? 'reverse' : ''}`}>
+          <div class="t-image">
+            <img src={t.image} alt={t.alt} loading="lazy" />
+            <span class="t-numeral" aria-hidden="true">{i + 1}</span>
+          </div>
+          <div class="t-text">
+            <h3>{t.title}</h3>
+            <p class="t-short">{t.short}</p>
+            <p>{t.body}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </SectionContainer>
+
+  <!-- Section 3: Conditions — refined typography list, not card grid -->
+  <SectionContainer width="narrow" spacing="lg">
+    <div class="section-head">
+      <p class="eyebrow">Conditions We See</p>
+      <h2>Common, but not normal.</h2>
+      <p class="section-lede">
+        Most patients walk through our doors after being told their labs are "normal" while still
+        feeling anything but. Here are some of the patterns we see most.
+      </p>
+    </div>
+    <ul class="conditions-list">
+      {conditions.map((c) => (
+        <li><a href={c.href}>{c.label}</a></li>
+      ))}
+    </ul>
+    <div class="section-cta">
+      <Button href="/find-my-condition" variant="link" iconAfter>See all conditions we address</Button>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 4: Expertise — feature cards on warm-tint -->
+  <SectionContainer width="default" spacing="lg" background="paper-warm-tint">
+    <div class="section-head">
+      <p class="eyebrow">Our Expertise</p>
+      <h2>Chiropractic care + functional testing, integrated.</h2>
+    </div>
+    <div class="expertise-grid">
+      <Card
+        title="Health Restoration"
+        variant="feature"
+        image={twwSupplements}
+        imageAlt="Wellness Way branded liquid herbal supplements on the clinic shelf"
+      >
+        <p>
+          We address gut health, hormone balance, nutrition, stress, thyroid, mold, and weight
+          management — among other patterns. We don't guess. We test.
+        </p>
+        <span slot="footer"><a href="/our-services">Explore services →</a></span>
+      </Card>
+      <Card
+        title="Chiropractic Adjustments"
+        variant="feature"
+        image={adultAdjustment}
+        imageAlt="Hands-on chiropractic adjustment of the upper back at The Wellness Way - Mason"
+      >
+        <p>
+          Gentle, hands-on adjustments to improve mobility and address mechanical drivers of pain.
+          Pregnancy and pediatric care, sciatica, back & neck pain, sports performance, and
+          Webster Technique for prenatal patients.
+        </p>
+        <span slot="footer"><a href="/our-services">See techniques →</a></span>
+      </Card>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 4b: Atmosphere — full-bleed clinic interior with overlay panel -->
+  <section class="atmosphere-bleed" aria-label="Our space">
+    <Image
+      class="atmosphere-bleed-image"
+      src={pediatricPlayRoom}
+      alt="Family-friendly pediatric play room with green tree bookshelf at The Wellness Way - Mason"
+      widths={[640, 960, 1280, 1920, 2560]}
+      sizes="100vw"
+      loading="lazy"
+      quality={82}
+    />
+    <div class="atmosphere-bleed-scrim" aria-hidden="true"></div>
+    <div class="atmosphere-bleed-inner">
+      <div class="atmosphere-card">
+        <p class="eyebrow">Built for the whole family</p>
+        <h2>A space that welcomes every age.</h2>
+        <p>
+          From newborns to grandparents, the clinic is designed for real families with real lives.
+          Pediatric play space, prenatal-comfortable adjusting tables, calm lighting, and a team
+          that knows your kids by name.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4c: Two arms intro — chiropractic vs health restoration -->
+  <SectionContainer width="default" spacing="lg">
+    <div class="section-head">
+      <p class="eyebrow">Two arms of one practice</p>
+      <h2>Pick the door that fits where you are right now.</h2>
+      <p class="section-lede">
+        Chiropractic for hands-on adjustments and the conditions chiropractors are known for.
+        Health restoration for the deeper testing-based work. Same approach, two paths in.
+      </p>
+    </div>
+    <div class="arms-grid">
+      {twoArms.map((arm) => (
+        <article class="arm-tile">
+          <p class="arm-eyebrow">{arm.eyebrow}</p>
+          <h3 class="arm-title">{arm.title}</h3>
+          <p class="arm-slogan">{arm.slogan}</p>
+          <p class="arm-body">{arm.body}</p>
+          <aside class="arm-callout">{arm.callout}</aside>
+          <Button
+            href={arm.cta.href === 'BOOKING' ? clinic.bookingUrl : arm.cta.href}
+            variant="primary"
+            size="md"
+            external={arm.cta.href === 'BOOKING'}
+            iconAfter
+          >
+            {arm.cta.label}
+          </Button>
+        </article>
+      ))}
+    </div>
+  </SectionContainer>
+
+  <!-- Section 5: 4-Step Process — vertical with connecting line -->
+  <SectionContainer width="default" spacing="xl" background="paper-soft">
+    <div class="section-head">
+      <p class="eyebrow">The Wellness Way 4-Step Process</p>
+      <h2>How we work with you.</h2>
+      <p class="section-lede">
+        Whichever door you came through, the underlying approach is the same.
+      </p>
+    </div>
+    <ol class="steps">
+      {fourSteps.map((s) => (
+        <li>
+          <div class="step-num">{s.n}</div>
+          <div class="step-body">
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </SectionContainer>
+
+  <!-- Section 6: Featured posts -->
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <div class="section-head">
+      <p class="eyebrow">From the journal</p>
+      <h2>Latest insights</h2>
+      <p class="section-lede">Real answers, real conditions, real explanations.</p>
+    </div>
+    <div class="post-grid">
+      {featured.map((post) => (
+        <BlogPostCard
+          title={post.data.title}
+          excerpt={post.data.excerpt ?? ''}
+          href={`/post/${post.id}`}
+          image={post.data.image}
+          imageAlt={post.data.imageAlt ?? post.data.title}
+          date={post.data.date}
+          author={post.data.author}
+          category={post.data.categories[0]?.replace(/-/g, ' ')}
+          readTime={post.data.readTime}
+        />
+      ))}
+    </div>
+    <div class="section-cta">
+      <Button href="/blog" variant="link" iconAfter>All posts</Button>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 7: Meet Dr. Ryan — image-text grid -->
+  <SectionContainer width="default" spacing="xl" background="paper-warm">
+    <div class="provider-teaser">
+      <div class="provider-text">
+        <p class="eyebrow">Meet Your Chiropractor</p>
+        <h2>Dr. Ryan DeNome, DC</h2>
+        <p class="provider-lede">
+          Doctor of Chiropractic, Life University graduate, and Cincinnati native.
+          Certified in the Webster Technique. Especially passionate about supporting men feeling
+          limited by health challenges, mothers juggling stress and wellness, and patients with
+          complex cases who haven't found answers in conventional care.
+        </p>
+        <blockquote class="ryan-quote">
+          "Take care of your body as if you were going to live forever; and take care of your soul
+          as if you were going to die tomorrow."
+          <cite>— Saint Augustine</cite>
+        </blockquote>
+        <Button href="/about-us" variant="link" iconAfter>Read full bio</Button>
+      </div>
+      <div class="provider-photo">
+        <img
+          src="https://static.wixstatic.com/media/629639_7c1b1385059c4c7897a2e529fd5d567f~mv2.jpg"
+          alt="Dr. Ryan DeNome at The Wellness Way - Mason"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 8: Service area + map -->
+  <SectionContainer width="default" spacing="lg">
+    <div class="service-area-grid">
+      <div>
+        <p class="eyebrow">Where We Are</p>
+        <h2>Serving Mason and the Greater Cincinnati Area</h2>
+        <p class="service-lede">
+          We see patients from {clinic.serviceArea.join(', ')}, and beyond.
+          Virtual health-restoration consultations are available for patients outside the area.
+        </p>
+        <address class="nap-block">
+          <strong>{clinic.brandName}</strong><br />
+          {clinic.address.streetAddress}<br />
+          {clinic.address.addressLocality}, {clinic.address.addressRegion} {clinic.address.postalCode}<br />
+          <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a><br />
+          <a href={`mailto:${clinic.email}`}>{clinic.email}</a>
+        </address>
+      </div>
+      <MapEmbed height="420px" />
+    </div>
+  </SectionContainer>
+
+  <!-- Section 9: Hours -->
+  <SectionContainer width="narrow" spacing="md" background="paper-soft">
+    <div class="hours-section">
+      <p class="eyebrow">When We're Here</p>
+      <h2>Clinic Hours</h2>
+      <HoursTable />
+    </div>
+  </SectionContainer>
+
+  <!-- Section 10: Final CTA — full-bleed photo with TWW Green tint overlay -->
+  <section class="final-cta-bleed" aria-label="Book a consultation">
+    <Image
+      class="final-cta-image"
+      src={adultAdjustment}
+      alt=""
+      role="presentation"
+      widths={[640, 960, 1280, 1920, 2560]}
+      sizes="100vw"
+      loading="lazy"
+      quality={78}
+    />
+    <div class="final-cta-scrim" aria-hidden="true"></div>
+    <div class="final-cta-inner">
+      <h2>Ready to listen to what your body has been saying?</h2>
+      <p>Bring your story. Bring your questions. Bring whatever labs and history you have. We'll listen. We'll test. We'll build a plan with you.</p>
+      <Button href={clinic.bookingUrl} variant="secondary" size="lg" external iconAfter>
+        Book a Consultation
+      </Button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .section-head {
+    margin-bottom: 3.5rem;
+    text-align: center;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin: 0 0 1rem;
+    font-weight: 500;
+  }
+  .section-head h2 {
+    margin: 0 0 1.25rem;
+    font-size: var(--text-3xl);
+    color: var(--color-ink-strong);
+  }
+  .section-lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .section-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  /* === Problem / Solution bridge === */
+  .ps-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+  .ps-col h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+    color: var(--color-ink-strong);
+    margin: 0 0 1.25rem;
+    max-width: 22ch;
+  }
+  .ps-col p {
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    margin: 0 0 1rem;
+  }
+  .ps-col p:last-child { margin-bottom: 0; }
+  .ps-col .eyebrow { margin-bottom: 1rem; }
+  .ps-problem h2 em,
+  .ps-solution h2 em {
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+  }
+  .ps-solution {
+    position: relative;
+    padding-left: 0;
+  }
+  .ps-bridge {
+    margin-top: 1.5rem !important;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-lg);
+  }
+
+  /* === 3 T's image-led rows === */
+  .three-ts {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+  .t-row {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .t-image {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .t-image img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .t-numeral {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-5xl);
+    color: var(--color-paper);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    line-height: 1;
+  }
+  .t-text h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    margin: 0 0 0.75rem;
+    color: var(--color-ink-strong);
+  }
+  .t-short {
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-lg);
+    margin: 0 0 1rem;
+    font-family: var(--font-display);
+  }
+  .t-text p:last-child {
+    color: var(--color-ink-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* === Conditions list (refined typography, interactive links) === */
+  .conditions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0;
+  }
+  .conditions-list li {
+    border-bottom: 1px solid var(--color-line);
+    position: relative;
+  }
+  .conditions-list li a {
+    display: block;
+    padding: 1rem 0 1rem 2rem;
+    color: var(--color-ink-strong);
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-decoration: none;
+    position: relative;
+    transition: padding-left var(--duration-fast) var(--ease-soft),
+                color var(--duration-fast) var(--ease-soft),
+                background var(--duration-fast) var(--ease-soft);
+  }
+  .conditions-list li a:hover {
+    color: var(--color-brand-primary-dark);
+    padding-left: 2.5rem;
+    background: var(--color-brand-primary-soft);
+  }
+  .conditions-list li a::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-brand-primary);
+    font-weight: 600;
+    transition: transform var(--duration-fast) var(--ease-soft);
+  }
+  .conditions-list li a:hover::before {
+    transform: translateY(-50%) translateX(4px);
+  }
+  .conditions-list li:last-child { border-bottom: none; }
+
+  /* === Expertise === */
+  .expertise-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  /* === Two-arms grid (chiro vs health restoration) === */
+  .arms-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  .arm-tile {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-top: 4px solid var(--color-brand-primary);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .arm-eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin: 0;
+    font-weight: 500;
+  }
+  .arm-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    margin: 0;
+    color: var(--color-ink-strong);
+  }
+  .arm-slogan {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-lg);
+    margin: 0;
+  }
+  .arm-body {
+    color: var(--color-ink-muted);
+    line-height: 1.65;
+    margin: 0;
+    flex: 1;
+  }
+  .arm-callout {
+    background: var(--color-brand-primary-soft);
+    color: var(--color-ink-strong);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    border-left: 3px solid var(--color-brand-primary);
+  }
+  @media (min-width: 768px) {
+    .arms-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /* === 4-step process — vertical timeline === */
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 56rem;
+    counter-reset: step;
+    position: relative;
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1.5rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+  .steps li:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    top: 3.5rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-line);
+  }
+  .step-num {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--color-paper);
+    border: 2px solid var(--color-brand-primary);
+    color: var(--color-brand-primary-dark);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .step-body { padding-top: 0.4rem; }
+  .step-body h3 {
+    margin: 0 0 0.5rem;
+    font-size: var(--text-xl);
+    color: var(--color-ink-strong);
+  }
+  .step-body p {
+    margin: 0;
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+  }
+
+  /* === Posts === */
+  .post-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  /* === Lab partners strip === */
+  .lab-strip {
+    text-align: center;
+  }
+  .lab-strip-eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin: 0 0 1.75rem;
+    font-weight: 500;
+  }
+  .lab-strip-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2.5rem;
+    align-items: center;
+    justify-items: center;
+  }
+  @media (min-width: 768px) {
+    .lab-strip-list {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  .lab-strip-list li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+  }
+  .lab-strip-list img {
+    max-height: 44px;
+    max-width: 180px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.65);
+    transition: filter var(--duration-normal) var(--ease-soft),
+                transform var(--duration-normal) var(--ease-soft);
+  }
+  .lab-strip-list li:hover img {
+    filter: grayscale(0%) opacity(1);
+    transform: translateY(-2px);
+  }
+  .lab-strip-caption {
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+    max-width: 50ch;
+    margin: 0 auto;
+    line-height: 1.55;
+    font-style: italic;
+  }
+  @media (min-width: 768px) {
+    .lab-strip-list {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2rem 2.5rem;
+    }
+    .lab-strip-list img {
+      max-height: 52px;
+      max-width: 200px;
+    }
+  }
+
+  /* === Atmosphere band === */
+  .atmosphere {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .atmosphere-image img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+  }
+  .atmosphere-text h2 {
+    margin: 0 0 1.25rem;
+    font-size: var(--text-3xl);
+  }
+  .atmosphere-text p {
+    color: var(--color-ink-muted);
+    line-height: 1.7;
+    font-size: var(--text-lg);
+    max-width: 50ch;
+    margin: 0;
+  }
+
+  /* === Provider teaser === */
+  .provider-teaser {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  .provider-text h2 {
+    font-size: var(--text-4xl);
+    margin: 0 0 1.25rem;
+  }
+  .provider-lede {
+    color: var(--color-ink);
+    line-height: 1.7;
+    font-size: var(--text-lg);
+    margin: 0 0 1.5rem;
+  }
+  .ryan-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    margin: 1.5rem 0 2rem;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--color-brand-primary);
+    color: var(--color-ink-strong);
+  }
+  .ryan-quote cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    font-style: normal;
+    font-family: var(--font-body);
+  }
+  .provider-photo img {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  /* === Service area === */
+  .service-area-grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .service-area-grid h2 {
+    margin: 0 0 1rem;
+    font-size: var(--text-3xl);
+  }
+  .service-lede {
+    color: var(--color-ink-muted);
+    line-height: 1.65;
+    font-size: var(--text-lg);
+  }
+  .nap-block {
+    background: var(--color-paper-soft);
+    padding: 1.75rem;
+    border-radius: var(--radius-md);
+    margin-top: 1.75rem;
+    font-style: normal;
+    line-height: 1.75;
+    border: 1px solid var(--color-line);
+  }
+
+  /* === Hours === */
+  .hours-section { text-align: center; }
+  .hours-section .eyebrow { margin-bottom: 0.75rem; }
+  .hours-section h2 {
+    margin: 0 0 2rem;
+    font-size: var(--text-3xl);
+  }
+  .hours-section :global(.hours-table) {
+    max-width: 28rem;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  /* === Full-bleed Hero === */
+  .hero-bleed {
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-bleed-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    z-index: -2;
+  }
+  .hero-bleed-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(105deg,
+        rgba(31, 34, 34, 0.78) 0%,
+        rgba(31, 34, 34, 0.55) 45%,
+        rgba(31, 34, 34, 0.18) 80%,
+        rgba(31, 34, 34, 0.05) 100%);
+    z-index: -1;
+  }
+  .hero-bleed-inner {
+    width: 100%;
+    max-width: var(--container-default);
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+    color: var(--color-paper);
+  }
+  .hero-bleed-text {
+    max-width: 36rem;
+  }
+  .hero-eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-paper);
+    opacity: 0.85;
+    margin: 0 0 1.5rem;
+    font-weight: 500;
+  }
+  .hero-headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-4xl);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.25rem;
+    color: var(--color-paper);
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--color-brand-primary);
+    font-weight: 400;
+  }
+  .hero-positioning {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-lg);
+    color: var(--color-paper);
+    opacity: 0.92;
+    margin: 0 0 1.75rem;
+    font-weight: 400;
+  }
+  .hero-lede {
+    color: var(--color-paper);
+    opacity: 0.92;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    margin: 0 0 2.5rem;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+  }
+  .hero-bleed-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* === Full-bleed Atmosphere band === */
+  .atmosphere-bleed {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .atmosphere-bleed-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -2;
+  }
+  .atmosphere-bleed-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(95deg,
+      rgba(31, 34, 34, 0.35) 0%,
+      rgba(31, 34, 34, 0.05) 60%);
+    z-index: -1;
+  }
+  .atmosphere-bleed-inner {
+    width: 100%;
+    max-width: var(--container-default);
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+  }
+  .atmosphere-card {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    max-width: 32rem;
+    border: 1px solid rgba(255,255,255,0.6);
+  }
+  .atmosphere-card .eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin: 0 0 0.75rem;
+    font-weight: 500;
+  }
+  .atmosphere-card h2 {
+    margin: 0 0 1rem;
+    font-size: var(--text-3xl);
+    color: var(--color-ink-strong);
+  }
+  .atmosphere-card p {
+    color: var(--color-ink-muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* === Full-bleed Final CTA === */
+  .final-cta-bleed {
+    position: relative;
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .final-cta-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -2;
+  }
+  .final-cta-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg,
+        rgba(128, 183, 65, 0.92) 0%,
+        rgba(94, 138, 48, 0.82) 100%);
+    z-index: -1;
+  }
+  .final-cta-inner {
+    width: 100%;
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+    text-align: center;
+    color: var(--color-ink-strong);
+  }
+  .final-cta-inner h2 {
+    color: var(--color-ink-strong);
+    font-size: var(--text-4xl);
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .final-cta-inner p {
+    color: var(--color-ink-strong);
+    opacity: 0.92;
+    max-width: 50ch;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+    font-size: var(--text-lg);
+  }
+
+  /* === Responsive === */
+  @media (min-width: 768px) {
+    .section-head h2 { font-size: var(--text-4xl); }
+    .ps-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .ps-solution {
+      padding-left: 3rem;
+      border-left: 1px solid var(--color-line);
+    }
+    .ps-col h2 { font-size: var(--text-4xl); }
+    .t-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .t-row.reverse > .t-image { order: 2; }
+    .conditions-list {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2.5rem;
+    }
+    .expertise-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .atmosphere { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
+    .post-grid { grid-template-columns: repeat(3, 1fr); }
+    .provider-teaser { grid-template-columns: 1.4fr 1fr; gap: 4rem; }
+    .service-area-grid { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
+    .steps li { grid-template-columns: 5rem 1fr; gap: 2rem; }
+    .step-num { width: 3.5rem; height: 3.5rem; font-size: var(--text-2xl); }
+    .steps li:not(:last-child)::before { left: 1.75rem; top: 4rem; }
+    .hero-headline { font-size: var(--text-5xl); }
+    .hero-bleed-inner { padding: 7rem 2rem; }
+    .atmosphere-bleed-inner { padding: 7rem 2rem; }
+    .final-cta-inner { padding: 7rem 2rem; }
+    .final-cta-inner h2 { font-size: var(--text-5xl); }
+  }
+  @media (min-width: 1024px) {
+    .hero-headline { font-size: var(--text-6xl); }
+    .hero-bleed { min-height: 86vh; }
+  }
+  @media (min-width: 1024px) {
+    .provider-text h2 { font-size: var(--text-5xl); }
+    .three-ts { gap: 6rem; }
+  }
+</style>

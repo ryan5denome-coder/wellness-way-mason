@@ -1,0 +1,165 @@
+---
+import Button from './Button.astro';
+import SectionContainer from './SectionContainer.astro';
+
+/**
+ * Hero — Soft UI Evolution + Hero-Centric pattern (uipro).
+ * Cinematic typography, generous breathing room, optional image.
+ */
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  positioning?: string;
+  lede?: string;
+  primaryCtaText?: string;
+  primaryCtaHref?: string;
+  primaryCtaExternal?: boolean;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  image?: string;
+  imageAlt?: string;
+  align?: 'center' | 'left';
+  background?: 'paper' | 'paper-soft' | 'paper-warm-tint';
+}
+
+const {
+  eyebrow,
+  headline,
+  positioning,
+  lede,
+  primaryCtaText,
+  primaryCtaHref,
+  primaryCtaExternal = false,
+  secondaryCtaText,
+  secondaryCtaHref,
+  image,
+  imageAlt = '',
+  align = 'center',
+  background = 'paper',
+} = Astro.props;
+---
+
+<SectionContainer width={image ? 'wide' : 'narrow'} spacing="hero" background={background} as="section" ariaLabel="Hero">
+  <div class={`hero hero-${align} ${image ? 'hero-with-image' : ''}`}>
+    <div class="hero-text">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1 class="headline" set:html={headline.replace(/_(.+?)_/g, '<em>$1</em>')} />
+      {positioning && <p class="positioning">{positioning}</p>}
+      {lede && <p class="lede">{lede}</p>}
+
+      {(primaryCtaText || secondaryCtaText) && (
+        <div class="hero-ctas">
+          {primaryCtaText && primaryCtaHref && (
+            <Button href={primaryCtaHref} variant="primary" size="lg" external={primaryCtaExternal} iconAfter>
+              {primaryCtaText}
+            </Button>
+          )}
+          {secondaryCtaText && secondaryCtaHref && (
+            <Button href={secondaryCtaHref} variant="link" size="lg">
+              {secondaryCtaText}
+            </Button>
+          )}
+        </div>
+      )}
+    </div>
+
+    {image && (
+      <div class="hero-image">
+        <img src={image} alt={imageAlt} loading="eager" decoding="async" />
+      </div>
+    )}
+  </div>
+</SectionContainer>
+
+<style>
+  .hero {
+    display: grid;
+    gap: 2rem;
+  }
+  .hero-center { text-align: center; }
+  .hero-left { text-align: left; }
+
+  .eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin: 0 0 1.25rem;
+    font-weight: 500;
+  }
+
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-4xl);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.25rem;
+    color: var(--color-ink-strong);
+    max-width: 18ch;
+  }
+  .hero-center .headline { margin-left: auto; margin-right: auto; }
+  .headline :global(em) {
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-weight: 400;
+  }
+
+  .positioning {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-xl);
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  .lede {
+    max-width: 56ch;
+    margin: 0 0 2.5rem;
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    line-height: 1.55;
+  }
+  .hero-center .lede { margin-left: auto; margin-right: auto; }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .hero-center .hero-ctas { justify-content: center; }
+
+  .hero-image {
+    position: relative;
+  }
+  .hero-image img {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    object-fit: cover;
+    aspect-ratio: 4 / 5;
+  }
+
+  @media (min-width: 768px) {
+    .headline { font-size: var(--text-5xl); }
+    .hero-with-image {
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+      gap: 4.5rem;
+    }
+    .hero-with-image .hero-text { text-align: left; }
+    .hero-with-image .headline { margin-left: 0; margin-right: 0; }
+    .hero-with-image .lede { margin-left: 0; }
+    .hero-with-image .hero-ctas { justify-content: flex-start; }
+    .hero-with-image .hero-image img { aspect-ratio: 4 / 5; }
+  }
+  @media (min-width: 1024px) {
+    .headline { font-size: var(--text-6xl); }
+    .hero-with-image .headline { font-size: var(--text-5xl); }
+  }
+  @media (min-width: 1280px) {
+    .hero-center .headline { font-size: var(--text-display); }
+  }
+</style>

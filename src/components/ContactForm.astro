@@ -1,0 +1,153 @@
+---
+/**
+ * ContactForm — simple non-PHI contact form. Uses Web3Forms by default (or any
+ * compatible form-relay service via the action URL). Does NOT request medical
+ * history, diagnoses, lab values, medications, or other PHI — those are
+ * captured through the Neo Platform booking widget instead.
+ *
+ * Set up form provider:
+ *   1. Sign up at https://web3forms.com (free) or use Cloudflare Forms
+ *   2. Paste the access key into the action URL or pass via prop
+ *   3. Test submission once before launch
+ */
+interface Props {
+  action?: string; // form-handler endpoint
+  successRedirect?: string;
+  honeypotField?: string;
+}
+
+const {
+  action = 'https://api.web3forms.com/submit',
+  successRedirect = '/contact?sent=true',
+  honeypotField = 'website',
+} = Astro.props;
+---
+
+<form class="contact-form" action={action} method="POST" novalidate>
+  <input type="hidden" name="redirect" value={successRedirect} />
+  <input type="hidden" name="from_name" value="The Wellness Way - Mason website" />
+  <input type="hidden" name="subject" value="New website inquiry" />
+  <!-- Honeypot — bots fill it, humans don't see it -->
+  <input type="text" name={honeypotField} tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
+
+  <div class="field">
+    <label for="cf-name">Your name <span class="req">*</span></label>
+    <input id="cf-name" name="name" type="text" autocomplete="name" required />
+  </div>
+
+  <div class="field">
+    <label for="cf-email">Email <span class="req">*</span></label>
+    <input id="cf-email" name="email" type="email" autocomplete="email" required />
+  </div>
+
+  <div class="field">
+    <label for="cf-phone">Phone <span class="hint">(optional)</span></label>
+    <input id="cf-phone" name="phone" type="tel" autocomplete="tel" />
+  </div>
+
+  <div class="field">
+    <label for="cf-topic">What's on your mind?</label>
+    <select id="cf-topic" name="topic">
+      <option value="general">General question</option>
+      <option value="services">Question about a service</option>
+      <option value="event">Question about an event</option>
+      <option value="other">Something else</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="cf-message">Message <span class="req">*</span></label>
+    <textarea
+      id="cf-message"
+      name="message"
+      rows="5"
+      required
+      placeholder="Please don't include medical history, lab values, or diagnoses here. For new-patient questions, use the Book Appointment button to start the secure intake."
+    ></textarea>
+  </div>
+
+  <p class="phi-note">
+    For privacy, please don't share medical history, lab results, or diagnoses through this form.
+    Use the <a href="/contact#book">Book Appointment</a> link for the secure intake flow.
+  </p>
+
+  <button type="submit" class="submit-btn">Send Message</button>
+</form>
+
+<style>
+  .contact-form {
+    display: grid;
+    gap: 1.25rem;
+    background: var(--color-paper);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    max-width: 600px;
+  }
+  .field {
+    display: grid;
+    gap: 0.4rem;
+  }
+  label {
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    font-size: var(--text-sm);
+  }
+  .req { color: var(--color-danger); }
+  .hint { color: var(--color-mute); font-weight: 400; font-size: var(--text-xs); }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    font: inherit;
+    color: var(--color-ink);
+    background: var(--color-paper);
+    transition: border-color var(--duration-fast) var(--ease-soft),
+                box-shadow var(--duration-fast) var(--ease-soft);
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-brand-primary);
+    box-shadow: var(--shadow-focus);
+  }
+  textarea { resize: vertical; min-height: 8rem; }
+
+  .honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .phi-note {
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+    background: var(--color-paper-tint);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    margin: 0;
+  }
+
+  .submit-btn {
+    background: var(--color-brand-primary);
+    color: var(--color-ink-strong);
+    font-weight: 600;
+    border: none;
+    padding: 0.85rem 1.5rem;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-soft);
+    font-size: var(--text-base);
+  }
+  .submit-btn:hover {
+    background: var(--color-brand-primary-dark);
+    color: var(--color-paper);
+  }
+  .submit-btn:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+</style>

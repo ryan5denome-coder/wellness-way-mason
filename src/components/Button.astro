@@ -1,0 +1,158 @@
+---
+/**
+ * Button — primary CTA + secondary + ghost + link variants.
+ * Renders as <a> when href is provided, <button> otherwise.
+ *
+ * Soft UI Evolution treatment per uipro:
+ *   - Subtle 200-300ms transitions
+ *   - Soft shadows that lift on hover
+ *   - Visible focus ring (WCAG AA+)
+ */
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost' | 'link' | 'inverse';
+  size?: 'sm' | 'md' | 'lg';
+  type?: 'button' | 'submit' | 'reset';
+  external?: boolean;
+  fullWidth?: boolean;
+  ariaLabel?: string;
+  iconAfter?: boolean;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  type = 'button',
+  external = false,
+  fullWidth = false,
+  ariaLabel,
+  iconAfter = false,
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+const classes = [
+  'btn',
+  `btn-${variant}`,
+  `btn-${size}`,
+  fullWidth ? 'btn-full' : '',
+  iconAfter ? 'btn-arrow' : '',
+].filter(Boolean).join(' ');
+
+const externalAttrs = external
+  ? { target: '_blank', rel: 'noopener noreferrer' }
+  : {};
+---
+
+<Tag
+  class={classes}
+  href={href}
+  type={!href ? type : undefined}
+  aria-label={ariaLabel}
+  {...externalAttrs}
+>
+  <span class="btn-label"><slot /></span>
+  {iconAfter && <span class="btn-icon" aria-hidden="true">→</span>}
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    line-height: 1.2;
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--duration-normal) var(--ease-soft);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+  .btn:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+
+  .btn-sm { padding: 0.5rem 1.1rem; font-size: var(--text-sm); }
+  .btn-md { padding: 0.75rem 1.5rem; font-size: var(--text-base); }
+  .btn-lg { padding: 0.95rem 2rem; font-size: var(--text-base); letter-spacing: 0.015em; }
+
+  .btn-full { width: 100%; }
+
+  .btn-arrow .btn-icon {
+    transition: transform var(--duration-fast) var(--ease-soft);
+    display: inline-block;
+  }
+  .btn:hover .btn-icon {
+    transform: translateX(3px);
+  }
+
+  /* === Primary — TWW Green === */
+  .btn-primary {
+    background: var(--color-brand-primary);
+    color: var(--color-ink-strong);
+    box-shadow: var(--shadow-card);
+  }
+  .btn-primary:hover {
+    background: var(--color-brand-primary-dark);
+    color: var(--color-paper);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* === Secondary — TWW Dark Grey === */
+  .btn-secondary {
+    background: var(--color-ink-strong);
+    color: var(--color-paper);
+    box-shadow: var(--shadow-card);
+  }
+  .btn-secondary:hover {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* === Inverse — for dark sections (white-bg button on dark bg) === */
+  .btn-inverse {
+    background: var(--color-paper);
+    color: var(--color-ink-strong);
+    box-shadow: var(--shadow-card);
+  }
+  .btn-inverse:hover {
+    background: var(--color-brand-primary);
+    color: var(--color-ink-strong);
+    transform: translateY(-1px);
+  }
+
+  /* === Ghost — outlined === */
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-ink-strong);
+    border-color: var(--color-ink-strong);
+  }
+  .btn-ghost:hover {
+    background: var(--color-ink-strong);
+    color: var(--color-paper);
+  }
+
+  /* === Link — text-style === */
+  .btn-link {
+    background: transparent;
+    color: var(--color-brand-primary-dark);
+    padding: 0.25rem 0;
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+    border-radius: 0;
+    font-weight: 600;
+  }
+  .btn-link:hover {
+    color: var(--color-brand-primary);
+    text-decoration-thickness: 2px;
+  }
+</style>

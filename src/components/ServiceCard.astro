@@ -1,0 +1,32 @@
+---
+import Card from './Card.astro';
+
+interface Props {
+  title: string;
+  summary: string;
+  href: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const { title, summary, href, image, imageAlt = '' } = Astro.props;
+---
+
+<Card href={href} image={image} imageAlt={imageAlt} title={title}>
+  <p class="service-summary">{summary}</p>
+  <span slot="footer" class="service-cta">
+    Learn more →
+  </span>
+</Card>
+
+<style>
+  .service-summary {
+    color: var(--color-ink-muted);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .service-cta {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+  }
+</style>

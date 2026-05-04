@@ -1,0 +1,397 @@
+@import "tailwindcss";
+
+/*
+ * TWW Mason Design System — v2 (canonical brand palette)
+ *
+ * Colors verified against the official Wellness Way brand guide:
+ *   TWW GREEN      #80B741   PMS 368        Primary
+ *   TWW DARK GREY  #414444   PMS Black 7    Primary (text + accent)
+ *   TWW LIGHT GREY #DDDDDE   PMS 427        Primary (borders, dividers)
+ *   TWW BEIGE      #DCD4C8   PMS Warm Grey 1 Secondary (warmth accent)
+ *
+ * Style: "Soft UI Evolution" per uipro design intelligence:
+ *   - Soft depth, not flat
+ *   - Subtle shadows (medical/wellness appropriate)
+ *   - WCAG AA+ contrast
+ *   - 200-300ms transitions
+ *   - No neon, no harsh animation, no forced dark mode
+ *
+ * Type: Lora (headings, warm/organic) + Inter (body, medical legibility)
+ *   Per uipro typography DB the "calm wellness" pairing recommends Lora + Raleway,
+ *   but Inter outperforms Raleway for body legibility in medical/clinical copy.
+ */
+@theme {
+  /* === Canonical brand palette === */
+  --color-brand-primary: #80b741;          /* TWW Green */
+  --color-brand-primary-dark: #5e8a30;     /* derived: hover/focus */
+  --color-brand-primary-light: #cadab2;    /* derived: pale-green tint */
+  --color-brand-primary-soft: #f0f4e8;     /* derived: very-pale brand bg */
+
+  --color-brand-secondary: #DCD4C8;        /* TWW Beige */
+  --color-brand-secondary-warm: #c9bfb0;   /* derived: deeper beige */
+
+  /* === Neutrals === */
+  --color-ink-strong: #1f2222;             /* derived: max contrast headlines */
+  --color-ink: #414444;                    /* TWW Dark Grey — body text */
+  --color-ink-muted: #5d6060;              /* derived: medium body */
+  --color-mute: #7a7d7d;                   /* derived: tertiary, captions */
+  --color-line: #DDDDDE;                   /* TWW Light Grey — divider */
+  --color-line-soft: #ececed;              /* derived: very light divider */
+
+  /* === Surfaces === */
+  --color-paper: #FFFFFF;                  /* primary background — clean */
+  --color-paper-soft: #FAFAF9;             /* alt sections — subtle off-white */
+  --color-paper-warm: #DCD4C8;             /* TWW Beige — accent sections */
+  --color-paper-warm-tint: #f0ebe1;        /* derived: pale beige */
+  --color-paper-cool: #f5f6f6;             /* derived: very pale grey */
+
+  /* === Status === */
+  --color-success: #5e8a30;                /* uses brand-primary-dark */
+  --color-warning: #b88a3e;
+  --color-danger: #b85945;
+  --color-info: #4a7ca8;
+
+  /* === Typography === */
+  /* Lora: warm serif for headlines (uipro: calm wellness mood) */
+  /* Inter: precise sans for body (better legibility than Raleway for medical copy) */
+  --font-display: "Lora", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.1875rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.625rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3.5rem;     /* upped for cinematic hero */
+  --text-6xl: 4.5rem;     /* upped for cinematic hero */
+  --text-display: 5.5rem; /* hero-only */
+
+  /* === Layout === */
+  --container-prose: 68ch;
+  --container-narrow: 56rem;
+  --container-default: 76rem;
+  --container-wide: 88rem;
+
+  --radius-sm: 4px;
+  --radius-md: 12px;        /* slightly softer than v1 */
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+
+  /* === Shadows (Soft UI Evolution — softer than flat, clearer than neumorphism) === */
+  --shadow-card: 0 2px 8px -2px rgba(31, 34, 34, 0.04), 0 6px 20px -8px rgba(31, 34, 34, 0.08);
+  --shadow-card-hover: 0 4px 14px -4px rgba(31, 34, 34, 0.08), 0 12px 32px -10px rgba(31, 34, 34, 0.14);
+  --shadow-popover: 0 12px 36px -8px rgba(31, 34, 34, 0.18);
+  --shadow-focus: 0 0 0 3px rgba(128, 183, 65, 0.35);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  /* === Motion (200-300ms per uipro) === */
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 240ms;
+  --duration-slow: 320ms;
+}
+
+/* === Base layer === */
+html {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  line-height: 1.6;
+  font-size: var(--text-base);
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;            /* Lora reads better at 500 than 700 */
+  letter-spacing: -0.012em;
+  color: var(--color-ink-strong);
+  margin-top: 0;
+  line-height: 1.18;
+}
+
+h1 { font-size: var(--text-5xl); line-height: 1.05; letter-spacing: -0.02em; }
+h2 { font-size: var(--text-3xl); line-height: 1.18; letter-spacing: -0.014em; }
+h3 { font-size: var(--text-2xl); line-height: 1.25; }
+h4 { font-size: var(--text-xl); line-height: 1.3; }
+
+p { margin-top: 0; }
+
+a {
+  color: var(--color-brand-primary-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color var(--duration-fast) var(--ease-soft);
+}
+
+a:hover {
+  color: var(--color-brand-primary);
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background: var(--color-brand-primary-light);
+  color: var(--color-ink-strong);
+}
+
+/* Skip-to-content visible on focus only */
+.skip-link {
+  position: absolute;
+  left: -10000px;
+  top: 0;
+  background: var(--color-ink-strong);
+  color: var(--color-paper);
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-md) 0;
+  font-weight: 500;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   Scroll-reveal animations
+   Triggered by IntersectionObserver in BaseLayout — class `reveal` is added
+   on page load, `is-visible` is added when the element enters the viewport.
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 700ms var(--ease-soft),
+    transform 700ms var(--ease-soft);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* === Variants (opt-in via data-reveal="<variant>") === */
+
+[data-reveal="fade"] {
+  transform: none;
+}
+[data-reveal="fade"].is-visible {
+  transform: none;
+}
+
+[data-reveal="up-sm"] {
+  transform: translate3d(0, 12px, 0);
+}
+[data-reveal="up-sm"].is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-reveal="up-lg"] {
+  transform: translate3d(0, 48px, 0);
+}
+[data-reveal="up-lg"].is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-reveal="left"] {
+  transform: translate3d(-24px, 0, 0);
+}
+[data-reveal="left"].is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-reveal="right"] {
+  transform: translate3d(24px, 0, 0);
+}
+[data-reveal="right"].is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.98);
+}
+[data-reveal="scale"].is-visible {
+  transform: scale(1);
+}
+
+/* === Stagger inside grids (Agent 1's JS adds .reveal to each grid child) === */
+.expertise-grid > .reveal:nth-child(2),
+.post-grid > .reveal:nth-child(2),
+.steps > .reveal:nth-child(2) { transition-delay: 80ms; }
+.expertise-grid > .reveal:nth-child(3),
+.post-grid > .reveal:nth-child(3),
+.steps > .reveal:nth-child(3) { transition-delay: 160ms; }
+.expertise-grid > .reveal:nth-child(4),
+.post-grid > .reveal:nth-child(4),
+.steps > .reveal:nth-child(4) { transition-delay: 240ms; }
+
+/* === Reduced motion: disable entirely (already covered globally above,
+       but be explicit for the reveal layer) === */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible,
+  [data-reveal],
+  [data-reveal].is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+}
+
+/* === Lenis smooth-scroll cleanup ===
+   When Lenis is active, it sets `data-lenis-prevent` and `class="lenis"` on html.
+   Disable native smooth scroll to avoid double-easing. */
+html.lenis,
+html.lenis body {
+  scroll-behavior: auto !important;
+}
+html.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Hover polish — Phase 5b refinement pass
+   Tightens card lifts, link underlines, list-item hovers, footer links,
+   and adds a brand-tinted focus glow. Respects prefers-reduced-motion.
+   ========================================================================== */
+
+/* === Animated link underline (grows from left on hover) === */
+/* Applied to body links inside prose / content; nav links override below. */
+main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip-list a):not(.cat-pill):not(.cat-link) {
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 0.12em;
+  transition: background-size var(--duration-normal) var(--ease-soft),
+              color var(--duration-fast) var(--ease-soft);
+}
+main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip-list a):not(.cat-pill):not(.cat-link):hover {
+  background-size: 100% 1.5px;
+}
+
+/* === Conditions list — interactive hover === */
+.conditions-list li {
+  cursor: default;
+  transition: background var(--duration-fast) var(--ease-soft),
+              padding-left var(--duration-fast) var(--ease-soft),
+              border-color var(--duration-fast) var(--ease-soft);
+}
+.conditions-list li:hover {
+  background: var(--color-brand-primary-soft);
+  padding-left: 2.5rem;
+  border-bottom-color: var(--color-brand-primary-light);
+}
+.conditions-list li:hover::before {
+  color: var(--color-brand-primary-dark);
+}
+
+/* === Service items (services page) — interactive hover === */
+.service-item {
+  cursor: default;
+  transition: transform var(--duration-fast) var(--ease-soft),
+              box-shadow var(--duration-normal) var(--ease-soft),
+              border-left-color var(--duration-fast) var(--ease-soft);
+}
+.service-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 18px -8px rgba(31, 34, 34, 0.15);
+}
+.service-item:hover h3 {
+  color: var(--color-brand-primary-dark);
+}
+
+/* === Footer link slide-right === */
+.site-footer nav a,
+.footer-nav a,
+.footer-social a {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-soft),
+              color var(--duration-fast) var(--ease-soft),
+              opacity var(--duration-fast) var(--ease-soft);
+}
+.site-footer nav a:hover,
+.footer-nav a:hover,
+.footer-social a:hover {
+  transform: translateX(3px);
+}
+
+/* === Header nav — refined underline animation === */
+.primary-nav a {
+  position: relative;
+}
+.primary-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: var(--color-brand-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-normal) var(--ease-soft);
+}
+.primary-nav a:hover::after,
+.primary-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+/* Suppress old border-bottom in favor of pseudo-element */
+.primary-nav a {
+  border-bottom: none !important;
+}
+
+/* === Card subtle border glow on hover === */
+.card-link:hover {
+  border-color: var(--color-brand-primary) !important;
+}
+
+/* === Reduced motion: cancel hover transforms but keep color shifts === */
+@media (prefers-reduced-motion: reduce) {
+  .conditions-list li,
+  .service-item,
+  .site-footer nav a,
+  .footer-nav a,
+  .footer-social a,
+  .primary-nav a::after {
+    transform: none !important;
+    transition: none !important;
+  }
+}

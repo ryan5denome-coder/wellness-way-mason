@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { clinic } from '../lib/site';
+
+const lastUpdated = '2026-04-30';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description={`How ${clinic.brandName} collects, uses, and protects information from website visitors. Read our privacy policy.`}
+>
+  <SectionContainer width="prose" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Privacy Policy' }]} />
+    <h1>Privacy Policy</h1>
+    <p class="updated"><em>Last updated: {lastUpdated}</em></p>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="lg">
+    <p>
+      {clinic.brandName} ("we," "us," or "our") respects your privacy. This Privacy Policy describes
+      how we collect, use, and protect information when you visit
+      <a href="https://www.thewellnesswaymason.com">www.thewellnesswaymason.com</a> (the "Site").
+    </p>
+    <p>
+      <strong>Important:</strong> protected health information (PHI) collected during your in-clinic
+      patient relationship is governed by our HIPAA Notice of Privacy Practices, provided to you at
+      the time of your first visit and available upon request. This Privacy Policy applies only to
+      information collected through this website.
+    </p>
+
+    <h2>1. Information we collect on this website</h2>
+    <p>We may collect the following types of information:</p>
+    <ul>
+      <li>
+        <strong>Information you give us voluntarily.</strong> When you submit our contact form, we
+        collect your name, email address, phone number (if provided), and the content of your message.
+      </li>
+      <li>
+        <strong>Automatically collected technical data.</strong> Standard server logs and analytics
+        may capture your IP address, device type, browser, pages visited, and referrer URL.
+      </li>
+      <li>
+        <strong>Cookies and similar technologies.</strong> Our website may use cookies to remember
+        preferences and to support analytics tools (such as Google Analytics). You can disable cookies
+        in your browser settings.
+      </li>
+    </ul>
+
+    <h2>2. How we use information</h2>
+    <p>We use website-collected information to:</p>
+    <ul>
+      <li>Respond to inquiries you submit through the Site;</li>
+      <li>Schedule appointments or communicate about your interest in our services;</li>
+      <li>Improve the Site, monitor traffic patterns, and understand which content is helpful;</li>
+      <li>Comply with legal obligations.</li>
+    </ul>
+    <p>
+      <strong>We do not sell your information</strong> to third parties for advertising purposes.
+    </p>
+
+    <h2>3. Information you should not submit through this website</h2>
+    <p>
+      To protect your privacy, please do not submit medical history, lab results, diagnoses,
+      prescription information, or other Protected Health Information (PHI) through the contact form
+      on this website. New patient intake is handled separately through our secure online booking
+      system at <a href={clinic.bookingUrl} target="_blank" rel="noopener">our scheduling portal</a>.
+    </p>
+
+    <h2>4. Third-party services</h2>
+    <p>This Site may use third-party services to support its operation:</p>
+    <ul>
+      <li>
+        <strong>Cloudflare Pages</strong> hosts the website and processes server-side traffic logs.
+      </li>
+      <li>
+        <strong>Google Maps</strong> embed displays our clinic location.
+      </li>
+      <li>
+        <strong>Online appointment scheduling</strong> redirects to our third-party scheduling provider
+        (Neo Platform) for new patient registration.
+      </li>
+      <li>
+        <strong>Web analytics</strong> tools (such as Google Analytics) may be used to understand
+        aggregate site usage. These tools collect anonymized usage data.
+      </li>
+    </ul>
+    <p>
+      Each third-party service has its own privacy policy. We do not control how those services
+      handle data once you interact with them directly.
+    </p>
+
+    <h2>5. Data retention</h2>
+    <p>
+      Contact form submissions are kept only as long as necessary to respond to your inquiry and
+      to maintain a record of communications, then securely deleted.
+    </p>
+
+    <h2>6. Your choices</h2>
+    <p>You have the right to:</p>
+    <ul>
+      <li>Request a copy of any personal information we hold about you;</li>
+      <li>Ask us to correct inaccurate information;</li>
+      <li>Ask us to delete personal information we hold about you (subject to legal obligations);</li>
+      <li>Opt out of analytics by disabling cookies in your browser or using browser-level Do Not Track signals.</li>
+    </ul>
+    <p>
+      To exercise any of these rights, contact us at
+      <a href={`mailto:${clinic.email}`}>{clinic.email}</a> or call <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>.
+    </p>
+
+    <h2>7. Children's privacy</h2>
+    <p>
+      Our website is not directed to children under 13. We do not knowingly collect information from
+      children under 13 through this website.
+    </p>
+
+    <h2>8. Changes to this policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. The "Last updated" date at the top of
+      this page reflects the most recent revision. Material changes will be reflected here.
+    </p>
+
+    <h2>9. Contact us</h2>
+    <p>
+      Questions about this Privacy Policy or your information:
+    </p>
+    <p>
+      <strong>{clinic.brandName}</strong><br />
+      {clinic.address.streetAddress}<br />
+      {clinic.address.addressLocality}, {clinic.address.addressRegion} {clinic.address.postalCode}<br />
+      <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a><br />
+      <a href={`mailto:${clinic.email}`}>{clinic.email}</a>
+    </p>
+
+    <hr />
+
+    <p class="disclaimer">
+      <em>
+        This Privacy Policy describes our website data practices in good faith. It is not a substitute
+        for the HIPAA Notice of Privacy Practices that governs Protected Health Information collected
+        during your patient relationship with the clinic. For legal advice on your specific situation,
+        consult an attorney.
+      </em>
+    </p>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .updated { color: var(--color-mute); margin: 0; font-size: var(--text-sm); }
+  h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: var(--text-xl);
+    color: var(--color-ink-strong);
+  }
+  ul {
+    line-height: 1.7;
+    padding-left: 1.5rem;
+  }
+  li { margin: 0.5rem 0; }
+  hr {
+    border: none;
+    border-top: 1px solid var(--color-line);
+    margin: 2.5rem 0;
+  }
+  .disclaimer {
+    color: var(--color-ink-muted);
+    background: var(--color-paper-tint);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+  }
+</style>

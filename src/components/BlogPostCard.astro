@@ -1,0 +1,71 @@
+---
+import Card from './Card.astro';
+
+interface Props {
+  title: string;
+  excerpt: string;
+  href: string;
+  image?: string;
+  imageAlt?: string;
+  date?: string | Date;
+  author?: string;
+  category?: string;
+  readTime?: string;
+}
+
+const {
+  title,
+  excerpt,
+  href,
+  image,
+  imageAlt = '',
+  date,
+  author = 'Dr. Ryan DeNome, DC',
+  category,
+  readTime,
+} = Astro.props;
+
+const dateObj = date ? (date instanceof Date ? date : new Date(date)) : null;
+const dateStr = dateObj
+  ? dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null;
+---
+
+<Card href={href} image={image} imageAlt={imageAlt} title={title} eyebrow={category}>
+  <p class="post-excerpt">{excerpt}</p>
+  <div slot="footer" class="post-meta">
+    <span class="post-author">{author}</span>
+    {dateStr && <span class="post-date">{dateStr}</span>}
+    {readTime && <span class="post-readtime">{readTime}</span>}
+  </div>
+</Card>
+
+<style>
+  .post-excerpt {
+    color: var(--color-ink-muted);
+    margin: 0;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    color: var(--color-mute);
+    font-size: var(--text-xs);
+  }
+  .post-author {
+    color: var(--color-ink-muted);
+    font-weight: 500;
+  }
+  .post-date::before, .post-readtime::before {
+    content: "·";
+    margin-right: 0.75rem;
+    color: var(--color-line);
+  }
+</style>

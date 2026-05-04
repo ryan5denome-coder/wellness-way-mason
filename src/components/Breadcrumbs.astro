@@ -1,0 +1,78 @@
+---
+import { site } from '../lib/site';
+import { jsonLdString } from '../lib/schema';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  trail: Crumb[];
+}
+
+const { trail } = Astro.props;
+
+const itemListElement = trail.map((c, i) => ({
+  '@type': 'ListItem',
+  position: i + 1,
+  name: c.label,
+  ...(c.href ? { item: new URL(c.href, site.url).toString() } : {}),
+}));
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement,
+};
+---
+
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+  <ol>
+    {trail.map((crumb, i) => (
+      <li>
+        {crumb.href && i < trail.length - 1 ? (
+          <a href={crumb.href}>{crumb.label}</a>
+        ) : (
+          <span aria-current="page">{crumb.label}</span>
+        )}
+        {i < trail.length - 1 && <span class="separator" aria-hidden="true">›</span>}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={jsonLdString(breadcrumbSchema)} />
+
+<style>
+  .breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+  .breadcrumbs li {
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .breadcrumbs a {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+  }
+  .breadcrumbs a:hover {
+    color: var(--color-brand-primary-dark);
+    text-decoration: underline;
+  }
+  .breadcrumbs [aria-current="page"] {
+    color: var(--color-ink-strong);
+    font-weight: 500;
+  }
+  .separator {
+    color: var(--color-line);
+  }
+</style>

@@ -1,0 +1,400 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { clinic } from '../lib/site';
+
+const pricingFaqs = [
+  {
+    question: 'How much does a chiropractor cost in Mason, Ohio?',
+    answer:
+      '<p>Our new patient chiropractic visit is a flat <strong>$99</strong> — that includes the exam, X-rays if we determine they are needed, and your first adjustment. After that, follow-up adjustments are <strong>$50 per visit</strong>. Soft tissue work, cupping, and instrument-assisted scraping are all included in that $50 — we do not upcharge for adjunctive techniques.</p>',
+  },
+  {
+    question: 'What does the new patient visit cover?',
+    answer:
+      '<p>It depends which arm of care you are starting with. The <strong>chiropractic new patient visit ($99)</strong> covers your history and exam, X-rays if clinically indicated, and your first adjustment. The <strong>health restoration new patient visit ($99)</strong> covers an intake conversation and a review of any prior labs you bring with you. Lab work, when ordered, is billed separately.</p>',
+  },
+  {
+    question: 'How much will I spend on labs my first day?',
+    answer:
+      '<p>For a patient with no recent prior testing, a typical first-day lab spend lands somewhere between <strong>$300 and $700</strong>. The exact number depends on which panels we run and what we are trying to understand about your physiology. We will walk through the rationale for each panel before you commit. A full lab catalog with pricing is available as a <a href="/files/lab-pricing.pdf">downloadable PDF</a>.</p>',
+  },
+  {
+    question: 'Why aren’t supplement costs listed on this page?',
+    answer:
+      '<p>Honest answer: the range is too wide to ball-park before we know what your body actually needs. Individual products run anywhere from <strong>$20 to $130+ each</strong>, and a personalized protocol can include several. We build a recommendation off of your lab results during the Plan / Discovery visit ($300), and you decide what to start with from there.</p>',
+  },
+  {
+    question: 'Do you take insurance?',
+    answer:
+      '<p>We are a <strong>cash-pay practice</strong> and out-of-network with insurance — that is what lets us focus entirely on your care instead of what a payer will or will not cover. We provide a <strong>superbill on request</strong> if you would like to submit for potential reimbursement, and <strong>HSA and FSA cards are accepted</strong>.</p>',
+  },
+  {
+    question: 'Is there a contract or minimum commitment?',
+    answer:
+      '<p>No. There are no contracts and no minimum visit packages. We may recommend a sequence of care because consistency tends to produce better outcomes, but you stay because the work is helping — not because you are locked in. You can stop or step back at any time.</p>',
+  },
+];
+---
+
+<BaseLayout
+  title="Transparent Pricing | Chiropractic & Health Restoration"
+  description="Flat, upfront pricing for chiropractic and health restoration care at The Wellness Way Mason. New patient visits $99, follow-up adjustments $50. Cash-pay, HSA/FSA accepted."
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]} />
+    <p class="eyebrow">Pricing</p>
+    <h1>Transparent Pricing &mdash; No Surprises</h1>
+    <p class="lede">
+      We are pricing-forward on purpose. Patients deserve to know what care costs before they commit,
+      so the numbers below are the real numbers &mdash; the same ones we quote in the office.
+    </p>
+    <div class="cta-row">
+      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
+        Book a Consultation
+      </Button>
+      <Button href="#pricing-breakdown" variant="ghost" size="lg">
+        See the pricing
+      </Button>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="wide" spacing="lg" id="pricing-breakdown">
+    <div class="two-arm-grid">
+      <article class="arm-card">
+        <p class="eyebrow">Chiropractic</p>
+        <h2>We Do Health Differently</h2>
+
+        <ul class="price-list">
+          <li>
+            <div class="price-row">
+              <span class="price-label">New patient visit</span>
+              <span class="price-amount">$99</span>
+            </div>
+            <p class="price-detail">Includes exam, X-rays if clinically indicated, and your first adjustment.</p>
+          </li>
+          <li>
+            <div class="price-row">
+              <span class="price-label">Follow-up adjustment</span>
+              <span class="price-amount">$50</span>
+            </div>
+            <p class="price-detail">Per visit. No package required.</p>
+          </li>
+        </ul>
+
+        <aside class="callout">
+          <strong>Included at no extra charge:</strong> soft tissue work, cupping, and instrument-assisted
+          scraping. We do not upcharge for adjunctive techniques &mdash; they are part of the adjustment.
+        </aside>
+
+        <div class="arm-cta">
+          <Button href={clinic.bookingUrl} variant="primary" size="md" external>
+            Book a chiropractic visit
+          </Button>
+        </div>
+      </article>
+
+      <article class="arm-card">
+        <p class="eyebrow">Health Restoration</p>
+        <h2>Test, Don&rsquo;t Guess</h2>
+
+        <ul class="price-list">
+          <li>
+            <div class="price-row">
+              <span class="price-label">New patient visit</span>
+              <span class="price-amount">$99</span>
+            </div>
+            <p class="price-detail">Intake conversation plus a review of any prior labs you bring.</p>
+          </li>
+          <li>
+            <div class="price-row">
+              <span class="price-label">Typical first-day lab spend</span>
+              <span class="price-amount">$300&ndash;$700</span>
+            </div>
+            <p class="price-detail">
+              Varies by panel set and depends on what we test. Patients with no recent prior labs
+              should plan for this range on day one.
+            </p>
+          </li>
+          <li>
+            <div class="price-row">
+              <span class="price-label">Plan / Discovery visit</span>
+              <span class="price-amount">$300 + supplements</span>
+            </div>
+            <p class="price-detail">
+              Results review, personalized meal plan, and supplement protocol built from what your
+              labs actually show.
+            </p>
+          </li>
+        </ul>
+
+        <aside class="callout">
+          <strong>Supplements range $20&ndash;$130+ each</strong>, which is why we cannot ball-park
+          before we know what your body needs. You decide what to start with after we walk through
+          the recommendations together.
+        </aside>
+
+        <p class="pdf-link-wrap">
+          <a href="/files/lab-pricing.pdf" class="pdf-link">View lab pricing PDF &rarr;</a>
+        </p>
+
+        <div class="arm-cta">
+          <Button href={clinic.bookingUrl} variant="primary" size="md" external>
+            Book health restoration consult
+          </Button>
+        </div>
+      </article>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <h2 class="section-h2">Cash-pay practice. No insurance friction.</h2>
+    <ul class="cash-grid">
+      <li>
+        <h3>Out-of-network</h3>
+        <p>We do not bill insurance, which keeps decisions about your care in the room with you.</p>
+      </li>
+      <li>
+        <h3>Superbills on request</h3>
+        <p>We will provide a superbill if you want to submit to your insurance for potential reimbursement.</p>
+      </li>
+      <li>
+        <h3>HSA &amp; FSA accepted</h3>
+        <p>Use pre-tax dollars from your HSA or FSA card for visits, labs, and supplements.</p>
+      </li>
+      <li>
+        <h3>No contracts</h3>
+        <p>No minimum commitment, no pre-pay packages required. Pay per visit, stop any time.</p>
+      </li>
+    </ul>
+    <p class="cash-cta">
+      Questions about cost before you book?
+      <a href={`tel:${clinic.phoneTel}`} class="inline-link">Call the clinic at {clinic.phone}</a>.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2 class="section-h2">Pricing FAQs</h2>
+    <FAQAccordion items={pricingFaqs} />
+    <div class="faq-cta">
+      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
+        Book a Consultation
+      </Button>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="narrow" spacing="lg" background="brand">
+    <div class="final-cta">
+      <h2>Take the first step &mdash; we&rsquo;re right here in Mason, OH</h2>
+      <p>
+        Whether you are starting with chiropractic, health restoration, or just a phone call to ask
+        questions, we will meet you wherever you are.
+      </p>
+      <div class="cta-row cta-row-center">
+        <Button href={`tel:${clinic.phoneTel}`} variant="inverse" size="lg">
+          Call {clinic.phone}
+        </Button>
+        <Button href={clinic.bookingUrl} variant="secondary" size="lg" external>
+          Book a Consultation
+        </Button>
+      </div>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 0.5rem;
+  }
+  .lede {
+    color: var(--color-ink-muted);
+    max-width: 65ch;
+    font-size: var(--text-lg);
+    margin: 1rem 0 2rem;
+    line-height: 1.55;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .cta-row-center {
+    justify-content: center;
+  }
+
+  .section-h2 {
+    margin: 0 0 1.5rem;
+    font-size: var(--text-3xl);
+  }
+
+  /* === Two-arm pricing grid === */
+  .two-arm-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 900px) {
+    .two-arm-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  .arm-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    box-shadow: var(--shadow-card);
+    border-top: 4px solid var(--color-brand-primary);
+    display: flex;
+    flex-direction: column;
+  }
+  .arm-card h2 {
+    margin: 0 0 1.5rem;
+    font-size: var(--text-2xl);
+  }
+
+  .price-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: grid;
+    gap: 1.25rem;
+  }
+  .price-list li {
+    border-bottom: 1px solid var(--color-line);
+    padding-bottom: 1.25rem;
+  }
+  .price-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.35rem;
+  }
+  .price-label {
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    font-size: var(--text-base);
+  }
+  .price-amount {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--color-brand-primary-dark);
+    white-space: nowrap;
+  }
+  .price-detail {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .callout {
+    background: var(--color-paper-soft);
+    border-left: 3px solid var(--color-brand-primary);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    font-size: var(--text-sm);
+    color: var(--color-ink);
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+  }
+
+  .pdf-link-wrap {
+    margin: 0 0 1.5rem;
+  }
+  .pdf-link {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+  .pdf-link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .arm-cta {
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  /* === Cash-pay grid === */
+  .cash-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .cash-grid li {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+  }
+  .cash-grid h3 {
+    margin: 0 0 0.5rem;
+    font-size: var(--text-lg);
+    color: var(--color-ink-strong);
+  }
+  .cash-grid p {
+    margin: 0;
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+  .cash-cta {
+    margin: 0;
+    color: var(--color-ink-muted);
+    font-size: var(--text-base);
+  }
+  .inline-link {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.22em;
+  }
+  .inline-link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* === FAQ section CTA === */
+  .faq-cta {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* === Final CTA === */
+  .final-cta {
+    text-align: center;
+  }
+  .final-cta h2 {
+    margin: 0 0 1rem;
+    font-size: var(--text-3xl);
+  }
+  .final-cta p {
+    max-width: 52ch;
+    margin: 0 auto 2rem;
+    font-size: var(--text-lg);
+    line-height: 1.55;
+  }
+</style>

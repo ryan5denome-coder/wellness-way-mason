@@ -1,0 +1,73 @@
+# The Wellness Way - Mason
+# AI crawler allowlist + traditional search engine bots.
+# Explicit per-bot blocks document intent in case a future maintainer
+# narrows the wildcard rule above.
+
+User-agent: *
+Allow: /
+
+# Traditional search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google / Apple AI training opt-in
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Other AI / LLM crawlers
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+# Disallow admin / private uploads for all bots
+User-agent: *
+Disallow: /admin
+Disallow: /uploads/private/
+
+Sitemap: https://www.thewellnesswaymason.com/sitemap-index.xml

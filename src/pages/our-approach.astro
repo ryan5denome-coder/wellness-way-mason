@@ -1,0 +1,275 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { clinic } from '../lib/site';
+
+const approachFaqs = [
+  {
+    question: 'What is the Wellness Way Approach?',
+    answer: '<p>A whole-person approach that asks <em>why</em> your body is doing what it\'s doing — instead of just managing symptoms. We use comprehensive lab testing, chiropractic care, and personalized nutrition and lifestyle guidance to address the patterns underneath your health challenges.</p>',
+  },
+  {
+    question: 'What are the 3 T\'s?',
+    answer: '<p>Traumas, Toxins, and Thoughts — three categories of stress that interact with everything from your hormones to your nervous system to your immune response. Investigation begins with assessing all three because the drivers of inflammation vary from person to person.</p>',
+  },
+  {
+    question: 'How do you decide what tests to run?',
+    answer: '<p>Based on your story, current symptoms, history, and goals. Testing is recommended — never required — and we walk through the cost and rationale before ordering anything. You stay in control of what gets tested.</p>',
+  },
+  {
+    question: 'How long does treatment usually take?',
+    answer: '<p>It depends on what we\'re addressing. Acute pain may resolve in weeks. Chronic patterns and complex cases (autoimmune, hormone, gut) typically take 3–6 months of consistent care to see meaningful change. We build a Health Restoration Plan with realistic timelines and check in regularly.</p>',
+  },
+  {
+    question: 'Will I have to stop my current medications?',
+    answer: '<p>No — and we never advise stopping medications. Your prescribing physician makes those decisions. Our role is to help you understand the systems beneath your symptoms so you and your medical team can make better-informed choices over time. We work alongside conventional care, not in place of it.</p>',
+  },
+];
+
+const threeTs = [
+  {
+    title: 'Traumas',
+    body: 'Whether from accidents, repetitive stress, poor posture, or old injuries — physical stress creates interference in the nervous system. When your spine and pelvis are misaligned, your brain and body cannot communicate clearly. Chiropractic care addresses that interference.',
+    image: 'https://static.wixstatic.com/media/629639_a8ac235fb57c4339befe58bf3c2f412b~mv2.jpg',
+    alt: 'Active outdoor lifestyle representing physical stress patterns',
+  },
+  {
+    title: 'Toxins',
+    body: "We're surrounded by environmental toxins — in our food, water, air, and personal care products. Toxins disrupt hormones, inflame the gut, suppress immune function, and impair thyroid health. Identifying and reducing toxic burden is a core part of our approach.",
+    image: 'https://static.wixstatic.com/media/629639_b5daf194450e49debbf23d16ce5025de~mv2.jpg',
+    alt: 'Air pollution as an example of environmental toxin exposure',
+  },
+  {
+    title: 'Thoughts',
+    body: 'Chronic stress, emotional trauma, and unhealthy mental patterns activate the body\'s stress response — flooding the system with cortisol, suppressing digestion, and disrupting nearly every hormonal pathway. Addressing the mental-emotional dimension is just as important as the physical.',
+    image: 'https://static.wixstatic.com/media/629639_d42f91a91e9d440180bc5ff809f382a8~mv2.jpg',
+    alt: 'Stressed person representing emotional and mental patterns',
+  },
+];
+
+const fourSteps = [
+  {
+    n: 1,
+    title: 'A New Perspective',
+    body: "You're more than a patient — you're a person with a unique story. We take a different approach by focusing on your personal health journey and what you hope to achieve. As your partner in restoring wellness, we genuinely want to understand where you've been and where you're headed. Your first visit is a fresh perspective — one guided by clinicians who challenge the idea that you have to settle for limiting health challenges. Virtual appointments are available for those unable to commute.",
+  },
+  {
+    n: 2,
+    title: 'We Test',
+    body: "Instead of a one-size-fits-all approach, we use advanced testing and the latest diagnostic tools to uncover the driving forces of your health challenges. We're always exploring new testing methods to give you the most accurate, up-to-date insight. This is how we identify the missing pieces in your health journey — the ones traditional healthcare often overlooks and, as a result, never finds.",
+  },
+  {
+    n: 3,
+    title: 'We Discover',
+    body: 'When your results are ready, we go beyond conventional explanations of why your body may not be functioning at its best — and, more importantly, what you can do about it. We walk you through a clear, in-depth analysis of your results, helping you understand exactly what your body needs to heal and thrive. This personalized roadmap is what we call your Health Restoration Plan.',
+  },
+  {
+    n: 4,
+    title: 'We Guide',
+    body: 'Following your Health Restoration Plan means teaming up with our expert clinicians and dedicated staff to create lasting change in your health — and your life. Whether it\'s hands-on chiropractic care, customized nutrition guidance, innovative detox methods, or other personalized therapies, our passionate and fearless team recognizes that no two people are the same. We equip you with a tailored plan designed to target the driving forces of your health challenges and support true healing from the inside out.',
+  },
+];
+---
+
+<BaseLayout
+  title="Our Approach"
+  description="Unlike the restrictive healthcare mentality, we dig deeper to find answers to life-restricting health challenges."
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Our Approach' }]} />
+    <p class="eyebrow">{clinic.brandName}</p>
+    <h1>Our Approach: We Do Health Differently</h1>
+    <p class="lede"><strong>Common is not normal.</strong></p>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="lg">
+    <p>
+      Most healthcare today is built around managing symptoms — prescribing a medication for what's
+      showing up on the surface, without ever asking <em>why</em> it's there.
+    </p>
+    <p>
+      At The Wellness Way Mason, we take a fundamentally different approach. We believe that
+      <strong>common is not normal</strong>, and that your body has the ability to heal when you remove what's
+      interfering with it.
+    </p>
+    <p>
+      We're proud to serve patients throughout Mason, OH and the greater Cincinnati area who are tired
+      of being told "your labs look fine" while still feeling terrible.
+    </p>
+    <p>
+      Unlike the restrictive healthcare mentality, we dig deeper to find answers to life-restricting
+      health challenges. We focus on overcoming the three main causes of interference in the body —
+      <strong>traumas, toxins, and thoughts</strong> — to go beyond symptoms-based care and address your unique
+      physiology in ways that allow your mind and body to find a path back to total wellness.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <div class="section-head">
+      <p class="eyebrow">The Wellness Way Approach</p>
+      <h2>The Three T's</h2>
+      <p class="section-lede">
+        The Wellness Way Approach begins with inflammation — which plays a significant role in nearly
+        every health challenge. The drivers of inflammation vary from person to person. Investigation
+        begins with assessing the 3 T's. Comprehensive testing pinpoints the specific ways each T
+        impacts your health, and that's how we build tailored solutions instead of guessing.
+      </p>
+    </div>
+    <div class="three-ts">
+      {threeTs.map((t) => (
+        <article class="t-card">
+          <img src={t.image} alt={t.alt} loading="lazy" />
+          <div class="t-body">
+            <h3>{t.title}</h3>
+            <p>{t.body}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="three-ts-close">
+      When all three sources of interference are addressed together, the body can do what it was
+      designed to do: heal.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <div class="section-head">
+      <p class="eyebrow">Whole-Person Wellness Process</p>
+      <h2>How we work with you</h2>
+      <p class="section-lede">
+        Essential guidance to overcome seemingly insurmountable obstacles — through testing,
+        individual plans, and one-on-one support to restore your body to total wellness.
+      </p>
+    </div>
+    <ol class="steps">
+      {fourSteps.map((s) => (
+        <li>
+          <div class="step-num">{s.n}</div>
+          <div>
+            <h3>{s.title}</h3>
+            <p>{s.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <div class="section-head">
+      <p class="eyebrow">Common questions</p>
+      <h2>About our approach</h2>
+    </div>
+    <FAQAccordion items={approachFaqs} />
+  </SectionContainer>
+
+  <SectionContainer width="narrow" spacing="lg">
+    <div class="cta-block">
+      <h2>Tired of chasing symptoms?</h2>
+      <p>Ready for real answers? We're here. The Wellness Way Mason is currently accepting new patients.</p>
+      <div class="cta-row">
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call Us</Button>
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Book a Consultation</Button>
+      </div>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin: 0 0 0.75rem;
+  }
+  .lede { color: var(--color-brand-primary-dark); font-style: italic; font-family: var(--font-display); font-size: var(--text-2xl); margin: 1rem 0 0; }
+
+  .section-head { margin-bottom: 2.5rem; max-width: 70ch; }
+  .section-head h2 { margin: 0 0 1rem; }
+  .section-lede { color: var(--color-ink-muted); margin: 0; line-height: 1.65; }
+
+  .three-ts {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .t-card {
+    background: var(--color-paper);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .t-card img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+  .t-body { padding: 1.5rem; }
+  .t-body h3 {
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 0.75rem;
+    font-size: var(--text-2xl);
+  }
+  .t-body p {
+    color: var(--color-ink-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .three-ts-close {
+    text-align: center;
+    margin: 2.5rem auto 0;
+    max-width: 56ch;
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    font-style: italic;
+  }
+
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 2rem;
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .step-num {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--color-brand-primary);
+    color: var(--color-ink-strong);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-2xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .steps h3 { margin: 0 0 0.5rem; font-size: var(--text-xl); }
+  .steps p { margin: 0; color: var(--color-ink); line-height: 1.7; }
+
+  .cta-block { text-align: center; }
+  .cta-block h2 { font-size: var(--text-3xl); margin: 0 0 1rem; }
+  .cta-block p { color: var(--color-ink-muted); max-width: 50ch; margin: 0 auto 2rem; }
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 768px) {
+    .steps li { grid-template-columns: 4.5rem 1fr; gap: 2rem; }
+    .step-num { width: 4.5rem; height: 4.5rem; font-size: var(--text-3xl); }
+  }
+</style>

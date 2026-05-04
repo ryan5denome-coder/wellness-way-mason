@@ -1,0 +1,301 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Hero from '../components/Hero.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ProviderCard from '../components/ProviderCard.astro';
+import BlogPostCard from '../components/BlogPostCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import HoursTable from '../components/HoursTable.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { clinic } from '../lib/site';
+
+// Canonical TWW brand palette + derived tokens
+const swatches = [
+  { name: 'TWW Green (primary)', token: '--color-brand-primary', hex: '#80B741', source: 'PMS 368' },
+  { name: 'brand-primary-dark', token: '--color-brand-primary-dark', hex: '#5E8A30', source: 'derived' },
+  { name: 'brand-primary-light', token: '--color-brand-primary-light', hex: '#CADAB2', source: 'derived' },
+  { name: 'brand-primary-soft', token: '--color-brand-primary-soft', hex: '#F0F4E8', source: 'derived' },
+  { name: 'TWW Beige (secondary)', token: '--color-brand-secondary', hex: '#DCD4C8', source: 'PMS Warm Grey 1' },
+  { name: 'TWW Dark Grey', token: '--color-ink', hex: '#414444', source: 'PMS Black 7' },
+  { name: 'ink-strong', token: '--color-ink-strong', hex: '#1F2222', source: 'derived' },
+  { name: 'ink-muted', token: '--color-ink-muted', hex: '#5D6060', source: 'derived' },
+  { name: 'mute', token: '--color-mute', hex: '#7A7D7D', source: 'derived' },
+  { name: 'TWW Light Grey', token: '--color-line', hex: '#DDDDDE', source: 'PMS 427' },
+  { name: 'paper', token: '--color-paper', hex: '#FFFFFF', source: 'pure white' },
+  { name: 'paper-soft', token: '--color-paper-soft', hex: '#FAFAF9', source: 'derived off-white' },
+];
+
+const sampleFaqs = [
+  {
+    question: 'What does "We test, we don\'t guess" actually mean?',
+    answer: '<p>It means we use comprehensive lab work to identify the specific patterns affecting your health — not standard panels with vague "looks normal" results. We look at the data your conventional doctor often doesn\'t order: full thyroid panels, food sensitivities, gut microbiome, hormone metabolites, and inflammatory markers.</p>',
+  },
+  {
+    question: 'Do I need a referral?',
+    answer: '<p>No. New patients can schedule directly via our online booking system or by calling the clinic.</p>',
+  },
+  {
+    question: 'Do you accept insurance?',
+    answer: '<p>We are out-of-network with most insurance carriers, but we provide a superbill you can submit for potential reimbursement. Many of the health restoration tests we offer are billed separately and may be HSA/FSA eligible.</p>',
+  },
+];
+---
+
+<BaseLayout title="Style Guide" description="Design system reference — colors, typography, components." noIndex={true}>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Style Guide' }]} />
+    <h1 style="margin-top: 1.5rem;">Design System</h1>
+    <p style="color: var(--color-ink-muted); max-width: 60ch;">
+      Reference page for the TWW Mason component library. Not linked from public navigation; <code>noindex</code> set.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2>Color tokens</h2>
+    <p style="color: var(--color-ink-muted);">Extracted from live site screenshot 2026-04-30. Exposed as CSS custom properties via <code>@theme</code>.</p>
+    <div class="swatches">
+      {swatches.map((s) => (
+        <div class="swatch">
+          <div class="swatch-chip" style={`background: ${s.hex};`}></div>
+          <div class="swatch-meta">
+            <p class="swatch-name">{s.name}</p>
+            <code>{s.hex}</code>
+            <span class="swatch-source">{s.source}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <h2>Typography</h2>
+    <div class="type-stack">
+      <div><span class="type-tag">h1 / display</span><h1 style="margin: 0;">We Test. We Do Not Guess.</h1></div>
+      <div><span class="type-tag">h2 / display</span><h2 style="margin: 0;">Common is not normal.</h2></div>
+      <div><span class="type-tag">h3 / display</span><h3 style="margin: 0;">Find the fire — not just silence the alarm.</h3></div>
+      <div><span class="type-tag">body / Inter</span><p style="margin: 0; max-width: 60ch;">If you've been told your labs are "normal" but you don't feel normal — you're not alone. Most of the patients who walk through our doors have already been to two, three, or four other providers.</p></div>
+      <div><span class="type-tag">small / Inter</span><p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-muted);">Reviewed and approved by Dr. Ryan DeNome, DC</p></div>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2>Buttons</h2>
+    <div class="btn-row">
+      <Button variant="primary">Primary</Button>
+      <Button variant="primary" size="lg">Primary lg</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="ghost">Ghost</Button>
+      <Button variant="link">Link style</Button>
+      <Button variant="primary" size="sm">Small</Button>
+    </div>
+    <h3 style="margin-top: 2rem;">As link</h3>
+    <div class="btn-row">
+      <Button href={clinic.bookingUrl} variant="primary" external>Book Appointment</Button>
+      <Button href="/our-services" variant="ghost">See Services</Button>
+    </div>
+  </SectionContainer>
+
+  <Hero
+    eyebrow="Hero component"
+    headline="Mason's Chiropractic & Holistic Wellness Clinic"
+    positioning="We Do Health Differently."
+    lede="Whether you're struggling with back pain, fatigue, digestive issues, or hormonal imbalances, our team is here to help. We combine chiropractic techniques with comprehensive wellness testing."
+    primaryCtaText="Schedule With Us"
+    primaryCtaHref={clinic.bookingUrl}
+    primaryCtaExternal={true}
+    secondaryCtaText="Our Approach"
+    secondaryCtaHref="/our-approach"
+  />
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <h2>Service cards</h2>
+    <div class="card-grid">
+      <ServiceCard
+        title="Chiropractic Adjustments"
+        summary="Gentle, hands-on adjustments to restore mobility and address mechanical drivers of pain."
+        href="/our-services#chiropractic-adjustments"
+      />
+      <ServiceCard
+        title="Comprehensive Lab Work"
+        summary="Full functional panels — thyroid, hormones, gut microbiome, food sensitivities, mycotoxins."
+        href="/our-services#comprehensive-lab-work"
+      />
+      <ServiceCard
+        title="Webster Technique"
+        summary="Specialized prenatal chiropractic care to support optimal fetal positioning and a smoother birth experience."
+        href="/our-services#webster-technique"
+      />
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2>Provider card</h2>
+    <div class="card-grid two-col">
+      <ProviderCard
+        name="Dr. Ryan DeNome"
+        credentials="DC"
+        jobTitle="Doctor of Chiropractic | Clinic Owner"
+        photo="https://static.wixstatic.com/media/629639_7c1b1385059c4c7897a2e529fd5d567f~mv2.jpg"
+        photoAlt="Dr. Ryan DeNome"
+        bio="Life University grad, Cincinnati native, and clinic owner. Certified in Webster Technique. Passionate about supporting men, mothers, and complex-case patients who haven't found answers in conventional care."
+        href="/about-us"
+        specialties={['Webster Technique', 'Health restoration', 'Pediatric care', 'Complex cases']}
+      />
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <h2>Blog post cards</h2>
+    <div class="card-grid">
+      <BlogPostCard
+        title="Bloating: Your Body's Alarm Bell"
+        excerpt="Bloating is uncomfortable, annoying, and often brushed off as 'normal.' But frequent, consistent bloating is your body's way of telling you something deeper is going on."
+        href="/post/bloating-your-body-s-alarm-bell"
+        image="https://static.wixstatic.com/media/629639_5defc5a1ac43464292c008b117c33a73~mv2.png"
+        imageAlt="Bloating illustration"
+        date="2025-05-12"
+        category="Gut Health"
+        readTime="3 min read"
+      />
+      <BlogPostCard
+        title="Living with POTS: A Wellness Way Conversation"
+        excerpt="POTS sits at the intersection of nervous system, hormones, and connective tissue. Standard care often misses the connections between these systems."
+        href="/post/living-with-pots-a-wellness-way-conversation"
+        date="2025-09-02"
+        category="Complex Cases"
+        readTime="5 min read"
+      />
+      <BlogPostCard
+        title="The 3 T's: Understanding the Hidden Sources of Stress on Your Body"
+        excerpt="Traumas. Toxins. Thoughts. Three categories of stress that interact with everything from your hormones to your nervous system to your immune response."
+        href="/post/the-3-t-s-understanding-the-hidden-sources-of-stress-on-your-body"
+        date="2025-11-20"
+        category="Foundational"
+      />
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2>Testimonial card (composite)</h2>
+    <div class="card-grid two-col">
+      <TestimonialCard
+        quote="I'd been to four other doctors who all told me my labs were normal. The Wellness Way ran tests no one else had. Within three months I had my energy back."
+        attribution="Patient"
+        condition="Fatigue / hormone imbalance"
+        source="composite"
+      />
+      <TestimonialCard
+        quote="My daughter's gut health turned around once we identified the food sensitivities. The behavior changes followed right behind."
+        attribution="Parent of pediatric patient"
+        source="composite"
+      />
+    </div>
+    <p style="font-size: var(--text-xs); color: var(--color-mute); margin-top: 1rem;">
+      Composite testimonials combine multiple patient experiences. No real names or identifying details are used (per OAC 4734-9-02(Q)). Signed-consent testimonials would use <code>source="signed-consent"</code>.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <h2>FAQ accordion</h2>
+    <FAQAccordion items={sampleFaqs} />
+    <p style="font-size: var(--text-xs); color: var(--color-mute); margin-top: 1rem;">
+      Auto-emits FAQPage JSON-LD schema for rich-snippet eligibility.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2>Hours table</h2>
+    <div style="max-width: 28rem;"><HoursTable /></div>
+    <p style="font-size: var(--text-xs); color: var(--color-mute); margin-top: 1rem;">
+      Today's hours are highlighted automatically.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <h2>Map embed</h2>
+    <p style="color: var(--color-ink-muted); max-width: 60ch;">Lazy-loaded — only fetches the iframe when scrolled into view.</p>
+    <MapEmbed height="400px" />
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2>Contact form</h2>
+    <ContactForm />
+    <p style="font-size: var(--text-xs); color: var(--color-mute); margin-top: 1rem;">
+      Non-PHI form. Patient intake routes through Neo Platform booking instead.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="narrow" spacing="lg" background="paper-soft">
+    <h2>Card variants</h2>
+    <div class="card-grid">
+      <Card title="Default" variant="default"><p>Standard card with shadow.</p></Card>
+      <Card title="Flat" variant="flat"><p>No shadow, just border.</p></Card>
+      <Card title="Feature" variant="feature"><p>Highlighted with green border.</p></Card>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .swatches {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  .swatch {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--color-paper);
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-line);
+  }
+  .swatch-chip {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-line);
+    flex-shrink: 0;
+  }
+  .swatch-meta { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+  .swatch-name { margin: 0; font-weight: 600; font-size: var(--text-sm); color: var(--color-ink-strong); }
+  .swatch-meta code { font-size: var(--text-xs); color: var(--color-ink-muted); }
+  .swatch-source { font-size: 0.7rem; color: var(--color-mute); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  .type-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .type-tag {
+    display: inline-block;
+    font-size: var(--text-xs);
+    color: var(--color-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .card-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    margin-top: 1.5rem;
+  }
+  .card-grid.two-col {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
+</style>

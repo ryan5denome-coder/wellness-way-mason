@@ -1,0 +1,104 @@
+---
+import { jsonLdString } from '../lib/schema';
+
+interface FaqItem {
+  question: string;
+  answer: string; // plain text or simple HTML
+}
+
+interface Props {
+  items: FaqItem[];
+  emitSchema?: boolean;
+  heading?: string;
+}
+
+const { items, emitSchema = true, heading } = Astro.props;
+
+const faqSchema = emitSchema
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: items.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    }
+  : null;
+---
+
+<section class="faq" aria-label={heading ?? 'Frequently asked questions'}>
+  {heading && <h2 class="faq-heading">{heading}</h2>}
+  <div class="faq-list">
+    {items.map((item, i) => (
+      <details class="faq-item" name="faq-group" open={i === 0}>
+        <summary>
+          <span class="q-text">{item.question}</span>
+          <span class="indicator" aria-hidden="true">+</span>
+        </summary>
+        <div class="answer" set:html={item.answer} />
+      </details>
+    ))}
+  </div>
+</section>
+
+{faqSchema && <script type="application/ld+json" set:html={jsonLdString(faqSchema)} />}
+
+<style>
+  .faq-heading {
+    margin: 0 0 1.5rem;
+    font-size: var(--text-3xl);
+  }
+  .faq-list {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .faq-item {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color var(--duration-fast) var(--ease-soft);
+  }
+  .faq-item[open] {
+    border-color: var(--color-brand-primary);
+  }
+  summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    color: var(--color-ink-strong);
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover {
+    background: var(--color-paper-soft);
+  }
+  .q-text {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+  }
+  .indicator {
+    font-size: var(--text-2xl);
+    color: var(--color-brand-primary-dark);
+    transition: transform var(--duration-fast) var(--ease-soft);
+    line-height: 1;
+  }
+  .faq-item[open] .indicator {
+    transform: rotate(45deg);
+  }
+  .answer {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+  }
+  .answer :global(p:first-child) { margin-top: 0; }
+  .answer :global(p:last-child) { margin-bottom: 0; }
+</style>

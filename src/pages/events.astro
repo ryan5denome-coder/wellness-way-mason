@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Card from '../components/Card.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import { clinic } from '../lib/site';
+
+const events = (await getCollection('events')).sort((a, b) => {
+  // Recurring events first, then by date
+  if (a.data.recurring !== b.data.recurring) {
+    return a.data.recurring ? -1 : 1;
+  }
+  const da = a.data.date?.getTime() ?? 0;
+  const db = b.data.date?.getTime() ?? 0;
+  return db - da;
+});
+---
+
+<BaseLayout
+  title="Events"
+  description={`Join ${clinic.brandName} for upcoming health events, workshops, and community gatherings focused on chiropractic care, health restoration, and holistic healing.`}
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Events' }]} />
+    <h1>Upcoming Events</h1>
+    <p class="lede">Workshops, book studies, and community gatherings. Stay connected, get empowered.</p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="md">
+    {events.length === 0 ? (
+      <p>No events scheduled right now. Check back soon, or <a href="/contact">contact us</a> to suggest a topic.</p>
+    ) : (
+      <div class="event-grid">
+        {events.map((event) => (
+          <Card
+            href={`/event-details/${event.id}`}
+            image={event.data.image}
+            imageAlt={event.data.imageAlt ?? event.data.title}
+            title={event.data.title}
+            eyebrow={event.data.recurring ? 'Recurring' : undefined}
+          >
+            <p class="event-excerpt">{event.data.excerpt ?? ''}</p>
+            <span slot="footer" class="event-cta">View details →</span>
+          </Card>
+        ))}
+      </div>
+    )}
+  </SectionContainer>
+
+  <SectionContainer width="narrow" spacing="lg" background="paper-soft">
+    <div class="events-cta">
+      <h2>Want to host or suggest an event?</h2>
+      <p>We're always open to community partnerships and topic requests.</p>
+      <Button href="/contact" variant="ghost" size="md">Get in touch</Button>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .lede {
+    color: var(--color-ink-muted);
+    max-width: 60ch;
+    font-size: var(--text-lg);
+    margin: 1rem 0 0;
+  }
+  .event-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  .event-excerpt {
+    color: var(--color-ink-muted);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .event-cta {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+  }
+  .events-cta { text-align: center; }
+  .events-cta h2 { margin: 0 0 1rem; }
+  .events-cta p { color: var(--color-ink-muted); max-width: 50ch; margin: 0 auto 1.5rem; }
+</style>

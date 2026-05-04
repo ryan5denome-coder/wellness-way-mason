@@ -1,0 +1,11 @@
+name = "decap-oauth-tww"
+main = "decap-oauth.js"
+compatibility_date = "2025-01-01"
+
+# Secrets (set via `wrangler secret put`):
+#   GITHUB_CLIENT_ID
+#   GITHUB_CLIENT_SECRET
+
+# This worker has NO routes assigned. The default *.workers.dev URL is what
+# Decap CMS calls. After first `wrangler deploy`, copy the printed URL into
+# public/admin/config.yml -> backend.base_url.

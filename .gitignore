@@ -22,3 +22,13 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Claude Code project-scoped skills (per-machine dev config, large data files)
+.claude/
+
+# Cloudflare Worker secrets (never commit)
+worker/.dev.vars
+worker/.wrangler/
+
+# Python bytecode (uipro skill leaves these)
+__pycache__/

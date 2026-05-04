@@ -1,0 +1,215 @@
+---
+import { clinic } from '../lib/site';
+import HoursTable from './HoursTable.astro';
+
+const secondaryNav = [
+  { label: 'Our Approach', href: '/our-approach' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Find My Condition', href: '/find-my-condition' },
+  { label: 'Events', href: '/events' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+];
+---
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-block footer-nap">
+      <p class="footer-brand">
+        <svg
+          class="brand-mark"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7s2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/>
+        </svg>
+        {clinic.brandName}
+      </p>
+      <p class="footer-tagline">{clinic.tagline}</p>
+      <address>
+        {clinic.address.streetAddress}<br />
+        {clinic.address.addressLocality}, {clinic.address.addressRegion} {clinic.address.postalCode}
+      </address>
+      <p class="contact-line">
+        <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>
+      </p>
+      <p class="contact-line">
+        <a href={`mailto:${clinic.email}`}>{clinic.email}</a>
+      </p>
+    </div>
+
+    <div class="footer-block footer-hours">
+      <h4>Hours</h4>
+      <HoursTable />
+    </div>
+
+    <div class="footer-block footer-nav">
+      <h4>More</h4>
+      <nav aria-label="Footer">
+        <ul>
+          {secondaryNav.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="footer-base">
+    <div class="footer-base-inner">
+      <p class="footer-copy">
+        © {new Date().getFullYear()} {clinic.legalName}. All rights reserved.
+      </p>
+      <div class="footer-social">
+        {clinic.social.facebook && (
+          <a href={clinic.social.facebook} target="_blank" rel="noopener" aria-label="Facebook">
+            Facebook
+          </a>
+        )}
+        {clinic.social.instagram && (
+          <a href={clinic.social.instagram} target="_blank" rel="noopener" aria-label="Instagram">
+            Instagram
+          </a>
+        )}
+        {clinic.social.linkedin && (
+          <a href={clinic.social.linkedin} target="_blank" rel="noopener" aria-label="Dr. Ryan DeNome on LinkedIn">
+            LinkedIn
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-ink-strong);
+    color: var(--color-paper);
+    margin-top: 6rem;
+    border-top: 4px solid var(--color-brand-primary);
+  }
+  .site-footer :global(a) {
+    color: var(--color-paper);
+    opacity: 0.85;
+  }
+  .site-footer :global(a:hover) {
+    color: var(--color-brand-primary);
+    opacity: 1;
+  }
+  .footer-inner {
+    max-width: var(--container-default);
+    margin: 0 auto;
+    padding: 4rem 1.5rem 3rem;
+    display: grid;
+    gap: 2.5rem;
+  }
+  .footer-block h4 {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin: 0 0 1.25rem;
+    color: var(--color-paper);
+    opacity: 0.6;
+    font-weight: 600;
+  }
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    margin: 0 0 0.75rem;
+    color: var(--color-paper);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    letter-spacing: -0.005em;
+  }
+  .brand-mark {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    color: var(--color-brand-primary);
+    flex-shrink: 0;
+  }
+  .footer-tagline {
+    font-style: italic;
+    color: var(--color-paper);
+    opacity: 0.75;
+    margin: 0 0 1.5rem;
+    font-size: var(--text-sm);
+    font-family: var(--font-display);
+  }
+  address {
+    font-style: normal;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: var(--color-paper);
+    opacity: 0.85;
+  }
+  .contact-line { margin: 0.25rem 0; font-size: var(--text-sm); }
+
+  /* Hours table contrast on dark */
+  .footer-hours :global(.hours-row) { border-bottom-color: rgba(255,255,255,0.1); }
+  .footer-hours :global(.hours-row dt) { color: var(--color-paper); opacity: 0.95; }
+  .footer-hours :global(.hours-row dd) { color: var(--color-paper); opacity: 0.7; }
+  .footer-hours :global(.is-today) {
+    background: rgba(128, 183, 65, 0.18);
+  }
+  .footer-hours :global(.is-today dt),
+  .footer-hours :global(.is-today dd) {
+    color: var(--color-paper);
+    opacity: 1;
+  }
+
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .footer-nav a {
+    text-decoration: none;
+    font-size: var(--text-sm);
+  }
+
+  .footer-base {
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-base-inner {
+    max-width: var(--container-default);
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-copy {
+    margin: 0;
+    color: var(--color-paper);
+    opacity: 0.55;
+    font-size: var(--text-xs);
+  }
+  .footer-social {
+    display: flex;
+    gap: 1.25rem;
+  }
+  .footer-social a {
+    font-size: var(--text-xs);
+    text-decoration: none;
+  }
+
+  @media (min-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 3.5rem;
+      padding: 5rem 2rem 4rem;
+    }
+  }
+</style>

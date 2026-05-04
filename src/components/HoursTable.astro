@@ -1,0 +1,60 @@
+---
+import { clinic } from '../lib/site';
+
+interface Props {
+  highlightToday?: boolean;
+}
+
+const { highlightToday = true } = Astro.props;
+
+// Determine "today" — server-side at build time, harmless that this is build-time
+// not runtime since the highlight is purely cosmetic.
+const todayName = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+---
+
+<dl class="hours-table">
+  {clinic.hours.map((row) => (
+    <div class={`hours-row ${highlightToday && row.day === todayName ? 'is-today' : ''}`}>
+      <dt>{row.day}</dt>
+      <dd>{row.hours}</dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  .hours-table {
+    margin: 0;
+    display: grid;
+    gap: 0.4rem;
+    font-size: var(--text-sm);
+  }
+  .hours-row {
+    display: grid;
+    grid-template-columns: minmax(5rem, max-content) 1fr;
+    gap: 1rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .hours-row:last-child {
+    border-bottom: none;
+  }
+  .hours-row dt {
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    margin: 0;
+  }
+  .hours-row dd {
+    margin: 0;
+    color: var(--color-ink-muted);
+  }
+  .is-today {
+    background: var(--color-brand-primary-light);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.75rem;
+    border-bottom-color: transparent;
+    margin: 0 -0.5rem;
+  }
+  .is-today dt, .is-today dd {
+    color: var(--color-ink-strong);
+  }
+</style>

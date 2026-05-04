@@ -1,0 +1,72 @@
+---
+import Card from './Card.astro';
+
+interface Props {
+  name: string;
+  credentials?: string;
+  jobTitle?: string;
+  photo: string;
+  photoAlt?: string;
+  bio: string;
+  href?: string;
+  specialties?: string[];
+}
+
+const {
+  name,
+  credentials = 'DC',
+  jobTitle = 'Doctor of Chiropractic',
+  photo,
+  photoAlt,
+  bio,
+  href,
+  specialties = [],
+} = Astro.props;
+const fullName = credentials ? `${name}, ${credentials}` : name;
+---
+
+<Card href={href} image={photo} imageAlt={photoAlt ?? `Photo of ${fullName}`} title={fullName}>
+  <p class="provider-job-title">{jobTitle}</p>
+  <p class="provider-bio">{bio}</p>
+  {specialties.length > 0 && (
+    <ul class="provider-specialties">
+      {specialties.map((s) => <li>{s}</li>)}
+    </ul>
+  )}
+  {href && <span slot="footer" class="provider-cta">Read full bio →</span>}
+</Card>
+
+<style>
+  .provider-job-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    margin: 0;
+    font-size: var(--text-base);
+  }
+  .provider-bio {
+    color: var(--color-ink-muted);
+    margin: 0;
+    line-height: 1.55;
+  }
+  .provider-specialties {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .provider-specialties li {
+    background: var(--color-brand-primary-light);
+    color: var(--color-ink-strong);
+    border-radius: var(--radius-pill);
+    padding: 0.25rem 0.75rem;
+    font-size: var(--text-xs);
+    font-weight: 500;
+  }
+  .provider-cta {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+  }
+</style>

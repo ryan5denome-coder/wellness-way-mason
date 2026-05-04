@@ -1,0 +1,236 @@
+# Decap CMS configuration — TWW Mason
+# Production backend (GitHub OAuth via Cloudflare Worker) is wired in Phase 9.
+# For local development: `npm run dev:cms` starts decap-server on 8081 + astro on 4321.
+backend:
+  name: github
+  repo: ryan5denome-coder/wellness-way-mason
+  branch: main
+  base_url: https://decap-oauth-tww.workers.dev      # Phase 9 will deploy this
+  auth_endpoint: /auth
+
+# Local proxy backend — decap-server runs on http://localhost:8081
+# Required for editing without GitHub OAuth in dev. Toggled by `local_backend: true`.
+local_backend: true
+
+# Drafts go through editorial workflow (draft → in review → ready) before publish
+publish_mode: editorial_workflow
+
+# Media (uploaded images) live under public/uploads, referenced from /uploads/...
+media_folder: public/uploads
+public_folder: /uploads
+
+# Site URL for preview links inside the CMS
+site_url: https://www.thewellnesswaymason.com
+display_url: https://www.thewellnesswaymason.com
+logo_url: /favicon.svg
+
+# === Collections ==========================================================
+collections:
+  # ---------------------------------------------------------------- POSTS
+  - name: posts
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: src/content/posts
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{categories}} ({{readTime}})"
+    sortable_fields: [date, title]
+    view_filters:
+      - label: Compliance reviewed
+        field: complianceReviewed
+        pattern: true
+      - label: Featured
+        field: featured
+        pattern: true
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, default: "" }
+      - { label: Author, name: author, widget: string, default: "Dr. Ryan DeNome, DC" }
+      - { label: Excerpt, name: excerpt, widget: text, required: false, hint: "1–2 sentence summary shown on listing pages and in search results" }
+      - { label: Featured image, name: image, widget: image, required: false }
+      - { label: Image alt text, name: imageAlt, widget: string, required: false, hint: "Describe the image for screen readers and SEO. Required for any image with meaning." }
+      - label: Categories
+        name: categories
+        widget: select
+        multiple: true
+        default: []
+        options:
+          - clinical
+          - recipes
+          - pregnancy
+          - pediatric
+          - men-health
+          - women-health
+          - gut-health
+          - thyroid
+          - hormones
+          - metabolic
+          - autoimmune
+          - nervous-system
+          - immune
+          - foundational
+      - { label: Tags, name: tags, widget: list, required: false, default: [] }
+      - label: Avatars (audience targeting)
+        name: avatars
+        widget: select
+        multiple: true
+        required: false
+        default: []
+        options:
+          - exhausted-hormonal
+          - gut-wrecked
+          - connective-tissue
+          - complex-case
+          - multi-avatar
+      - { label: Read time, name: readTime, widget: string, required: false, hint: "e.g., '3 min read'" }
+      - { label: Featured on homepage?, name: featured, widget: boolean, default: false }
+      - { label: Body, name: body, widget: markdown }
+      - label: Compliance reviewed
+        name: complianceReviewed
+        widget: boolean
+        default: false
+        hint: "Confirm this post passes Ohio chiropractic compliance + ryan-voice review before publishing."
+      - { label: Compliance notes, name: complianceNotes, widget: text, required: false }
+      - label: SEO title
+        name: seoTitle
+        widget: string
+        required: false
+        hint: "Optional — defaults to Title if blank. Recommended: ≤60 chars."
+      - label: SEO description
+        name: seoDescription
+        widget: text
+        required: false
+        hint: "Optional — defaults to Excerpt. Recommended: 150–160 chars."
+      - { label: Custom OG image, name: ogImage, widget: image, required: false }
+      - { label: Source URL (Wix migration tracking), name: sourceUrl, widget: hidden, required: false }
+
+  # ---------------------------------------------------------------- EVENTS
+  - name: events
+    label: Events
+    label_singular: Event
+    folder: src/content/events
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{location}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, required: false }
+      - { label: End date, name: endDate, widget: datetime, required: false }
+      - { label: Location, name: location, widget: string, default: "The Wellness Way - Mason" }
+      - { label: Recurring?, name: recurring, widget: boolean, default: false }
+      - { label: RSVP URL, name: rsvpUrl, widget: string, required: false }
+      - { label: Featured image, name: image, widget: image, required: false }
+      - { label: Image alt text, name: imageAlt, widget: string, required: false }
+      - { label: Excerpt, name: excerpt, widget: text, required: false }
+      - { label: Body, name: body, widget: markdown }
+      - { label: Source URL, name: sourceUrl, widget: hidden, required: false }
+
+  # ---------------------------------------------------------------- TESTIMONIALS
+  - name: testimonials
+    label: Testimonials
+    label_singular: Testimonial
+    folder: src/content/testimonials
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{attribution}} — {{condition}}"
+    fields:
+      - { label: Attribution, name: attribution, widget: string, hint: "e.g., 'Patient', 'Parent of pediatric patient'. Use generic descriptors for composites." }
+      - label: Source
+        name: source
+        widget: select
+        options:
+          - composite
+          - signed-consent
+        default: composite
+        hint: "Composite = combines multiple patient experiences with no real identifiers. Signed-consent = signed consent on file (OAC 4734-9-02(Q))."
+      - { label: Condition / area, name: condition, widget: string, required: false, hint: "e.g., 'Fatigue / hormone imbalance'" }
+      - { label: Quote, name: quote, widget: text }
+      - { label: Featured?, name: featured, widget: boolean, default: false }
+      - { label: Date, name: date, widget: datetime, required: false }
+
+  # ---------------------------------------------------------------- FAQS
+  - name: faqs
+    label: FAQs
+    label_singular: FAQ
+    folder: src/content/faqs
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{question}} ({{category}})"
+    sortable_fields: [order, question]
+    fields:
+      - { label: Question, name: question, widget: string }
+      - { label: Answer, name: answer, widget: markdown }
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - new-patient
+          - insurance
+          - services
+          - scheduling
+          - general
+        default: general
+      - { label: Order, name: order, widget: number, default: 0, value_type: int, hint: "Lower = appears earlier on the FAQ page" }
+
+  # ---------------------------------------------------------------- PROVIDERS
+  - name: providers
+    label: Providers
+    label_singular: Provider
+    folder: src/content/providers
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Credentials, name: credentials, widget: string, default: "DC" }
+      - { label: Title, name: title, widget: string, default: "Doctor of Chiropractic" }
+      - { label: Photo, name: photo, widget: image }
+      - { label: Photo alt text, name: photoAlt, widget: string, required: false }
+      - { label: Bio, name: bio, widget: markdown }
+      - { label: Education, name: education, widget: list, required: false, default: [], hint: "One school per item (e.g., 'Life University, DC')" }
+      - { label: Certifications, name: certifications, widget: list, required: false, default: [] }
+      - { label: Specialties, name: specialties, widget: list, required: false, default: [] }
+      - { label: LinkedIn URL, name: linkedinUrl, widget: string, required: false }
+      - { label: Email, name: email, widget: string, required: false }
+      - { label: Phone, name: phone, widget: string, required: false }
+
+  # ---------------------------------------------------------------- SITE SETTINGS
+  - name: settings
+    label: Site Settings
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: src/content/settings/clinic.yml
+        label: Clinic info (NAP, hours, social, analytics)
+        name: clinic
+        fields:
+          - { label: Business name, name: name, widget: string, default: "The Wellness Way - Mason" }
+          - { label: Tagline, name: tagline, widget: string, default: "We Test. We Do Not Guess. We Restore Your Health." }
+          - { label: Address line 1, name: addressLine1, widget: string, default: "5382 Cox-Smith Rd, Suite A" }
+          - { label: City, name: city, widget: string, default: "Mason" }
+          - { label: State, name: state, widget: string, default: "OH" }
+          - { label: ZIP, name: zip, widget: string, default: "45040" }
+          - { label: Phone, name: phone, widget: string, default: "(283) 223-8376", hint: "Display format. Tel-link version (E.164) below." }
+          - { label: Phone (tel link), name: phoneTel, widget: string, default: "+12832238376" }
+          - { label: Email, name: email, widget: string, default: "mason@thewellnessway.com" }
+          - label: Hours
+            name: hours
+            widget: list
+            default: []
+            fields:
+              - { label: Day, name: day, widget: string }
+              - { label: Hours, name: hours, widget: string, hint: "e.g., '8:00am–12:00pm, 2:00pm–5:00pm'" }
+          - { label: Google Business Profile URL, name: gbpUrl, widget: string, required: false }
+          - { label: Booking URL (Neo Platform), name: bookingUrl, widget: string, default: "https://neoplatform.com/dd6a54e3c98/self-registration" }
+          - { label: Facebook URL, name: facebookUrl, widget: string, required: false }
+          - { label: Instagram URL, name: instagramUrl, widget: string, required: false }
+          - { label: LinkedIn URL (Dr. Ryan), name: linkedinUrl, widget: string, required: false }
+          - { label: GA4 measurement ID, name: ga4Id, widget: string, required: false, hint: "e.g., 'G-XXXXXXXXXX'. Set after launch." }
+          - { label: Meta Pixel ID, name: metaPixelId, widget: string, required: false }
+          - { label: GTM ID, name: gtmId, widget: string, required: false }

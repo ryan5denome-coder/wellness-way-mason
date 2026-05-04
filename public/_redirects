@@ -1,0 +1,31 @@
+# Cloudflare Pages _redirects — TWW Mason Wix → Astro migration
+# Format: <from> <to> <status>
+# Order matters — first match wins.
+
+# Apex → www (canonical)
+https://thewellnesswaymason.com/* https://www.thewellnesswaymason.com/:splat 301!
+
+# Decap CMS — production builds emit /admin (no trailing slash) due to
+# build.format: 'file'. Redirect /admin/ → /admin for users who type the slash.
+/admin/ /admin 301
+
+# Path canonicalization (Phase 2 architecture decisions)
+/services /our-services 301
+/our-blog /blog 301
+/event-list /events 301
+/blog/categories/monday-meal-inspiration /blog 301
+
+# Cosmetic service stubs — content removed entirely (Phase 1 finding)
+/service-page/permanent-eyeliner /our-services 301
+/service-page/lip-blushing /our-services 301
+/service-page/brows-microblading /our-services 301
+/service-page/scalp-micropigmentation /our-services 301
+/service-page/beauty-marks-and-freckles /our-services 301
+/service-page/scar-camouflage /our-services 301
+
+# Wix-generated sitemaps (now superseded by /sitemap-index.xml)
+/blog-categories-sitemap.xml /sitemap-index.xml 301
+/booking-services-sitemap.xml /sitemap-index.xml 301
+/blog-posts-sitemap.xml /sitemap-index.xml 301
+/pages-sitemap.xml /sitemap-index.xml 301
+/event-pages-sitemap.xml /sitemap-index.xml 301

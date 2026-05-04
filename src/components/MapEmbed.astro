@@ -1,0 +1,102 @@
+---
+/**
+ * MapEmbed — lazy-loaded Google Maps iframe (perf-friendly).
+ * The iframe loads only when the user scrolls near it via IntersectionObserver,
+ * keeping initial page weight low (Lighthouse + CWV friendly).
+ */
+import { clinic } from '../lib/site';
+
+interface Props {
+  height?: string;
+  zoom?: number;
+}
+
+const { height = '420px', zoom = 15 } = Astro.props;
+const fullAddress = `${clinic.address.streetAddress}, ${clinic.address.addressLocality}, ${clinic.address.addressRegion} ${clinic.address.postalCode}`;
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&z=${zoom}&output=embed`;
+const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}`;
+---
+
+<div class="map-wrapper" style={`--map-height: ${height};`}>
+  <div class="map-placeholder" data-map-src={mapSrc} aria-label={`Map showing the location of ${clinic.brandName}`}>
+    <div class="map-fallback">
+      <p class="map-address">{clinic.address.streetAddress}<br />{clinic.address.addressLocality}, {clinic.address.addressRegion} {clinic.address.postalCode}</p>
+      <a href={directionsHref} target="_blank" rel="noopener" class="map-directions">Get directions →</a>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const placeholder = document.querySelector('.map-placeholder');
+    if (!placeholder) return;
+
+    const loadMap = () => {
+      const src = placeholder.getAttribute('data-map-src');
+      if (!src) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = 'Clinic location';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.allowFullscreen = true;
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = '0';
+      placeholder.innerHTML = '';
+      placeholder.appendChild(iframe);
+      placeholder.classList.add('is-loaded');
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            loadMap();
+            io.disconnect();
+          }
+        });
+      }, { rootMargin: '300px 0px' });
+      io.observe(placeholder);
+    } else {
+      loadMap();
+    }
+  });
+</script>
+
+<style>
+  .map-wrapper {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+  .map-placeholder {
+    width: 100%;
+    height: var(--map-height, 420px);
+    background: var(--color-paper-tint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-placeholder.is-loaded {
+    background: transparent;
+  }
+  .map-placeholder iframe {
+    border: 0;
+  }
+  .map-fallback {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .map-address {
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+    font-style: italic;
+  }
+  .map-directions {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .map-directions:hover { text-decoration: underline; }
+</style>

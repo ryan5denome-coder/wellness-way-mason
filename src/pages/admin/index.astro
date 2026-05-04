@@ -1,0 +1,22 @@
+---
+// Decap CMS shell — served at /admin/.
+// Implemented as an Astro page (rather than a static file in /public) so the
+// Astro/Vite dev server resolves /admin/ correctly. In production this builds
+// to /dist/admin/index.html which Cloudflare Pages serves at /admin/.
+//
+// HITS lesson 7: the <link rel="cms-config-url"> tag is REQUIRED — without it
+// Decap looks for config.yml at the wrong path and 404s.
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager — The Wellness Way - Mason</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="cms-config-url" type="text/yaml" href="/admin/config.yml" />
+  </head>
+  <body>
+    <script src="https://unpkg.com/decap-cms@^3.5.0/dist/decap-cms.js" is:inline></script>
+  </body>
+</html>
