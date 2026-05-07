@@ -27,5 +27,10 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    // Skip the Cloudflare Images runtime binding — Astro Image already produces
+    // WebP variants at build time via 'compile' mode. Avoids needing the IMAGES
+    // binding to be provisioned.
+    imageService: 'compile',
+  }),
 });
