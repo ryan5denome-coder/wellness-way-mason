@@ -9,5 +9,16 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	// SESSION KV binding — references the EXISTING namespace from the first
+	// partial deploy. Defining the binding manually here tells the
+	// @astrojs/cloudflare adapter to reuse this namespace instead of trying to
+	// provision a new one on each deploy (which fails because the name is taken).
+	// See https://docs.astro.build/en/guides/integrations-guide/cloudflare/
+	"kv_namespaces": [
+		{
+			"binding": "SESSION",
+			"id": "3a1628fba494481ab48c65b997249f33"
+		}
+	]
 }
