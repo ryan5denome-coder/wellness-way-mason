@@ -1,11 +1,13 @@
 # Decap CMS configuration — TWW Mason
-# Production backend (GitHub OAuth via Cloudflare Worker) is wired in Phase 9.
-# For local development: `npm run dev:cms` starts decap-server on 8081 + astro on 4321.
+# Production backend: GitHub OAuth via the Cloudflare Worker `decap-oauth-tww`
+# (worker code lives at worker/decap-oauth.js, deployed via `wrangler deploy`).
+# For local development: `npm run dev:cms` starts decap-server on :8081 + astro
+# on :4321. The local_backend flag below auto-activates on localhost.
 backend:
   name: github
   repo: ryan5denome-coder/wellness-way-mason
   branch: main
-  base_url: https://decap-oauth-tww.workers.dev      # Phase 9 will deploy this
+  base_url: https://decap-oauth-tww.ryan5denome.workers.dev
   auth_endpoint: /auth
 
 # Local proxy backend — decap-server runs on http://localhost:8081
