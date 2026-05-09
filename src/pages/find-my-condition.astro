@@ -1,127 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Button from '../components/Button.astro';
 import { clinic, bylines } from '../lib/site';
 
-interface Condition {
-  title: string;
-  body: string[]; // paragraphs (HTML allowed)
-  image?: string;
-  imageAlt?: string;
-}
+const conditions = (await getCollection('conditions')).sort(
+  (a, b) => a.data.order - b.data.order
+);
 
-const conditions: Condition[] = [
-  {
-    title: 'Allergies',
-    body: [
-      'A runny nose. An itchy eye. A bloated stomach after lunch. Most people think of allergies as seasonal annoyances — but the same immune response can show up as fatigue, achy joints, brain fog, or just <em>feeling lousy</em> for no reason you can pin down.',
-      'Hidden food sensitivities and environmental triggers don\'t always wave a flag. They smolder. Like a pilot light that never quite turns off, your immune system stays partially activated — and the symptoms it produces can look nothing like a textbook "allergic reaction."',
-      '<strong>What we do:</strong> comprehensive food and environmental allergy panels — not the five-minute "scratch test and call it a day" version. With clarity on what your immune system is actually reacting to, you can give your body the space it needs to settle down and rebuild.',
-    ],
-  },
-  {
-    title: 'Autoimmune',
-    body: [
-      'Autoimmune conditions don\'t appear out of nowhere. They develop over years, often quietly, in response to triggers your body has been trying to manage on its own.',
-      'Conventional care typically reaches for immunosuppressant medications — tools that quiet the alarm without addressing what set it off. We take a different angle. We ask <em>what\'s connecting these symptoms</em> and look for the triggers underneath the autoimmune pattern: food sensitivities, gut dysfunction, infections, environmental toxins, nutrient gaps.',
-      'When you remove what\'s lighting the fire, the body has a real chance to recover its balance. <strong>We test. We don\'t guess.</strong>',
-    ],
-  },
-  {
-    title: 'Acne',
-    body: [
-      'Acne is rarely a skin problem. It\'s an inflammation problem that happens to show up on your skin.',
-      'Hormone shifts, gut dysfunction, food sensitivities, blood sugar swings, and detoxification stress can all surface as breakouts on your face, jaw, chest, or back — and topical treatments can only do so much when the actual driver is internal.',
-      'Our approach looks at the whole picture: hormones, gut health, inflammation markers, and nutrient status. When the inside settles, the outside often follows. <strong>You have options beyond the topical aisle at the drugstore.</strong>',
-    ],
-  },
-  {
-    title: 'Digestive Issues',
-    body: [
-      'Reflux. Bloating. Constipation. IBS. Crohn\'s. Ulcerative colitis. Indigestion that no one\'s ever explained to you.',
-      'Digestive symptoms get more "live with it" advice than almost anything else we hear in our office. But your gut is the engine room of your immune system, your hormones, your mood, and your energy. When it\'s struggling, the rest of the body feels it.',
-      '<strong>Don\'t chase symptoms — ask why.</strong> Through targeted gut testing (stool analysis, food sensitivities, microbiome profiles, organic acid panels), we map what\'s actually happening down there. Then we build a plan: nutrition, supplementation, chiropractic care, and lifestyle changes that address the underlying pattern instead of just silencing the alarm.',
-    ],
-  },
-  {
-    title: 'Fatigue',
-    body: [
-      'You\'re getting eight hours of sleep and still dragging. Coffee barely makes a dent. Your bloodwork came back "normal" but you feel anything but.',
-      'Being tired is common — <em>it is not normal</em>.',
-      'There\'s almost always a reason underneath: hormone imbalance, anemia, vitamin or mineral deficiencies, hydration patterns, medication side effects, gut dysfunction, blood sugar dysregulation, or thyroid function that\'s just outside the optimal range your standard panel doesn\'t flag.',
-      'We run comprehensive testing to find the patterns the basic CBC and metabolic panel miss. Then we help your body get back the energy that should be there in the first place.',
-    ],
-  },
-  {
-    title: 'Heart Disease',
-    body: [
-      'Heart disease remains one of the leading causes of death in this country, and most of the time it shows up without warning. Standard lipid panels and blood pressure readings catch a piece of the picture — but only a piece.',
-      'Our approach goes deeper: advanced lipid testing, blood sugar markers, inflammation panels, and assessment of the major organ systems involved in cardiovascular regulation. We\'re looking for the subtle patterns that show up <em>before</em> a problem becomes an emergency.',
-      '<strong>Important:</strong> if you\'re managing high blood pressure, cholesterol, or heart disease with medications prescribed by your physician, we work <em>alongside</em> your medical team — never in place of them. The Wellness Way approach complements ongoing medical care, helping you understand what\'s driving the numbers so you and your doctor can make better-informed decisions over time.',
-    ],
-  },
-  {
-    title: 'Diabetes',
-    body: [
-      'Diabetes — and the prediabetic patterns that lead to it — is rarely just about blood sugar. Inflammation, hormone imbalance, gut function, nutrient status, and chronic cellular stress are all part of the picture, and they almost always start years before a fasting glucose number trips the diagnostic threshold.',
-      'Standard care focuses on managing blood sugar with medication. We look at <em>why</em> your body\'s blood sugar regulation drifted in the first place — and what we can do, through nutrition, supplementation, lifestyle, and chiropractic care, to support that system before it loses more ground.',
-      'If you\'re already on medication for diabetes, work with your prescribing physician on any medication changes. Our role is to help you understand the upstream factors and build resilience around them.',
-    ],
-  },
-  {
-    title: 'Hormone Imbalance',
-    body: [
-      'Hormones quietly run almost everything: your cycle, your sleep, your energy, your weight, your mood, your fertility, your libido. When they drift, the symptoms can look like a dozen different problems — but they\'re often the same problem wearing different masks.',
-      '<strong>Common signs we see in our office:</strong>',
-      '<ul><li>Infertility and difficulty conceiving</li><li>Weight that won\'t move no matter what you change</li><li>PCOS and endometriosis patterns</li><li>Lack of energy or motivation</li><li>Sleep struggles</li><li>Painful or unpredictable cycles</li><li>Low libido (men and women both)</li></ul>',
-      'The standard answers — birth control, hormone replacement, hysterectomies, ablations — manage symptoms but don\'t ask what\'s driving the imbalance in the first place. We test for the full picture: estrogen, progesterone, testosterone, cortisol patterns, thyroid, gut function, and the nutrient cofactors hormones rely on. Then we build a plan that supports your body in regulating itself.',
-    ],
-  },
-  {
-    title: 'Joint and Muscle Pain',
-    body: [
-      'Pain has a reason. Sometimes it\'s mechanical — a misalignment, a movement pattern, a previous injury that never quite healed. Sometimes it\'s inflammatory — driven by food sensitivities, gut dysfunction, or nutrient gaps. Often it\'s both.',
-      'Our approach to pain blends what a chiropractic physician does best with what functional testing reveals:',
-      '<ul><li><strong>Chiropractic adjustments</strong> to restore mobility and address mechanical drivers (subluxation — misalignment that interferes with how your nervous system communicates with the rest of you)</li><li><strong>Soft tissue work and movement support</strong> for the muscle and fascia component</li><li><strong>Inflammation panels and food sensitivity testing</strong> to identify what\'s keeping the body in a heightened pain state</li><li><strong>Nutritional support</strong> for the systems that build, repair, and recover</li></ul>',
-      'Pain is your body\'s smoke detector. Silencing it with medication doesn\'t put out the fire. We help you find the fire.',
-    ],
-  },
-  {
-    title: 'Thyroid',
-    body: [
-      'Thyroid issues are some of the most under-diagnosed and over-medicated patterns we see. Standard testing — TSH alone, or TSH plus T4 — can miss the majority of what\'s actually happening. Hypothyroid, hyperthyroid, Hashimoto\'s: these terms get used loosely, often without a complete picture of what\'s driving the dysfunction.',
-      '<strong>Symptoms patients describe to us include:</strong>',
-      '<ul><li>Persistent fatigue that sleep doesn\'t touch</li><li>Stubborn weight changes</li><li>Inability to regulate body temperature</li><li>Thinning hair, dry skin, brittle nails</li><li>Brain fog and slow recall</li></ul>',
-      'A complete thyroid panel — TSH, free T3, free T4, reverse T3, thyroid antibodies — plus assessment of the adrenal patterns that interact with thyroid function gives us the data to actually understand what\'s going on. From there, we help your body restore the regulation it was designed for.',
-    ],
-  },
-  {
-    title: 'Weight Loss',
-    body: [
-      'If you\'ve ever lost weight, regained it, lost it again, and watched the scale plateau no matter what you do — you\'re not weak-willed and you\'re not broken. Your body is responding to inputs you may not have measured yet.',
-      'Hormones. Liver function. Gut health. Inflammation. Blood sugar regulation. Stress. Sleep. The same calorie deficit that worked at 25 may not work at 45 — and that\'s information, not a verdict.',
-      'We measure how your body is actually working today, not what worked five years ago. From there, we build a plan specific to <em>your</em> metabolism — not a generic protocol. Work hard, but work smarter, and work specifically.',
-    ],
-  },
-  {
-    title: 'Mental Health & Brain',
-    body: [
-      'Mood swings, anxiety, low motivation, brain fog — they aren\'t just "in your head." How your brain functions is shaped by hormone shifts, nutrient status, inflammation, gut health, and how regulated your nervous system is right now.',
-      'When patients come into our office struggling with how they feel mentally, we look at the body systems that support brain function — and we work alongside their psychiatrist, primary care physician, or therapist when those relationships are in place.',
-      '<strong>Patterns we\'ve seen recently in patients who\'ve come through our office include:</strong>',
-      '<ul><li>Anxiety</li><li>ADD / ADHD (adult and pediatric)</li><li>Depression</li><li>Brain fog</li><li>Low motivation</li><li>OCD</li><li>PTSD</li><li>Bipolar patterns</li><li>Behavioral regulation challenges</li><li>Autism spectrum support</li></ul>',
-      '<strong>Important:</strong> we don\'t treat or replace psychiatric care. We support the foundational systems — gut-brain axis, nutrient status, inflammation, hormone balance, nervous-system regulation — that influence how the brain operates day to day. For patients whose mental health is being actively managed, our role is complementary, not a replacement.',
-      'The body never does anything without a reason. Sometimes the body is asking you to pay attention to <em>both</em> the mind and what\'s feeding it.',
-    ],
-  },
-];
+const featured = conditions.filter((c) => c.data.featured);
+const standard = conditions.filter((c) => !c.data.featured);
 ---
 
 <BaseLayout
-  title="Conditions We See"
-  description="Allergies, autoimmune, gut, fatigue, hormones, thyroid, and more — the patterns we see most in our Mason, OH clinic, and how we ask why instead of just chasing symptoms."
+  title="Conditions We See in Mason, OH | Thyroid, Hormones, Gut, Autoimmune"
+  description="Thyroid, hormones, autoimmune, gut health, fatigue and more — the patterns we see most at The Wellness Way - Mason. Test, don't guess. Mason, OH."
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Find My Condition' }]} />
@@ -133,9 +28,9 @@ const conditions: Condition[] = [
 
   <SectionContainer width="prose" spacing="md">
     <p>
-      Most of the people who walk through our doors have already been to two, three, or four other
-      providers. They've been handed a prescription, told to manage stress, or sent home with the words
-      "everything looks fine." But something is still off.
+      Most of the people who walk through our doors in Mason have already been to two, three, or four
+      other providers across the Cincinnati area. They've been handed a prescription, told to manage
+      stress, or sent home with the words <em>"everything looks fine."</em> But something is still off.
     </p>
     <p>
       At <strong>{clinic.brandName}</strong>, we don't accept "common" as the same thing as "normal."
@@ -143,8 +38,9 @@ const conditions: Condition[] = [
       we test instead of guess.
     </p>
     <p>
-      Below are the patterns we see most in our clinic. If yours is on this list, your body is trying
-      to tell you something. We can help you listen.
+      Below are the patterns we see most at our Mason, OH clinic. Each links to a deeper page with the
+      testing approach, the 3 T's framework that applies, and how a Health Restoration Plan may help.
+      We serve patients across Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area.
     </p>
     <div class="hero-cta">
       <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
@@ -152,12 +48,48 @@ const conditions: Condition[] = [
     </div>
   </SectionContainer>
 
-  <SectionContainer width="prose" spacing="lg">
-    <div class="condition-list">
-      {conditions.map((c) => (
-        <article class="condition" id={c.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
-          <h2>{c.title}</h2>
-          {c.body.map((p) => <p set:html={p} />)}
+  {featured.length > 0 && (
+    <SectionContainer width="default" spacing="lg" background="paper-soft">
+      <p class="eyebrow">The patterns we see most</p>
+      <h2>Featured Conditions</h2>
+      <div class="condition-grid featured-grid">
+        {featured.map((c) => (
+          <article class="condition-card featured">
+            <a href={`/conditions/${c.id}`} class="card-link">
+              {c.data.image && (
+                <img
+                  src={c.data.image}
+                  alt={c.data.imageAlt}
+                  class="card-image"
+                  loading="lazy"
+                  width="800"
+                  height="500"
+                />
+              )}
+              <div class="card-body">
+                <h3>{c.data.title.replace(' — What Most Doctors Miss', '').replace(' in Mason, OH', '')}</h3>
+                <p>{c.data.excerpt}</p>
+                <span class="card-cta">Learn more →</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </SectionContainer>
+  )}
+
+  <SectionContainer width="default" spacing="lg">
+    <h2>All Conditions We See</h2>
+    <div class="condition-grid standard-grid">
+      {standard.map((c) => (
+        <article class="condition-card">
+          <a href={`/conditions/${c.id}`} class="card-link">
+            <div class="card-body">
+              <h3>{c.data.title.replace(' — What Most Doctors Miss', '').replace(' in Mason, OH', '')}</h3>
+              <p>{c.data.excerpt}</p>
+              <span class="card-cta">Learn more →</span>
+            </div>
+          </a>
         </article>
       ))}
     </div>
@@ -171,11 +103,11 @@ const conditions: Condition[] = [
     </p>
     <p>
       We do health differently. We test before we guess. We work alongside the physicians on your
-      care team, not in place of them. And we believe — because we see it daily — that the body was
-      designed to heal when the right inputs are in place.
+      care team, not in place of them. And we believe — because we see it daily in our Mason clinic —
+      that the body was designed to heal when the right inputs are in place.
     </p>
     <p>
-      <strong>Schedule a consultation. Bring your story. Bring your questions. Bring whatever labs and history you have.</strong>
+      <strong>Schedule a discovery consultation. Bring your story. Bring your questions. Bring whatever labs and history you have.</strong>
     </p>
     <p>We'll listen. We'll test. We'll build a plan with you.</p>
     <div class="hero-cta">
@@ -193,38 +125,69 @@ const conditions: Condition[] = [
     font-size: var(--text-2xl);
     margin: 1rem 0 0;
   }
+  .eyebrow {
+    color: var(--color-brand-primary-dark);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
   .hero-cta {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1.5rem;
   }
-  .condition-list {
+  .condition-grid {
     display: grid;
-    gap: 3rem;
+    gap: 1.5rem;
   }
-  .condition h2 {
+  .featured-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .standard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .condition-card {
+    border: 1px solid var(--color-line);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    background: var(--color-paper);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .condition-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.15);
+  }
+  .card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body {
+    padding: 1.25rem;
+  }
+  .card-body h3 {
     color: var(--color-brand-primary-dark);
-    font-size: var(--text-2xl);
-    margin: 0 0 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--color-line);
+    margin: 0 0 0.5rem;
+    font-size: var(--text-lg);
   }
-  .condition:first-child h2 {
-    padding-top: 0;
-    border-top: none;
+  .card-body p {
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0 0 0.75rem;
   }
-  .condition p {
-    line-height: 1.7;
-    margin: 0 0 1rem;
-  }
-  .condition :global(ul) {
-    line-height: 1.7;
-    padding-left: 1.5rem;
-    margin: 0 0 1rem;
-  }
-  .condition :global(li) {
-    margin: 0.4rem 0;
+  .card-cta {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+    font-size: var(--text-sm);
   }
   .byline {
     margin-top: 2rem;

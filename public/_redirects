@@ -31,3 +31,21 @@
 /blog-posts-sitemap.xml /sitemap-index.xml 301
 /pages-sitemap.xml /sitemap-index.xml 301
 /event-pages-sitemap.xml /sitemap-index.xml 301
+
+# Post slug renames (preserve any inbound Wix-era equity)
+/post/statins-and-heart-health-a-wellness-way-perspective-on-cholesterol-risk-and-root-causes /post/statins-and-heart-health-a-wellness-way-perspective-on-cholesterol-and-cardiovascular-risk 301
+/post/you-need-to-increase-stomach-acid-not-supress-it /post/you-need-to-increase-stomach-acid-not-suppress-it 301
+
+# Past events removed from migration (point to events index)
+/event-details/wine-women-wellness /events 301
+/event-details/lenten-liberation-from-attachment-to-food /events 301
+/event-details/the-wellness-way-approach-to-inflammation /events 301
+/event-details/inflammation-talk /events 301
+
+# Cincy Crunchy slug cleanup (-2 suffix removed; preserves inbound Wix equity from all monthly instance URLs)
+/event-details/cincy-crunchy-book-study-2026-10-29-19-30-2 /event-details/cincy-crunchy-book-study 301
+/event-details/cincy-crunchy-book-study-2026-10-29-19-30 /event-details/cincy-crunchy-book-study 301
+/event-details/cincy-crunchy-book-study-2026-08-27-19-30 /event-details/cincy-crunchy-book-study 301
+/event-details/cincy-crunchy-book-study-2026-09-24-19-30 /event-details/cincy-crunchy-book-study 301
+/event-details/cincy-crunchy-book-study-2026-07-30-19-30 /event-details/cincy-crunchy-book-study 301
+/event-details/cincy-crunchy-book-study-2026-05-28-19-30 /event-details/cincy-crunchy-book-study 301

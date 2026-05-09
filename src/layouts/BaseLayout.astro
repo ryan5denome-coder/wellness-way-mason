@@ -28,8 +28,15 @@ const {
   skipDefaultSchema = false,
 } = Astro.props;
 
-const fullTitle = title.includes(clinic.brandName) ? title : `${title} | ${clinic.brandName}`;
-const canonical = new URL(Astro.url.pathname, site.url).toString();
+// Append the full brand name only if neither the brand nor a partial brand string is already in the title.
+const fullTitle =
+  title.includes(clinic.brandName) || /\bThe Wellness Way\b/i.test(title)
+    ? title
+    : `${title} | ${clinic.brandName}`;
+const canonicalPath = Astro.url.pathname
+  .replace(/\/index\.html$/, '/')
+  .replace(/\.html$/, '');
+const canonical = new URL(canonicalPath, site.url).toString();
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, site.url).toString();
 
 const allJsonLd = skipDefaultSchema ? jsonLd : [localBusiness(), ...jsonLd];

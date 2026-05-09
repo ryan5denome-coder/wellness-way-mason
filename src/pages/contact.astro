@@ -6,14 +6,47 @@ import Button from '../components/Button.astro';
 import HoursTable from '../components/HoursTable.astro';
 import MapEmbed from '../components/MapEmbed.astro';
 import ContactForm from '../components/ContactForm.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
 import { clinic } from '../lib/site';
 
 const wasSent = Astro.url.searchParams.get('sent') === 'true';
+
+const contactFaqs = [
+  {
+    question: 'Do you accept insurance?',
+    answer: '<p>We are a cash-pay practice — that decision keeps us free to spend the time, run the testing, and recommend the care your situation actually calls for, instead of what an insurance code allows. We can provide a superbill on request that you may submit to your insurance for out-of-network reimbursement, but we don\'t bill insurance directly. Our pricing is flat and posted publicly on the <a href="/pricing">Pricing page</a>.</p>',
+  },
+  {
+    question: 'Do I need a referral?',
+    answer: '<p>No. You can self-refer for chiropractic care or a discovery consultation. If you\'re bringing labs from another provider, please bring them to your visit — we\'d rather build on what already exists than duplicate testing unnecessarily.</p>',
+  },
+  {
+    question: 'What should I bring to my first appointment?',
+    answer: '<p>Bring any recent labs, imaging reports, current medications and supplement list, and a brief written history of when symptoms started and what you\'ve already tried. If you\'re a pediatric or pregnant patient, bring relevant prenatal or pediatric records. Comfortable clothing is fine — you don\'t need to change for an exam.</p>',
+  },
+  {
+    question: 'Where do I park?',
+    answer: '<p>Free parking is available directly in front of the building at 5382 Cox-Smith Rd, Suite A. The entrance is ground-level and accessible.</p>',
+  },
+  {
+    question: 'How long is a first visit?',
+    answer: '<p>Plan on 60–75 minutes for a new patient discovery consultation and exam. Follow-up adjustments and review-of-findings visits are typically 20–30 minutes.</p>',
+  },
+  {
+    question: 'Do you see kids and pregnant moms?',
+    answer: '<p>Yes — pediatric chiropractic and prenatal care are core specialties. Dr. Ryan is certified in the Webster Technique for prenatal patients. We see newborns through teens for chiropractic care and have a pediatric-friendly play space at the clinic.</p>',
+  },
+  {
+    question: 'Are virtual consultations available?',
+    answer: '<p>Yes — virtual <em>health restoration consultations</em> are available for patients outside the immediate Mason / Cincinnati area. In-person chiropractic care obviously requires being in the clinic.</p>',
+  },
+];
+
 ---
 
 <BaseLayout
-  title="Contact Us"
-  description={`Get in touch with ${clinic.brandName}. Find our address, hours, phone number, and ways to schedule a new patient appointment.`}
+  title="Contact Us | Chiropractor in Mason, OH"
+  description={`Contact ${clinic.brandName} in Mason, OH. Address, hours, phone, and how to schedule a new patient appointment for chiropractic care or comprehensive testing.`}
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
@@ -80,6 +113,11 @@ const wasSent = Astro.url.searchParams.get('sent') === 'true';
   <SectionContainer width="default" spacing="lg" background="paper-soft">
     <h2>Find us</h2>
     <MapEmbed height="450px" />
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="lg">
+    <h2>Frequently Asked Questions</h2>
+    <FAQAccordion items={contactFaqs} />
   </SectionContainer>
 </BaseLayout>
 

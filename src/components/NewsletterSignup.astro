@@ -1,0 +1,226 @@
+---
+/**
+ * Newsletter signup — wraps MailerLite's embedded form.
+ *
+ * Why we use MailerLite's HTML structure verbatim (not a custom form):
+ *   - Form has reCAPTCHA enabled → requires Google's reCAPTCHA JS
+ *   - MailerLite's `webforms.min.js` handles AJAX submission, success state,
+ *     anticsrf token, and reCAPTCHA verification.
+ *   - Submitting to MailerLite's JSONP endpoint with a plain `<form action>`
+ *     would navigate the user to a JSON response page (broken UX).
+ *
+ * What we customize:
+ *   - Heading + lede (brand voice, replaces "Signup for news and special offers!")
+ *   - CSS overrides at the bottom of this file — swap MailerLite's gray/black
+ *     palette for our cream/green brand colors.
+ *
+ * Account ID: 2332757 · Form ID: 187001870682687123
+ */
+---
+
+<!-- MailerLite embedded form -->
+<div id="mlb2-41071627" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-41071627 tww-newsletter">
+  <div class="ml-form-align-center">
+    <div class="ml-form-embedWrapper embedForm">
+      <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+        <div class="ml-form-embedContent">
+          <p class="tww-eyebrow">Newsletter</p>
+          <h2>Get the <em>Test, Don't Guess</em> Newsletter</h2>
+          <p class="tww-lede">
+            Once a month, we share what we're seeing in patients — testing patterns, recovery stories,
+            and the questions worth asking before you accept "your labs look fine."
+            No spam. Unsubscribe any time.
+          </p>
+        </div>
+
+        <form
+          class="ml-block-form"
+          action="https://assets.mailerlite.com/jsonp/2332757/forms/187001870682687123/subscribe"
+          data-code=""
+          method="post"
+          target="_blank"
+        >
+          <div class="ml-form-formContent">
+            <div class="ml-form-fieldRow ml-last-item">
+              <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                <input
+                  aria-label="Email address"
+                  aria-required="true"
+                  type="email"
+                  class="form-control"
+                  name="fields[email]"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="ml-form-embedPermissions">
+            <div class="ml-form-embedPermissionsContent default privacy-policy">
+              <p>
+                You can unsubscribe any time. See our
+                <a href="/privacy-policy">privacy policy</a> for details.
+              </p>
+            </div>
+          </div>
+
+          <div class="ml-form-recaptcha ml-validate-required">
+            <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+          </div>
+
+          <input type="hidden" name="ml-submit" value="1" />
+
+          <div class="ml-form-embedSubmit">
+            <button type="submit" class="primary">Sign Up</button>
+            <button disabled="disabled" style="display: none;" type="button" class="loading">
+              <div class="ml-form-embedSubmitLoad"></div>
+              <span class="sr-only">Loading…</span>
+            </button>
+          </div>
+
+          <input type="hidden" name="anticsrf" value="true" />
+        </form>
+      </div>
+
+      <div class="ml-form-successBody row-success" style="display: none;">
+        <div class="ml-form-successContent">
+          <h2>Thanks — check your inbox.</h2>
+          <p>
+            We just sent you a confirmation email. Click the link inside to confirm and you're in.
+            (If it's not in your inbox, it may have landed in Promotions or Spam — please rescue it
+            so future emails come through.)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MailerLite success callback (required for AJAX submission) -->
+<script is:inline>
+  function ml_webform_success_41071627() {
+    var $ = window.ml_jQuery || window.jQuery;
+    if (!$) return;
+    $('.ml-subscribe-form-41071627 .row-success').show();
+    $('.ml-subscribe-form-41071627 .row-form').hide();
+  }
+</script>
+<!-- reCAPTCHA + MailerLite webforms script (defer for performance) -->
+<script src="https://www.google.com/recaptcha/api.js" defer is:inline></script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" defer is:inline></script>
+
+<style>
+  /* Brand-skin overrides for MailerLite's embedded form.
+     Selectors match #mlb2-41071627 to override their ID-scoped CSS. */
+
+  .tww-newsletter {
+    max-width: 38rem;
+    margin: 0 auto;
+  }
+
+  /* Wrapper — swap their #f6f6f6 grey for our brand-warm tint */
+  #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper {
+    background-color: var(--color-paper-warm-tint, #f0ebe1);
+    border-radius: 0.75rem;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper.embedForm {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Eyebrow */
+  #mlb2-41071627 .tww-eyebrow {
+    color: var(--color-brand-primary-dark, #5e8a30);
+    font-family: var(--font-display, 'Lora', Georgia, serif);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+
+  /* Heading */
+  #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h2 {
+    color: var(--color-ink-strong, #1d2024);
+    font-family: var(--font-display, 'Lora', Georgia, serif) !important;
+    font-size: 1.65rem !important;
+    font-weight: 500 !important;
+    line-height: 1.25 !important;
+    margin: 0 0 0.75rem !important;
+  }
+  #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h2 em {
+    font-style: italic;
+    color: var(--color-brand-primary-dark, #5e8a30);
+  }
+
+  /* Lede paragraph */
+  #mlb2-41071627 .tww-lede {
+    color: var(--color-ink-muted, #5b6066) !important;
+    font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    margin: 0 0 1.25rem !important;
+  }
+
+  /* Email input */
+  #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+    background-color: var(--color-paper, #ffffff) !important;
+    border-color: var(--color-line, #d8d4cc) !important;
+    border-radius: 0.4rem !important;
+    color: var(--color-ink, #2d3234) !important;
+    font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
+    font-size: 0.95rem !important;
+    padding: 0.7rem 0.9rem !important;
+  }
+
+  /* Submit button — swap their black for brand green */
+  #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary {
+    background-color: var(--color-brand-primary, #80b741) !important;
+    border: 1px solid var(--color-brand-primary-dark, #5e8a30) !important;
+    border-radius: 0.4rem !important;
+    color: var(--color-ink-strong, #1d2024) !important;
+    font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 1.4rem !important;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary:hover {
+    background-color: var(--color-brand-primary-dark, #5e8a30) !important;
+    color: white !important;
+  }
+
+  /* Privacy policy link */
+  #mlb2-41071627 .ml-form-embedPermissionsContent.privacy-policy p {
+    color: var(--color-ink-muted, #5b6066) !important;
+    font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
+    font-size: 0.8rem !important;
+  }
+  #mlb2-41071627 .ml-form-embedPermissionsContent.privacy-policy p a {
+    color: var(--color-brand-primary-dark, #5e8a30) !important;
+  }
+
+  /* Success state */
+  #mlb2-41071627 .ml-form-successContent h2 {
+    color: var(--color-brand-primary-dark, #5e8a30);
+    font-family: var(--font-display, 'Lora', Georgia, serif);
+  }
+  #mlb2-41071627 .ml-form-successContent p {
+    color: var(--color-ink, #2d3234);
+    line-height: 1.6;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

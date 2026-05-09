@@ -73,6 +73,109 @@ export function localBusiness(opts: { url?: string; image?: string } = {}): Json
       name: clinic.parentBrand,
       url: clinic.parentBrandUrl,
     },
+    // Lab partners — structured "mentions" so AI engines (Perplexity, ChatGPT search)
+    // can extract the partnership graph from JSON-LD instead of prose only.
+    mentions: [
+      { '@type': 'Organization', name: 'Access Medical Laboratories', url: 'https://www.accessmedlab.com/' },
+      { '@type': 'Organization', name: 'Precision Analytical (DUTCH Test)', url: 'https://dutchtest.com/' },
+      { '@type': 'Organization', name: 'Genova Diagnostics', url: 'https://www.gdx.net/' },
+      { '@type': 'Organization', name: 'ImmunoLabs', url: 'https://www.immunolabs.com/' },
+      { '@type': 'Organization', name: 'Mosaic Diagnostics', url: 'https://mosaicdx.com/' },
+    ],
+  };
+}
+
+/**
+ * Person schema for Dr. Ryan DeNome. Returns either:
+ *  - `full: true` — the canonical Person entity for /about-us (with bio, education, etc.)
+ *  - `full: false` (default) — a `@id`-only reference suitable for inline use on Articles, etc.
+ *    Search engines dedupe the entity via the shared `@id` URL.
+ *
+ * Use the same `@id` everywhere: ${site.url}/#owner
+ */
+export function personSchema(opts: { full?: boolean } = {}): Record<string, unknown> {
+  const id = `${site.url}/#owner`;
+  if (!opts.full) {
+    return {
+      '@type': 'Person',
+      '@id': id,
+      name: owner.name,
+      honorificPrefix: owner.honorificPrefix,
+      honorificSuffix: owner.credentials,
+      jobTitle: owner.jobTitle,
+      url: `${site.url}/about-us`,
+    };
+  }
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': id,
+    name: owner.name,
+    givenName: owner.givenName,
+    familyName: owner.familyName,
+    honorificPrefix: owner.honorificPrefix,
+    honorificSuffix: owner.credentials,
+    jobTitle: owner.jobTitle,
+    image: `${site.url}/images/people/dr-ryan-denome.jpg`,
+    alumniOf: { '@type': 'CollegeOrUniversity', name: owner.alumniOf },
+    worksFor: { '@type': 'Organization', name: clinic.brandName, url: site.url },
+    knowsAbout: [
+      'Chiropractic Care',
+      'Health Restoration',
+      'Pediatric Chiropractic',
+      'Prenatal Chiropractic (Webster Technique)',
+      'Functional Lab Testing',
+      'Hormone Health',
+      'Thyroid Health',
+      'Autoimmune Patterns',
+      'Gut Health',
+    ],
+    hasCredential: [
+      { '@type': 'EducationalOccupationalCredential', credentialCategory: 'degree', name: 'Doctor of Chiropractic' },
+      { '@type': 'EducationalOccupationalCredential', credentialCategory: 'certification', name: 'Webster Technique' },
+    ],
+    email: owner.email,
+    url: owner.url,
+  };
+}
+
+/**
+ * Article schema helper for blog posts. Reuses Person `@id` and LocalBusiness `@id`
+ * so Google's entity graph can dedupe across the site.
+ */
+export function articleSchema(post: {
+  title: string;
+  description: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+  url: string;
+}): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    image: post.image ? [post.image] : undefined,
+    datePublished: post.datePublished,
+    dateModified: post.dateModified,
+    author: personSchema(),
+    publisher: {
+      '@type': 'Organization',
+      '@id': `${site.url}/#localbusiness`,
+      name: clinic.brandName,
+      url: site.url,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${site.url}/og/default.jpg`,
+        width: 1200,
+        height: 630,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': post.url,
+    },
   };
 }
 
@@ -82,9 +185,3 @@ export function localBusiness(opts: { url?: string; image?: string } = {}): Json
 export function jsonLdString(obj: JsonLd): string {
   return JSON.stringify(obj).replace(/</g, '\\u003c');
 }
-
-// Phase 8 status:
-// - Article schema:    inline in src/pages/post/[...slug].astro (verified, builds)
-// - Person schema:     inline in src/pages/about-us.astro       (verified, builds)
-// - BreadcrumbList:    inline in src/components/Breadcrumbs.astro (verified, builds)
-// If/when these schemas are reused on more pages, extract them as helpers here.

@@ -1,0 +1,68 @@
+---
+/**
+ * Slim newsletter teaser. Single horizontal strip with one line of copy + a
+ * jump link to the full <NewsletterSignup /> form (which lives in #newsletter).
+ *
+ * Designed to NOT compete with the page content. Quiet, branded, scannable.
+ * Works wherever the page also includes <NewsletterSignup /> further down.
+ */
+---
+
+<aside class="newsletter-teaser" aria-label="Newsletter teaser">
+  <div class="teaser-inner">
+    <p class="teaser-copy">
+      <strong>Once a month:</strong> testing patterns and recovery stories from the clinic — no spam.
+    </p>
+    <a href="#newsletter" class="teaser-link">
+      Sign up <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</aside>
+
+<style>
+  .newsletter-teaser {
+    background: var(--color-paper-soft);
+    border: 1px solid var(--color-line);
+    border-left: 3px solid var(--color-brand-primary);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    margin: 0;
+  }
+  .teaser-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .teaser-copy {
+    margin: 0;
+    color: var(--color-ink);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    flex: 1 1 18rem;
+  }
+  .teaser-copy strong {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+  }
+  .teaser-link {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 0.15s ease;
+  }
+  .teaser-link:hover {
+    color: var(--color-ink-strong);
+  }
+  .teaser-link span {
+    display: inline-block;
+    transition: transform 0.18s ease;
+  }
+  .teaser-link:hover span {
+    transform: translateX(3px);
+  }
+</style>

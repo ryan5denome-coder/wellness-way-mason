@@ -6,11 +6,12 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Button from '../components/Button.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import { clinic, owner, site } from '../lib/site';
+import { personSchema } from '../lib/schema';
 import pediatricPlayRoom from '../assets/clinic/pediatric-play-room.jpg';
 
 const aboutFaqs = [
   {
-    question: 'What kind of patients does The Wellness Way Mason treat?',
+    question: 'What kind of patients does The Wellness Way - Mason treat?',
     answer: '<p>Adults, children, and prenatal patients across Mason and the greater Cincinnati area. Most patients have already been to multiple providers and been told their labs are "normal" while still not feeling well. Common patterns include fatigue, hormone imbalance, gut issues, autoimmune presentations, thyroid dysfunction, and complex cases that haven\'t responded to standard care.</p>',
   },
   {
@@ -19,10 +20,10 @@ const aboutFaqs = [
   },
   {
     question: 'Who is Dr. Ryan DeNome, DC?',
-    answer: '<p>Dr. Ryan DeNome, DC is the clinic owner and chiropractic physician at The Wellness Way Mason. He is a graduate of Life University in Marietta, Georgia, a Cincinnati native, and certified in the Webster Technique for prenatal chiropractic care. His clinical focus is supporting men with health challenges, mothers juggling stress and wellness, and complex cases that haven\'t found answers in conventional care.</p>',
+    answer: '<p>Dr. Ryan DeNome, DC is the clinic owner and chiropractic physician at The Wellness Way - Mason. He is a graduate of Life University in Marietta, Georgia, a Cincinnati native, and certified in the Webster Technique for prenatal chiropractic care. His clinical focus is supporting men with health challenges, mothers juggling stress and wellness, and complex cases that haven\'t found answers in conventional care.</p>',
   },
   {
-    question: 'What makes The Wellness Way Mason different from other chiropractors?',
+    question: 'What makes The Wellness Way - Mason different from other chiropractors?',
     answer: '<p>We integrate chiropractic care with comprehensive health-restoration lab work — looking at the patterns underneath symptoms instead of just managing what shows up on the surface. We test before we guess. We work alongside your existing medical team, not in place of them.</p>',
   },
   {
@@ -31,27 +32,13 @@ const aboutFaqs = [
   },
 ];
 
-const personSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  '@id': `${site.url}/#owner`,
-  name: owner.name,
-  givenName: owner.givenName,
-  familyName: owner.familyName,
-  honorificPrefix: owner.honorificPrefix,
-  honorificSuffix: owner.credentials,
-  jobTitle: owner.jobTitle,
-  alumniOf: { '@type': 'CollegeOrUniversity', name: owner.alumniOf },
-  worksFor: { '@type': 'Organization', name: clinic.brandName, url: site.url },
-  email: owner.email,
-  url: owner.url,
-};
+const personJsonLd = personSchema({ full: true });
 ---
 
 <BaseLayout
-  title="About Us"
-  description="Meet Dr. Ryan DeNome, DC and the team at The Wellness Way Mason. We're driven by a mission to rethink healthcare and challenge the status quo."
-  jsonLd={[personSchema]}
+  title="About Dr. Ryan DeNome, DC | Chiropractor in Mason, OH"
+  description="Meet Dr. Ryan DeNome, DC and the team at The Wellness Way - Mason. Chiropractic care and health restoration in Mason, Ohio for patients tired of being told their labs look fine."
+  jsonLd={[personJsonLd]}
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
@@ -127,9 +114,11 @@ const personSchema = {
     <div class="provider-grid">
       <div class="provider-photo">
         <img
-          src="https://static.wixstatic.com/media/629639_7c1b1385059c4c7897a2e529fd5d567f~mv2.jpg"
+          src="/images/people/dr-ryan-denome.jpg"
           alt="Dr. Ryan DeNome, DC at The Wellness Way - Mason"
           loading="lazy"
+          width="1500"
+          height="1500"
         />
       </div>
       <div class="provider-bio">
@@ -184,7 +173,7 @@ const personSchema = {
   <SectionContainer width="default" spacing="lg">
     <div class="section-head">
       <p class="eyebrow">Common questions</p>
-      <h2>About The Wellness Way Mason</h2>
+      <h2>About The Wellness Way - Mason</h2>
     </div>
     <FAQAccordion items={aboutFaqs} />
   </SectionContainer>

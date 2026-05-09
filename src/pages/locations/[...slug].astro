@@ -1,0 +1,133 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionContainer from '../../components/SectionContainer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Button from '../../components/Button.astro';
+import HoursTable from '../../components/HoursTable.astro';
+import { clinic, site, bylines } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const locations = await getCollection('locations');
+  return locations.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Place schema (locale) — points to the LocalBusiness with @id
+const placeSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Place',
+  name: `${entry.data.locale}, ${entry.data.state}`,
+  description: entry.data.excerpt,
+  url: new URL(`/locations/${entry.id}`, site.url).toString(),
+};
+---
+
+<BaseLayout
+  title={entry.data.seoTitle ?? entry.data.title}
+  description={entry.data.seoDescription ?? entry.data.excerpt}
+  ogImage={entry.data.image}
+  jsonLd={[placeSchema]}
+>
+  <SectionContainer width="prose" spacing="md" background="paper-soft">
+    <Breadcrumbs
+      trail={[
+        { label: 'Home', href: '/' },
+        { label: 'Locations', href: '/locations' },
+        { label: entry.data.locale },
+      ]}
+    />
+  </SectionContainer>
+
+  <article>
+    <SectionContainer width="prose" spacing="md">
+      <header class="loc-header">
+        <p class="eyebrow">Service Area</p>
+        <h1>{entry.data.title}</h1>
+        <p class="lede">{entry.data.excerpt}</p>
+        {entry.data.distanceFromClinic && (
+          <p class="distance">
+            <strong>{entry.data.drivingTime ?? entry.data.distanceFromClinic}</strong>
+            {entry.data.drivingTime && entry.data.distanceFromClinic && (
+              <span> · {entry.data.distanceFromClinic}</span>
+            )}
+          </p>
+        )}
+      </header>
+    </SectionContainer>
+
+    <SectionContainer width="prose" spacing="md">
+      <div class="loc-body">
+        <Content />
+      </div>
+      <p class="loc-byline">{bylines.reviewed} — Doctor of Chiropractic, {clinic.brandName}</p>
+    </SectionContainer>
+  </article>
+
+  <SectionContainer width="prose" spacing="lg" background="paper-soft">
+    <h2>The Wellness Way - Mason</h2>
+    <address class="clinic-nap">
+      <strong>{clinic.brandName}</strong><br />
+      {clinic.addressLine1}<br />
+      {clinic.city}, {clinic.state} {clinic.zip}<br />
+      <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>
+    </address>
+    <HoursTable />
+    <div class="cta-row">
+      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
+      <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-brand-primary-dark);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    margin: 1rem 0 0.5rem;
+  }
+  .distance {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  .loc-body :global(h2) {
+    color: var(--color-brand-primary-dark);
+    margin-top: 2.5rem;
+  }
+  .loc-body :global(p) {
+    line-height: 1.7;
+  }
+  .loc-byline {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-line);
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    font-style: italic;
+  }
+  .clinic-nap {
+    font-style: normal;
+    line-height: 1.7;
+    margin: 1rem 0;
+  }
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+</style>

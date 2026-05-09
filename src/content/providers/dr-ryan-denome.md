@@ -2,8 +2,8 @@
 name: "Dr. Ryan DeNome"
 credentials: "DC"
 title: "Doctor of Chiropractic | Clinic Owner"
-photo: "https://static.wixstatic.com/media/629639_7c1b1385059c4c7897a2e529fd5d567f~mv2.jpg"
-photoAlt: "Dr. Ryan DeNome at The Wellness Way - Mason"
+photo: "/images/people/dr-ryan-denome.jpg"
+photoAlt: "Dr. Ryan DeNome, DC, Doctor of Chiropractic at The Wellness Way - Mason"
 education:
   - "Life University, Doctor of Chiropractic"
 certifications:

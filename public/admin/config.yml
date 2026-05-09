@@ -58,19 +58,20 @@ collections:
         multiple: true
         default: []
         options:
+          - chiropractic
           - clinical
-          - recipes
-          - pregnancy
           - pediatric
-          - men-health
-          - women-health
+          - pregnancy
+          - recipes
           - gut-health
           - thyroid
           - hormones
-          - metabolic
           - autoimmune
-          - nervous-system
           - immune
+          - nervous-system
+          - metabolic
+          - men-health
+          - women-health
           - foundational
       - { label: Tags, name: tags, widget: list, required: false, default: [] }
       - label: Avatars (audience targeting)
@@ -200,6 +201,78 @@ collections:
       - { label: LinkedIn URL, name: linkedinUrl, widget: string, required: false }
       - { label: Email, name: email, widget: string, required: false }
       - { label: Phone, name: phone, widget: string, required: false }
+
+  # ---------------------------------------------------------------- CONDITIONS
+  - name: conditions
+    label: Conditions We See
+    label_singular: Condition
+    folder: src/content/conditions
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: [order, title]
+    fields:
+      - { label: Title, name: title, widget: string, hint: "Display title — provocative + 'what most doctors miss' or 'common but not normal' framing works best." }
+      - { label: SEO title, name: seoTitle, widget: string, required: false, hint: "Optional — defaults to Title if blank. Recommended: <=60 chars, include 'Mason'." }
+      - { label: SEO description, name: seoDescription, widget: text, required: false, hint: "140-155 chars. Include 'Mason' or 'Cincinnati'." }
+      - { label: Excerpt, name: excerpt, widget: text, hint: "1-2 sentence summary used on the /find-my-condition hub cards." }
+      - { label: Hero image, name: image, widget: image }
+      - { label: Image alt text, name: imageAlt, widget: string }
+      - { label: Sort order, name: order, widget: number, default: 99, value_type: int, hint: "Lower = appears earlier on the hub. Top-3 use 1-3." }
+      - { label: Featured on hub?, name: featured, widget: boolean, default: false, hint: "Featured conditions show up in the top section of /find-my-condition with a larger card." }
+      - label: 3 T's that apply
+        name: tts
+        widget: select
+        multiple: true
+        default: []
+        options: [traumas, toxins, thoughts]
+      - label: Related blog posts
+        name: relatedPosts
+        widget: relation
+        collection: posts
+        search_fields: [title, slug]
+        value_field: "{{slug}}"
+        display_fields: [title]
+        multiple: true
+        required: false
+        default: []
+      - label: Related conditions
+        name: relatedConditions
+        widget: relation
+        collection: conditions
+        search_fields: [title, slug]
+        value_field: "{{slug}}"
+        display_fields: [title]
+        multiple: true
+        required: false
+        default: []
+      - { label: Testing panels, name: testingPanels, widget: list, required: false, default: [], hint: "Named TWW panels relevant to this condition." }
+      - { label: Body, name: body, widget: markdown, hint: "Body sections: empathic open, ## Symptoms, ## What Most Doctors Miss, ## The 3 T's, ## Our Testing Approach, ## Working Alongside Your Medical Team, ## Health Restoration Plan, ## Ready to See the Full Picture?" }
+
+  # ---------------------------------------------------------------- LOCATIONS
+  - name: locations
+    label: Service Area Locations
+    label_singular: Location
+    folder: src/content/locations
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: [order, title]
+    fields:
+      - { label: Title, name: title, widget: string, hint: "e.g., 'Chiropractor in West Chester | The Wellness Way - Mason'" }
+      - { label: SEO title, name: seoTitle, widget: string, required: false }
+      - { label: SEO description, name: seoDescription, widget: text, required: false, hint: "140-155 chars. Include 'chiropractor' + locale + 'Mason'." }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Locale, name: locale, widget: string, hint: "Just the city — e.g. 'West Chester' (not 'West Chester, OH')" }
+      - { label: State, name: state, widget: string, default: "OH" }
+      - { label: Hero image, name: image, widget: image, required: false }
+      - { label: Image alt text, name: imageAlt, widget: string, required: false }
+      - { label: Sort order, name: order, widget: number, default: 99, value_type: int }
+      - { label: Distance from clinic, name: distanceFromClinic, widget: string, required: false, hint: "e.g., '~10 minutes south of Mason'" }
+      - { label: Driving time, name: drivingTime, widget: string, required: false, hint: "e.g., '10-15 min'" }
+      - { label: Body, name: body, widget: markdown, hint: "Sections: empathic open, ## What Brings <Locale> Patients, ## Our Approach, ## Conditions We Help With, ## Getting to The Wellness Way, ## Why <Locale> Patients Choose Us, ## Ready to Schedule?" }
 
   # ---------------------------------------------------------------- SITE SETTINGS
   - name: settings

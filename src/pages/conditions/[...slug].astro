@@ -1,0 +1,258 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionContainer from '../../components/SectionContainer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Button from '../../components/Button.astro';
+import { clinic, owner, site, bylines } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const conditions = await getCollection('conditions');
+  return conditions.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const allConditions = await getCollection('conditions');
+const allPosts = await getCollection('posts');
+
+const related = entry.data.relatedConditions
+  .map((slug) => allConditions.find((c) => c.id === slug))
+  .filter(Boolean);
+
+const relatedPosts = entry.data.relatedPosts
+  .map((slug) => allPosts.find((p) => p.id === slug))
+  .filter(Boolean);
+
+const ttLabels: Record<string, string> = {
+  traumas: 'Traumas',
+  toxins: 'Toxins',
+  thoughts: 'Thoughts',
+};
+
+const medicalConditionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalCondition',
+  name: entry.data.title,
+  description: entry.data.excerpt,
+  associatedAnatomy: undefined,
+  possibleTreatment: {
+    '@type': 'MedicalTherapy',
+    name: 'Chiropractic care + comprehensive testing + Health Restoration Plan',
+    provider: {
+      '@type': 'MedicalBusiness',
+      '@id': `${site.url}/#localbusiness`,
+      name: clinic.brandName,
+    },
+  },
+  url: new URL(`/conditions/${entry.id}`, site.url).toString(),
+};
+---
+
+<BaseLayout
+  title={entry.data.seoTitle ?? entry.data.title}
+  description={entry.data.seoDescription ?? entry.data.excerpt}
+  ogImage={entry.data.image}
+  jsonLd={[medicalConditionSchema]}
+>
+  <SectionContainer width="prose" spacing="md" background="paper-soft">
+    <Breadcrumbs
+      trail={[
+        { label: 'Home', href: '/' },
+        { label: 'Conditions', href: '/find-my-condition' },
+        { label: entry.data.title },
+      ]}
+    />
+  </SectionContainer>
+
+  <article>
+    <SectionContainer width="prose" spacing="md">
+      <header class="cond-header">
+        <p class="eyebrow">Conditions We See</p>
+        <h1>{entry.data.title}</h1>
+        <p class="lede">{entry.data.excerpt}</p>
+      </header>
+    </SectionContainer>
+
+    {entry.data.image && (
+      <SectionContainer width="default" spacing="sm" background="paper">
+        <img
+          src={entry.data.image}
+          alt={entry.data.imageAlt}
+          class="cond-hero-image"
+          loading="eager"
+          decoding="async"
+        />
+      </SectionContainer>
+    )}
+
+    <SectionContainer width="prose" spacing="md">
+      <div class="cond-body">
+        <Content />
+      </div>
+
+      {entry.data.tts.length > 0 && (
+        <aside class="cond-aside">
+          <p class="aside-eyebrow">Through the 3 T's lens</p>
+          <p>
+            For this condition, we look most closely at:
+            <strong>{entry.data.tts.map((t) => ttLabels[t]).join(' · ')}</strong>
+          </p>
+        </aside>
+      )}
+
+      {entry.data.testingPanels.length > 0 && (
+        <aside class="cond-aside">
+          <p class="aside-eyebrow">Tests we may recommend</p>
+          <ul>
+            {entry.data.testingPanels.map((p) => <li>{p}</li>)}
+          </ul>
+          <p class="aside-note">Tests are recommended, never required. We walk through cost and rationale before ordering anything.</p>
+        </aside>
+      )}
+
+      <p class="cond-byline">{bylines.reviewed} — Doctor of Chiropractic, {clinic.brandName}</p>
+    </SectionContainer>
+  </article>
+
+  {related.length > 0 && (
+    <SectionContainer width="prose" spacing="lg" background="paper-soft">
+      <h2>Related Conditions</h2>
+      <ul class="related-list">
+        {related.map((c) => (
+          <li>
+            <a href={`/conditions/${c.id}`}>
+              <strong>{c.data.title}</strong>
+              <span>{c.data.excerpt}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </SectionContainer>
+  )}
+
+  {relatedPosts.length > 0 && (
+    <SectionContainer width="prose" spacing="lg">
+      <h2>Articles on This Topic</h2>
+      <ul class="related-posts">
+        {relatedPosts.map((p) => (
+          <li>
+            <a href={`/post/${p.id}`}>{p.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    </SectionContainer>
+  )}
+
+  <SectionContainer width="prose" spacing="lg" background="paper-soft">
+    <h2>Ready to Test Instead of Guess?</h2>
+    <p>
+      We don't guess — we test. If you've been told your labs look "normal" but you don't feel
+      normal, schedule a discovery consultation and let's start asking the right questions.
+    </p>
+    <div class="cta-row">
+      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
+      <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-brand-primary-dark);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    margin: 1rem 0 0;
+  }
+  .cond-hero-image {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+  }
+  .cond-body :global(h2) {
+    color: var(--color-brand-primary-dark);
+    margin-top: 2.5rem;
+  }
+  .cond-body :global(p) {
+    line-height: 1.7;
+  }
+  .cond-aside {
+    background: var(--color-paper-warm-tint);
+    border-left: 3px solid var(--color-brand-primary);
+    padding: 1rem 1.25rem;
+    margin: 2rem 0;
+    border-radius: 0.4rem;
+  }
+  .aside-eyebrow {
+    color: var(--color-brand-primary-dark);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .aside-note {
+    margin-top: 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+  .cond-byline {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-line);
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    font-style: italic;
+  }
+  .related-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .related-list a {
+    display: block;
+    padding: 1rem;
+    border: 1px solid var(--color-line);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease;
+  }
+  .related-list a:hover {
+    background: var(--color-paper-warm-tint);
+  }
+  .related-list strong {
+    color: var(--color-brand-primary-dark);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .related-list span {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+  .related-posts {
+    padding-left: 1.25rem;
+  }
+  .related-posts li {
+    margin: 0.5rem 0;
+  }
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Button from '../components/Button.astro';
+import { clinic } from '../lib/site';
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="The page you were looking for doesn't exist or has moved. Try one of the links below to find what you need."
+  noIndex={true}
+>
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <div class="not-found">
+      <p class="eyebrow">404</p>
+      <h1>This page got lost.</h1>
+      <p class="lede">
+        The page you were looking for either moved or never existed. No drama — let's get you back on track.
+      </p>
+      <p>Here's where most people are headed:</p>
+      <ul class="quick-links">
+        <li><a href="/">Home</a> — start over</li>
+        <li><a href="/our-services">Our Services</a> — chiropractic + health restoration</li>
+        <li><a href="/find-my-condition">Find My Condition</a> — the patterns we see most</li>
+        <li><a href="/pricing">Pricing</a> — what an exam, plan, and ongoing care cost</li>
+        <li><a href="/blog">Blog</a> — articles on hormones, gut health, thyroid, and more</li>
+        <li><a href="/contact">Contact</a> — call, email, or send a message</li>
+      </ul>
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+      </div>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .not-found {
+    max-width: 42rem;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .eyebrow {
+    color: var(--color-brand-primary-dark);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    margin: 1rem 0 2rem;
+  }
+  .quick-links {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 2rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .quick-links a {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>

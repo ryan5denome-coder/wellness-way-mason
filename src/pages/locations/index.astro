@@ -1,0 +1,124 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionContainer from '../../components/SectionContainer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Button from '../../components/Button.astro';
+import { clinic } from '../../lib/site';
+
+const locations = (await getCollection('locations')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout
+  title="Service Area | Chiropractor in Mason, OH and Cincinnati Area"
+  description="The Wellness Way - Mason serves patients across Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area. Find your local guide."
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Locations' }]} />
+    <h1>Service Area</h1>
+    <p class="lede">
+      We're based in Mason, OH and serve patients across the greater Cincinnati area.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="md">
+    <p>
+      Patients drive in from across Butler, Warren, and Hamilton counties for
+      <strong>chiropractic care and health restoration</strong> at our Mason clinic — because the
+      test-don't-guess approach isn't easy to find at the corner-strip-mall chiropractor down the street.
+    </p>
+    <p>
+      Whether you're 5 minutes away or 35, here's what to know about getting to us from your locale.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <div class="loc-grid">
+      {locations.map((loc) => (
+        <article class="loc-card">
+          <a href={`/locations/${loc.id}`}>
+            <h2>{loc.data.locale}, {loc.data.state}</h2>
+            <p>{loc.data.excerpt}</p>
+            {loc.data.drivingTime && (
+              <p class="drive-time"><strong>{loc.data.drivingTime}</strong> {loc.data.distanceFromClinic && <span> · {loc.data.distanceFromClinic}</span>}</p>
+            )}
+            <span class="card-cta">View {loc.data.locale} guide →</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="lg" background="paper-soft">
+    <h2>Don't See Your Town?</h2>
+    <p>
+      We see patients from all over the Cincinnati metro and beyond. If you're outside the immediate
+      area, virtual <strong>health restoration consultations</strong> are available for the testing-and-planning
+      side of care — in-person chiropractic naturally requires being at the clinic.
+    </p>
+    <div class="cta-row">
+      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
+      <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .lede {
+    color: var(--color-brand-primary-dark);
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    margin: 1rem 0 0;
+  }
+  .loc-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .loc-card {
+    border: 1px solid var(--color-line);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    background: var(--color-paper);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .loc-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.15);
+  }
+  .loc-card a {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .loc-card h2 {
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 0.5rem;
+    font-size: var(--text-xl);
+  }
+  .loc-card p {
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin: 0 0 0.75rem;
+  }
+  .drive-time {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    margin: 0.5rem 0;
+  }
+  .card-cta {
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+    font-size: var(--text-sm);
+  }
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+</style>

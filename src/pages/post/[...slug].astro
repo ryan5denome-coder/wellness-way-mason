@@ -4,8 +4,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionContainer from '../../components/SectionContainer.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Button from '../../components/Button.astro';
-import { clinic, owner, site, bylines } from '../../lib/site';
-import { jsonLdString } from '../../lib/schema';
+import { clinic, site, bylines } from '../../lib/site';
+import { articleSchema } from '../../lib/schema';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -18,32 +18,15 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const articleSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: post.data.title,
+// Article schema with shared Person @id and LocalBusiness @id.
+const schema = articleSchema({
+  title: post.data.title,
   description: post.data.excerpt ?? post.data.seoDescription ?? '',
-  image: post.data.image ? [post.data.image] : undefined,
+  image: post.data.image ? new URL(post.data.image, site.url).toString() : undefined,
   datePublished: post.data.date?.toISOString(),
   dateModified: post.data.date?.toISOString(),
-  author: {
-    '@type': 'Person',
-    name: owner.name,
-    honorificPrefix: owner.honorificPrefix,
-    honorificSuffix: owner.credentials,
-    jobTitle: owner.jobTitle,
-    url: `${site.url}/about-us`,
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: clinic.brandName,
-    url: site.url,
-  },
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': new URL(`/post/${post.id}`, site.url).toString(),
-  },
-};
+  url: new URL(`/post/${post.id}`, site.url).toString(),
+});
 
 const dateStr = post.data.date
   ? post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -54,7 +37,7 @@ const dateStr = post.data.date
   title={post.data.seoTitle ?? post.data.title}
   description={post.data.seoDescription ?? post.data.excerpt ?? clinic.tagline}
   ogImage={post.data.ogImage ?? post.data.image}
-  jsonLd={[articleSchema]}
+  jsonLd={[schema]}
 >
   <SectionContainer width="prose" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog' }, { label: post.data.title }]} />

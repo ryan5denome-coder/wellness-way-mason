@@ -1,34 +1,32 @@
 ---
 /**
- * ContactForm — simple non-PHI contact form. Uses Web3Forms by default (or any
- * compatible form-relay service via the action URL). Does NOT request medical
- * history, diagnoses, lab values, medications, or other PHI — those are
- * captured through the Neo Platform booking widget instead.
+ * ContactForm — non-PHI contact form. Posts to Formspree.
  *
- * Set up form provider:
- *   1. Sign up at https://web3forms.com (free) or use Cloudflare Forms
- *   2. Paste the access key into the action URL or pass via prop
- *   3. Test submission once before launch
+ * Endpoint: https://formspree.io/f/mojrpepv (TWW Mason — Contact Form)
+ * Submissions email: mason@thewellnessway.com
+ *
+ * Does NOT capture medical history, diagnoses, lab values, medications, or any
+ * other PHI — those are captured through the Neo Platform booking widget
+ * instead. This form is for general questions only and the textarea
+ * placeholder + permanent disclaimer below the form reinforce that.
  */
 interface Props {
   action?: string; // form-handler endpoint
   successRedirect?: string;
-  honeypotField?: string;
 }
 
 const {
-  action = 'https://api.web3forms.com/submit',
+  action = 'https://formspree.io/f/mojrpepv',
   successRedirect = '/contact?sent=true',
-  honeypotField = 'website',
 } = Astro.props;
 ---
 
 <form class="contact-form" action={action} method="POST" novalidate>
-  <input type="hidden" name="redirect" value={successRedirect} />
-  <input type="hidden" name="from_name" value="The Wellness Way - Mason website" />
-  <input type="hidden" name="subject" value="New website inquiry" />
-  <!-- Honeypot — bots fill it, humans don't see it -->
-  <input type="text" name={honeypotField} tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
+  <!-- Formspree special fields (underscore-prefixed) -->
+  <input type="hidden" name="_subject" value="New inquiry from thewellnesswaymason.com" />
+  <input type="hidden" name="_next" value={successRedirect} />
+  <!-- Honeypot — bots fill _gotcha, Formspree silently drops them -->
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
 
   <div class="field">
     <label for="cf-name">Your name <span class="req">*</span></label>

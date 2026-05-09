@@ -297,7 +297,7 @@ const medicalBusinessSchema = {
       <h2>Change the trajectory of your life today.</h2>
       <p>Book an appointment to talk through your goals and decide whether we're the right fit.</p>
       <div class="cta-row">
-        <Button href={clinic.phoneTel} variant="ghost" size="lg">Call {clinic.phone}</Button>
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
         <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Book Your Appointment</Button>
       </div>
     </div>

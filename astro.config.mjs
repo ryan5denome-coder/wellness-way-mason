@@ -17,9 +17,13 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) =>
-        !page.includes('/admin/') &&
+        !page.includes('/admin') &&
+        !page.includes('/style-guide') &&
         !page.includes('/uploads/') &&
         !page.includes('/_'),
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date(),
     }),
   ],
 

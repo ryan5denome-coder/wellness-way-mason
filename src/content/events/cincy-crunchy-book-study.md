@@ -1,54 +1,50 @@
 ---
-title: The Wellness Way Approach to Inflammation
-location: The Wellness Way - Mason
-recurring: false
-image: "https://static.wixstatic.com/media/629639_ec7dfa1120aa49da8d5c761cae162997~mv2.png"
-imageAlt: The Wellness Way Approach to Inflammation
-excerpt: "Inflammation... you hear the term a lot, but really... what is it? What is going on in the body when something gets inflamed?"
-sourceUrl: "https://www.thewellnesswaymason.com/event-details/the-wellness-way-approach-to-inflammation"
+title: Cincy Crunchy Book Study
+endDate: "2026-10-29T21:00:00-04:00"
+date: "2026-10-29T19:30:00-04:00"
+location: "5382 Cox-Smith Rd, Suite A, Mason, OH 45040"
+recurring: true
+image: "/images/events/cincy-crunchy-book-study.jpg"
+imageAlt: "Open book and coffee cup on a white surface — cozy book-study aesthetic"
+excerpt: "Welcome to the Cincinnati Crunchy Book Club. Its a space to slow down, learn together, and build real community around health and wellness."
+sourceUrl: "https://www.thewellnesswaymason.com/event-details/cincy-crunchy-book-study-2026-10-29-19-30-2"
 ---
 
-Thu, Jun 05
+Thu, Oct 29
 
 \|
 
 Mason
 
-Inflammation... you hear the term a lot, but really... what is it? What is going on in the body when something gets inflamed?
+RSVP
 
-Registration is closed
 
-[See other events](https://www.thewellnesswaymason.com/event-list)
-
-![The Wellness Way Approach to Inflammation](https://static.wixstatic.com/media/629639_ec7dfa1120aa49da8d5c761cae162997~mv2.png/v1/fill/w_49,h_28,al_c,q_85,usm_0.66_1.00_0.01,blur_2,enc_auto/629639_ec7dfa1120aa49da8d5c761cae162997~mv2.png)
-
-![The Wellness Way Approach to Inflammation](https://static.wixstatic.com/media/629639_ec7dfa1120aa49da8d5c761cae162997~mv2.png/v1/fill/w_979,h_552,fp_0.50_0.50,q_90,usm_0.66_1.00_0.01,enc_auto/629639_ec7dfa1120aa49da8d5c761cae162997~mv2.png)
 
 ## Time & Location
 
-Jun 05, 2025, 6:30 PM – 8:30 PM
+6 more dates
+
+Oct 29, 2026, 7:30 PM – 9:00 PM
 
 Mason, 5382 Cox-Smith Rd a, Mason, OH 45040, USA
 
-## Guests
-
-See All
+Select Different Date
 
 ## About the event
 
-**WHAT IS INFLAMMATION?**
+Welcome to the Cincinnati Crunchy Book Club. Its a space to slow down, learn together, and build real community around health and wellness.
 
-The term Inflammation is being thrown out a lot in our current health society.
+We meet once a month at The Wellness Way- Mason on the last Thursday of the month at 7:30pm. This day and time can absolutely change based on majority vote, so this group will grow with the people in it.
 
-We have all heard of this NORMAL biological process BUT... have you ever asked what it really is?
+We’ll read a variety of health-focused books and break them into smaller, manageable chunks so they’re realistic for busy moms and full lives. The goal isn’t perfection or speed, it’s understanding, conversation, and practical takeaways you can actually use.
 
-It is by far one of the most important processes of our body that helps with fighting off bacteria, viruses, etc.. as well as assisting our body in healing itself.
+As the group grows, we’ll vote together on future books and topics. This is meant to be a welcoming, judgment-free space to ask questions, share insights, and connect with other moms and friends who care about their health and their families.
 
-Here are some topics we will discuss:
-
-\- Thinking differently about inflammation
+Come as you are. Learn at your…
 
 Show More
+
+RSVP
 
 Wix Events Google Map
 
@@ -67,25 +63,25 @@ Wix Events Google Map
 
 ![](https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi3.png)
 
-![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4356!3i6239!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=129620)
-
 ![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4356!3i6240!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=92921)
-
-![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4358!3i6239!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=23351)
 
 ![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4355!3i6240!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=80520)
 
-![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4354!3i6239!4i256!2m3!1e0!2sm!3i777541184!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=14914)
-
-![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4358!3i6240!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=117723)
-
 ![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4355!3i6239!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=117219)
 
-![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4357!3i6240!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=105322)
+![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4356!3i6239!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=129620)
 
 ![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4357!3i6239!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=10950)
 
+![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4357!3i6240!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=105322)
+
 ![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4354!3i6240!4i256!2m3!1e0!2sm!3i777541184!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=109286)
+
+![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4354!3i6239!4i256!2m3!1e0!2sm!3i777541184!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=14914)
+
+![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4358!3i6239!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=23351)
+
+![](https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i14!2i4358!3i6240!4i256!2m3!1e0!2sm!3i777541232!3m18!2sen!3sUS!5e18!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy5lOmd8cC5jOiNmNWY1ZjUscy5lOmwuaXxwLnY6b2ZmLHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLmU6bC50LnN8cC5jOiNmNWY1ZjUscy50OjIxfHMuZTpsLnQuZnxwLmM6I2JkYmRiZCxzLnQ6MnxzLmU6Z3xwLmM6I2VlZWVlZSxzLnQ6MnxzLmU6bC50LmZ8cC5jOiM3NTc1NzUscy50OjQwfHMuZTpnfHAuYzojZTVlNWU1LHMudDo0MHxzLmU6bC50LmZ8cC5jOiM5ZTllOWUscy50OjN8cy5lOmd8cC5jOiNmZmZmZmYscy50OjUwfHMuZTpsLnQuZnxwLmM6Izc1NzU3NSxzLnQ6NDl8cy5lOmd8cC5jOiNkYWRhZGEscy50OjQ5fHMuZTpsLnQuZnxwLmM6IzYxNjE2MSxzLnQ6NTF8cy5lOmwudC5mfHAuYzojOWU5ZTllLHMudDo2NXxzLmU6Z3xwLmM6I2U1ZTVlNSxzLnQ6NjZ8cy5lOmd8cC5jOiNlZWVlZWUscy50OjZ8cy5lOmd8cC5jOiNjOWM5Yzkscy50OjZ8cy5lOmwudC5mfHAuYzojOWU5ZTll!4e0!5m1!1e3!23i46991212!23i47054750!23i47083502&key=AIzaSyB4HdxGiJB3BZvRoYGNVJ2cQufiyu2e3oE&token=117723)
 
 ![](https://maps.gstatic.com/mapfiles/transparent.png)
 
@@ -132,4 +128,4 @@ Click to toggle between metric and imperial units
 
 ## Share this event
 
-[Share event on Facebook](https://www.facebook.com/sharer/sharer.php?u=https://www.thewellnesswaymason.com/event-details/the-wellness-way-approach-to-inflammation&quote=Check%20out%20this%20event.%20Hope%20to%20see%20you%20there!)[Share event on X](https://twitter.com/intent/tweet?url=https://www.thewellnesswaymason.com/event-details/the-wellness-way-approach-to-inflammation&text=Check%20out%20this%20event.%20Hope%20to%20see%20you%20there!)[Share event on LinkedIn](https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.thewellnesswaymason.com%2Fevent-details%2Fthe-wellness-way-approach-to-inflammation)
+[Share event on Facebook](https://www.facebook.com/sharer/sharer.php?u=https://www.thewellnesswaymason.com/event-details/cincy-crunchy-book-study-2026-10-29-19-30-2&quote=Check%20out%20this%20event.%20Hope%20to%20see%20you%20there!)[Share event on X](https://twitter.com/intent/tweet?url=https://www.thewellnesswaymason.com/event-details/cincy-crunchy-book-study-2026-10-29-19-30-2&text=Check%20out%20this%20event.%20Hope%20to%20see%20you%20there!)[Share event on LinkedIn](https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.thewellnesswaymason.com%2Fevent-details%2Fcincy-crunchy-book-study-2026-10-29-19-30-2)

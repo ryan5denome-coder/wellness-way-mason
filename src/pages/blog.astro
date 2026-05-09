@@ -4,6 +4,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import BlogPostCard from '../components/BlogPostCard.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import NewsletterTeaser from '../components/NewsletterTeaser.astro';
 import { clinic } from '../lib/site';
 
 const posts = (await getCollection('posts')).sort((a, b) => {
@@ -19,8 +21,8 @@ const allCategories = Array.from(
 ---
 
 <BaseLayout
-  title="Health & Wellness Blog"
-  description="Honest, practical health content rooted in chiropractic care and whole-person wellness from Dr. Ryan DeNome and The Wellness Way Mason."
+  title="Health & Wellness Blog | Chiropractor in Mason, OH"
+  description="Articles on chiropractic care, hormones, gut health, thyroid, and the test-don't-guess approach — from Dr. Ryan DeNome at The Wellness Way - Mason."
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Blog' }]} />
@@ -32,6 +34,10 @@ const allCategories = Array.from(
         and the team at {clinic.brandName}.
       </p>
     </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="sm">
+    <NewsletterTeaser />
   </SectionContainer>
 
   <SectionContainer width="default" spacing="md">
@@ -58,6 +64,10 @@ const allCategories = Array.from(
         />
       ))}
     </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <NewsletterSignup />
   </SectionContainer>
 </BaseLayout>
 

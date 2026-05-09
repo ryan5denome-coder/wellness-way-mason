@@ -84,6 +84,41 @@ const providers = defineCollection({
   }),
 });
 
+const conditions = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/conditions' }),
+  schema: z.object({
+    title: z.string(),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
+    excerpt: z.string(),
+    image: z.string(),
+    imageAlt: z.string(),
+    order: z.number().int().default(0),
+    featured: z.boolean().default(false),
+    tts: z.array(z.enum(['traumas', 'toxins', 'thoughts'])).default([]),
+    relatedPosts: z.array(z.string()).default([]),
+    relatedConditions: z.array(z.string()).default([]),
+    testingPanels: z.array(z.string()).default([]),
+  }),
+});
+
+const locations = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/locations' }),
+  schema: z.object({
+    title: z.string(),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
+    excerpt: z.string(),
+    locale: z.string(),
+    state: z.string().default('OH'),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    order: z.number().int().default(0),
+    distanceFromClinic: z.string().optional(),
+    drivingTime: z.string().optional(),
+  }),
+});
+
 // NOTE: Site settings (src/content/settings/clinic.yml) are edited via Decap CMS
 // but NOT yet registered as an Astro content collection. Phase 7 will wire the
 // YAML through to src/lib/site.ts to replace the hardcoded values. Until then,
@@ -95,4 +130,6 @@ export const collections = {
   testimonials,
   faqs,
   providers,
+  conditions,
+  locations,
 };
