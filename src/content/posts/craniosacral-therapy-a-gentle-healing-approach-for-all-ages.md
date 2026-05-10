@@ -107,7 +107,7 @@ Your central nervous system influences every other system in your body. When it'
 
 Whether you're seeking relief from chronic pain, supporting your child's development, or looking for natural ways to boost overall health, CST is a gentle and effective solution.
 
-[**Contact us today**](https://share.google/zr01PxtwLezftsafV) **to schedule your CranioSacral Therapy session and discover how this gentle approach can transform your well-being—at any age.**
+[**Contact us today**](/contact) **to schedule your CranioSacral Therapy session and discover how this gentle approach can transform your well-being—at any age.**
 
 ## Related at The Wellness Way - Mason
 

@@ -10,14 +10,14 @@ readTime: 3 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/why-i-chose-not-to-remove-my-gallbladder-and-what-i-did-instead"
 seoTitle: "Why I Chose Not to Remove My Gallbladder"
-seoDescription: " You have options. Don't settle for removing a part of your body without first understanding why it's struggling in the first place."
+seoDescription: "You have options. Don't settle for removing a part of your body without first understanding why it's struggling in the first place."
 ---
 
 _This post has been adapted from a patient who experienced this._
 
 Let me start by saying I get it — when you're in pain, desperate for answers, and a doctor tells you that surgery is the "only option," it's easy to say yes. That was me not long ago, curled up on the couch after another painful gallbladder attack, staring at a surgery date circled on my calendar.
 
-But something about it didn't sit right with me. I couldn't shake the feeling that removing my gallbladder was just treating the symptom, not the cause. That's when I found _The Wellness Way_ — and everything changed.
+But something about it didn't sit right with me. I couldn't shake the feeling that removing my gallbladder was just silencing the signal, not asking why my body was sending it. That's when I found _The Wellness Way_ — and everything changed.
 
 ## The Gallbladder Isn't Useless
 
@@ -39,7 +39,7 @@ Here's what I focused on:
 
 - **Liver and gallbladder support** – I started targeted supplements that helped thin and move bile, reduce inflammation, and support liver detox pathways.
 
-- **Stress management** – No surprise, but years of chronic stress had taken a toll. I incorporated deep breathing, better sleep habits, and yes, actually saying "no" to things. Some supplements the Wellness Way also helped me mitigate the effects of stress.
+- **Stress management** – No surprise, but years of chronic stress had taken a toll. I incorporated deep breathing, better sleep habits, and yes, actually saying "no" to things. Some supplements from The Wellness Way also helped me mitigate the effects of stress.
 
 - **Spinal and nervous system care** – I also started chiropractic care to support the connection between my brain and digestive system, along with the many other benefits it has!
 
@@ -51,7 +51,7 @@ I'm not here to shame anyone who's had their gallbladder removed — I know some
 
 But I _am_ here to say: **You have options.** Don't settle for removing a part of your body without first understanding _why_ it's struggling in the first place.
 
-That's what The Wellness Way teaches — don't guess, test. Don't chase symptoms, find the cause. And above all, don't accept "normal" if your body is screaming that something's wrong.
+That's what The Wellness Way teaches — don't guess, test. Don't chase symptoms — ask why. And above all, don't accept "normal" if your body is screaming that something's wrong.
 
 If you're where I was — scared, confused, and being told to "just take it out" — pause.
 

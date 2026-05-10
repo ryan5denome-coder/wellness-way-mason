@@ -12,9 +12,9 @@ distanceFromClinic: "~10 minutes south of Mason"
 drivingTime: "10-15 min"
 ---
 
-If you live in West Chester and your doctor has told you everything looks "normal" while your body is telling you something else — fatigue that sleep doesn't touch, a cycle that's gone sideways, a fog that won't lift — you have options. You're not imagining it.
+If you live in West Chester and your doctor has told you everything looks "normal" while your body is telling you something else — fatigue that sleep doesn't touch, a cycle that's gone sideways, a fog that won't lift. You have options. You're not imagining it.
 
-West Chester Township is one of the largest, most family-dense communities in Butler County. Beckett Ridge, Wetherington, Olde West Chester, the Square at Union Centre — these are neighborhoods where families grow and where two-career households are the norm rather than the exception. That pace shows up in the body. We see it across the table every week.
+West Chester Township is one of the largest, most family-dense communities in Butler County. Beckett Ridge, Wetherington, Olde West Chester, the Square at Union Centre: these are neighborhoods where families grow and where two-career households are the norm rather than the exception. That pace shows up in the body. We see it across the table every week.
 
 ## What Brings West Chester Patients to Our Mason Clinic
 
@@ -29,7 +29,7 @@ You may have walked the trail at Voice of America MetroPark and noticed your kne
 
 ## Our Approach: Test, Don't Guess
 
-We do not assume. We measure. The 3 T's framework — Traumas, Toxins, Thoughts — gives us a map of what's likely driving your inflammation, and named lab panels tell us what's actually happening inside the system. The TWW Basic Panel, the DUTCH panel for hormones, the Immuno Food Allergy Test, the Cardiometabolic Panel — each one answers a different question. We build the plan around your data, not a generic protocol.
+We do not assume. We measure. The 3 T's framework (Traumas, Toxins, Thoughts). Gives us a map of what's likely driving your inflammation, and named lab panels tell us what's actually happening inside the system. The TWW Basic Panel, the DUTCH panel for hormones, the Immuno Food Allergy Test, the Cardiometabolic Panel — each one answers a different question. We build the plan around your data, not a generic protocol.
 
 Health restoration, not disease management. Your body was designed to heal. We help you remove the obstacles.
 
@@ -37,10 +37,10 @@ Health restoration, not disease management. Your body was designed to heal. We h
 
 For West Chester families specifically, we see the most:
 
-- [Hormone imbalance](/conditions/hormone-imbalance) — postpartum recovery, perimenopause, painful cycles in young moms
-- [Thyroid dysfunction](/conditions/thyroid) — Hashimoto's flagged years before TSH drifts
-- [Fertility and infertility support](/conditions/hormone-imbalance) — couples wanting more than a "keep trying" conversation
-- [Digestive issues](/conditions/digestive-issues) in kids and adults — food sensitivities, reflux, bloating
+- [Hormone imbalance](/conditions/hormone-imbalance). Postpartum recovery, perimenopause, painful cycles in young moms
+- [Thyroid dysfunction](/conditions/thyroid): Hashimoto's flagged years before TSH drifts
+- [Fertility and infertility support](/conditions/hormone-imbalance), couples wanting more than a "keep trying" conversation
+- [Digestive issues](/conditions/digestive-issues) in kids and adults. Food sensitivities, reflux, bloating
 - [Autoimmune patterns](/conditions/autoimmune) running through families
 - [Anxiety and mood](/conditions/mental-health-brain) that lives downstream of gut and hormone dysfunction
 
@@ -48,23 +48,23 @@ For pregnancy patients, Dr. DeNome is Webster Technique certified — the prenat
 
 ## Getting to The Wellness Way - Mason from West Chester
 
-From West Chester, the easiest route is **I-75 north to OH-129/Liberty Way east, then north on Tylersville Road or Mason-Montgomery Road into Mason**. From Beckett Ridge or Olde West Chester, plan ten to fifteen minutes door-to-door. From the Union Centre area, it can be faster — closer to ten.
+From West Chester, the easiest route is **I-75 north to OH-129/Liberty Way east, then north on Tylersville Road or Mason-Montgomery Road into Mason**. From Beckett Ridge or Olde West Chester, plan ten to fifteen minutes door-to-door. From the Union Centre area, it can be faster. Closer to ten.
 
 We are at **5382 Cox-Smith Rd, Suite A, Mason, OH 45040**. Free on-site parking. Ground-floor entry.
 
 ## Why West Chester Patients Choose Us
 
-- **Testing-first care** — we don't guess; we test
+- **Testing-first care**: we don't guess; we test
 - **Webster Technique certified** for prenatal patients
-- **Named lab panels** — DUTCH, Cardiometabolic, TWW Basic, Immuno Food Allergy, No Sugar Panel
-- **We work alongside your physicians**, not in place of them — including the obstetricians and PCPs many of our West Chester patients already see
-- **One-on-one guidance** — no rotating-provider visits
+- **Named lab panels:** DUTCH, Cardiometabolic, TWW Basic, Immuno Food Allergy, No Sugar Panel
+- **We work alongside your physicians**, not in place of them, including the obstetricians and PCPs many of our West Chester patients already see
+- One-on-one guidance. No rotating-provider visits
 
 ## Ready to Schedule?
 
 West Chester residents are welcome. The drive is short. The questions we can answer together are not.
 
-[Schedule a Discovery Consultation](https://neoplatform.com/dd6a54e3c98/self-registration) — or call **(283) 223-8376**.
+[Schedule a Discovery Consultation](https://neoplatform.com/dd6a54e3c98/self-registration). Or call **(283) 223-8376**.
 
 The Wellness Way - Mason
 5382 Cox-Smith Rd, Suite A, Mason, OH 45040

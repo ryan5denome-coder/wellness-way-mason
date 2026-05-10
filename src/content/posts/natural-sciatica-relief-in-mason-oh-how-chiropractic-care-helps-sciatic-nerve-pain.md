@@ -45,7 +45,7 @@ Severe or worsening sciatica — especially with numbness, weakness, or loss of 
 
 Don't let **sciatic nerve pain** control your life. Our team in Mason, OH is here to help you address what's actually driving the irritation — not just silence the symptom.
 
-_Call_ [**_The Wellness Way - Mason_**](https://share.google/Pu22uJoWQMIpDhr7H) _today to schedule your consultation and explore options for sciatic nerve pain relief._
+_Call_ [**_The Wellness Way - Mason_**](/contact) _today to schedule your consultation and explore options for sciatic nerve pain relief._
 
 If you're dealing with sciatica, you may also want to read about [how chiropractic care helps strengthen your immune system](/post/how-chiropractic-care-helps-strengthen-your-immune-system) — the same nervous system that controls pain also runs your immune response.
 

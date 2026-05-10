@@ -28,7 +28,7 @@ Duck eggs are slightly larger and have a higher yolk-to-white ratio than chicken
 ### Ingredients
 
 - 6–9 duck eggs (depends on the size)
-- 1/2 cup dairy-free milk or goat's milk
+- 1/2 cup non-cow's-milk option (goat's milk, sheep's milk, or a dairy-free alternative)
 - 1 cup cooked breakfast sausage or bacon
 - 1 cup shredded goat or sheep cheese
 - 2 cups diced vegetables (onion, bell pepper, spinach, mushrooms)

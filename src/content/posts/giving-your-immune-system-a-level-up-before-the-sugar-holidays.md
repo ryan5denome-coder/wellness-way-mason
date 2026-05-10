@@ -25,31 +25,31 @@ But sugar's effects don't stop there. It also feeds bad bacteria and yeast in th
 
 Since nearly **70% of your immune system resides in your gut**, protecting and supporting gut health is _key_ to staying well through the holiday season.
 
-**Herbs and Nutrients to Power Up Immunity**
+## Herbs and Nutrients to Power Up Immunity
 
 Nature gives us powerful tools to build our defenses naturally. Here are some of our favorite ways to strengthen immunity — without spiking your sugar intake.
 
-## **1\. Astragalus Root**
+## 1. Astragalus Root
 
 An adaptogenic herb that helps regulate and strengthen the immune system, especially under chronic stress or fatigue.
 
-## **2\. Elderberry**
+## 2. Elderberry
 
 Rich in antioxidants and antiviral compounds that can help reduce the duration of colds and flu. (Choose low-sugar syrups or gummies!)
 
-## **3\. Echinacea**
+## 3. Echinacea
 
 Helps your body ramp up immune activity when you're feeling run down or exposed to germs.
 
-## **4\. Garlic**
+## 4. Garlic
 
 Nature's immune powerhouse — antibacterial, antiviral, and anti-inflammatory. Raw or cooked, it supports detox pathways and fights infection.
 
-## **5\. Vitamin D3 + K2**
+## 5. Vitamin D3 + K2
 
 Crucial for immune regulation, especially in darker months when sunlight is limited.
 
-## **6\. Zinc & Vitamin C**
+## 6. Zinc & Vitamin C
 
 These classic immune nutrients help reduce inflammation and strengthen cellular defenses.
 
@@ -59,15 +59,15 @@ _(Always check with your Wellness Way practitioner to see what your body specifi
 
 Building immunity isn't just about what you take — it's about how you move and recharge.
 
-## **Red Light Therapy**
+## Red Light Therapy
 
 Red and near-infrared light help reduce inflammation, boost mitochondrial energy, and support immune cell repair. Regular sessions can help your body adapt to stress and recover faster.
 
-## **Vibe Plate Therapy**
+## Vibe Plate Therapy
 
 Whole-body vibration helps move lymph — your body's detox system — to flush out waste and toxins. Just a few minutes can help circulation, detox, and immune activation.
 
-## **Movement & Circulation**
+## Movement & Circulation
 
 Daily movement keeps your lymphatic and circulatory systems working properly. Walk, stretch, or lift weights — consistency matters more than intensity.
 
@@ -95,7 +95,7 @@ At **The Wellness Way - Mason**, we don't guess — we test. Our advanced immune
 
 Don't wait until you're fighting off a cold to take action.
 
-**Schedule your immune and gut health testing today at The Wellness Way - Mason**.Let's get your body in balance before the sugar season begins — so you can enjoy the holidays with strength, energy, and peace of mind.
+**Schedule your immune and gut health testing today at The Wellness Way - Mason**. Let's get your body in balance before the sugar season begins — so you can enjoy the holidays with strength, energy, and peace of mind.
 
 ## Related at The Wellness Way - Mason
 

@@ -7,7 +7,7 @@ image: "/images/conditions/thyroid.jpg"
 imageAlt: "Bowl of walnuts on a dark wooden table — selenium-rich whole foods that support thyroid health"
 order: 1
 featured: true
-tts: [toxins, thoughts]
+tts: [traumas, toxins, thoughts]
 relatedPosts:
   - "rheumatoid-arthritis-is-common-but-not-normal-and-what-to-do-about-it"
   - "why-am-i-still-in-pain-even-though-my-tests-are-normal-the-hidden-link-your-doctor-might-be-missi"
@@ -20,7 +20,7 @@ testingPanels:
 
 If you've been told your thyroid labs look "normal" but you still feel exhausted, foggy, cold, or stuck on the scale — you are not imagining it.
 
-Thyroid issues are some of the most **under-diagnosed and over-medicated patterns** we see at The Wellness Way - Mason. Standard testing — TSH alone, or TSH plus T4 — can miss the majority of what's actually happening with your thyroid. The terms hypothyroid, hyperthyroid, Hashimoto's get used loosely, often without a complete picture of what's driving the dysfunction.
+Thyroid issues are some of the most **under-diagnosed and over-medicated patterns** we see at The Wellness Way - Mason. Standard testing. TSH alone, or TSH plus T4: can miss the majority of what's actually happening with your thyroid. The terms hypothyroid, hyperthyroid, Hashimoto's get used loosely, often without a complete picture of what's driving the dysfunction.
 
 You deserve more than a partial picture.
 
@@ -31,7 +31,7 @@ If you're nodding along to most of these, your body is asking you to look closer
 - **Persistent fatigue that sleep doesn't touch.** You sleep eight hours and wake up exhausted.
 - **Stubborn weight changes.** Weight that won't move no matter what you change about diet or exercise.
 - **Inability to regulate body temperature.** Cold hands and feet year-round, or heat intolerance you didn't have before.
-- **Thinning hair, dry skin, brittle nails.** Cosmetic but telling — these are downstream of how your thyroid is running.
+- **Thinning hair, dry skin, brittle nails.** Cosmetic but telling, these are downstream of how your thyroid is running.
 - **Brain fog and slow recall.** Words don't come, focus drifts, you feel mentally slower than you used to be.
 - **Mood changes.** Anxiety, depression, or just not feeling like yourself.
 - **Cycle irregularity.** Heavier, lighter, more painful, or unpredictable periods.
@@ -46,11 +46,11 @@ The problem: TSH measures the signal your pituitary sends *to* the thyroid. It t
 
 A full picture asks better questions:
 
-- **Free T4** — the storage form your thyroid produces
-- **Free T3** — the active form your cells actually use
-- **Reverse T3** — the brake; chronic stress can flood this and slow you down
-- **Thyroid antibodies (TPO and TgAb)** — the marker that flags Hashimoto's autoimmune thyroiditis, often *years* before TSH drifts out of range
-- **Cortisol patterns** — your adrenal output, which runs in tight feedback with the thyroid
+- **Free T4:** the storage form your thyroid produces
+- Free T3. The active form your cells actually use
+- **Reverse T3**. The brake; chronic stress can flood this and slow you down
+- **Thyroid antibodies (TPO and TgAb):** the marker that flags Hashimoto's autoimmune thyroiditis, often *years* before TSH drifts out of range
+- Cortisol patterns. Your adrenal output, which runs in tight feedback with the thyroid
 
 When we run the full panel, we frequently find Hashimoto's, low T3, high reverse T3, or adrenal patterns that explain symptoms a TSH-only test missed entirely.
 
@@ -58,27 +58,27 @@ When we run the full panel, we frequently find Hashimoto's, low T3, high reverse
 
 Thyroid dysfunction rarely happens in isolation. The Wellness Way 3 T's framework helps us look at why your thyroid is struggling in the first place:
 
-- **Toxins** — heavy metals, environmental endocrine disruptors, mold exposure, and inflammatory food sensitivities all interfere with thyroid hormone production and conversion. The thyroid is one of the most chemically sensitive glands in the body.
-- **Thoughts** — chronic stress floods the body with cortisol, which disrupts the HPA axis and shifts the body toward producing reverse T3 instead of active T3. The thyroid slows down to protect you. Long enough, and that becomes a pattern your body defaults to.
 - **Traumas** — physical stress on the body, including past whiplash injuries, sleep deprivation, surgical history, and chronic inflammation from old injuries, all add to the cumulative load.
+- **Toxins:** heavy metals, environmental endocrine disruptors, mold exposure, and inflammatory food sensitivities all interfere with thyroid hormone production and conversion. The thyroid is one of the most chemically sensitive glands in the body.
+- Thoughts. Chronic stress floods the body with cortisol, which disrupts the HPA axis and shifts the body toward producing reverse T3 instead of active T3. The thyroid slows down to protect you. Long enough, and that becomes a pattern your body defaults to.
 
 You may have one of these driving the bus. You may have all three. We test to find out which.
 
 ## Our Testing Approach
 
-We use comprehensive lab work — not just the basic TSH check. Depending on your story, your panel may include:
+We use comprehensive lab work. Not just the basic TSH check. Depending on your story, your panel may include:
 
 - **Complete thyroid panel:** TSH, free T3, free T4, reverse T3, TPO antibodies, thyroglobulin antibodies
-- **Adrenal cortisol patterns** — saliva or DUTCH testing to map the daily cortisol curve
-- **Comprehensive nutrient panel** — selenium, iodine, ferritin, B12, vitamin D, magnesium (the cofactors thyroid hormone production depends on)
-- **Inflammation markers** — CRP, ESR, fasting insulin
+- **Adrenal cortisol patterns**: saliva or DUTCH testing to map the daily cortisol curve
+- **Comprehensive nutrient panel:** selenium, iodine, ferritin, B12, vitamin D, magnesium (the cofactors thyroid hormone production depends on)
+- Inflammation markers. CRP, ESR, fasting insulin
 - **Food sensitivity testing** when gut/autoimmune crosstalk is suspected
 
 Tests are recommended, never required. We walk through cost and rationale before ordering anything.
 
 ## Working Alongside Your Medical Team
 
-If you're already on thyroid medication — Synthroid, Armour, levothyroxine, or any other — **we don't change it**. Medication decisions stay with your prescribing physician.
+If you're already on thyroid medication, Synthroid, Armour, levothyroxine, or any other. **we don't change it**. Medication decisions stay with your prescribing physician.
 
 Our role is different. We help you see the full picture *underneath* the symptoms, build a Health Restoration Plan around the systems your thyroid depends on (gut, adrenals, nutrient status, inflammation), and partner with your medical team so they can make better-informed decisions over time. If your numbers improve enough that medication needs adjustment, that conversation goes through your prescribing doctor.
 
@@ -94,12 +94,12 @@ After we have your full results, we build a personalized plan. For thyroid patie
 - **Detoxification support** when toxic load is contributing
 - **Lifestyle adjustments** for sleep, stress, and movement
 
-This is hands-on, one-on-one guidance — not a generic protocol.
+This is hands-on, one-on-one guidance. Not a generic protocol.
 
 ## Ready to See the Full Picture?
 
 If you've been told your thyroid is fine but your body is telling you something else, you have options. The Wellness Way - Mason serves patients across Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area.
 
-We don't guess — we test. And we treat your thyroid like the central regulator it actually is, not a single number on a panel.
+We don't guess: we test. And we approach your thyroid like the central regulator it actually is, not a single number on a panel.
 
-[Schedule a Discovery Consultation](https://neoplatform.com/dd6a54e3c98/self-registration) — let's start asking the right questions.
+[Schedule a Discovery Consultation](https://neoplatform.com/dd6a54e3c98/self-registration), let's start asking the right questions.

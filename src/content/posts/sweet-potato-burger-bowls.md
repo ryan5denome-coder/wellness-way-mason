@@ -4,7 +4,7 @@ date: 2025-04-21
 author: "Dr. Ryan DeNome, DC"
 excerpt: "Welcome back for another #ModayMealInspo"
 image: "/images/posts/sweet-potato-bowl.jpg"
-imageAlt: "Colorful Buddha-style bowl with kale, quinoa, pistachios and nectarines"
+imageAlt: "Colorful Buddha-style grain bowl with leafy greens, quinoa, and fresh produce"
 categories: [recipes]
 readTime: 2 min read
 complianceReviewed: false
@@ -13,13 +13,13 @@ seoTitle: Easy Sweet Potato Burger Bowls
 seoDescription: "Easy, healthy sweet potato burger bowls perfect for meal prep. A gut-friendly recipe from The Wellness Way - Mason, Ohio."
 ---
 
-Welcome back for another [#ModayMealInspo](https://www.thewellnesswaymason.com/blog/hashtags/ModayMealInspo)
+Welcome back for another [#ModayMealInspo](https://www.thewellnesswaymason.com/blog/hashtags/ModayMealInspo).
 
-Looking for a meal that satisfies your taste buds **_and_** supports your wellness journey? Meet your new favorite go-to: the **Sweet Potato Burger Bowl**. This dish is perfect for busy weeknights or meal prepping ahead! We eat this on a regular rotation and it beats having a burger on a regular old bun.
+Looking for a meal that satisfies your taste buds **_and_** fits how we eat at the clinic? Meet your new favorite go-to: the **Sweet Potato Burger Bowl**. This dish is perfect for busy weeknights or meal prepping ahead! We eat this on a regular rotation and it beats having a burger on a regular old bun.
 
-At **The Wellness Way - Mason**, we believe in fueling your body with food that supports healing, energy, and whole-body health. This bowl checks all those boxes (and then some!).
+At **The Wellness Way - Mason**, we believe in fueling your body with food that supports steady energy, digestion, and how you feel day to day. This bowl checks all those boxes (and then some!).
 
-## 📝 Ingredients ( for 2 servings)
+## 📝 Ingredients (for 2 servings)
 
 **For the Bowl:**
 
@@ -39,13 +39,13 @@ At **The Wellness Way - Mason**, we believe in fueling your body with food that 
 
 - 1/2 red onion, thinly sliced - could sub this out for pickled onions
 
-- Goat cheese- can be whatever kind
+- Goat cheese — any kind you like
 
 - Optional: cherry tomatoes, pickles, sauerkraut, plantain chips for a crunch, bacon, pepper jelly
 
 **For the Dressing:**
 
-- 1/4 cup avocado mayo veganaise (or olive oil-based mayo)
+- 1/4 cup avocado-oil mayo or Vegenaise (or olive oil-based mayo)
 
 - 1 tbsp Dijon mustard
 
@@ -57,7 +57,7 @@ At **The Wellness Way - Mason**, we believe in fueling your body with food that 
 
 - Salt & pepper to taste
 
-- a dash of onion powder
+- A dash of onion powder
 
 ## 🍳 Instructions
 
@@ -65,7 +65,7 @@ At **The Wellness Way - Mason**, we believe in fueling your body with food that 
 
 2. **Cook the Burger Meat:** While the potatoes are roasting, brown your ground beef or turkey in a skillet over medium heat. Add garlic powder, salt, and any seasonings you love. Cook until fully done, then set aside.
 
-3. **Make the Dressing:** In a small bowl, whisk together mayo, mustard, ketchup, apple cider vinegar, and honey. Add salt and pepper and onion powder to taste. Adjust for your perfect balance of tangy and creamy.
+3. **Make the Dressing:** In a small bowl, whisk together mayo, mustard, ketchup, apple cider vinegar, and honey. Season with salt, pepper, and a dash of onion powder to taste. Adjust for your perfect balance of tangy and creamy.
 
 4. **Assemble Your Bowl:** Start with a bed of greens, then layer on roasted sweet potatoes, your seasoned burger meat, avocado slices, red onion, and any toppings you love. Drizzle with your creamy dressing and dig in!
 
@@ -73,7 +73,7 @@ At **The Wellness Way - Mason**, we believe in fueling your body with food that 
 
 - **Want a low-carb version?** Sub cauliflower rice or extra greens for the sweet potatoes.
 
-- **Add probiotics:** Sauerkraut or pickles bring that gut-friendly goodness.
+- **Add probiotics:** Sauerkraut or pickles add gut-friendly fermentation.
 
 - **Batch it:** Double the recipe for lunch leftovers or a quick dinner later in the week.
 

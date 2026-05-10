@@ -1,5 +1,5 @@
 ---
-title: Sheep Yogurt Parfait 
+title: Sheep Yogurt Parfait
 date: 2025-04-07
 author: "Dr. Ryan DeNome, DC"
 excerpt: "Changing your diet due to food allergies doesn't mean saying goodbye to the meals you love—it just means getting creative with your choices. One of the best things about living in today's world of wellness is that there are more alternatives than ever, and many of them are surpri…"
@@ -9,7 +9,7 @@ categories: [recipes, gut-health]
 readTime: 1 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/sheep-yogurt-parfait"
-seoTitle: Sheep Yogurt Parfait 
+seoTitle: Sheep Yogurt Parfait
 seoDescription: Changing your diet for food allergies? Try this easy sheep yogurt parfait recipe from The Wellness Way - Mason.
 ---
 
@@ -33,7 +33,7 @@ Here's a simple recipe I use whenever I'm craving a yogurt parfait:
 - A spoonful of raw honey
 - A scoop of Nordic Naturals collagen powder
 
-**Note:** you can add another scoop of protein powder, but make sure the ratio of yogurt to powder is adjusted.
+**Note:** You can add another scoop of protein powder, but make sure the ratio of yogurt to powder is adjusted.
 
 ## A Note on Food Sensitivities
 
@@ -43,7 +43,6 @@ If you've been told dairy "should be fine" but you still feel off after eating i
 
 - **[Digestive Issues](/conditions/digestive-issues)**
 - **[Hidden Allergies](/conditions/allergies)**
-
 
 [![Why Kids Struggle After School: The Hidden Connection Between Homework Battles, Emotions, Gut Health & Chiropractic Care](/images/posts/kids-after-school.jpg)](/post/why-kids-struggle-after-school-the-hidden-connection-between-homework-battles-emotions-gut-health)
 

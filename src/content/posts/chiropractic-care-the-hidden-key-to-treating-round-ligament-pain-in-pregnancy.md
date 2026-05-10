@@ -65,7 +65,7 @@ If you're struggling with round ligament pain or want to stay proactive with you
 
 **Ready to experience relief?**
 
-Call us today at [283-223-8376](https://share.google/y6sSlIxJgdW0UyFqX) or **schedule your prenatal consultation** [**online**](https://neoplatform.com/dd6a54e3c98/self-registration) to support a healthier, more comfortable pregnancy.
+Call us today at [283-223-8376](/contact) or **schedule your prenatal consultation** [**online**](https://neoplatform.com/dd6a54e3c98/self-registration) to support a healthier, more comfortable pregnancy.
 
 ## Related at The Wellness Way - Mason
 

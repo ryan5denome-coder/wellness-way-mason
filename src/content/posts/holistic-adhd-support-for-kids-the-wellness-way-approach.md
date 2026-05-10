@@ -13,13 +13,15 @@ seoTitle: "Holistic ADHD Support for Kids: The Wellness Way Approach"
 seoDescription: "Is your child struggling to focus in school? Discover holistic ADHD support for kids with The Wellness Way - Mason—using specialized testing, natural herbs, and nutrition to restore balance and improve focus naturally."
 ---
 
-Is your child struggling to sit still in class, pay attention, or complete homework? ADHD is often blamed when kids have trouble focusing in school, but at **The Wellness Way**, we see these behaviors as _signals_—clues that something deeper in the body is out of balance. Instead of just masking symptoms with medication, we dig into the underlying drivers and provide holistic, natural support so your child can thrive.
+Is your child struggling to sit still in class, pay attention, or complete homework? ADHD is often blamed when kids have trouble focusing in school, but at **The Wellness Way**, we see these behaviors as _signals_—clues that something deeper in the body is out of balance. Rather than focusing only on symptom management, we look at the 3 T's — Traumas, Toxins, and Thoughts — and provide holistic, natural support so your child can thrive.
+
+> **Important:** ADHD is a clinical diagnosis made by a qualified medical or mental-health provider. The Wellness Way - Mason does **not** diagnose, treat, or cure ADHD, and we do not adjust or replace prescription medications. Our role is supportive — we work alongside your child's pediatrician, psychiatrist, and any other prescribing providers. Always consult your child's medical team before making changes to medication or treatment.
 
 ## Why Kids Struggle to Focus in School
 
 When children can't focus, act out, or have trouble staying on task, the issue isn't always "bad behavior." Their brains may be overwhelmed by inflammation, hidden food sensitivities, gut imbalances, or even stress on the nervous system. These underlying issues can make learning, concentration, and emotional regulation nearly impossible.
 
-That's why our motto at The Wellness Way is simple: **"We don't guess—we test."**
+That's why our motto at The Wellness Way is simple: **"We don't guess — we test."**
 
 ## Testing That Makes the Difference
 
@@ -31,13 +33,13 @@ Every child's body is different, so we run specialized labs to uncover what's dr
 
 - **Toxin & Heavy Metal Testing** – Environmental exposures may be interfering with brain development.
 
-- **(If youre an adult) Hormone & Adrenal Testing** – Stress hormones like cortisol can affect focus, energy, and sleep.
+- **(If you're an adult) Hormone & Adrenal Testing** – Stress hormones like cortisol can affect focus, energy, and sleep.
 
-Once we know what's stressing your child's body, we create a personalized plan for healing!
+Once we know what's stressing your child's body, we build a personalized health restoration plan that works alongside your child's pediatrician and prescribers.
 
 ## Herbs for ADHD Support – The Wellness Way Favorites
 
-At The Wellness Way, we use carefully selected herbal remedies that naturally calm the nervous system and support healthy brain function. These aren't quick fixes—they help bring the body back into balance so kids can concentrate, learn, and thrive.
+At The Wellness Way, we use carefully selected herbal remedies that naturally calm the nervous system and support healthy brain function. These aren't quick fixes—they help bring the body back into balance to support concentration, learning, and overall wellbeing.
 
 - **Bacopa** – Supports memory, concentration, and learning.
 
@@ -45,15 +47,12 @@ At The Wellness Way, we use carefully selected herbal remedies that naturally ca
 
 - **Chamomile** – Naturally calming, helpful for restlessness and irritability.
 
-- **Ashwagandha** – Reduces stress and supports balanced cortisol levels.\
+- **Ashwagandha** – Reduces stress and supports balanced cortisol levels.
+- **Chaga** – Mushroom traditionally used to support immune resilience.
 
-- **Chaga**
+- **Cod Liver Oil** – Source of omega-3 fatty acids and vitamins A and D for brain support.
 
-- **Cod Liver Oil**
-
-Holistic ADHD support for kids
-
-These herbs, paired with the right nutrition and testing, give children the natural support their bodies need to function better at school and at home.
+These herbs, paired with the right nutrition and testing, may help support children's daily function at school and at home as part of a broader care plan.
 
 ## Nutrition & Lifestyle for Better Focus
 
@@ -69,13 +68,11 @@ Alongside herbs, simple changes can make a big difference:
 
 ## The Wellness Way Difference
 
-We don't label kids or just manage symptoms—we uncover the _why_ behind ADHD struggles and create a custom care plan. With targeted testing, natural herbs, and holistic support, children can regain focus, improve behavior, and feel better in their own bodies.
+We don't label kids or just manage symptoms—we uncover the _why_ behind ADHD struggles and create a custom care plan. With targeted testing, natural herbs, and holistic support, many children experience improved focus, calmer behavior, and better day-to-day comfort. Individual results vary, and we work alongside your child's pediatric and psychiatric care team — not in place of them.
 
 If your child is struggling to focus in school, let us help you find the answers!
 
-holistic ADHD support for kids
-
-[Call](https://share.google/yvg8ad3t2ggY9Wkmx) us today!
+[Call (283) 223-8376](tel:+12832238376) us today!
 
 ## Related at The Wellness Way - Mason
 

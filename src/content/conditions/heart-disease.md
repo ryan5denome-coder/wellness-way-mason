@@ -18,9 +18,9 @@ testingPanels:
   - "TWW Basic Panel"
 ---
 
-If your cardiologist told you your cholesterol is "borderline" and reached for the prescription pad — pause for a moment.
+If your cardiologist told you your cholesterol is "borderline" and reached for the prescription pad. Pause for a moment.
 
-Heart disease is the leading cause of death in this country, and most of the time it shows up without warning. Standard lipid panels and blood pressure readings catch a piece of the picture — but only a piece. At The Wellness Way - Mason, we believe your heart deserves more than a snapshot of total cholesterol and a one-size-fits-all decision.
+Heart disease is the leading cause of death in this country, and most of the time it shows up without warning. Standard lipid panels and blood pressure readings catch a piece of the picture: but only a piece. At The Wellness Way - Mason, we believe your heart deserves more than a snapshot of total cholesterol and a one-size-fits-all decision.
 
 You are not a number. Your heart is a system, and systems have signals that show up well before a problem becomes an emergency.
 
@@ -34,7 +34,7 @@ Some of these are obvious. Some are easy to miss because they don't *feel* like 
 - **Blood pressure that creeps up** despite lifestyle changes
 - **Belly fat that won't move** plus blood sugar drift
 - **Brain fog or short-term memory changes** (often vascular before they're cognitive)
-- **Anxiety that feels physical** — racing heart, chest tightness, but cardiology says it's fine
+- **Anxiety that feels physical**, racing heart, chest tightness, but cardiology says it's fine
 
 ## What Most Doctors Miss
 
@@ -44,12 +44,12 @@ Here's the problem: **cholesterol particle size matters more than cholesterol qu
 
 A complete cardiometabolic picture asks better questions:
 
-- **Particle size and number** (LDL-P, small dense LDL) — who's actually at risk?
+- **Particle size and number** (LDL-P, small dense LDL). Who's actually at risk?
 - **Inflammation markers** (hs-CRP, fibrinogen, homocysteine) — is the artery wall under attack?
-- **Insulin sensitivity** (fasting insulin, HbA1c) — blood sugar dysregulation drives more cardiovascular damage than cholesterol does, and it's often present 5–10 years before a diabetes diagnosis
-- **Lipoprotein(a)** — a genetic risk factor your doctor probably hasn't tested
-- **Omega-3 index** — low levels strongly predict cardiac events; cheap supplement fix when caught
-- **Thyroid + adrenal patterns** — both directly affect lipid metabolism
+- **Insulin sensitivity** (fasting insulin, HbA1c). Blood sugar dysregulation drives more cardiovascular damage than cholesterol does, and it's often present 5–10 years before a diabetes diagnosis
+- **Lipoprotein(a):** a genetic risk factor your doctor probably hasn't tested
+- Omega-3 index. Low levels strongly predict cardiac events; cheap supplement fix when caught
+- **Thyroid + adrenal patterns**: both directly affect lipid metabolism
 
 When we run the cardiometabolic panel, we frequently find inflammation, insulin resistance, or particle issues that explain the picture far better than total cholesterol alone.
 
@@ -57,40 +57,40 @@ When we run the cardiometabolic panel, we frequently find inflammation, insulin 
 
 Cardiovascular dysfunction rarely happens in isolation. The Wellness Way 3 T's framework:
 
-- **Toxins** — environmental exposures, oxidized seed oils, refined sugar, and chronic low-grade infections all drive arterial inflammation. The arterial wall is one of the most chemically reactive surfaces in the body.
-- **Thoughts** — chronic stress raises cortisol and blood pressure, increases clotting tendency, and reshapes the cardiac rhythm. Sustained over years, the cardiovascular cost is real.
-- **Traumas** — physical inactivity, poor sleep posture, and the cumulative load of structural compensation patterns all show up in heart-rate variability and vascular tone.
+- **Toxins:** environmental exposures, oxidized seed oils, refined sugar, and chronic low-grade infections all drive arterial inflammation. The arterial wall is one of the most chemically reactive surfaces in the body.
+- Thoughts. Chronic stress raises cortisol and blood pressure, increases clotting tendency, and reshapes the cardiac rhythm. Sustained over years, the cardiovascular cost is real.
+- **Traumas**, physical inactivity, poor sleep posture, and the cumulative load of structural compensation patterns all show up in heart-rate variability and vascular tone.
 
-You may have one of these driving the bus. You may have all three. **The point isn't to guess — it's to test.**
+You may have one of these driving the bus. You may have all three. **The point isn't to guess. It's to test.**
 
 ## Our Testing Approach
 
 Tests are recommended, never required. We walk through cost and rationale before ordering anything. Common panels for cardiovascular concerns:
 
-- **Cardiometabolic Panel** — particle sizes, advanced lipids, inflammation markers
-- **Fasting insulin + HbA1c** — the early-warning system standard panels skip
+- **Cardiometabolic Panel:** particle sizes, advanced lipids, inflammation markers
+- Fasting insulin + HbA1c. The early-warning system standard panels skip
 - **Lipoprotein(a)** — once-in-a-lifetime test for genetic risk
-- **Omega-3 index** — cheap, often dramatically low
-- **Comprehensive thyroid panel** — both hyper and hypo states affect cardiovascular risk
-- **Blood pressure tracking pattern** — single-visit readings miss white-coat artifact
+- **Omega-3 index:** cheap, often dramatically low
+- Comprehensive thyroid panel. Both hyper and hypo states affect cardiovascular risk
+- **Blood pressure tracking pattern**. Single-visit readings miss white-coat artifact
 
 ## Working Alongside Your Medical Team
 
 This is critical: **if you're already on a statin, blood pressure medication, or any cardiovascular drug, we don't change it.** Medication decisions stay with your prescribing physician.
 
-Our role is different. We help you understand what's actually driving the numbers. Sometimes our testing reveals that the conventional approach is exactly right and you should stay the course. Sometimes it reveals that a vitamin deficiency, a thyroid issue, or insulin resistance is the bigger story — and your doctor can use that information to make a better-informed decision over time.
+Our role is different. We help you understand what's actually driving the numbers. Sometimes our testing reveals that the conventional approach is exactly right and you should stay the course. Sometimes it reveals that a vitamin deficiency, a thyroid issue, or insulin resistance is the bigger story: and your doctor can use that information to make a better-informed decision over time.
 
-We work alongside your cardiologist, primary care, and any specialist on your care team — not in place of them. Cardiovascular disease is too serious for a standalone alternative-medicine approach. We complement, we don't replace.
+We work alongside your cardiologist, primary care, and any specialist on your care team, not in place of them. Cardiovascular disease is too serious for a standalone alternative-medicine approach. We complement, we don't replace.
 
 ## What a Health Restoration Plan May Include
 
 After we have your full results, we build a personalized plan. For cardiovascular concerns, that often involves:
 
-- **Targeted nutrition** — addressing inflammatory triggers, oxidized fats, blood sugar
-- **Specific supplementation** — omega-3, magnesium, CoQ10 (especially if on a statin), niacin where appropriate
-- **Movement and stress patterns** — both directly affect inflammation and HRV
-- **Chiropractic care** — supports nervous system regulation that affects cardiac rhythm
-- **Coordination with your physician** — so the picture stays integrated
+- **Targeted nutrition:** addressing inflammatory triggers, oxidized fats, blood sugar
+- Specific supplementation. Omega-3, magnesium, CoQ10 (especially if on a statin), niacin where appropriate
+- **Movement and stress patterns**. Both directly affect inflammation and HRV
+- **Chiropractic care:** supports nervous system regulation that affects cardiac rhythm
+- Coordination with your physician. So the picture stays integrated
 
 This is hands-on, one-on-one guidance — not a generic protocol.
 
@@ -98,4 +98,4 @@ This is hands-on, one-on-one guidance — not a generic protocol.
 
 If your heart deserves more than a quick prescription, you have options. The Wellness Way - Mason serves patients across Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area. We don't replace your cardiologist. We help you and your doctor see the whole story.
 
-[Schedule a Discovery Consultation](https://neoplatform.com/dd6a54e3c98/self-registration) — let's start asking the right questions.
+[Schedule a Discovery Consultation](https://neoplatform.com/dd6a54e3c98/self-registration). Let's start asking the right questions.
