@@ -4,6 +4,7 @@ import { clinic, site } from '../lib/site';
 import { jsonLdString, localBusiness } from '../lib/schema';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import PageLoader from '../components/PageLoader.astro';
 
 interface Props {
   title: string;
@@ -94,6 +95,7 @@ const allJsonLd = skipDefaultSchema ? jsonLd : [localBusiness(), ...jsonLd];
     <slot name="head" />
   </head>
   <body>
+    <PageLoader />
     <a href="#main" class="skip-link">Skip to main content</a>
     <Header />
     <main id="main">
