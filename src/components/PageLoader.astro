@@ -22,13 +22,14 @@
 ---
 
 <div id="page-loader" class="page-loader" aria-hidden="true">
-  <svg
-    class="loader-svg"
-    viewBox="0 -10 250 200"
-    xmlns="http://www.w3.org/2000/svg"
-    role="img"
-    aria-label="The Wellness Way - Mason"
-  >
+  <div class="loader-stack">
+    <svg
+      class="loader-svg"
+      viewBox="0 -10 250 200"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="The Wellness Way - Mason"
+    >
     <!-- Top-left gray piece — flat top, flat left, KNOB right, flat bottom -->
     <path
       class="piece piece-gray"
@@ -83,7 +84,10 @@
 
     <!-- TWW wordmark inside green piece -->
     <text class="tww-text" x="94" y="120" text-anchor="middle">TWW</text>
-  </svg>
+    </svg>
+
+    <p class="loader-tagline">We don't guess <span class="dash">—</span> we test.</p>
+  </div>
 </div>
 
 <script>
@@ -93,8 +97,9 @@
   const loader = document.getElementById('page-loader');
   const pieces = loader?.querySelectorAll<SVGPathElement>('.piece');
   const tww = loader?.querySelector<SVGTextElement>('.tww-text');
+  const tagline = loader?.querySelector<HTMLParagraphElement>('.loader-tagline');
 
-  if (loader && pieces && pieces.length === 4 && tww) {
+  if (loader && pieces && pieces.length === 4 && tww && tagline) {
     const alreadyShown = sessionStorage.getItem(KEY) === '1';
     const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -111,6 +116,8 @@
         path.style.fillOpacity = '0';
       });
       tww.style.opacity = '0';
+      tagline.style.opacity = '0';
+      tagline.style.transform = 'translateY(8px)';
 
       const timeline = createTimeline({
         defaults: { ease: 'inOutQuad' },
@@ -138,8 +145,15 @@
       timeline.add(pieces, { fillOpacity: 1, duration: 320 }, 1100);
       timeline.add(tww, { opacity: 1, duration: 280, ease: 'outQuad' }, 1300);
 
-      // Brief hold so the completed logo registers before the overlay fades
-      timeline.add({ duration: 300 });
+      // Tagline lifts in from below as the closing beat
+      timeline.add(
+        tagline,
+        { opacity: 1, translateY: 0, duration: 420, ease: 'outQuad' },
+        1450,
+      );
+
+      // Hold so the completed brand mark + tagline register before fade-out
+      timeline.add({ duration: 500 });
     }
   } else if (loader) {
     // SVG missing or malformed — bail out gracefully
@@ -168,10 +182,35 @@
     pointer-events: auto;
   }
 
+  .loader-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
   .loader-svg {
     width: clamp(220px, 50vw, 440px);
     height: auto;
     display: block;
+  }
+
+  .loader-tagline {
+    margin: 0;
+    color: var(--color-brand-primary-dark, #5e8a30);
+    font-family: var(--font-display, 'Lora', Georgia, serif);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .loader-tagline .dash {
+    color: var(--color-brand-primary, #80b741);
+    font-style: normal;
+    padding: 0 0.15em;
   }
 
   /* Puzzle piece base style — stroke draws first, then fill comes in */
