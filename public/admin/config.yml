@@ -305,6 +305,7 @@ collections:
           - { label: Booking URL (Neo Platform), name: bookingUrl, widget: string, default: "https://neoplatform.com/dd6a54e3c98/self-registration" }
           - { label: Facebook URL, name: facebookUrl, widget: string, required: false }
           - { label: Instagram URL, name: instagramUrl, widget: string, required: false }
+          - { label: YouTube URL, name: youtubeUrl, widget: string, required: false }
           - { label: LinkedIn URL (Dr. Ryan), name: linkedinUrl, widget: string, required: false }
           - { label: GA4 measurement ID, name: ga4Id, widget: string, required: false, hint: "e.g., 'G-XXXXXXXXXX'. Set after launch." }
           - { label: Meta Pixel ID, name: metaPixelId, widget: string, required: false }

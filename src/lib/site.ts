@@ -27,6 +27,7 @@ interface ClinicYaml {
   bookingUrl: string;
   facebookUrl?: string;
   instagramUrl?: string;
+  youtubeUrl?: string;
   linkedinUrl?: string;
   ga4Id?: string;
   metaPixelId?: string;
@@ -148,6 +149,7 @@ export const clinic = {
   social: {
     facebook: settings.facebookUrl ?? '',
     instagram: settings.instagramUrl ?? '',
+    youtube: settings.youtubeUrl ?? '',
     linkedin: settings.linkedinUrl ?? '',
   },
 

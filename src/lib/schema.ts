@@ -52,6 +52,7 @@ export function localBusiness(opts: { url?: string; image?: string } = {}): Json
     sameAs: [
       clinic.social.facebook,
       clinic.social.instagram,
+      clinic.social.youtube,
       clinic.social.linkedin,
       clinic.gbpUrl,
       clinic.parentBrandUrl,
