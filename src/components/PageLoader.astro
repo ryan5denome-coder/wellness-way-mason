@@ -1,15 +1,18 @@
 ---
 /**
- * PageLoader — first-visit puzzle-piece "draw-in" loader.
+ * PageLoader — first-visit brand loader.
  *
- * Sequence (~1.6s):
- *   1. Brand-cream overlay paints immediately (visible before JS attaches).
- *   2. Four puzzle pieces draw their outlines in via stroke animation,
- *      staggered slightly so the eye follows the pen.
- *   3. As each outline completes, the piece fills with its brand color
- *      (gray for the top row, green for the TWW piece).
- *   4. The "TWW" wordmark inside the green piece fades in last.
- *   5. The whole overlay fades out and unblocks the page.
+ * Shows the real Wellness Way logo with a soft fade-in + scale + bounce,
+ * then the "Do Health Differently" tagline rises in below it, holds a beat,
+ * and the overlay fades out.
+ *
+ * Sequence (~1.4s total):
+ *   1. Cream overlay paints immediately.
+ *   2. Logo fades in from scale 0.7 → 1.0 with a soft outBack (700ms).
+ *   3. Logo settles with a tiny scale pulse (1.0 → 1.025 → 1.0, 360ms).
+ *   4. Tagline lifts in from below (420ms).
+ *   5. Brief hold so the brand registers.
+ *   6. Overlay fades out and unblocks the page (380ms).
  *
  * Gates:
  *   - sessionStorage: shows ONLY on first visit per browser session.
@@ -17,76 +20,22 @@
  *   - <noscript>: hides loader if JS disabled.
  *   - 4s hard timeout: emergency fade-out so the loader never blocks forever.
  *
- * Tech: anime.js v4 stroke-dasharray draw, ~17 KB min+gzip, loaded only here.
+ * Tech: anime.js v4 (~17 KB min+gzip), loaded only in this component.
  */
 ---
 
 <div id="page-loader" class="page-loader" aria-hidden="true">
   <div class="loader-stack">
-    <svg
-      class="loader-svg"
-      viewBox="0 -10 250 200"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="The Wellness Way - Mason"
-    >
-    <!-- Top-left gray piece — flat top, flat left, KNOB right, flat bottom -->
-    <path
-      class="piece piece-gray"
-      data-idx="0"
-      d="M 4 4
-         L 64 4
-         L 64 26
-         C 76 26 76 50 64 50
-         L 64 76
-         L 4 76 Z"
+    <img
+      class="loader-logo"
+      src="/images/brand/tww-logo.png"
+      alt=""
+      width="640"
+      height="240"
+      fetchpriority="high"
+      decoding="sync"
     />
-
-    <!-- Top-mid gray piece — NOTCH left, KNOB right, KNOB bottom, flat top -->
-    <path
-      class="piece piece-gray"
-      data-idx="1"
-      d="M 64 4
-         L 124 4
-         L 124 26
-         C 136 26 136 50 124 50
-         L 124 76
-         L 100 76
-         C 100 88 76 88 76 76
-         L 64 76
-         L 64 50
-         C 76 50 76 26 64 26 Z"
-    />
-
-    <!-- Top-right gray piece — NOTCH left, flat right, flat top, flat bottom -->
-    <path
-      class="piece piece-gray"
-      data-idx="2"
-      d="M 124 4
-         L 184 4
-         L 184 76
-         L 124 76
-         L 124 50
-         C 136 50 136 26 124 26 Z"
-    />
-
-    <!-- Green TWW piece — NOTCH top (where top-mid's bottom knob fits), all other edges flat -->
-    <path
-      class="piece piece-green"
-      data-idx="3"
-      d="M 64 76
-         L 76 76
-         C 76 88 100 88 100 76
-         L 124 76
-         L 124 148
-         L 64 148 Z"
-    />
-
-    <!-- TWW wordmark inside green piece -->
-    <text class="tww-text" x="94" y="120" text-anchor="middle">TWW</text>
-    </svg>
-
-    <p class="loader-tagline">We don't guess <span class="dash">—</span> we test.</p>
+    <p class="loader-tagline">Do Health Differently.</p>
   </div>
 </div>
 
@@ -95,11 +44,10 @@
 
   const KEY = 'tww-mason-loader-shown';
   const loader = document.getElementById('page-loader');
-  const pieces = loader?.querySelectorAll<SVGPathElement>('.piece');
-  const tww = loader?.querySelector<SVGTextElement>('.tww-text');
+  const logo = loader?.querySelector<HTMLImageElement>('.loader-logo');
   const tagline = loader?.querySelector<HTMLParagraphElement>('.loader-tagline');
 
-  if (loader && pieces && pieces.length === 4 && tww && tagline) {
+  if (loader && logo && tagline) {
     const alreadyShown = sessionStorage.getItem(KEY) === '1';
     const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -108,19 +56,13 @@
     } else {
       sessionStorage.setItem(KEY, '1');
 
-      // Set every piece to "undrawn" state: stroke ready, fill transparent
-      pieces.forEach((path) => {
-        const len = path.getTotalLength();
-        path.style.strokeDasharray = `${len}`;
-        path.style.strokeDashoffset = `${len}`;
-        path.style.fillOpacity = '0';
-      });
-      tww.style.opacity = '0';
+      // Set initial state via inline styles (paints before anime takes over)
+      logo.style.opacity = '0';
+      logo.style.transform = 'scale(0.7) translateY(20px)';
       tagline.style.opacity = '0';
-      tagline.style.transform = 'translateY(8px)';
+      tagline.style.transform = 'translateY(12px)';
 
       const timeline = createTimeline({
-        defaults: { ease: 'inOutQuad' },
         onComplete: () => {
           animate(loader, {
             opacity: 0,
@@ -131,32 +73,33 @@
         },
       });
 
-      // Pen-draws each piece outline with a slight stagger
-      pieces.forEach((path, i) => {
-        timeline.add(
-          path,
-          { strokeDashoffset: 0, duration: 700, ease: 'outQuad' },
-          i * 200, // stagger 200ms between piece starts
-        );
+      // Logo: fade in + scale up + soft bounce in place
+      timeline.add(logo, {
+        opacity: 1,
+        scale: 1,
+        translateY: 0,
+        duration: 700,
+        ease: 'outBack(1.2)',
       });
 
-      // After the last stroke finishes (i * 200 + 700 for i=3 → 1300ms),
-      // fade in fills together. Then the TWW wordmark fades in.
-      timeline.add(pieces, { fillOpacity: 1, duration: 320 }, 1100);
-      timeline.add(tww, { opacity: 1, duration: 280, ease: 'outQuad' }, 1300);
+      // Logo settles with a tiny scale pulse
+      timeline.add(logo, {
+        scale: [1, 1.025, 1],
+        duration: 360,
+        ease: 'inOutQuad',
+      });
 
-      // Tagline lifts in from below as the closing beat
+      // Tagline rises in from below
       timeline.add(
         tagline,
         { opacity: 1, translateY: 0, duration: 420, ease: 'outQuad' },
-        1450,
+        '-=200',
       );
 
-      // Hold so the completed brand mark + tagline register before fade-out
-      timeline.add({ duration: 500 });
+      // Hold so the eye registers the brand mark + tagline before fade-out
+      timeline.add({ duration: 450 });
     }
   } else if (loader) {
-    // SVG missing or malformed — bail out gracefully
     loader.style.display = 'none';
   }
 
@@ -186,13 +129,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
+    max-width: 80vw;
+    max-height: 80vh;
   }
 
-  .loader-svg {
-    width: clamp(220px, 50vw, 440px);
+  .loader-logo {
+    width: clamp(220px, 50vw, 480px);
     height: auto;
     display: block;
+    transform-origin: center center;
   }
 
   .loader-tagline {
@@ -205,39 +151,6 @@
     letter-spacing: 0.01em;
     text-align: center;
     line-height: 1.3;
-  }
-
-  .loader-tagline .dash {
-    color: var(--color-brand-primary, #80b741);
-    font-style: normal;
-    padding: 0 0.15em;
-  }
-
-  /* Puzzle piece base style — stroke draws first, then fill comes in */
-  .piece {
-    fill: transparent;
-    stroke-width: 2.5;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-  }
-
-  .piece-gray {
-    fill: #c9c9c9;
-    stroke: #8a8a8a;
-  }
-
-  .piece-green {
-    fill: #80b741;
-    stroke: #5e8a30;
-  }
-
-  /* TWW wordmark inside the green piece */
-  .tww-text {
-    fill: #ffffff;
-    font-family: 'Inter', system-ui, sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    letter-spacing: 0.04em;
   }
 
   /* Hard fallback: respect reduced-motion preference even without JS */
