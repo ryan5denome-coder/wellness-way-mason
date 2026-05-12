@@ -31,6 +31,47 @@ const schema = articleSchema({
 const dateStr = post.data.date
   ? post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
   : '';
+
+// --- Related content (Semrush "pages with only one internal link" fix, 2026-05-12) ---
+// Posts had no related-content section, so every post got just one inbound link
+// from /blog. Now we auto-pick by category overlap (posts) and a category→condition
+// map (conditions). No frontmatter edits required — pulls from existing categories.
+const allPosts = await getCollection('posts');
+const allConditions = await getCollection('conditions');
+
+const currentCategories = new Set(post.data.categories);
+const relatedPosts = allPosts
+  .filter((p) => p.id !== post.id)
+  .map((p) => ({
+    post: p,
+    score: p.data.categories.filter((c) => currentCategories.has(c)).length,
+  }))
+  .filter((r) => r.score > 0)
+  .sort(
+    (a, b) =>
+      b.score - a.score ||
+      (b.post.data.date?.getTime() ?? 0) - (a.post.data.date?.getTime() ?? 0),
+  )
+  .slice(0, 3)
+  .map((r) => r.post);
+
+const categoryToCondition: Record<string, string> = {
+  'gut-health': 'digestive-issues',
+  hormones: 'hormone-imbalance',
+  autoimmune: 'autoimmune',
+  immune: 'autoimmune',
+  pregnancy: 'hormone-imbalance',
+  'nervous-system': 'mental-health-brain',
+  chiropractic: 'joint-and-muscle-pain',
+};
+const conditionSlugs = new Set<string>();
+post.data.categories.forEach((c) => {
+  const slug = categoryToCondition[c];
+  if (slug) conditionSlugs.add(slug);
+});
+const relatedConditions = allConditions
+  .filter((c) => conditionSlugs.has(c.id))
+  .slice(0, 3);
 ---
 
 <BaseLayout
@@ -81,6 +122,38 @@ const dateStr = post.data.date
       <p class="post-byline">{bylines.reviewed}</p>
     </SectionContainer>
   </article>
+
+  {relatedPosts.length > 0 && (
+    <SectionContainer width="prose" spacing="lg" background="paper-soft">
+      <h2 class="related-heading">More on This Topic</h2>
+      <ul class="related-posts">
+        {relatedPosts.map((p) => (
+          <li>
+            <a href={`/post/${p.id}`}>
+              <strong>{p.data.title}</strong>
+              {p.data.excerpt && <span>{p.data.excerpt}</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </SectionContainer>
+  )}
+
+  {relatedConditions.length > 0 && (
+    <SectionContainer width="prose" spacing="lg">
+      <h2 class="related-heading">Conditions We See Related to This</h2>
+      <ul class="related-conditions">
+        {relatedConditions.map((c) => (
+          <li>
+            <a href={`/conditions/${c.id}`}>
+              <strong>{c.data.title}</strong>
+              <span>{c.data.excerpt}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </SectionContainer>
+  )}
 
   <SectionContainer width="prose" spacing="lg" background="paper-soft">
     <div class="post-cta">
@@ -181,6 +254,45 @@ const dateStr = post.data.date
     max-width: 50ch;
     margin: 0 auto 2rem;
     color: var(--color-ink-muted);
+  }
+  .related-heading {
+    font-size: var(--text-2xl);
+    margin: 0 0 1.5rem;
+    color: var(--color-brand-primary-dark);
+  }
+  .related-posts,
+  .related-conditions {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .related-posts a,
+  .related-conditions a {
+    display: block;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .related-posts a:hover,
+  .related-conditions a:hover {
+    background: var(--color-paper-warm-tint);
+    border-color: var(--color-brand-primary);
+  }
+  .related-posts strong,
+  .related-conditions strong {
+    color: var(--color-brand-primary-dark);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .related-posts span,
+  .related-conditions span {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    line-height: 1.5;
   }
   @media (min-width: 768px) {
     .post-header h1 { font-size: var(--text-5xl); }

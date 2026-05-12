@@ -18,6 +18,17 @@ const posts = (await getCollection('posts')).sort((a, b) => {
 const allCategories = Array.from(
   new Set(posts.flatMap((p) => p.data.categories ?? []))
 ).sort();
+
+// Upcoming community events — surfaced on /blog so engaged readers see live
+// gatherings, AND so event pages get a second inbound internal link (Semrush fix).
+const now = new Date();
+const upcomingEvents = (await getCollection('events'))
+  .filter((e) => {
+    const end = e.data.endDate ?? e.data.date;
+    return e.data.recurring || !end || end >= now;
+  })
+  .sort((a, b) => (a.data.date?.getTime() ?? 0) - (b.data.date?.getTime() ?? 0))
+  .slice(0, 3);
 ---
 
 <BaseLayout
@@ -66,6 +77,26 @@ const allCategories = Array.from(
     </div>
   </SectionContainer>
 
+  {upcomingEvents.length > 0 && (
+    <SectionContainer width="default" spacing="md">
+      <div class="events-strip">
+        <h2>Join Us In Person</h2>
+        <p class="events-intro">Community gatherings at {clinic.brandName}. Free, open to all — bring a friend.</p>
+        <ul class="events-list">
+          {upcomingEvents.map((evt) => (
+            <li>
+              <a href={`/event-details/${evt.id}`}>
+                <strong>{evt.data.title}</strong>
+                {evt.data.excerpt && <span>{evt.data.excerpt}</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="events-more"><a href="/events">See all events &rarr;</a></p>
+      </div>
+    </SectionContainer>
+  )}
+
   <SectionContainer width="default" spacing="lg" background="paper-soft">
     <NewsletterSignup />
   </SectionContainer>
@@ -101,6 +132,56 @@ const allCategories = Array.from(
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
+  .events-strip h2 {
+    font-size: var(--text-2xl);
+    margin: 0 0 0.5rem;
+    color: var(--color-brand-primary-dark);
+  }
+  .events-intro {
+    color: var(--color-ink-muted);
+    margin: 0 0 1.5rem;
+  }
+  .events-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .events-list a {
+    display: block;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    height: 100%;
+  }
+  .events-list a:hover {
+    background: var(--color-paper-warm-tint);
+    border-color: var(--color-brand-primary);
+  }
+  .events-list strong {
+    color: var(--color-brand-primary-dark);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .events-list span {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    line-height: 1.5;
+  }
+  .events-more {
+    margin-top: 1.25rem;
+    font-size: var(--text-sm);
+  }
+  .events-more a {
+    color: var(--color-brand-primary-dark);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .events-more a:hover { text-decoration: underline; }
   @media (min-width: 768px) {
     .blog-hero h1 { font-size: var(--text-5xl); }
   }

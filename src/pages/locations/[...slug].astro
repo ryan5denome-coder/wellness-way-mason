@@ -18,6 +18,14 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
+// Other locations we serve — cross-link to sibling pages.
+// (Semrush "only one internal link" fix, 2026-05-12: each location was only
+// linked from /locations index; this adds 3 inbound links per location page.)
+const allLocations = await getCollection('locations');
+const otherLocations = allLocations
+  .filter((loc) => loc.id !== entry.id)
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+
 // Place schema (locale) — points to the LocalBusiness with @id
 const placeSchema = {
   '@context': 'https://schema.org',
@@ -68,6 +76,26 @@ const placeSchema = {
       <p class="loc-byline">{bylines.reviewed} — Doctor of Chiropractic, {clinic.brandName}</p>
     </SectionContainer>
   </article>
+
+  {otherLocations.length > 0 && (
+    <SectionContainer width="prose" spacing="lg">
+      <h2 class="other-loc-heading">Other Communities We Serve</h2>
+      <p class="other-loc-intro">
+        We see patients from across the greater Cincinnati area. Here are the other communities closest to our Mason office:
+      </p>
+      <ul class="other-locations">
+        {otherLocations.map((loc) => (
+          <li>
+            <a href={`/locations/${loc.id}`}>
+              <strong>{loc.data.locale}, {loc.data.state}</strong>
+              {loc.data.drivingTime && <span class="loc-meta">{loc.data.drivingTime}</span>}
+              <span class="loc-excerpt">{loc.data.excerpt}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </SectionContainer>
+  )}
 
   <SectionContainer width="prose" spacing="lg" background="paper-soft">
     <h2>The Wellness Way - Mason</h2>
@@ -129,5 +157,51 @@ const placeSchema = {
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1.5rem;
+  }
+  .other-loc-heading {
+    font-size: var(--text-2xl);
+    margin: 0 0 1rem;
+    color: var(--color-brand-primary-dark);
+  }
+  .other-loc-intro {
+    color: var(--color-ink-muted);
+    margin: 0 0 1.5rem;
+  }
+  .other-locations {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .other-locations a {
+    display: block;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .other-locations a:hover {
+    background: var(--color-paper-warm-tint);
+    border-color: var(--color-brand-primary);
+  }
+  .other-locations strong {
+    color: var(--color-brand-primary-dark);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .loc-meta {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-brand-primary-dark);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+  .loc-excerpt {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    line-height: 1.5;
   }
 </style>

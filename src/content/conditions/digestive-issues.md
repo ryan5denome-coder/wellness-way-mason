@@ -11,7 +11,7 @@ tts: [toxins, traumas]
 relatedPosts:
   - "you-need-to-increase-stomach-acid-not-suppress-it"
   - "bloating-your-body-s-alarm-bell"
-relatedConditions: [autoimmune, fatigue]
+relatedConditions: [autoimmune, fatigue, acne]
 testingPanels:
   - "Comprehensive stool analysis"
   - "Immuno Food Allergy Test"

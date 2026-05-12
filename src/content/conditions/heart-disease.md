@@ -11,7 +11,7 @@ tts: [toxins, thoughts]
 relatedPosts:
   - "statins-and-heart-health-a-wellness-way-perspective-on-cholesterol-and-cardiovascular-risk"
   - "why-am-i-still-in-pain-even-though-my-tests-are-normal-the-hidden-link-your-doctor-might-be-missi"
-relatedConditions: [hormone-imbalance, fatigue, autoimmune]
+relatedConditions: [hormone-imbalance, fatigue, autoimmune, diabetes]
 testingPanels:
   - "Cardiometabolic Panel (advanced lipids + inflammation)"
   - "Fasting insulin + HbA1c"

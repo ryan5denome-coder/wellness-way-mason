@@ -12,7 +12,7 @@ relatedPosts:
   - "why-am-i-still-in-pain-even-though-my-tests-are-normal-the-hidden-link-your-doctor-might-be-missi"
   - "you-need-to-increase-stomach-acid-not-suppress-it"
   - "why-you-should-get-your-allergies-tested-even-if-you-think-you-know-what-s-bothering-you"
-relatedConditions: [thyroid, fatigue, weight-loss]
+relatedConditions: [thyroid, fatigue, weight-loss, acne, diabetes]
 testingPanels:
   - "DUTCH panel (dried urine sex and adrenal hormones)"
   - "Cardiometabolic Panel"

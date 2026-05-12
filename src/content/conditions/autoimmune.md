@@ -12,7 +12,7 @@ relatedPosts:
   - "rheumatoid-arthritis-is-common-but-not-normal-and-what-to-do-about-it"
   - "how-chiropractic-care-helps-strengthen-your-immune-system"
   - "why-you-should-get-your-allergies-tested-even-if-you-think-you-know-what-s-bothering-you"
-relatedConditions: [thyroid, hormone-imbalance, gut-health]
+relatedConditions: [thyroid, hormone-imbalance, digestive-issues, diabetes]
 testingPanels:
   - "Complete Thyroid Panel with antibodies (TPO, TgAb)"
   - "Immuno Food Allergy Test"
