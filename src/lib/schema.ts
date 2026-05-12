@@ -74,15 +74,11 @@ export function localBusiness(opts: { url?: string; image?: string } = {}): Json
       name: clinic.parentBrand,
       url: clinic.parentBrandUrl,
     },
-    // Lab partners — structured "mentions" so AI engines (Perplexity, ChatGPT search)
-    // can extract the partnership graph from JSON-LD instead of prose only.
-    mentions: [
-      { '@type': 'Organization', name: 'Access Medical Laboratories', url: 'https://www.accessmedlab.com/' },
-      { '@type': 'Organization', name: 'Precision Analytical (DUTCH Test)', url: 'https://dutchtest.com/' },
-      { '@type': 'Organization', name: 'Genova Diagnostics', url: 'https://www.gdx.net/' },
-      { '@type': 'Organization', name: 'ImmunoLabs', url: 'https://www.immunolabs.com/' },
-      { '@type': 'Organization', name: 'Mosaic Diagnostics', url: 'https://mosaicdx.com/' },
-    ],
+    // NOTE: a `mentions` array of lab-partner Organizations used to live here.
+    // Removed 2026-05-12 because Google's LocalBusiness rich-result parser does
+    // not recognize `mentions` on this type — Semrush flagged all pages as
+    // invalid structured data. Lab partners are still surfaced via visible prose
+    // on the homepage and the lab-strip section, which AI engines can still parse.
   };
 }
 

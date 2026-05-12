@@ -69,20 +69,17 @@ const testingCategories = [
   { title: 'Lipid + cardiovascular', summary: 'Advanced markers beyond a basic cholesterol panel.' },
 ];
 
-const medicalBusinessSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'MedicalBusiness',
-  name: clinic.brandName,
-  url: new URL('/our-services', site.url).toString(),
-  description: 'Chiropractic care and health restoration in Mason, OH — two arms of one practice.',
-  parentOrganization: { '@type': 'Organization', name: 'The Wellness Way' },
-};
+// NOTE: a standalone MedicalBusiness schema used to live here. Removed
+// 2026-05-12 because it duplicated the LocalBusiness emitted by BaseLayout
+// without adding @id or address, which caused Semrush to flag every page
+// using this template as having invalid structured data. The
+// LocalBusiness from BaseLayout already covers the business identity.
+// FAQPage schema is still emitted automatically by <FAQAccordion>.
 ---
 
 <BaseLayout
   title="Chiropractic Care & Health Restoration in Mason, OH"
   description="Two arms of one practice in Mason, OH: precise manual chiropractic and comprehensive health restoration with functional lab testing."
-  jsonLd={[medicalBusinessSchema]}
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />

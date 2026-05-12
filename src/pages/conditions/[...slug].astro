@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionContainer from '../../components/SectionContainer.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Button from '../../components/Button.astro';
-import { clinic, owner, site, bylines } from '../../lib/site';
+import { clinic, site, bylines } from '../../lib/site';
 
 export async function getStaticPaths() {
   const conditions = await getCollection('conditions');
@@ -34,21 +34,16 @@ const ttLabels: Record<string, string> = {
   thoughts: 'Thoughts',
 };
 
+// MedicalCondition schema — kept minimal to avoid Google rich-result validation
+// failures. Previously included a `possibleTreatment.provider` MedicalBusiness
+// reference, but Google's parser required a full address on the inline reference;
+// removing it because the parent LocalBusiness from BaseLayout already provides
+// the practice + address entity, and pages don't need a second business block.
 const medicalConditionSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalCondition',
   name: entry.data.title,
   description: entry.data.excerpt,
-  associatedAnatomy: undefined,
-  possibleTreatment: {
-    '@type': 'MedicalTherapy',
-    name: 'Chiropractic care + comprehensive testing + Health Restoration Plan',
-    provider: {
-      '@type': 'MedicalBusiness',
-      '@id': `${site.url}/#localbusiness`,
-      name: clinic.brandName,
-    },
-  },
   url: new URL(`/conditions/${entry.id}`, site.url).toString(),
 };
 ---
