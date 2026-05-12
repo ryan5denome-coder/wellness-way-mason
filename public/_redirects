@@ -32,6 +32,12 @@
 /pages-sitemap.xml /sitemap-index.xml 301
 /event-pages-sitemap.xml /sitemap-index.xml 301
 
+# Conventional /sitemap.xml probe — Astro emits /sitemap-index.xml, but Semrush,
+# Bing, and many auditors hit /sitemap.xml first by convention. 200-status alias
+# so both resolve to the same content (302 would also work; using 200 means the
+# file content is served directly rather than a follow-the-redirect step).
+/sitemap.xml /sitemap-index.xml 200
+
 # Post slug renames (preserve any inbound Wix-era equity)
 /post/statins-and-heart-health-a-wellness-way-perspective-on-cholesterol-risk-and-root-causes /post/statins-and-heart-health-a-wellness-way-perspective-on-cholesterol-and-cardiovascular-risk 301
 /post/you-need-to-increase-stomach-acid-not-supress-it /post/you-need-to-increase-stomach-acid-not-suppress-it 301
