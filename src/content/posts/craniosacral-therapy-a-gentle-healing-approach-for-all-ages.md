@@ -9,7 +9,7 @@ categories: [chiropractic, pediatric, clinical]
 readTime: 3 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/craniosacral-therapy-a-gentle-healing-approach-for-all-ages"
-seoTitle: "CranioSacral Therapy: A Gentle Healing Approach for All Ages"
+seoTitle: "CranioSacral Therapy: Gentle Healing for All Ages"
 seoDescription: "CranioSacral Therapy is a gentle, hands-on approach for all ages. Learn how CST supports healing at The Wellness Way - Mason, OH."
 ---
 

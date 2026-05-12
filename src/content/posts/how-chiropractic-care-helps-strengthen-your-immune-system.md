@@ -9,7 +9,7 @@ categories: [chiropractic, immune, clinical]
 readTime: 2 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/how-chiropractic-care-helps-strengthen-your-immune-system"
-seoTitle: How Chiropractic Care Helps Strengthen Your Immune System
+seoTitle: "How Chiropractic Care Boosts Your Immune System"
 seoDescription: "Discover how chiropractic adjustments boost your immune system by improving nervous system communication. The Wellness Way - Mason, OH."
 ---
 

@@ -9,7 +9,7 @@ categories: [pediatric, gut-health, clinical]
 readTime: 3 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/why-kids-struggle-after-school-the-hidden-connection-between-homework-battles-emotions-gut-health"
-seoTitle: "Why Kids Struggle After School: The Hidden Connection"
+seoTitle: "Why Kids Struggle After School: A Hidden Link"
 seoDescription: "Homework battles and after-school meltdowns? Learn how gut health, food allergies and chiropractic care help kids at The Wellness Way - Mason, OH."
 ---
 

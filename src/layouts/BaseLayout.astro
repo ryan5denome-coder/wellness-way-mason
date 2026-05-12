@@ -29,11 +29,14 @@ const {
   skipDefaultSchema = false,
 } = Astro.props;
 
-// Append the full brand name only if neither the brand nor a partial brand string is already in the title.
+// Append the parent brand "The Wellness Way" (not the full local franchise
+// name "The Wellness Way - Mason") to stay under Semrush/Google's 70-char
+// title cap. "Mason" appears in the body of most page titles already, plus
+// the header, footer, JSON-LD, and OG image — local geo signal is preserved.
 const fullTitle =
   title.includes(clinic.brandName) || /\bThe Wellness Way\b/i.test(title)
     ? title
-    : `${title} | ${clinic.brandName}`;
+    : `${title} | The Wellness Way`;
 const canonicalPath = Astro.url.pathname
   .replace(/\/index\.html$/, '/')
   .replace(/\.html$/, '');

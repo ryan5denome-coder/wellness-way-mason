@@ -9,7 +9,7 @@ categories: [gut-health, hormones, clinical]
 readTime: 3 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/statins-and-heart-health-a-wellness-way-perspective-on-cholesterol-risk-and-underlying stressors"
-seoTitle: "Statins and Heart Health: A Wellness Way Perspective"
+seoTitle: "Statins and Heart Health: Beyond Cholesterol"
 seoDescription: "The Wellness Way - Mason's perspective on statins and heart health. Why cholesterol isn't the whole story and how comprehensive testing reveals what's actually driving cardiovascular risk."
 ---
 
