@@ -70,10 +70,4 @@ User-agent: *
 Disallow: /admin
 Disallow: /uploads/private/
 
-# PHASE 10 TODO: After domain cutover, flip this back to:
-#   Sitemap: https://www.thewellnesswaymason.com/sitemap-index.xml
-# Until cutover, the production domain is still served by Wix and 404s on
-# this path. Pointing at the staging deployment so crawlers (Semrush, Bing,
-# etc.) can actually fetch the sitemap. Google honors absolute Sitemap URLs
-# regardless of host, so this also works on staging without confusing search.
-Sitemap: https://wellness-way-mason.ryan5denome.workers.dev/sitemap-index.xml
+Sitemap: https://www.thewellnesswaymason.com/sitemap-index.xml
