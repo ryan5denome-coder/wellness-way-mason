@@ -1,0 +1,418 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import { clinic, site, bylines } from '../lib/site';
+
+// --- FAQ source of truth ---
+const faqs = [
+  {
+    q: "What is the DUTCH test?",
+    a: "DUTCH stands for Dried Urine Test for Comprehensive Hormones. It's a hormone panel that uses four dried urine samples collected over a 24-hour window. The samples capture sex hormones, adrenal hormones, and — the part most other tests don't show — the metabolites that reveal how your body is actually using and clearing those hormones. Made by Precision Analytical, used by functional health practitioners nationally.",
+  },
+  {
+    q: "How is the DUTCH test different from a blood or saliva hormone test?",
+    a: "A blood draw shows you a single timepoint, usually fasted in the morning. A saliva test gives you a slightly broader window for cortisol. The DUTCH panel maps the full daily curve and — this is the key part — shows the metabolites. Production of estrogen matters less than how your body breaks it down. Two patients with identical estrogen production can have very different cancer risk, mood, and PMS patterns based on which detox pathway is dominant. DUTCH is the panel that shows you that pathway.",
+  },
+  {
+    q: "Who is the DUTCH test for?",
+    a: "Most often: women in their 30s through menopause who feel like something is off and the standard hormone panel from their PCP came back \"normal.\" Common reasons to run it include unpredictable cycles, PMS that has taken over the second half of the month, perimenopause symptoms showing up earlier than expected, anxiety or mood patterns that track with cycle phase, low libido, weight gain that won't move, and trouble sleeping. We also run it for men with low testosterone symptoms or adrenal fatigue patterns.",
+  },
+  {
+    q: "What does the DUTCH test cost in Mason, OH?",
+    a: "Retail pricing for the standard DUTCH Complete panel is around $400. We confirm exact pricing before ordering. We're a cash-pay practice — DUTCH and most functional panels are not billable to commercial insurance the same way a standard blood draw is, but HSA and FSA cards are accepted.",
+  },
+  {
+    q: "How do you actually take the DUTCH test?",
+    a: "You collect four dried urine samples on filter paper over the course of 24 hours — first morning, mid-morning, late afternoon, and bedtime. The samples dry on the paper, you mail them back to the lab in a prepaid envelope, and results come back in about 2-3 weeks. You don't have to come into the office to collect — the test ships to your home.",
+  },
+  {
+    q: "When in my cycle should I take the DUTCH test?",
+    a: "For women who are still cycling: days 19-22 of a 28-day cycle (the luteal phase). For irregular cycles or PCOS: we time it based on what we're looking for. For women in menopause, on hormonal birth control, or on hormone replacement therapy: timing is more flexible. We'll walk you through the specific window when we order the panel.",
+  },
+  {
+    q: "Will the DUTCH test results give me a diagnosis?",
+    a: "Functional lab panels reveal patterns, not diagnoses. We use the DUTCH results to identify where your body's hormone story is loaded — production, conversion, detox, or rhythm. From there, we build a care plan around the pattern. If something on the panel suggests a need for medical evaluation outside our scope, we'll refer you to the appropriate provider.",
+  },
+  {
+    q: "Can I run the DUTCH test if I'm on hormonal birth control or HRT?",
+    a: "Yes, though the interpretation changes. We can read the panel knowing what you're on, and there are specific things the DUTCH catches that other tests miss — for example, the metabolites you produce from synthetic hormones versus your body's own. If you're considering coming off birth control or transitioning hormone therapy, DUTCH is one of the more useful baseline panels.",
+  },
+];
+
+const pageUrl = `${site.url}/dutch-test-mason-oh`;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const procedureSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalTest',
+  name: 'DUTCH (Dried Urine Test for Comprehensive Hormones)',
+  alternateName: ['DUTCH Complete', 'DUTCH Plus', 'Dried urine hormone test'],
+  description:
+    'A four-sample dried urine hormone panel measuring sex hormones, adrenal hormones, and the metabolites that show how the body is using and clearing them. Available through The Wellness Way - Mason for patients in Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area.',
+  url: pageUrl,
+  usedToDiagnose: {
+    '@type': 'MedicalCondition',
+    name: 'Hormone imbalance',
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'DUTCH Test in Mason, OH', item: pageUrl },
+  ],
+};
+---
+
+<BaseLayout
+  title="DUTCH Test in Mason, OH | Hormone Testing Beyond Blood"
+  description="The DUTCH hormone test in Mason, OH. Dr. Ryan DeNome, DC orders and interprets the DUTCH Complete panel — sex hormones, adrenal hormones, and the metabolites blood draws miss."
+  jsonLd={[faqSchema, procedureSchema, breadcrumbSchema]}
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[
+      { label: 'Home', href: '/' },
+      { label: 'DUTCH Test in Mason, OH' },
+    ]} />
+    <div class="hero">
+      <p class="eyebrow">Hormone Testing · Mason, Ohio</p>
+      <h1>DUTCH Test in Mason, OH</h1>
+      <p class="lede">
+        Pulling one estrogen level at a single moment and calling your hormones "balanced"
+        is like checking a fuel gauge once and deciding the engine works. The DUTCH panel
+        maps the full daily curve — and shows the metabolites, where most patterns
+        actually hide.
+      </p>
+      <div class="hero-cta">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
+          Order Your DUTCH Test
+        </Button>
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">
+          Call {clinic.phone}
+        </Button>
+      </div>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="md">
+    <p>
+      You went to your doctor. They pulled an estrogen, maybe a progesterone, maybe a TSH.
+      Everything came back inside the lab range. You were told your hormones look normal.
+      And you still feel like something is off — your cycle is unpredictable, your mood
+      tanks the week before your period, you're not sleeping the way you used to, weight
+      is moving in the wrong direction and nothing you try makes a dent.
+    </p>
+    <p>
+      That isn't in your head. The standard hormone workup pulls a snapshot. Hormones don't
+      live in snapshots — they live in patterns, cycles, and conversion pathways. The DUTCH
+      panel is built to capture all three.
+    </p>
+    <p>
+      At <strong>The Wellness Way - Mason</strong>, Dr. Ryan DeNome, Doctor of Chiropractic,
+      orders and interprets the DUTCH panel as part of our functional health approach. We
+      pair the lab results with chiropractic care, where adjustments support the nervous
+      system that regulates how your body sends hormonal signals in the first place. We
+      work alongside your primary care provider, not in place of them — this is the layer
+      most standard workups don't cover.
+    </p>
+
+    <h2>What the DUTCH Test Actually Measures</h2>
+    <p>
+      DUTCH stands for <strong>Dried Urine Test for Comprehensive Hormones</strong>. It uses
+      four dried urine samples collected over 24 hours — first morning, mid-morning, late
+      afternoon, and bedtime. From those four samples the lab measures roughly 35 hormone
+      markers and metabolites.
+    </p>
+    <p>The DUTCH Complete panel includes:</p>
+    <ul>
+      <li>
+        <strong>Sex hormones</strong> — estrogen (estrone, estradiol, estriol), progesterone
+        and its metabolites, testosterone, DHEA, and the androgen metabolites that show how
+        your body is converting between them.
+      </li>
+      <li>
+        <strong>Estrogen metabolism pathways</strong> — the 2-OH, 4-OH, and 16-OH pathways.
+        Which pathway your body favors influences risk patterns and symptom presentation.
+        This is the piece a blood draw cannot show.
+      </li>
+      <li>
+        <strong>Cortisol curve</strong> — four daily timepoints mapping your adrenal rhythm.
+        Cortisol that's flat all day looks normal at any single timepoint and very wrong
+        when you see the curve.
+      </li>
+      <li>
+        <strong>Cortisol metabolites</strong> — total cortisol production vs. free cortisol.
+        Two patients with the same free cortisol can have very different total production.
+      </li>
+      <li>
+        <strong>Melatonin</strong> — overnight melatonin output, important for sleep
+        architecture and immune function.
+      </li>
+      <li>
+        <strong>Organic acid markers</strong> — neurotransmitter precursors (dopamine,
+        norepinephrine, serotonin breakdown products), B-vitamin status, and oxidative
+        stress markers. Adds context the hormone numbers alone can't give you.
+      </li>
+    </ul>
+
+    <h2>Why a Snapshot Isn't Enough</h2>
+    <p>
+      Hormones don't sit still. Estrogen rises and falls across the cycle. Cortisol follows
+      a daily curve that's supposed to peak in the morning and drop by bedtime. A single
+      blood draw at 8 a.m. on day 3 of your cycle gives you one data point on one day at
+      one moment. It tells you very little about how the system is moving.
+    </p>
+    <p>
+      The body's hormone story is in the conversion. Estrogen production is fine for most
+      women — what varies is how the body breaks it down. The 2-OH pathway is the
+      protective one. The 4-OH pathway, if dominant, is associated with higher risk
+      patterns. The 16-OH pathway sits in the middle. None of that shows up on a serum
+      estrogen test, no matter how comprehensive the rest of the bloodwork looks.
+    </p>
+    <p>
+      <strong>The body never does anything without a reason.</strong> The DUTCH panel
+      shows you the reason.
+    </p>
+
+    <h2>Patterns We Look For</h2>
+    <p>
+      The labs tell a story. Some of the most common patterns we see when patients in
+      Mason, West Chester, Loveland, and Cincinnati run the DUTCH:
+    </p>
+    <ul>
+      <li>
+        <strong>Low progesterone with adequate estrogen</strong> — the pattern behind PMS
+        that takes over the second half of the cycle, anxiety in the luteal phase, and
+        early miscarriage risk.
+      </li>
+      <li>
+        <strong>4-OH dominant estrogen metabolism</strong> — the breakdown pathway
+        associated with higher risk patterns. Often modifiable with targeted nutrition and
+        gut support.
+      </li>
+      <li>
+        <strong>Flat cortisol curve</strong> — what most people call "adrenal fatigue."
+        Cortisol that should peak in the morning is barely registering, and the patient
+        wakes up exhausted no matter how long they slept.
+      </li>
+      <li>
+        <strong>Reversed cortisol curve</strong> — wired at night, flat in the morning.
+        Sleep disruption pattern, often paired with chronic stress or shift work.
+      </li>
+      <li>
+        <strong>Elevated androgen metabolites</strong> — the pattern behind acne in adult
+        women, irregular cycles, PCOS confirmation.
+      </li>
+      <li>
+        <strong>Low DHEA with elevated cortisol</strong> — the body is burning through its
+        building blocks faster than it's making new ones. Common in long-duration stress
+        or undereating with overtraining.
+      </li>
+    </ul>
+
+    <h2>How the Test Process Works</h2>
+    <ol>
+      <li>
+        <strong>Discovery consultation.</strong> We sit down, you tell us the story. If
+        DUTCH is the right panel, we walk you through what it shows and confirm pricing
+        before ordering anything.
+      </li>
+      <li>
+        <strong>Test kit ships to your home.</strong> The collection happens at your house,
+        not at our office. Four samples on filter paper over 24 hours — first morning,
+        mid-morning, late afternoon, bedtime.
+      </li>
+      <li>
+        <strong>Mail samples back to the lab.</strong> Prepaid envelope, no extra cost.
+        Results take 2-3 weeks.
+      </li>
+      <li>
+        <strong>Results review visit.</strong> We sit with the actual report and walk
+        through what each section means in plain language. You leave with a care plan
+        that addresses what the lab is actually showing — not a generic protocol.
+      </li>
+      <li>
+        <strong>Retest at the right interval.</strong> Usually 3-6 months after the first
+        round of care, to confirm we're moving the pattern in the right direction.
+      </li>
+    </ol>
+
+    <h2>When to Run DUTCH vs. When to Wait</h2>
+    <p>
+      We don't recommend DUTCH for everyone. Functional testing is most useful when there's
+      a specific question to answer. Some examples of when DUTCH makes sense:
+    </p>
+    <ul>
+      <li>You've had standard hormone labs run and they came back "normal" while you don't feel normal.</li>
+      <li>PMS, perimenopause, or postpartum symptoms that aren't fitting a clean pattern.</li>
+      <li>You're considering hormone replacement therapy or coming off hormonal birth control and want a baseline.</li>
+      <li>Stress-related symptoms (sleep, energy, weight) that haven't responded to lifestyle changes.</li>
+      <li>Adult acne, irregular cycles, or PCOS workup.</li>
+      <li>Low libido or testosterone-related symptoms in men.</li>
+    </ul>
+    <p>When we don't recommend it:</p>
+    <ul>
+      <li>You haven't run a basic complete blood count, comprehensive metabolic panel, or thyroid panel yet — those go first.</li>
+      <li>You're acutely ill or just finishing a course of medication that would skew results.</li>
+      <li>Pregnancy — DUTCH isn't useful during pregnancy itself. Postpartum once cycles return is fine.</li>
+    </ul>
+
+    <h2>DUTCH Test Pricing in Mason, OH</h2>
+    <p>
+      We're a cash-pay practice. Approximate retail pricing for the DUTCH Complete panel is
+      around <strong>$400</strong>, with exact pricing confirmed at booking. Some patients
+      also need a basic foundational panel run alongside (the TWW Basic Panel), in which
+      case total first-day lab spend can land between $500 and $700.
+    </p>
+    <p>
+      We accept HSA and FSA cards. Most functional lab panels including DUTCH are not
+      billable to commercial insurance the way a standard sick visit is, but the trade-off
+      is transparent pricing, a real conversation, and a test that actually answers the
+      question. <a href="/pricing">Full pricing here</a>.
+    </p>
+
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      {faqs.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+
+    <h2>Final Thoughts</h2>
+    <p>
+      You don't have to keep guessing. You don't have to settle for "your labs look fine."
+      You don't have to choose between trusting your symptoms and trusting your lab report —
+      a panel that maps the whole story makes both of them make sense.
+    </p>
+    <p>
+      <strong>Test, don't guess. Common is not normal. You have options.</strong>
+    </p>
+    <p class="byline">{bylines.reviewed} — Doctor of Chiropractic, The Wellness Way - Mason, Mason, Ohio</p>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="lg" background="paper-soft">
+    <div class="closer-cta">
+      <h2>Ready to See the Full Picture?</h2>
+      <p>
+        Schedule a discovery consultation. We'll talk through whether DUTCH is the right
+        panel for what you're dealing with, walk through pricing, and order the kit to
+        your house if it's a fit.
+      </p>
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
+          Schedule a Discovery Consultation
+        </Button>
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">
+          Call {clinic.phone}
+        </Button>
+      </div>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-brand-primary-dark);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .hero h1 {
+    font-size: var(--text-4xl);
+    line-height: 1.15;
+    margin: 0 0 1rem;
+  }
+  .lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    max-width: 64ch;
+    margin: 0 0 1.5rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  h2 {
+    color: var(--color-brand-primary-dark);
+    margin-top: 2.5rem;
+  }
+  p { line-height: 1.75; }
+  ul, ol { line-height: 1.75; padding-left: 1.5rem; }
+  li { margin: 0.5rem 0; }
+  .faq-list {
+    display: grid;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .faq-item {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    background: var(--color-paper);
+  }
+  .faq-item summary {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    float: right;
+    font-size: 1.25rem;
+    color: var(--color-brand-primary-dark);
+    line-height: 1;
+  }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p {
+    margin: 0.75rem 0 0;
+    color: var(--color-ink-muted);
+    line-height: 1.7;
+  }
+  .byline {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-line);
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    font-style: italic;
+  }
+  .closer-cta { text-align: center; }
+  .closer-cta h2 { margin-top: 0; }
+  .closer-cta p {
+    max-width: 50ch;
+    margin: 0 auto 1.5rem;
+    color: var(--color-ink-muted);
+  }
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  @media (min-width: 768px) {
+    .hero h1 { font-size: var(--text-5xl); }
+  }
+</style>

@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import { clinic, site } from '../lib/site';
-import { jsonLdString, localBusiness } from '../lib/schema';
+import { jsonLdString, localBusiness, personSchema } from '../lib/schema';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PageLoader from '../components/PageLoader.astro';
@@ -43,7 +43,17 @@ const canonicalPath = Astro.url.pathname
 const canonical = new URL(canonicalPath, site.url).toString();
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, site.url).toString();
 
-const allJsonLd = skipDefaultSchema ? jsonLd : [localBusiness(), ...jsonLd];
+// Default schema on every page: LocalBusiness + Person (Dr. DeNome).
+// E-E-A-T fix per 2026-05-19 competitive audit — Brenner's /about/ and
+// /meet-our-team/ both 404 with no Person schema, leaving Google's medical
+// YMYL author-identity signal unfulfilled. Emitting Person on every page
+// (via shared @id = ${site.url}/#owner) gives Google a stable, dedupe-able
+// author entity across every URL on the site. The full Person entity lives
+// on /about-us via personSchema({full: true}); everywhere else uses the
+// reference-only form.
+const allJsonLd = skipDefaultSchema
+  ? jsonLd
+  : [localBusiness(), personSchema({ full: false }), ...jsonLd];
 ---
 
 <!DOCTYPE html>
