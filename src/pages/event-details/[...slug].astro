@@ -91,4 +91,28 @@ const eventSchema = {
   }
   .event-body :global(p) { line-height: 1.7; margin: 1rem 0; }
   .event-body :global(h2), .event-body :global(h3) { margin-top: 2rem; }
+  /* In-body CTA button — usable from markdown via <a class="event-cta">…</a>.
+     Mirrors the primary Button component visually so markdown-authored events
+     can place multiple CTAs without needing Astro component support. */
+  .event-body :global(a.event-cta) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    background: var(--color-brand-primary);
+    color: var(--color-ink-strong);
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-card);
+    margin: 1.5rem 0;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .event-body :global(a.event-cta:hover) {
+    background: var(--color-brand-primary-dark);
+    transform: translateY(-1px);
+    color: var(--color-ink-strong);
+  }
 </style>

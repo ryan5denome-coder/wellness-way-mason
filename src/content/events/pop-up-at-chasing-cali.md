@@ -20,6 +20,8 @@ excerpt: "Catch Dr. Ryan at Chasing Cali Collective on Saturday, May 30 — pop-
 
 About a 25-minute drive from our Mason clinic — right in the Cincinnati metro.
 
+<a href="https://calendly.com/rdenome-thewellnessway" class="event-cta" target="_blank" rel="noopener">Reserve Your Spot →</a>
+
 ## What's Happening
 
 Dr. Ryan DeNome, DC will be on-site at Chasing Cali Collective offering chiropractic care during their Saturday morning. Walk in, get adjusted, grab coffee, browse the spa menu, hang out with the Cali community — all in one stop.
@@ -35,6 +37,8 @@ This is a relaxed, no-pressure setup. Come get adjusted, ask questions about lab
 
 Card and HSA/FSA accepted. No cash.
 
+<a href="https://calendly.com/rdenome-thewellnessway" class="event-cta" target="_blank" rel="noopener">Lock In Your Time →</a>
+
 ## What to Expect
 
 - **New patients:** a brief exam to understand what's going on for you before we adjust
@@ -42,6 +46,8 @@ Card and HSA/FSA accepted. No cash.
 - A few minutes to ask anything you've been curious about — labs, the 3 T's framework, whether what we do could help with the specific issue you're dealing with
 
 Each visit runs about 15–20 minutes. Wear comfortable clothes you can move in.
+
+<a href="https://calendly.com/rdenome-thewellnessway" class="event-cta" target="_blank" rel="noopener">Book Your Adjustment →</a>
 
 ## How to Reserve a Spot
 
