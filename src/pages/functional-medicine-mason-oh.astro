@@ -53,23 +53,15 @@ const faqSchema = {
   })),
 };
 
-const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'MedicalBusiness',
-  name: `Functional Health Testing at ${clinic.brandName}`,
-  url: pageUrl,
-  areaServed: clinic.serviceArea.map((city) => ({ '@type': 'City', name: city })),
-  availableService: [
-    { '@type': 'MedicalProcedure', name: 'DUTCH hormone panel' },
-    { '@type': 'MedicalProcedure', name: 'Complete thyroid panel with antibodies' },
-    { '@type': 'MedicalProcedure', name: 'Comprehensive stool analysis (GI panel)' },
-    { '@type': 'MedicalProcedure', name: 'Cardiometabolic panel' },
-    { '@type': 'MedicalProcedure', name: 'Food sensitivity (IgG) testing' },
-    { '@type': 'MedicalProcedure', name: 'Chiropractic adjustment' },
-    { '@type': 'MedicalProcedure', name: 'Webster Technique (prenatal chiropractic)' },
-  ],
-  provider: { '@type': 'Person', '@id': `${site.url}/#owner` },
-};
+// Note: an earlier version of this file emitted a MedicalBusiness schema block
+// here with provider + availableService properties. Removed 2026-05-19 because:
+// (a) MedicalBusiness extends LocalBusiness and requires address — Semrush
+//     flagged "value for the address field is required";
+// (b) The page already gets a full LocalBusiness block (with address, geo,
+//     openingHours, sameAs) emitted by BaseLayout on every page; this was a
+//     duplicate that conflicted with the canonical entity.
+// FAQPage + BreadcrumbList + the BaseLayout-emitted LocalBusiness + Person
+// give Google all the structured data signal it needs for this URL.
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -84,7 +76,7 @@ const breadcrumbSchema = {
 <BaseLayout
   title="Functional Medicine in Mason, OH"
   description="Functional health testing and chiropractic care in Mason, OH. Dr. Ryan DeNome, DC pairs DUTCH, comprehensive thyroid, and gut testing with chiropractic — we test, we don't guess."
-  jsonLd={[faqSchema, serviceSchema, breadcrumbSchema]}
+  jsonLd={[faqSchema, breadcrumbSchema]}
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[

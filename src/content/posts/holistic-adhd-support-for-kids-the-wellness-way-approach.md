@@ -9,7 +9,7 @@ categories: [pediatric, gut-health, hormones]
 readTime: 3 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/holistic-adhd-support-for-kids-the-wellness-way-approach"
-seoTitle: "Holistic ADHD Support for Kids: The Wellness Way Approach"
+seoTitle: "Holistic ADHD Support for Kids in Mason, OH"
 seoDescription: "Is your child struggling to focus in school? Discover holistic ADHD support for kids with The Wellness Way - Mason—using specialized testing, natural herbs, and nutrition to restore balance and improve focus naturally."
 ---
 

@@ -28,6 +28,40 @@ const events = (await getCollection('events')).sort((a, b) => {
     <p class="lede">Workshops, book studies, and community gatherings. Stay connected, get empowered.</p>
   </SectionContainer>
 
+  <SectionContainer width="prose" spacing="md">
+    <p>
+      The clinical work happens one patient at a time. The bigger conversation — the one about
+      how to actually feel well in a culture that sells sickness — needs more than a treatment
+      room. That's what events are for.
+    </p>
+    <p>
+      We host gatherings at <strong>The Wellness Way - Mason</strong> for moms, families, and
+      anyone in the Cincinnati area who wants to learn alongside other people instead of going
+      it alone. Book studies, workshops, pop-up adjustments at partner spaces, and the
+      occasional community open house. Free or low-cost, always welcoming, never preachy.
+    </p>
+    <h2>What you'll find here</h2>
+    <ul>
+      <li>
+        <strong>Recurring community gatherings</strong> like the Cincy Crunchy Book Study —
+        a monthly book club for health-curious moms and friends, no homework, no judgment.
+      </li>
+      <li>
+        <strong>Pop-up clinic events</strong> at local wellness studios, gyms, and community
+        spaces around Mason, West Chester, Loveland, and the greater Cincinnati area.
+      </li>
+      <li>
+        <strong>Educational workshops</strong> on topics patients ask about most: hormones,
+        thyroid, gut health, kids' immune support, prenatal chiropractic.
+      </li>
+    </ul>
+    <p>
+      <strong>Want to host a Wellness Way event at your studio, gym, or community space?</strong>
+      We're open to partnerships. <a href="/contact">Reach out</a> and we'll figure out what
+      makes sense.
+    </p>
+  </SectionContainer>
+
   <SectionContainer width="default" spacing="md">
     {events.length === 0 ? (
       <p>No events scheduled right now. Check back soon, or <a href="/contact">contact us</a> to suggest a topic.</p>
