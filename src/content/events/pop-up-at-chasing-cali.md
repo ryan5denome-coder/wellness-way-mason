@@ -6,6 +6,7 @@ location: "Chasing Cali Collective — 418 W Benson St, Reading, OH 45215"
 recurring: false
 image: "/images/events/chasing-cali-pop-up.jpg"
 imageAlt: "Dr. DeNome's pop-up setup at Chasing Cali Collective — adjustment table, intake clipboard, and a banner listing the symptoms and patterns we see most (hormones, trauma, toxins, thoughts)"
+rsvpUrl: "https://calendly.com/rdenome-thewellnessway"
 excerpt: "Catch Dr. Ryan at Chasing Cali Collective on Saturday, May 30 — pop-up chiropractic adjustments alongside coffee, spa services, and the rest of the Cali crew. 8 AM–1 PM."
 ---
 
@@ -44,7 +45,7 @@ Each visit runs about 15–20 minutes. Wear comfortable clothes you can move in.
 
 ## How to Reserve a Spot
 
-Slots are limited — we'll work through arrivals in the order they come in, but we recommend grabbing a time so you don't have to wait. Reserve your spot in advance (free, no payment required at booking) using the link below. We'll just need your name, DOB, phone, and email so we have a quick file ready when you arrive.
+Slots are limited — we'll work through arrivals in the order they come in, but we recommend grabbing a time so you don't have to wait. **[Reserve your spot here →](https://calendly.com/rdenome-thewellnessway)** (free, no payment required at booking). We'll just need your name, DOB, phone, and email so we have a quick file ready when you arrive.
 
 Walk-ins welcome too, but reserved slots get priority. Questions before you come? **Call the clinic at (283) 223-8376** or DM us on Instagram [@thewellnessway.mason](https://www.instagram.com/thewellnessway.mason/).
 
