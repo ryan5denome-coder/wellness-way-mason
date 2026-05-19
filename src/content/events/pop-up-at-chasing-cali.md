@@ -16,7 +16,7 @@ excerpt: "Catch Dr. Ryan at Chasing Cali Collective on Saturday, May 30 — pop-
 
 **Chasing Cali Collective**
 418 W Benson St, Reading, OH 45215
-([@chasingcali on Instagram](https://www.instagram.com/chasingcali/) · [chasingcali.com](https://www.chasingcali.com))
+([@chasingcali_collective on Instagram](https://www.instagram.com/chasingcali_collective/) · [chasingcali.com](https://www.chasingcali.com))
 
 About a 25-minute drive from our Mason clinic — right in the Cincinnati metro.
 
