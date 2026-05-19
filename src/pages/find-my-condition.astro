@@ -39,8 +39,14 @@ const standard = conditions.filter((c) => !c.data.featured);
     </p>
     <p>
       Below are the patterns we see most at our Mason, OH clinic. Each links to a deeper page with the
-      testing approach, the 3 T's framework that applies, and how a Health Restoration Plan may help.
+      testing approach, the 3 T's framework that applies, and how a
+      <a href="/functional-medicine-mason-oh">functional medicine</a> plan may help.
       We serve patients across Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area.
+    </p>
+    <p class="lab-link-aside">
+      Curious about specific panels? See <a href="/functional-medicine-mason-oh">our approach to
+      functional medicine in Mason, OH</a> or the dedicated page on the
+      <a href="/dutch-test-mason-oh">DUTCH hormone test</a>.
     </p>
     <div class="hero-cta">
       <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
@@ -138,6 +144,15 @@ const standard = conditions.filter((c) => !c.data.featured);
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1.5rem;
+  }
+  .lab-link-aside {
+    background: var(--color-paper-warm-tint);
+    border-left: 3px solid var(--color-brand-primary);
+    padding: 0.85rem 1.25rem;
+    border-radius: 0.4rem;
+    font-size: var(--text-base);
+    color: var(--color-ink-muted);
+    margin: 1rem 0 0;
   }
   .condition-grid {
     display: grid;
