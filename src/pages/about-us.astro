@@ -50,6 +50,10 @@ const personJsonLd = personSchema({ full: true });
   </SectionContainer>
 
   <SectionContainer width="default" spacing="lg">
+    <div class="values-head">
+      <p class="eyebrow">Our foundation</p>
+      <h2>What we stand for</h2>
+    </div>
     <div class="values">
       <div class="value">
         <h3>Mission</h3>
@@ -222,6 +226,27 @@ const personJsonLd = personSchema({ full: true });
   @media (min-width: 768px) {
     .our-space { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
     .our-space-text h2 { font-size: var(--text-4xl); }
+  }
+  .values-head {
+    max-width: 70ch;
+    margin: 0 0 2rem;
+  }
+  .values-head .eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+  .values-head h2 {
+    margin: 0;
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+    color: var(--color-ink-strong);
+  }
+  @media (min-width: 768px) {
+    .values-head h2 { font-size: var(--text-4xl); }
   }
   .values {
     display: grid;

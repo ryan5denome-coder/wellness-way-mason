@@ -52,6 +52,10 @@ const upcomingEvents = (await getCollection('events'))
   </SectionContainer>
 
   <SectionContainer width="default" spacing="md">
+    <div class="blog-head">
+      <p class="eyebrow">Latest from the clinic</p>
+      <h2>Articles &amp; Recipes</h2>
+    </div>
     {allCategories.length > 0 && (
       <div class="category-filter" role="navigation" aria-label="Filter by category">
         <span class="filter-label">Topics:</span>
@@ -105,6 +109,27 @@ const upcomingEvents = (await getCollection('events'))
 <style>
   .blog-hero { padding-top: 1.5rem; }
   .blog-hero h1 { font-size: var(--text-4xl); margin: 0 0 1rem; }
+  .blog-head {
+    max-width: 70ch;
+    margin: 0 0 1.5rem;
+  }
+  .blog-head .eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+  .blog-head h2 {
+    margin: 0;
+    font-size: var(--text-2xl);
+    line-height: 1.15;
+    color: var(--color-ink-strong);
+  }
+  @media (min-width: 768px) {
+    .blog-head h2 { font-size: var(--text-3xl); }
+  }
   .lede { color: var(--color-ink-muted); max-width: 60ch; font-size: var(--text-lg); line-height: 1.6; }
   .category-filter {
     display: flex;
