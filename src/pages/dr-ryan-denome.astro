@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import { clinic, site, owner } from '../lib/site';
+import { personSchema } from '../lib/schema';
+
+// Dedicated author/provider entity page. Serves dual purpose (per Manus audit
+// GEO Gap 1 + 4B): an E-E-A-T author signal for Google's medical YMYL ranking
+// and a clean, citable entity for AI engines answering "who is the chiropractor
+// in Mason, OH." Uses the canonical full Person schema (shared @id = /#owner).
+const personJsonLd = personSchema({ full: true });
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'About', item: `${site.url}/about-us` },
+    { '@type': 'ListItem', position: 3, name: 'Dr. Ryan DeNome, DC', item: `${site.url}/dr-ryan-denome` },
+  ],
+};
+---
+
+<BaseLayout
+  title="Dr. Ryan DeNome, DC | Chiropractor in Mason, OH"
+  description="Dr. Ryan DeNome, DC — Doctor of Chiropractic and clinic owner at The Wellness Way - Mason. Webster Technique certified, Life University graduate. Functional health + chiropractic in Mason, OH."
+  jsonLd={[personJsonLd, breadcrumbSchema]}
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[
+      { label: 'Home', href: '/' },
+      { label: 'About', href: '/about-us' },
+      { label: 'Dr. Ryan DeNome, DC' },
+    ]} />
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="md">
+    <div class="author-grid">
+      <div class="author-photo">
+        <img
+          src="/images/people/dr-ryan-denome.jpg"
+          alt="Dr. Ryan DeNome, DC, Doctor of Chiropractic at The Wellness Way - Mason"
+          width="1500"
+          height="1500"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+      <div class="author-intro">
+        <p class="eyebrow">Doctor of Chiropractic · Clinic Owner</p>
+        <h1>Dr. Ryan DeNome, DC</h1>
+        <p class="lede">
+          The chiropractic physician behind The Wellness Way - Mason. Webster Technique
+          certified, Life University graduate, and the reviewing clinician for every
+          piece of content on this site.
+        </p>
+        <ul class="cred-list">
+          <li><strong>Title:</strong> Doctor of Chiropractic ({owner.credentials})</li>
+          <li><strong>Education:</strong> Life University — Doctor of Chiropractic</li>
+          <li><strong>Certification:</strong> Webster Technique (prenatal chiropractic)</li>
+          <li><strong>Practice:</strong> {clinic.brandName}, Mason, Ohio</li>
+          <li><strong>Focus:</strong> Functional lab testing + chiropractic, pediatric &amp; prenatal care</li>
+        </ul>
+        <div class="author-cta">
+          <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
+          <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+        </div>
+      </div>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="md">
+    <h2>About Dr. DeNome</h2>
+    <p>
+      Dr. Ryan DeNome is the clinic owner and chiropractic physician at The Wellness Way -
+      Mason. His path into chiropractic started when his wife introduced him to the
+      profession, and he recognized right away the blend of hands-on problem-solving and
+      patient care that fit how he's wired.
+    </p>
+    <p>
+      He earned his Doctor of Chiropractic degree at Life University in Marietta, Georgia.
+      During his first week there he found The Wellness Way Student Club, and spent nearly
+      four years immersed in The Wellness Way philosophy — the idea that the body has an
+      innate ability to heal when you find and address what's actually loading stress onto
+      it, rather than chasing symptoms one at a time.
+    </p>
+    <p>
+      Today he works with patients across Mason, West Chester, Loveland, Lebanon, and the
+      greater Cincinnati area. He's especially drawn to two groups: men who feel boxed in by
+      a health challenge no one has gotten to the bottom of, and moms carrying the weight of
+      a household while their own health gets pushed to the back of the line. He's certified
+      in the Webster Technique for prenatal care, sees pediatric patients from infancy
+      through the teen years, and works with everyday athletes, blue-collar workers, and
+      anyone who wants their body to keep up with their life.
+    </p>
+
+    <h2>Why Functional Testing + Chiropractic</h2>
+    <p>
+      Most chiropractors adjust. Most functional-medicine providers run labs. Dr. DeNome
+      built his practice around doing both, because the two answer different halves of the
+      same question. Chiropractic care supports the nervous system that regulates digestion,
+      immune response, and hormone signaling. Functional lab panels — DUTCH for hormones, a
+      complete thyroid panel, comprehensive gut testing — show what those systems are
+      actually doing. One without the other is half a picture.
+    </p>
+    <p>
+      None of this replaces conventional medicine. Dr. DeNome works alongside your primary
+      care provider, your OB, and any specialists on your team. The aim is to add the layer
+      standard care usually skips: the deeper testing, and the conversation about why your
+      body is doing what it's doing.
+    </p>
+
+    <h2>In Dr. Ryan's Words</h2>
+    <blockquote>
+      "I got into this because I watched people get told their labs were 'normal' while they
+      clearly weren't okay. The body never does anything without a reason. My job is to find
+      the reason — to test instead of guess — and to walk alongside people who'd mostly given
+      up on getting a real answer. That's the whole practice."
+    </blockquote>
+    <p>
+      Outside the clinic, Dr. Ryan is happiest outdoors with his wife and son — hiking,
+      kayaking, or just being in it. He and his wife once biked 100 miles on their second
+      date, which tells you most of what you need to know about how he approaches a
+      challenge.
+    </p>
+
+    <h2>Conditions Dr. DeNome Works With Most</h2>
+    <ul>
+      <li><a href="/conditions/thyroid">Thyroid patterns</a> — beyond TSH alone</li>
+      <li><a href="/conditions/hormone-imbalance">Hormone imbalance</a> — DUTCH testing</li>
+      <li><a href="/conditions/autoimmune">Autoimmune patterns</a> — Hashimoto's and beyond</li>
+      <li><a href="/conditions/digestive-issues">Digestive issues</a> — gut as engine room</li>
+      <li><a href="/conditions/fatigue">Chronic fatigue</a></li>
+      <li><a href="/find-my-condition">All conditions we see →</a></li>
+    </ul>
+
+    <p class="author-foot">
+      Learn more about <a href="/about-us">the clinic and our approach</a>, explore
+      <a href="/our-services">our services</a>, or read about
+      <a href="/functional-medicine-mason-oh">functional medicine in Mason, OH</a>.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="lg" background="paper-soft">
+    <div class="closer">
+      <h2>Work With Dr. DeNome</h2>
+      <p>
+        Schedule a discovery consultation. Bring your story, your questions, and whatever
+        labs you already have. We'll listen, we'll test, and we'll build a plan with you.
+      </p>
+      <div class="author-cta">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+      </div>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-brand-primary-dark);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .author-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+  .author-photo img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+  .author-intro h1 {
+    font-size: var(--text-4xl);
+    margin: 0 0 1rem;
+    line-height: 1.15;
+  }
+  .lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+  }
+  .cred-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .cred-list li {
+    font-size: var(--text-base);
+    color: var(--color-ink);
+  }
+  .cred-list strong { color: var(--color-brand-primary-dark); }
+  .author-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  h2 {
+    color: var(--color-brand-primary-dark);
+    margin-top: 2.5rem;
+  }
+  p { line-height: 1.75; }
+  ul { line-height: 1.9; }
+  blockquote {
+    border-left: 4px solid var(--color-brand-primary);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: var(--text-lg);
+    color: var(--color-ink);
+    font-style: italic;
+  }
+  .author-foot {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-line);
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+  }
+  .closer { text-align: center; }
+  .closer h2 { margin-top: 0; }
+  .closer p { max-width: 50ch; margin: 0 auto 1.5rem; color: var(--color-ink-muted); }
+  .closer .author-cta { justify-content: center; }
+  @media (min-width: 768px) {
+    .author-grid { grid-template-columns: 0.8fr 1.2fr; gap: 3rem; }
+    .author-intro h1 { font-size: var(--text-5xl); }
+  }
+</style>
