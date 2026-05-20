@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import { clinic, site } from '../lib/site';
+
+// FAQ master page (Manus audit task 7C / GEO). Consolidates the most common
+// questions across the whole practice. FAQPage schema + visible accordions —
+// one of the most GEO-friendly formats for AI citation. All answers ryan-voice
+// + Ohio-compliant (calibrated language, scope boundaries, working alongside PCP).
+const sections = [
+  {
+    heading: 'Chiropractic Care',
+    items: [
+      {
+        q: 'What chiropractic techniques does Dr. DeNome use?',
+        a: "Dr. DeNome is trained in Diversified, Thompson, Gonstead, and the Webster Technique for prenatal patients. His preference is manual, specific adjustments — focused, hands-on work. Lower-force and gentler approaches are available when a patient prefers them or the clinical picture calls for it.",
+      },
+      {
+        q: 'Is chiropractic care safe?',
+        a: "Chiropractic adjustment is a well-established, conservative form of care with a strong safety record. We tailor the approach to the person on the table — gentler methods for kids, prenatal patients, acute flare-ups, and sensitive nervous systems. We also coordinate with your physician when the situation calls for it.",
+      },
+      {
+        q: 'Does it hurt to get adjusted?',
+        a: "Most patients find adjustments relieving rather than painful. There can be mild soreness afterward, similar to how you'd feel after a good workout, especially in the first few visits. We always explain what we're doing before we do it.",
+      },
+      {
+        q: 'How many visits will I need?',
+        a: "It depends on what's going on and how long it's been there. Acute issues may resolve in a handful of visits; longer-standing patterns take more time as the body rebuilds. We map out an expected plan after the first visit rather than committing you to an open-ended package up front.",
+      },
+    ],
+  },
+  {
+    heading: 'Health Restoration & Lab Testing',
+    items: [
+      {
+        q: 'What is functional health testing?',
+        a: "Functional testing runs deeper panels than a standard sick-visit workup, looking at how your systems are actually functioning rather than just screening for disease. It's how we find the patterns standard labs miss — and it works alongside your conventional care, not in place of it.",
+      },
+      {
+        q: 'What labs do you run?',
+        a: "The most common: the DUTCH panel for hormones, a complete thyroid panel with antibodies, comprehensive stool analysis for gut function, a cardiometabolic panel, and food sensitivity testing. We choose based on your story, not a one-size protocol. Tests are recommended, never required.",
+      },
+      {
+        q: 'What is the DUTCH test?',
+        a: "DUTCH stands for Dried Urine Test for Comprehensive Hormones. It maps your sex hormones, adrenal hormones, and — the part most tests miss — the metabolites that show how your body uses and clears those hormones. More on our dedicated DUTCH test page.",
+      },
+      {
+        q: 'Do I need a doctor’s referral for lab testing?',
+        a: "No. You can self-refer for chiropractic care or a discovery consultation. If you have recent labs from another provider, bring them — we'd rather build on what exists than duplicate testing unnecessarily.",
+      },
+      {
+        q: 'How long until I get my results?',
+        a: "Most functional panels take about 2–3 weeks to come back. We then sit down with the actual report and walk through what each section means in plain language, with a care plan built around the findings.",
+      },
+    ],
+  },
+  {
+    heading: 'Pricing & Insurance',
+    items: [
+      {
+        q: 'Do you take insurance?',
+        a: "We're a cash-pay practice. That keeps us free to spend the time, run the testing, and recommend the care your situation calls for rather than what an insurance code allows. We can provide a superbill on request for out-of-network reimbursement, but we don't bill insurance directly.",
+      },
+      {
+        q: 'How much does a visit cost?',
+        a: "Pricing is flat and posted publicly on our pricing page. A new patient discovery consultation is $99 and follow-up adjustments are $50. No surprise bills, no hidden fees.",
+      },
+      {
+        q: 'How much does lab testing cost?',
+        a: "It depends on the panels. As a rough guide: a complete thyroid panel runs around $200, DUTCH around $400, comprehensive stool analysis around $400. For a patient with no recent testing, first-day lab spend usually lands between $300 and $700. We confirm every cost before ordering.",
+      },
+      {
+        q: 'Do you accept HSA and FSA cards?',
+        a: "Yes. HSA and FSA cards are accepted for both visits and most lab panels.",
+      },
+    ],
+  },
+  {
+    heading: 'Your First Visit',
+    items: [
+      {
+        q: 'What happens at my first visit?',
+        a: "We sit down and you tell us the story — the actual story, not the 7-minute version. We review any labs you've had run, listen for the patterns, and talk through whether functional testing makes sense for you. You leave with a plan and no pressure to commit before you've slept on it.",
+      },
+      {
+        q: 'What should I bring?',
+        a: "Any recent labs and imaging, your current medications and supplements, and a brief history of when symptoms started and what you've already tried. Pediatric or pregnant patients should bring relevant records. Comfortable clothing is fine — you don't need to change for an exam.",
+      },
+      {
+        q: 'How long is the first appointment?',
+        a: "Plan on 60–75 minutes for a new patient discovery consultation and exam. Follow-up adjustments and review-of-findings visits are typically 20–30 minutes.",
+      },
+    ],
+  },
+  {
+    heading: 'Pediatric & Prenatal',
+    items: [
+      {
+        q: 'Do you treat children?',
+        a: "Yes. We provide pediatric chiropractic care from newborns onward, using soft, age-appropriate adjustments. Families often come for support with sleep, feeding, behavioral regulation, and immune resilience — alongside their pediatrician's care.",
+      },
+      {
+        q: 'Is chiropractic safe during pregnancy?',
+        a: "Yes, with a provider trained for it. Dr. DeNome is certified in the Webster Technique, developed specifically for pregnant patients. We position you comfortably and use gentle, pregnancy-appropriate adjustments, coordinating with your OB or midwife.",
+      },
+      {
+        q: 'What is the Webster Technique?',
+        a: "A chiropractic adjustment designed for pregnancy that focuses on pelvic alignment — without twisting, cracking, or popping. By easing tension across the pelvis, it may support optimal fetal positioning and a more comfortable pregnancy. It's a useful part of a complete birth team.",
+      },
+      {
+        q: 'Are newborn adjustments safe?',
+        a: "Newborn adjustments are extremely gentle — about the pressure you'd use to test the ripeness of a tomato. Birth can leave subtle tension patterns in a baby's spine, especially after a long or instrument-assisted delivery, and gentle care may support the nervous system as the baby develops.",
+      },
+    ],
+  },
+  {
+    heading: 'Working With Us',
+    items: [
+      {
+        q: 'Do I have to stop seeing my regular doctor?',
+        a: "No — and we'd rather you didn't. We work alongside your primary care provider and any specialists you're seeing. Functional testing fills in the picture standard labs miss; your physician still manages medications, referrals, and acute care.",
+      },
+      {
+        q: 'Where are you located and what areas do you serve?',
+        a: `We're at ${clinic.address.streetAddress}, ${clinic.address.addressLocality}, ${clinic.address.addressRegion} ${clinic.address.postalCode}. We serve patients across Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area. Free parking on-site, accessible ground-level entrance.`,
+      },
+      {
+        q: 'Are virtual consultations available?',
+        a: "Yes. Virtual health restoration consultations — lab review, nutrition guidance, follow-up care — are available for patients outside the immediate Mason and Cincinnati area. In-person chiropractic care requires being in the clinic.",
+      },
+      {
+        q: 'How do I schedule?',
+        a: `The fastest way is to book online through our self-registration link, or call the clinic at ${clinic.phone} during office hours. A real person answers — no phone tree.`,
+      },
+    ],
+  },
+];
+
+const allFaqs = sections.flatMap((s) => s.items);
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.url },
+    { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${site.url}/faq` },
+  ],
+};
+---
+
+<BaseLayout
+  title="FAQ | Chiropractor in Mason, OH"
+  description="Answers to common questions about chiropractic care, functional lab testing, pricing, your first visit, and pediatric & prenatal care at The Wellness Way - Mason."
+  jsonLd={[faqSchema, breadcrumbSchema]}
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'FAQ' }]} />
+    <h1>Frequently Asked Questions</h1>
+    <p class="lede">
+      Everything patients ask us most — chiropractic care, functional lab testing, pricing,
+      first visits, pediatric and prenatal care. Don't see your question?
+      <a href="/contact">Reach out</a> and we'll answer it.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="md">
+    {sections.map((section) => (
+      <div class="faq-section">
+        <h2>{section.heading}</h2>
+        <div class="faq-list">
+          {section.items.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    ))}
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="lg" background="paper-soft">
+    <div class="faq-cta">
+      <h2>Still have questions?</h2>
+      <p>The best way to get a real answer is a conversation. Schedule a discovery consultation or give us a call.</p>
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+      </div>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    max-width: 64ch;
+    margin: 1rem 0 0;
+  }
+  .faq-section { margin-bottom: 2.5rem; }
+  .faq-section h2 {
+    color: var(--color-brand-primary-dark);
+    margin-bottom: 1rem;
+  }
+  .faq-list { display: grid; gap: 0.5rem; }
+  .faq-item {
+    border: 1px solid var(--color-line);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-paper);
+  }
+  .faq-item summary {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    float: right;
+    font-size: 1.25rem;
+    color: var(--color-brand-primary-dark);
+    line-height: 1;
+  }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item p {
+    margin: 0.75rem 0 0;
+    color: var(--color-ink-muted);
+    line-height: 1.7;
+  }
+  .faq-cta { text-align: center; }
+  .faq-cta h2 { margin-top: 0; color: var(--color-ink-strong); }
+  .faq-cta p { max-width: 50ch; margin: 0 auto 1.5rem; color: var(--color-ink-muted); }
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+</style>
