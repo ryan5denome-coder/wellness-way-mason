@@ -16,6 +16,46 @@ testingPanels:
   - "Comprehensive stool analysis"
   - "Immuno Food Allergy Test"
   - "TWW Basic Panel"
+faqs:
+  - q: "What causes chronic bloating?"
+    a: >-
+      Bloating is a signal, not a personality trait. Common drivers we look for:
+      low stomach acid (yes, low — not high, despite what the antacid aisle
+      suggests), bacterial imbalance in the gut, food sensitivities, sluggish
+      digestion, and stress shifting the body out of "rest and digest." The label
+      "IBS" describes the what, not the why. Testing helps find which of these is
+      actually driving your pattern.
+  - q: "What is a comprehensive stool analysis?"
+    a: >-
+      It's a gut panel that goes well beyond a standard test. It maps your
+      microbiome (the balance of bacteria), digestive markers (are you actually
+      breaking down food?), inflammation markers, and signs of imbalance or
+      pathogens. It's how we see what's happening in the gut instead of guessing
+      from symptoms alone. We explain what each marker means in plain language
+      when results come back.
+  - q: "Can a chiropractor help with digestive issues?"
+    a: >-
+      As a Doctor of Chiropractic, Dr. DeNome doesn't treat gastrointestinal
+      disease — that stays with your physician or gastroenterologist. What
+      chiropractic care and functional testing may support is the nervous-system
+      side of digestion (the gut and brain are deeply connected) and the upstream
+      inputs — food, bacterial balance, stomach acid, stress. We test to find the
+      drivers and work alongside your medical team.
+  - q: "What's the difference between IBS and an actual gut infection?"
+    a: >-
+      "IBS" is largely a description of symptoms — bloating, irregular stools,
+      discomfort — without naming a cause. A gut infection or bacterial overgrowth
+      is a specific, findable driver that can produce those exact symptoms. That's
+      the point of comprehensive stool testing: it can reveal whether there's an
+      identifiable imbalance or pathogen underneath the "IBS" label, which changes
+      the plan entirely.
+  - q: "Does The Wellness Way - Mason test gut health?"
+    a: >-
+      Yes. Comprehensive stool analysis is one of our core panels, often paired
+      with food sensitivity testing and our basic foundational labs. We're
+      cash-pay (HSA/FSA accepted), we walk through cost and rationale before
+      ordering anything, and we coordinate with your physician rather than
+      replacing gastroenterology care.
 ---
 
 If you've been told you have IBS, "a sensitive stomach," or "just reflux," and you've been handed a PPI, a fiber supplement, or a low-FODMAP printout. You already know that doesn't ask the real question.

@@ -17,6 +17,49 @@ testingPanels:
   - "DUTCH panel (dried urine sex and adrenal hormones)"
   - "Cardiometabolic Panel"
   - "TWW Basic Panel"
+faqs:
+  - q: "What are the symptoms of hormone imbalance in women?"
+    a: >-
+      The ones we hear most: PMS that's taken over the back half of the cycle,
+      periods that turned unpredictable, anxiety or mood swings that track with
+      your cycle, weight that won't move no matter what you do, low libido,
+      trouble sleeping, and exhaustion by mid-afternoon. None of these are "just
+      stress" or "just getting older" by default — they're signals. The body
+      doesn't do these things without a reason, and the reason is usually
+      findable.
+  - q: "What is the DUTCH test and what does it measure?"
+    a: >-
+      DUTCH stands for Dried Urine Test for Comprehensive Hormones. It uses four
+      dried urine samples over 24 hours to map your sex hormones, your adrenal
+      (stress) hormones, and — the part most tests miss — the metabolites, which
+      show how your body is actually using and clearing those hormones. A single
+      blood estrogen reading is one moment in time. DUTCH shows the whole pattern,
+      including how you detox estrogen, which is where a lot of symptoms actually
+      originate.
+  - q: "How is hormone imbalance addressed without medication?"
+    a: >-
+      We're not anti-medication, and we coordinate with your physician — some
+      situations genuinely call for prescription hormones. But for many patterns
+      the levers are upstream: gut function (a lot of hormone clearance happens
+      through the gut), nutrient status, blood sugar, cortisol rhythm, and
+      reducing the toxin load that disrupts hormone signaling. We test to see
+      which of those is driving your pattern, then build a plan around the actual
+      finding rather than guessing.
+  - q: "Can hormone imbalance cause weight gain and fatigue?"
+    a: >-
+      Yes — and it's one of the most common reasons both get dismissed. When sex
+      hormones, thyroid, cortisol, and insulin fall out of rhythm, the body
+      shifts toward storing energy and conserving it, which shows up as stubborn
+      weight and persistent fatigue. The frustrating part is that standard labs
+      often look "normal" while this is happening. Comprehensive testing is how
+      we see the pattern the standard workup misses.
+  - q: "Does The Wellness Way - Mason test hormones?"
+    a: >-
+      Yes. Comprehensive hormone testing is one of our most-run workups, most
+      often through the DUTCH panel, sometimes alongside a cardiometabolic panel
+      and our basic foundational labs. We're a cash-pay practice (HSA/FSA
+      accepted), we explain cost and rationale before ordering, and we work
+      alongside your primary care provider or OB/GYN rather than replacing them.
 ---
 
 If you've been told your hormone labs look "normal" but your cycles are unpredictable, your sleep is wrecked, your mood swings hit out of nowhere, and your energy is gone by 2 p.m.: you are not imagining this.

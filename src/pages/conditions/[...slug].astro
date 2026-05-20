@@ -46,13 +46,32 @@ const medicalConditionSchema = {
   description: entry.data.excerpt,
   url: new URL(`/conditions/${entry.id}`, site.url).toString(),
 };
+
+// FAQPage schema — only when the condition has FAQ pairs (Manus audit 1.7).
+const faqs = entry.data.faqs ?? [];
+const faqSchema =
+  faqs.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }
+    : null;
+
+const pageJsonLd = faqSchema
+  ? [medicalConditionSchema, faqSchema]
+  : [medicalConditionSchema];
 ---
 
 <BaseLayout
   title={entry.data.seoTitle ?? entry.data.title}
   description={entry.data.seoDescription ?? entry.data.excerpt}
   ogImage={entry.data.image}
-  jsonLd={[medicalConditionSchema]}
+  jsonLd={pageJsonLd}
 >
   <SectionContainer width="prose" spacing="md" background="paper-soft">
     <Breadcrumbs
@@ -108,6 +127,20 @@ const medicalConditionSchema = {
           </ul>
           <p class="aside-note">Tests are recommended, never required. We walk through cost and rationale before ordering anything.</p>
         </aside>
+      )}
+
+      {faqs.length > 0 && (
+        <section class="cond-faq">
+          <h2>Frequently Asked Questions</h2>
+          <div class="faq-list">
+            {faqs.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
       )}
 
       <p class="cond-byline">{bylines.reviewed} — Doctor of Chiropractic, {clinic.brandName}</p>
@@ -202,6 +235,44 @@ const medicalConditionSchema = {
     margin-top: 0.75rem;
     font-size: var(--text-sm);
     color: var(--color-ink-muted);
+  }
+  .cond-faq {
+    margin-top: 2.5rem;
+  }
+  .cond-faq h2 {
+    color: var(--color-brand-primary-dark);
+    margin-bottom: 1.25rem;
+  }
+  .faq-list {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .faq-item {
+    border: 1px solid var(--color-line);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-paper);
+  }
+  .faq-item summary {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    float: right;
+    font-size: 1.25rem;
+    color: var(--color-brand-primary-dark);
+    line-height: 1;
+  }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-item p {
+    margin: 0.75rem 0 0;
+    color: var(--color-ink-muted);
+    line-height: 1.7;
   }
   .cond-byline {
     margin-top: 2rem;

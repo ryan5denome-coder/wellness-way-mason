@@ -17,6 +17,50 @@ testingPanels:
   - "Complete Thyroid Panel with antibodies (TPO, TgAb)"
   - "Immuno Food Allergy Test"
   - "TWW Basic Panel"
+faqs:
+  - q: "What are the early signs of autoimmune disease?"
+    a: >-
+      Often vague and easy to dismiss: lingering fatigue, joint aches that move
+      around, brain fog, digestive trouble, skin changes, hair thinning, and a
+      general "I just don't feel like myself." The hard part is that autoimmune
+      patterns can build for years — sometimes a decade — before antibodies cross
+      a lab threshold and a diagnosis lands. The early signals are the body asking
+      for help long before the official label arrives.
+  - q: "What lab tests detect autoimmune conditions?"
+    a: >-
+      It depends on the suspected pattern, but commonly: thyroid antibodies (TPO,
+      TgAb) for Hashimoto's, inflammatory markers, food sensitivity testing, and a
+      comprehensive look at gut function, since a large share of the immune system
+      lives in the gut. We don't diagnose autoimmune disease — that's your
+      physician's role — but comprehensive testing helps identify the inputs
+      driving the immune system to misfire, which is the part standard care often
+      doesn't investigate.
+  - q: "Can diet and lifestyle changes help autoimmune patterns?"
+    a: >-
+      They can be a meaningful part of the picture. Food sensitivities, gut
+      imbalances, blood sugar swings, toxin exposure, and chronic stress all
+      influence how the immune system behaves — the 3 T's (traumas, toxins,
+      thoughts) at work. We test to find which inputs are loading the system for
+      you specifically, then build targeted nutrition and lifestyle support around
+      the findings. This works alongside whatever your rheumatologist or physician
+      is managing, not instead of it.
+  - q: "What is leaky gut and how does it relate to autoimmune disease?"
+    a: >-
+      "Leaky gut" (intestinal permeability) describes a gut lining that's become
+      more porous than it should be, letting particles through that the immune
+      system then reacts to. Because so much of the immune system lives in the gut
+      wall, gut integrity and immune behavior are tightly linked — which is why we
+      so often look at gut function when an autoimmune pattern is present. Testing
+      tells us whether the gut is part of your specific picture rather than
+      assuming it.
+  - q: "Does The Wellness Way - Mason treat autoimmune conditions?"
+    a: >-
+      We don't diagnose or treat autoimmune disease, and we don't replace your
+      physician or rheumatologist — that's an important boundary. What we do is
+      run comprehensive testing to find the inputs driving the immune pattern, and
+      build a chiropractic and functional-health plan that supports the body
+      alongside your medical care. The goal is to address what's loading the
+      system, not to manage the diagnosis.
 ---
 
 If you've been told your labs are "fine" but you're flaring, fatigued, in pain, or watching your body attack itself: you are not imagining this. And if you've been handed a Hashimoto's, rheumatoid, or other autoimmune diagnosis with no plan beyond "wait and see" or "we'll medicate when it gets worse", you have more options than that.

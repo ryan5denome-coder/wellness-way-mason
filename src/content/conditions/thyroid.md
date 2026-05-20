@@ -16,6 +16,50 @@ testingPanels:
   - "Complete Thyroid Panel (TSH, free T3, free T4, reverse T3, antibodies)"
   - "Adrenal cortisol pattern testing"
   - "TWW Basic Panel"
+faqs:
+  - q: "What does standard thyroid testing miss?"
+    a: >-
+      Most standard panels check only TSH, and sometimes free T4 — a snapshot of
+      one signal. That can miss the conversion problem, where your body makes T4
+      but struggles to turn it into the active T3 your cells actually use. It also
+      misses reverse T3 (a kind of brake on thyroid activity) and the antibodies
+      (TPO, TgAb) that flag an autoimmune pattern like Hashimoto's. A TSH of 3.5
+      can land "in range" while your thyroid works overtime to hold it there. We
+      run the full panel so the picture is complete, not a single number.
+  - q: "What is the difference between TSH and free T3?"
+    a: >-
+      TSH is a message from your brain telling the thyroid how hard to work — an
+      indirect signal, not a direct measure of thyroid output. Free T3 is the
+      active hormone your cells actually use to make energy. You can have a
+      "normal" TSH and still have low free T3, which is often why someone feels
+      cold, tired, and foggy while the lab report says everything is fine.
+      Measuring both shows whether the thyroid is producing and whether the body
+      is using what it produces.
+  - q: "Can a chiropractor help with thyroid problems?"
+    a: >-
+      As a Doctor of Chiropractic, Dr. DeNome doesn't treat thyroid disease or
+      prescribe thyroid medication — that stays with your physician. What
+      chiropractic care and functional testing may support is the bigger picture
+      around thyroid function: the nervous system and the stressors (the 3 T's —
+      traumas, toxins, thoughts) that influence how the thyroid behaves. We work
+      alongside your medical team, not in place of your endocrinologist or
+      primary care.
+  - q: "What is Hashimoto's thyroiditis and how is it tested?"
+    a: >-
+      Hashimoto's is an autoimmune pattern where the immune system targets the
+      thyroid, and it's the most common driver of low thyroid function. It can be
+      present for years before TSH ever moves out of range. Catching it means
+      testing the thyroid antibodies — TPO (thyroid peroxidase) and TgAb
+      (thyroglobulin) — which standard panels often skip. We include them in the
+      complete thyroid panel so an autoimmune pattern doesn't get missed while
+      you wait for the numbers to get "bad enough."
+  - q: "How much does thyroid testing cost at The Wellness Way - Mason?"
+    a: >-
+      We're a cash-pay practice. A complete thyroid panel runs roughly $200
+      retail, with exact pricing confirmed before we order anything. HSA and FSA
+      cards are accepted. We walk through the cost and the rationale for each
+      marker before testing — nothing gets ordered without your okay. Full
+      pricing is on our pricing page.
 ---
 
 If you've been told your thyroid labs look "normal" but you still feel exhausted, foggy, cold, or stuck on the scale — you are not imagining it.

@@ -102,6 +102,13 @@ const conditions = defineCollection({
     relatedPosts: z.array(z.string()).default([]),
     relatedConditions: z.array(z.string()).default([]),
     testingPanels: z.array(z.string()).default([]),
+    // Optional FAQ pairs. When present, the condition page renders a visible
+    // FAQ section AND emits FAQPage JSON-LD for rich-result eligibility
+    // (Manus audit 1.7). Answers must use calibrated language (may help/support)
+    // and stay inside Ohio chiropractic scope.
+    faqs: z
+      .array(z.object({ q: z.string(), a: z.string() }))
+      .default([]),
   }),
 });
 

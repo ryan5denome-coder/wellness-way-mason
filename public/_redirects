@@ -2,10 +2,14 @@
 # Format: <from> <to> <status>
 # Order matters — first match wins.
 
-# Apex → www (canonical) — handled by Cloudflare Custom Domains in Phase 10.
-# Cloudflare Pages rejects absolute-URL source paths in _redirects until the
-# custom domain is attached, so this rule is set up via the Custom Domains UI
-# when thewellnesswaymason.com is moved to Cloudflare DNS (registrar transfer).
+# Apex → www (canonical). Both apex + www are attached as Custom Domains to the
+# same Worker, so both serve 200 with identical content. Canonical tags already
+# point to www everywhere (Google dedupes), but a hard 301 is cleaner and clears
+# the Manus audit "non-www serves live pages without redirect" finding (1.1).
+# No redirect loop: the www host does not match this apex-only source rule.
+# If Workers Static Assets ignores absolute-URL sources in _redirects, this is a
+# harmless no-op and we'd fall back to a Cloudflare dashboard Redirect Rule.
+https://thewellnesswaymason.com/* https://www.thewellnesswaymason.com/:splat 301!
 
 # Decap CMS — production builds emit /admin (no trailing slash) due to
 # build.format: 'file'. Redirect /admin/ → /admin for users who type the slash.
