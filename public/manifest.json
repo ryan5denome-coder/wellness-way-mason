@@ -1,0 +1,14 @@
+{
+  "name": "The Wellness Way - Mason",
+  "short_name": "TWW Mason",
+  "description": "Chiropractic care and functional health testing in Mason, OH. Dr. Ryan DeNome, DC. We test, we don't guess.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#80b741",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
