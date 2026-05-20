@@ -51,9 +51,15 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : new URL(ogImage, site.
 // author entity across every URL on the site. The full Person entity lives
 // on /about-us via personSchema({full: true}); everywhere else uses the
 // reference-only form.
+// The reference-only personSchema (full: false) intentionally omits @context
+// because it's also used nested as `author` inside articleSchema. When emitted
+// as its OWN standalone <script> block here, it needs @context to be a valid
+// top-level JSON-LD object (Manus audit 1.4 / Semrush). Spread it with @context
+// prepended so the standalone block parses while the nested usage stays clean.
+const personRef = { '@context': 'https://schema.org', ...personSchema({ full: false }) };
 const allJsonLd = skipDefaultSchema
   ? jsonLd
-  : [localBusiness(), personSchema({ full: false }), ...jsonLd];
+  : [localBusiness(), personRef, ...jsonLd];
 ---
 
 <!DOCTYPE html>

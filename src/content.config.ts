@@ -6,6 +6,9 @@ const posts = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.coerce.date().optional(),
+    // Optional last-updated date. When set, drives schema dateModified so Google
+    // sees a freshness signal distinct from the original publish date (Manus 1.12).
+    updated: z.coerce.date().optional(),
     author: z.string().default('Dr. Ryan DeNome, DC'),
     excerpt: z.string().optional(),
     image: z.string().optional(),

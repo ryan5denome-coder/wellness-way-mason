@@ -26,13 +26,39 @@ const otherLocations = allLocations
   .filter((loc) => loc.id !== entry.id)
   .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 
-// Place schema (locale) — points to the LocalBusiness with @id
+// Place schema (locale). Expanded with the clinic's PostalAddress, GeoCoordinates,
+// and containedInPlace (the locale's county/region) so it carries real local-SEO
+// signal instead of a name + description stub (Manus audit 1.5 / 1F). The clinic
+// address is the same physical location serving every locale page — these pages
+// describe the service area, anchored to the one Mason office.
 const placeSchema = {
   '@context': 'https://schema.org',
   '@type': 'Place',
   name: `${entry.data.locale}, ${entry.data.state}`,
   description: entry.data.excerpt,
   url: new URL(`/locations/${entry.id}`, site.url).toString(),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: clinic.address.streetAddress,
+    addressLocality: clinic.address.addressLocality,
+    addressRegion: clinic.address.addressRegion,
+    postalCode: clinic.address.postalCode,
+    addressCountry: clinic.address.addressCountry,
+  },
+  ...(clinic.geo.latitude && clinic.geo.longitude
+    ? {
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: clinic.geo.latitude,
+          longitude: clinic.geo.longitude,
+        },
+      }
+    : {}),
+  containedInPlace: {
+    '@type': 'AdministrativeArea',
+    name: `${entry.data.locale}, ${entry.data.state}`,
+  },
+  telephone: clinic.phoneTel,
 };
 ---
 

@@ -150,7 +150,10 @@ export function articleSchema(post: {
 }): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    // BlogPosting is more semantically precise than the generic Article type
+    // for clinic blog content (Manus audit 1.6). Google treats it as an Article
+    // subtype, so all Article rich-result eligibility carries over.
+    '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
     image: post.image ? [post.image] : undefined,

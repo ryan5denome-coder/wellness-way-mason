@@ -24,7 +24,7 @@ const schema = articleSchema({
   description: post.data.excerpt ?? post.data.seoDescription ?? '',
   image: post.data.image ? new URL(post.data.image, site.url).toString() : undefined,
   datePublished: post.data.date?.toISOString(),
-  dateModified: post.data.date?.toISOString(),
+  dateModified: (post.data.updated ?? post.data.date)?.toISOString(),
   url: new URL(`/post/${post.id}`, site.url).toString(),
 });
 

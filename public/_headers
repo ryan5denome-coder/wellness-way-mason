@@ -1,0 +1,10 @@
+# Cloudflare security headers for all routes (Manus audit 1.10 / 9B).
+# These are trust + safety signals flagged by PageSpeed Insights and security
+# scanners. None change page behavior; they harden the response.
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  X-XSS-Protection: 0
