@@ -119,6 +119,16 @@ We use comprehensive lab work — not a single random blood draw. Depending on y
 
 Tests are recommended, never required. We walk through cost and rationale before ordering anything.
 
+## A Pattern We See
+
+A pattern we see often: a woman in her late 30s with a cycle that turned unpredictable, PMS that now swallows the back half of the month, anxiety that spikes the week before her period, and a fog she can't shake. Standard labs — maybe a single estrogen and a TSH — came back "normal," and she was told it was stress or age.
+
+When we run the DUTCH panel, the pattern usually shows itself: adequate estrogen but low progesterone in the luteal phase, or estrogen being cleared down a less favorable detox pathway, with a flattened cortisol curve underneath it all. Suddenly the symptoms have a shape.
+
+From there we build a plan around the actual finding — supporting progesterone balance, gut and liver clearance, blood sugar, and the cortisol rhythm — and we coordinate with her physician or OB/GYN. We don't guarantee a particular result, and some situations genuinely call for prescription support. But many patients tell us it's the first time the way they feel has lined up with what's on paper.
+
+*This is a composite — not one specific person — but it reflects a pattern we see regularly.*
+
 ## Working Alongside Your Medical Team
 
 If you're already on hormone replacement, birth control, or any other prescribed medication: **we don't change it**. Medication decisions stay with your prescribing physician.

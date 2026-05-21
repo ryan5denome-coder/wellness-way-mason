@@ -122,6 +122,16 @@ We use comprehensive lab work: not a single antibody check. Depending on your st
 
 Tests are recommended, never required. We walk through cost and rationale before ordering anything.
 
+## A Pattern We See
+
+A pattern we see often: someone arrives already carrying an autoimmune diagnosis — Hashimoto's, rheumatoid, or "your antibodies are elevated but we'll just monitor it" — with fatigue, flares, joint aches, and a plan that amounts to wait-and-see. They want to know what they can actually do.
+
+When we test, the inputs often come into focus: thyroid antibodies confirming the pattern, food sensitivities driving inflammation, and gut markers suggesting impaired barrier function. None of that diagnoses the disease — their physician already did — but it shows the levers that may be loading the immune system.
+
+From there we build a plan around those inputs: targeted nutrition, gut support, reducing the toxin and stress load (the 3 T's), and chiropractic care to support nervous-system regulation — all alongside whatever their rheumatologist or physician is managing. We make no claims about reversing or curing autoimmune disease. But many patients report finally having something to do besides wait.
+
+*This is a composite — not one specific person — but it reflects a pattern we see often.*
+
 ## Working Alongside Your Medical Team
 
 If you're already on autoimmune medication — biologics, methotrexate, low-dose naltrexone, thyroid replacement, steroids, anything else. **we don't change it**. Those decisions stay with your prescribing physician and rheumatologist.

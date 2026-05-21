@@ -120,6 +120,16 @@ We use comprehensive lab work. Not just the basic TSH check. Depending on your s
 
 Tests are recommended, never required. We walk through cost and rationale before ordering anything.
 
+## A Pattern We See
+
+A pattern we see often: a woman in her late 30s or early 40s comes in exhausted, cold all the time, losing hair, and watching the scale climb despite eating carefully. Her primary care doctor ran a TSH, found it inside the lab range, and told her everything looked fine. She left feeling dismissed.
+
+When we run the full panel, the picture often fills in — a TSH at the high end of "normal," low free T3, elevated reverse T3, and positive TPO antibodies pointing to an early Hashimoto's pattern her TSH-only test never flagged. The numbers finally match how she feels.
+
+From there we build a plan around what the labs actually show, supporting the systems the thyroid depends on (gut, adrenals, nutrient status, inflammation) and coordinating with her physician on any medication. We don't promise a specific outcome, and we don't change prescriptions. But for many patients, having the full picture is the first time anyone connected the symptoms to something real and findable.
+
+*This is a composite — not one specific person — but it reflects a pattern we see most weeks.*
+
 ## Working Alongside Your Medical Team
 
 If you're already on thyroid medication, Synthroid, Armour, levothyroxine, or any other. **we don't change it**. Medication decisions stay with your prescribing physician.

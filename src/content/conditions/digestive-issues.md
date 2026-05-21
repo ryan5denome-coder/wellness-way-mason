@@ -115,6 +115,16 @@ We use comprehensive lab work: not just a symptom checklist. Depending on your s
 
 Tests are recommended, never required. We walk through cost and rationale before ordering anything.
 
+## A Pattern We See
+
+A pattern we see often: someone who's been handed an "IBS" label, told to try fiber and a low-FODMAP printout, and sent on their way — still bloated, still uncomfortable, still without an answer for why. They've cut out foods, tried probiotics off the shelf, and gotten nowhere.
+
+When we run a comprehensive stool analysis, the why often surfaces: bacterial imbalance (dysbiosis), low markers of proper digestion suggesting food isn't breaking down well, signs of inflammation, sometimes an overgrowth no symptom-based label would have caught. The "IBS" was describing the what; the test finds what's underneath.
+
+From there we build a plan around the finding — supporting stomach acid and digestion, rebalancing the gut, addressing food triggers — and we coordinate with their physician or gastroenterologist. We don't promise a specific outcome. But many patients tell us it's the first time anyone looked instead of guessing.
+
+*This is a composite — not one specific person — but it reflects a pattern we see most weeks.*
+
 ## Working Alongside Your Medical Team
 
 If you're already on a PPI, prokinetic, or other GI medication. **we don't change it**. Medication decisions stay with your prescribing physician or gastroenterologist.
