@@ -121,8 +121,10 @@ const threeTs = [
     <div class="hero-bleed-scrim" aria-hidden="true"></div>
     <div class="hero-bleed-inner">
       <div class="hero-bleed-text">
-        <p class="hero-eyebrow">Chiropractic Care in Mason, OH</p>
-        <h1 class="hero-headline">Common is <em>not normal.</em></h1>
+        <h1 class="hero-headline">
+          <span class="hero-kicker">Chiropractic Care in Mason, OH</span>
+          Common is <em>not normal.</em>
+        </h1>
         <p class="hero-positioning">Health restoration starts here.</p>
         <p class="hero-lede">
           A chiropractic clinic in Mason, OH built around manual, specific adjustments —
@@ -295,7 +297,7 @@ const threeTs = [
     <div class="atmosphere-bleed-inner">
       <div class="atmosphere-card">
         <p class="eyebrow">Built for the whole family</p>
-        <h2>A space that welcomes every age.</h2>
+        <h2>Pediatric &amp; prenatal care in a space for every age.</h2>
         <p>
           From newborns to grandparents, the clinic is designed for real families with real lives.
           Pediatric play space, prenatal-comfortable adjusting tables, calm lighting, and a team
@@ -976,13 +978,18 @@ const threeTs = [
   .hero-bleed-text {
     max-width: 36rem;
   }
-  .hero-eyebrow {
+  /* Keyword kicker now lives INSIDE the h1 so the primary keyword is part of
+     the H1 text Google reads (Manus audit 2A), while "Common is not normal."
+     keeps the visual punch. */
+  .hero-kicker {
+    display: block;
+    font-family: var(--font-body);
     font-size: var(--text-xs);
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-paper);
     opacity: 0.85;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1.25rem;
     font-weight: 500;
   }
   .hero-headline {
