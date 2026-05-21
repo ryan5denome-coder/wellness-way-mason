@@ -96,7 +96,7 @@ A full picture asks better questions:
 - **Thyroid antibodies (TPO and TgAb):** the marker that flags Hashimoto's autoimmune thyroiditis, often *years* before TSH drifts out of range
 - Cortisol patterns. Your adrenal output, which runs in tight feedback with the thyroid
 
-When we run the full panel, we frequently find Hashimoto's, low T3, high reverse T3, or adrenal patterns that explain symptoms a TSH-only test missed entirely.
+When we run the full panel, we frequently find Hashimoto's, low T3, high reverse T3, or adrenal patterns that explain symptoms a TSH-only test missed entirely. This isn't a fringe concern. Research on thyroid regulation has argued that TSH alone is an inadequate stand-alone marker because the relationship between TSH and the actual thyroid hormones is complex and highly individual [1], and large population screening has found that thyroid dysfunction is common and frequently goes undetected [2].
 
 ## The 3 T's Behind Thyroid Dysfunction
 
@@ -139,6 +139,11 @@ After we have your full results, we build a personalized plan. For thyroid patie
 - **Lifestyle adjustments** for sleep, stress, and movement
 
 This is hands-on, one-on-one guidance. Not a generic protocol.
+
+## References
+
+1. Hoermann R, Midgley JEM, Larisch R, Dietrich JW. Homeostatic Control of the Thyroid–Pituitary Axis: Perspectives for Diagnosis and Treatment. *Frontiers in Endocrinology.* 2015;6:177. [PMID: 26635726](https://pubmed.ncbi.nlm.nih.gov/26635726/)
+2. Canaris GJ, Manowitz NR, Mayor G, Ridgway EC. The Colorado Thyroid Disease Prevalence Study. *Archives of Internal Medicine.* 2000;160(4):526–534. [PMID: 10695693](https://pubmed.ncbi.nlm.nih.gov/10695693/)
 
 ## Ready to See the Full Picture?
 
