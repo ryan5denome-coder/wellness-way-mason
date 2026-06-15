@@ -1,10 +1,10 @@
 ---
-title: "Heart Health Beyond a Standard Lipid Panel — Mason, OH"
+title: "Heart Health Beyond a Standard Lipid Panel, Mason, OH"
 seoTitle: "Heart Health Testing in Mason, OH | The Wellness Way"
-seoDescription: "Cardiometabolic testing in Mason, OH that goes beyond the standard lipid panel. Inflammation, particle size, blood sugar — the full picture, alongside your physician."
-excerpt: "Heart disease rarely shows up without warning — but the warning signs sit underneath a standard lipid panel. We test for the full picture, alongside your medical team."
+seoDescription: "Cardiometabolic testing in Mason, OH that goes beyond the standard lipid panel. Inflammation, particle size, blood sugar: the full picture, alongside your physician."
+excerpt: "Heart disease rarely shows up without warning, but the warning signs sit underneath a standard lipid panel. We test for the full picture, alongside your medical team."
 image: "/images/conditions/heart-disease.jpg"
-imageAlt: "Heart-healthy whole foods on a plate — avocado, salmon, fresh greens — representing comprehensive cardiometabolic care"
+imageAlt: "Heart-healthy whole foods on a plate: avocado, salmon, fresh greens, representing cardiometabolic care"
 order: 6
 featured: false
 tts: [toxins, thoughts]
@@ -45,7 +45,7 @@ Here's the problem: **cholesterol particle size matters more than cholesterol qu
 A complete cardiometabolic picture asks better questions:
 
 - **Particle size and number** (LDL-P, small dense LDL). Who's actually at risk?
-- **Inflammation markers** (hs-CRP, fibrinogen, homocysteine) — is the artery wall under attack?
+- **Inflammation markers** (hs-CRP, fibrinogen, homocysteine). Is the artery wall under attack?
 - **Insulin sensitivity** (fasting insulin, HbA1c). Blood sugar dysregulation drives more cardiovascular damage than cholesterol does, and it's often present 5–10 years before a diabetes diagnosis
 - **Lipoprotein(a):** a genetic risk factor your doctor probably hasn't tested
 - Omega-3 index. Low levels strongly predict cardiac events; cheap supplement fix when caught
@@ -58,8 +58,8 @@ When we run the cardiometabolic panel, we frequently find inflammation, insulin 
 Cardiovascular dysfunction rarely happens in isolation. The Wellness Way 3 T's framework:
 
 - **Toxins:** environmental exposures, oxidized seed oils, refined sugar, and chronic low-grade infections all drive arterial inflammation. The arterial wall is one of the most chemically reactive surfaces in the body.
-- Thoughts. Chronic stress raises cortisol and blood pressure, increases clotting tendency, and reshapes the cardiac rhythm. Sustained over years, the cardiovascular cost is real.
-- **Traumas**, physical inactivity, poor sleep posture, and the cumulative load of structural compensation patterns all show up in heart-rate variability and vascular tone.
+- **Thoughts:** chronic stress raises cortisol and blood pressure, increases clotting tendency, and reshapes the cardiac rhythm. Sustained over years, the cardiovascular cost is real.
+- **Traumas:** physical inactivity, poor sleep posture, and the cumulative load of structural compensation patterns all show up in heart-rate variability and vascular tone.
 
 You may have one of these driving the bus. You may have all three. **The point isn't to guess. It's to test.**
 
@@ -68,11 +68,11 @@ You may have one of these driving the bus. You may have all three. **The point i
 Tests are recommended, never required. We walk through cost and rationale before ordering anything. Common panels for cardiovascular concerns:
 
 - **Cardiometabolic Panel:** particle sizes, advanced lipids, inflammation markers
-- Fasting insulin + HbA1c. The early-warning system standard panels skip
-- **Lipoprotein(a)** — once-in-a-lifetime test for genetic risk
+- **Fasting insulin + HbA1c.** The early-warning signal standard panels skip
+- **Lipoprotein(a):** a once-in-a-lifetime test for genetic risk
 - **Omega-3 index:** cheap, often dramatically low
-- Comprehensive thyroid panel. Both hyper and hypo states affect cardiovascular risk
-- **Blood pressure tracking pattern**. Single-visit readings miss white-coat artifact
+- **Thyroid panel:** both hyper and hypo states affect cardiovascular risk
+- **Blood pressure tracking pattern.** Single-visit readings miss white-coat artifact
 
 ## Working Alongside Your Medical Team
 
@@ -87,12 +87,12 @@ We work alongside your cardiologist, primary care, and any specialist on your ca
 After we have your full results, we build a personalized plan. For cardiovascular concerns, that often involves:
 
 - **Targeted nutrition:** addressing inflammatory triggers, oxidized fats, blood sugar
-- Specific supplementation. Omega-3, magnesium, CoQ10 (especially if on a statin), niacin where appropriate
-- **Movement and stress patterns**. Both directly affect inflammation and HRV
+- **Specific supplementation:** Omega-3, magnesium, CoQ10 (especially if on a statin), niacin where appropriate
+- **Movement and stress patterns.** Both directly affect inflammation and HRV
 - **Chiropractic care:** supports nervous system regulation that affects cardiac rhythm
-- Coordination with your physician. So the picture stays integrated
+- **Coordination with your physician,** so the picture stays integrated
 
-This is hands-on, one-on-one guidance — not a generic protocol.
+This is hands-on, one-on-one work. Not a one-size-fits-all plan.
 
 ## Ready to See the Full Picture?
 

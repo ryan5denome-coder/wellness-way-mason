@@ -39,7 +39,7 @@ At **The Wellness Way - Mason**, we believe in fueling your body with food that 
 
 - 1/2 red onion, thinly sliced - could sub this out for pickled onions
 
-- Goat cheese — any kind you like
+- Goat cheese (any kind you like)
 
 - Optional: cherry tomatoes, pickles, sauerkraut, plantain chips for a crunch, bacon, pepper jelly
 

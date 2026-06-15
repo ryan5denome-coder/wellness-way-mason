@@ -2,9 +2,9 @@
 title: All Salt is NOT Created Equal
 date: 2025-06-16
 author: "Dr. Ryan DeNome, DC"
-excerpt: Salt has been demonized for decades—but the real issue isn't salt itself. It's the kind of salt we're using.
+excerpt: Salt has been demonized for decades, but the real issue isn't salt itself. It's the kind of salt we're using.
 image: "/images/posts/all-salt.jpg"
-imageAlt: "Pink Himalayan salt crystals in a clear glass jar — natural mineral salt"
+imageAlt: "Pink Himalayan salt crystals in a clear glass jar, a natural mineral salt"
 categories: [recipes, gut-health]
 readTime: 1 min read
 complianceReviewed: false
@@ -15,7 +15,7 @@ seoDescription: "Not all salt is created equal. Learn why Redmond Real Salt is a
 
 _Because not all salt is created equal._
 
-Salt has been demonized for decades — but the **real issue isn't salt itself**. It's the **_kind_** of salt we're using.
+Salt has been demonized for decades, but the **real issue isn't salt itself**. It's the **_kind_** of salt we're using.
 
 ## The Problem with Standard Table Salt
 
@@ -23,21 +23,21 @@ Most table salts are highly processed, stripped of their natural trace minerals,
 
 ## Why We Switched to Redmond Real Salt
 
-We switched to **Redmond Real Salt** — an unrefined, mineral-rich salt mined right here in the U.S. from ancient sea beds in Utah. It's untouched by modern pollutants and packed with over 60 trace minerals your body actually needs to function.
+We switched to **Redmond Real Salt**: an unrefined, mineral-rich salt mined right here in the U.S. from ancient sea beds in Utah. It's untouched by modern pollutants and packed with over 60 trace minerals your body actually needs to function.
 
 ## Four Reasons Switching Matters
 
-🧂 **Minerals matter** — Real Salt contains essential electrolytes like magnesium, potassium, and calcium that support hydration, hormone balance, and nerve function.
+🧂 **Minerals matter.** Real Salt contains essential electrolytes like magnesium, potassium, and calcium that support hydration, hormone balance, and nerve function.
 
-🌿 **No additives or chemicals** — Just pure, natural salt the way your body was designed to receive it.
+🌿 **No additives or chemicals.** Just pure, unaltered salt the way your body was designed to use it.
 
-💧 **Supports adrenal and thyroid health** — Proper salt intake is crucial for hormone regulation and managing stress.
+💧 **Supports adrenal and thyroid health.** Proper salt intake is crucial for hormone regulation and managing stress.
 
-😋 **It tastes better** — The rich, natural flavor enhances food without overpowering it.
+😋 **It tastes better.** The rich, natural flavor enhances food without overpowering it.
 
 ## A Wellness Way Perspective
 
-From a Wellness Way perspective, we always ask _why_ symptoms are happening — and mineral imbalances, dehydration, and poor nutrition are common underlying drivers. Swapping your salt is a simple but powerful step toward restoring your body's natural balance.
+From a Wellness Way perspective, we always ask _why_ symptoms are happening. Mineral imbalances, dehydration, and poor nutrition are common underlying drivers. Swapping your salt is a simple but powerful step toward restoring your body's natural balance.
 
 So next time you reach for the salt shaker, make it **Redmond Real Salt**. Your cells (and your taste buds) will thank you.
 

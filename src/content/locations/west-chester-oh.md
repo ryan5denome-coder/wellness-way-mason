@@ -1,7 +1,7 @@
 ---
 title: "Chiropractor in West Chester, OH | The Wellness Way - Mason"
 seoTitle: "Chiropractor in West Chester, OH | Mason, OH"
-seoDescription: "Chiropractor serving West Chester, OH from our Mason, OH clinic — comprehensive lab testing, chiropractic care, and one-on-one guidance. We test, we don't guess."
+seoDescription: "Chiropractor serving West Chester, OH from our Mason, OH clinic: lab testing, chiropractic care, and one-on-one guidance. We test, we don't guess."
 excerpt: "West Chester families drive a short ten minutes north to The Wellness Way - Mason for testing and care that goes deeper than a TSH check. Young parents, GE Aerospace and UC Health professionals, and growing families make up much of who we serve."
 locale: "West Chester"
 state: "OH"
@@ -12,7 +12,7 @@ distanceFromClinic: "~10 minutes south of Mason"
 drivingTime: "10-15 min"
 ---
 
-If you live in West Chester and your doctor has told you everything looks "normal" while your body is telling you something else — fatigue that sleep doesn't touch, a cycle that's gone sideways, a fog that won't lift. You have options. You're not imagining it.
+If you live in West Chester and your doctor has told you everything looks "normal" while your body is telling you something else: fatigue that sleep doesn't touch, a cycle that's gone sideways, a fog that won't lift. You have options. You're not imagining it.
 
 West Chester Township is one of the largest, most family-dense communities in Butler County. Beckett Ridge, Wetherington, Olde West Chester, the Square at Union Centre: these are neighborhoods where families grow and where two-career households are the norm rather than the exception. That pace shows up in the body. We see it across the table every week.
 
@@ -29,7 +29,7 @@ You may have walked the trail at Voice of America MetroPark and noticed your kne
 
 ## Our Approach: Test, Don't Guess
 
-We do not assume. We measure. The 3 T's framework (Traumas, Toxins, Thoughts). Gives us a map of what's likely driving your inflammation, and named lab panels tell us what's actually happening inside the system. The TWW Basic Panel, the DUTCH panel for hormones, the Immuno Food Allergy Test, the Cardiometabolic Panel — each one answers a different question. We build the plan around your data, not a generic protocol.
+We do not assume. We measure. The 3 T's (Traumas, Toxins, Thoughts) give us a map of what's likely driving your inflammation, and named lab panels tell us what's actually happening inside the system. The TWW Basic Panel, the DUTCH panel for hormones, the Immuno Food Allergy Test, the Cardiometabolic Panel: each one answers a different question. We build the care plan around your data, not a generic template.
 
 Health restoration, not disease management. Your body was designed to heal. We help you remove the obstacles.
 
@@ -44,7 +44,7 @@ For West Chester families specifically, we see the most:
 - [Autoimmune patterns](/conditions/autoimmune) running through families
 - [Anxiety and mood](/conditions/mental-health-brain) that lives downstream of gut and hormone dysfunction
 
-For pregnancy patients, Dr. DeNome is Webster Technique certified — the prenatal chiropractic protocol many West Chester moms specifically search for.
+For pregnancy patients, Dr. DeNome is Webster Technique certified, a prenatal chiropractic approach many West Chester moms specifically search for.
 
 ## Getting to The Wellness Way - Mason from West Chester
 
@@ -54,11 +54,7 @@ We are at **5382 Cox-Smith Rd, Suite A, Mason, OH 45040**. Free on-site parking.
 
 ## Why West Chester Patients Choose Us
 
-- **Testing-first care**: we don't guess; we test
-- **Webster Technique certified** for prenatal patients
-- **Named lab panels:** DUTCH, Cardiometabolic, TWW Basic, Immuno Food Allergy, No Sugar Panel
-- **We work alongside your physicians**, not in place of them, including the obstetricians and PCPs many of our West Chester patients already see
-- One-on-one guidance. No rotating-provider visits
+We test, we don't guess. Every care plan starts with data: DUTCH, Cardiometabolic, TWW Basic, Immuno Food Allergy, No Sugar Panel. Dr. DeNome is Webster Technique certified for prenatal care, and he works alongside your obstetrician or PCP rather than around them. Visits are one-on-one. You see the same provider every time.
 
 ## Ready to Schedule?
 

@@ -1,7 +1,7 @@
 ---
 title: "Chiropractor in Mason, OH | The Wellness Way - Mason"
 seoTitle: "Chiropractor in Mason, OH | Mason, OH"
-seoDescription: "Looking for a chiropractor in Mason, OH? The Wellness Way - Mason offers comprehensive lab testing and chiropractic care. We test, we don't guess."
+seoDescription: "Looking for a chiropractor in Mason, OH? The Wellness Way - Mason runs real lab panels alongside chiropractic care. We test, we don't guess."
 excerpt: "The Wellness Way - Mason serves Mason, OH residents who are tired of being told their labs look fine while they still feel exhausted, foggy, or off. Our clinic sits inside the community we serve."
 locale: "Mason"
 state: "OH"
@@ -18,7 +18,7 @@ The Wellness Way - Mason sits a few minutes from Kings Island, just off the I-71
 
 ## What Brings Mason Patients to Our Clinic
 
-Mason is a high-functioning, high-pressure community. The schools are demanding. The job market is dense — Cintas, Luxottica, Procter & Gamble, Lindner Family Tennis Center events all pulling on the same families. The median household income reflects how hard people here work, and that workload shows up in the body.
+Mason is a high-functioning, high-pressure community. The schools are demanding. The job market is crowded: Cintas, Luxottica, Procter & Gamble, Lindner Family Tennis Center events all pulling on the same families. The median household income reflects how hard people here work, and that workload shows up in the body.
 
 The patients who walk through our doors from Mason tend to share a story:
 
@@ -31,9 +31,9 @@ You may recognize one of these patterns. You may recognize all of them. Either w
 
 ## Our Approach: Test, Don't Guess
 
-We use The Wellness Way's 3 T's framework — Traumas, Toxins, Thoughts — to look at what's actually driving inflammation in your body. Then we map that to comprehensive lab work: the TWW Basic Panel, the Cardiometabolic Panel, the Immuno Food Allergy Test, the DUTCH panel for hormones. The labs tell us where the underlying drivers are. The plan we build follows the data, not a guess.
+We use The Wellness Way's 3 T's framework (Traumas, Toxins, Thoughts) to look at what's actually driving inflammation in your body. Then we map that to targeted lab work: the TWW Basic Panel, the Cardiometabolic Panel, the Immuno Food Allergy Test, the DUTCH panel for hormones. The labs tell us where the underlying drivers are. The plan we build follows the data, not a guess.
 
-Our model is Health Restoration, not symptom management. Your body was designed to heal — when you remove the obstacles and replenish what it needs, the system goes back to work.
+Our model is Health Restoration, not symptom management. Your body was designed to heal. When you remove the obstacles and replenish what it needs, the system goes back to work.
 
 ## Conditions We Help With Most Often
 
@@ -44,7 +44,7 @@ Local Mason patients come to us most often for:
 - [Hormone imbalance](/conditions/hormone-imbalance), perimenopause, irregular cycles, low libido
 - [Digestive and gut issues](/conditions/digestive-issues). Bloating, reflux, food sensitivities
 - [Fatigue](/conditions/fatigue) and [anxiety/mood](/conditions/mental-health-brain) patterns that resist standard care
-- [Cardiometabolic concerns](/conditions/heart-disease) — blood sugar, lipids, inflammation markers
+- [Cardiometabolic concerns](/conditions/heart-disease): blood sugar, lipids, inflammation markers
 
 We see a lot of dual-income Mason families where both parents are stretched thin and the kids are showing the same patterns earlier than anyone expected.
 
@@ -56,11 +56,12 @@ If you're coming from the Mason schools, the Mason Community Center, or the Deer
 
 ## Why Mason Patients Choose Us
 
-- **Testing-first.** We don't guess: we test. Named lab panels, real data.
-- **Integrative.** We work alongside your physicians, not in place of them. Your prescribing doctor stays in charge of medication decisions.
-- **Local.** We live and practice inside the same community you do.
+We don't guess: we test. Named lab panels, real data, a plan built from the results.
+
+We work alongside your physicians, not in place of them. Your prescribing doctor stays in charge of medication decisions. We live and practice inside the same community you do.
+
 - **Webster Technique certified.** Pregnancy and prenatal chiropractic care for Mason moms.
-- **One-on-one guidance.** No conveyor-belt visits.
+- **One-on-one visits.** No conveyor-belt appointments.
 
 ## Ready to Schedule?
 

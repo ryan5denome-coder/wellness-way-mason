@@ -1,10 +1,10 @@
 ---
-title: "Thyroid Testing in Mason, OH — What Most Doctors Miss"
+title: "Thyroid Testing in Mason, OH: What Most Doctors Miss"
 seoTitle: "Thyroid Testing in Mason, OH | The Wellness Way"
-seoDescription: "Comprehensive thyroid testing in Mason, OH. Beyond TSH alone — a full thyroid panel reveals what's actually driving fatigue, weight changes, and brain fog."
+seoDescription: "Full thyroid testing in Mason, OH. Beyond TSH alone: a complete thyroid panel reveals what's actually driving fatigue, weight changes, and brain fog."
 excerpt: "Thyroid issues are some of the most under-diagnosed and over-medicated patterns we see. Standard testing can miss the majority of what's actually happening. We test, we don't guess."
 image: "/images/conditions/thyroid.jpg"
-imageAlt: "Bowl of walnuts on a dark wooden table — selenium-rich whole foods that support thyroid health"
+imageAlt: "Bowl of walnuts on a dark wooden table, selenium-rich whole foods that support thyroid health"
 order: 1
 featured: true
 tts: [traumas, toxins, thoughts]
@@ -19,7 +19,7 @@ testingPanels:
 faqs:
   - q: "What does standard thyroid testing miss?"
     a: >-
-      Most standard panels check only TSH, and sometimes free T4 — a snapshot of
+      Most standard panels check only TSH, and sometimes free T4: a snapshot of
       one signal. That can miss the conversion problem, where your body makes T4
       but struggles to turn it into the active T3 your cells actually use. It also
       misses reverse T3 (a kind of brake on thyroid activity) and the antibodies
@@ -28,7 +28,7 @@ faqs:
       run the full panel so the picture is complete, not a single number.
   - q: "What is the difference between TSH and free T3?"
     a: >-
-      TSH is a message from your brain telling the thyroid how hard to work — an
+      TSH is a message from your brain telling the thyroid how hard to work, an
       indirect signal, not a direct measure of thyroid output. Free T3 is the
       active hormone your cells actually use to make energy. You can have a
       "normal" TSH and still have low free T3, which is often why someone feels
@@ -38,9 +38,9 @@ faqs:
   - q: "Can a chiropractor help with thyroid problems?"
     a: >-
       As a Doctor of Chiropractic, Dr. DeNome doesn't treat thyroid disease or
-      prescribe thyroid medication — that stays with your physician. What
+      prescribe thyroid medication. That stays with your physician. What
       chiropractic care and functional testing may support is the bigger picture
-      around thyroid function: the nervous system and the stressors (the 3 T's —
+      around thyroid function: the nervous system and the stressors (the 3 T's:
       traumas, toxins, thoughts) that influence how the thyroid behaves. We work
       alongside your medical team, not in place of your endocrinologist or
       primary care.
@@ -49,8 +49,8 @@ faqs:
       Hashimoto's is an autoimmune pattern where the immune system targets the
       thyroid, and it's the most common driver of low thyroid function. It can be
       present for years before TSH ever moves out of range. Catching it means
-      testing the thyroid antibodies — TPO (thyroid peroxidase) and TgAb
-      (thyroglobulin) — which standard panels often skip. We include them in the
+      testing the thyroid antibodies (TPO/thyroid peroxidase and TgAb/
+      thyroglobulin), which standard panels often skip. We include them in the
       complete thyroid panel so an autoimmune pattern doesn't get missed while
       you wait for the numbers to get "bad enough."
   - q: "How much does thyroid testing cost at The Wellness Way - Mason?"
@@ -58,11 +58,11 @@ faqs:
       We're a cash-pay practice. A complete thyroid panel runs roughly $200
       retail, with exact pricing confirmed before we order anything. HSA and FSA
       cards are accepted. We walk through the cost and the rationale for each
-      marker before testing — nothing gets ordered without your okay. Full
+      marker before testing. Nothing gets ordered without your okay. Full
       pricing is on our pricing page.
 ---
 
-If you've been told your thyroid labs look "normal" but you still feel exhausted, foggy, cold, or stuck on the scale — you are not imagining it.
+If you've been told your thyroid labs look "normal" but you still feel exhausted, foggy, cold, or stuck on the scale: you are not imagining it.
 
 Thyroid issues are some of the most **under-diagnosed and over-medicated patterns** we see at The Wellness Way - Mason. Standard testing. TSH alone, or TSH plus T4: can miss the majority of what's actually happening with your thyroid. The terms hypothyroid, hyperthyroid, Hashimoto's get used loosely, often without a complete picture of what's driving the dysfunction.
 
@@ -88,13 +88,7 @@ Standard thyroid testing usually starts and ends with **TSH** (thyroid-stimulati
 
 The problem: TSH measures the signal your pituitary sends *to* the thyroid. It tells you nothing about whether the thyroid is actually responding, whether it's converting T4 to the active T3 your cells use, whether it's being attacked by your own immune system, or whether the signal itself is being distorted by adrenal stress.
 
-A full picture asks better questions:
-
-- **Free T4:** the storage form your thyroid produces
-- Free T3. The active form your cells actually use
-- **Reverse T3**. The brake; chronic stress can flood this and slow you down
-- **Thyroid antibodies (TPO and TgAb):** the marker that flags Hashimoto's autoimmune thyroiditis, often *years* before TSH drifts out of range
-- Cortisol patterns. Your adrenal output, which runs in tight feedback with the thyroid
+A full picture asks better questions. That means running free T4 (the storage form your thyroid produces), free T3 (the active form your cells actually use), and reverse T3 (the brake that chronic stress can push up to slow everything down). It also means checking thyroid antibodies, TPO and TgAb, which flag a Hashimoto's autoimmune pattern often *years* before TSH ever drifts out of range. And because the thyroid and adrenals run in tight feedback, cortisol patterns belong in the picture too.
 
 When we run the full panel, we frequently find Hashimoto's, low T3, high reverse T3, or adrenal patterns that explain symptoms a TSH-only test missed entirely. This isn't a fringe concern. Research on thyroid regulation has argued that TSH alone is an inadequate stand-alone marker because the relationship between TSH and the actual thyroid hormones is complex and highly individual [1], and large population screening has found that thyroid dysfunction is common and frequently goes undetected [2].
 
@@ -102,20 +96,20 @@ When we run the full panel, we frequently find Hashimoto's, low T3, high reverse
 
 Thyroid dysfunction rarely happens in isolation. The Wellness Way 3 T's framework helps us look at why your thyroid is struggling in the first place:
 
-- **Traumas** — physical stress on the body, including past whiplash injuries, sleep deprivation, surgical history, and chronic inflammation from old injuries, all add to the cumulative load.
+- **Traumas:** physical stress on the body, including past whiplash injuries, sleep deprivation, surgical history, and chronic inflammation from old injuries, all add to the cumulative load.
 - **Toxins:** heavy metals, environmental endocrine disruptors, mold exposure, and inflammatory food sensitivities all interfere with thyroid hormone production and conversion. The thyroid is one of the most chemically sensitive glands in the body.
-- Thoughts. Chronic stress floods the body with cortisol, which disrupts the HPA axis and shifts the body toward producing reverse T3 instead of active T3. The thyroid slows down to protect you. Long enough, and that becomes a pattern your body defaults to.
+- **Thoughts:** chronic stress floods the body with cortisol, which disrupts the HPA axis and shifts the body toward producing reverse T3 instead of active T3. The thyroid slows down to protect you. Long enough, and that becomes a pattern your body defaults to.
 
 You may have one of these driving the bus. You may have all three. We test to find out which.
 
 ## Our Testing Approach
 
-We use comprehensive lab work. Not just the basic TSH check. Depending on your story, your panel may include:
+We run the full lab picture, not just the basic TSH check. Depending on your story, your panel may include:
 
 - **Complete thyroid panel:** TSH, free T3, free T4, reverse T3, TPO antibodies, thyroglobulin antibodies
-- **Adrenal cortisol patterns**: saliva or DUTCH testing to map the daily cortisol curve
-- **Comprehensive nutrient panel:** selenium, iodine, ferritin, B12, vitamin D, magnesium (the cofactors thyroid hormone production depends on)
-- Inflammation markers. CRP, ESR, fasting insulin
+- **Adrenal cortisol patterns:** saliva or DUTCH testing to map the daily cortisol curve
+- **Nutrient panel:** selenium, iodine, ferritin, B12, vitamin D, magnesium (the cofactors thyroid hormone production depends on)
+- **Inflammation markers:** CRP, ESR, fasting insulin
 - **Food sensitivity testing** when gut/autoimmune crosstalk is suspected
 
 Tests are recommended, never required. We walk through cost and rationale before ordering anything.
@@ -124,19 +118,19 @@ Tests are recommended, never required. We walk through cost and rationale before
 
 A pattern we see often: a woman in her late 30s or early 40s comes in exhausted, cold all the time, losing hair, and watching the scale climb despite eating carefully. Her primary care doctor ran a TSH, found it inside the lab range, and told her everything looked fine. She left feeling dismissed.
 
-When we run the full panel, the picture often fills in — a TSH at the high end of "normal," low free T3, elevated reverse T3, and positive TPO antibodies pointing to an early Hashimoto's pattern her TSH-only test never flagged. The numbers finally match how she feels.
+When we run the full panel, the picture often fills in: a TSH at the high end of "normal," low free T3, elevated reverse T3, and positive TPO antibodies pointing to an early Hashimoto's pattern her TSH-only test never flagged. The numbers finally match how she feels.
 
 From there we build a plan around what the labs actually show, supporting the systems the thyroid depends on (gut, adrenals, nutrient status, inflammation) and coordinating with her physician on any medication. We don't promise a specific outcome, and we don't change prescriptions. But for many patients, having the full picture is the first time anyone connected the symptoms to something real and findable.
 
-*This is a composite — not one specific person — but it reflects a pattern we see most weeks.*
+*This is a composite (not one specific person), but it reflects a pattern we see most weeks.*
 
 ## Working Alongside Your Medical Team
 
-If you're already on thyroid medication, Synthroid, Armour, levothyroxine, or any other. **we don't change it**. Medication decisions stay with your prescribing physician.
+If you're already on thyroid medication (Synthroid, Armour, levothyroxine, or anything else), **we don't change it**. Medication decisions stay with your prescribing physician.
 
 Our role is different. We help you see the full picture *underneath* the symptoms, build a Health Restoration Plan around the systems your thyroid depends on (gut, adrenals, nutrient status, inflammation), and partner with your medical team so they can make better-informed decisions over time. If your numbers improve enough that medication needs adjustment, that conversation goes through your prescribing doctor.
 
-We work alongside your physicians — not in place of them.
+We work alongside your physicians, not in place of them.
 
 ## What a Health Restoration Plan May Include
 
@@ -148,7 +142,7 @@ After we have your full results, we build a personalized plan. For thyroid patie
 - **Detoxification support** when toxic load is contributing
 - **Lifestyle adjustments** for sleep, stress, and movement
 
-This is hands-on, one-on-one guidance. Not a generic protocol.
+This is hands-on, one-on-one guidance. Not a generic plan pulled from a template.
 
 ## References
 

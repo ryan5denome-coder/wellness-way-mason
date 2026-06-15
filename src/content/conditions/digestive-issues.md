@@ -1,10 +1,10 @@
 ---
-title: "Digestive Issues — Bloating, Reflux, IBS and the Gut as Engine Room"
+title: "Digestive Issues: Bloating, Reflux, IBS and the Gut as Engine Room"
 seoTitle: "Digestive Health Testing in Mason, OH | The Wellness Way"
-seoDescription: "Bloating, reflux, IBS, constipation in Mason, OH? Comprehensive gut testing reveals what's actually driving the symptoms — beyond a generic IBS label. Test, don't guess."
-excerpt: "Your gut runs more than digestion — it runs your immune system, your mood, and your energy. When it's struggling, everything else gets loud. We test, we don't guess."
+seoDescription: "Bloating, reflux, IBS, constipation in Mason, OH? Comprehensive gut testing reveals what's actually driving the symptoms, not just a generic IBS label. Test, don't guess."
+excerpt: "Your gut runs more than digestion. It runs your immune system, your mood, and your energy. When it's struggling, everything else gets loud. We test, we don't guess."
 image: "/images/conditions/digestive-issues.jpg"
-imageAlt: "Placeholder — bowl of fermented vegetables on a wooden table, representing gut-supportive whole foods"
+imageAlt: "Placeholder: bowl of fermented vegetables on a wooden table, representing gut-supportive whole foods"
 order: 6
 featured: false
 tts: [toxins, traumas]
@@ -20,7 +20,7 @@ faqs:
   - q: "What causes chronic bloating?"
     a: >-
       Bloating is a signal, not a personality trait. Common drivers we look for:
-      low stomach acid (yes, low — not high, despite what the antacid aisle
+      low stomach acid (yes, low, not high, despite what the antacid aisle
       suggests), bacterial imbalance in the gut, food sensitivities, sluggish
       digestion, and stress shifting the body out of "rest and digest." The label
       "IBS" describes the what, not the why. Testing helps find which of these is
@@ -36,15 +36,15 @@ faqs:
   - q: "Can a chiropractor help with digestive issues?"
     a: >-
       As a Doctor of Chiropractic, Dr. DeNome doesn't treat gastrointestinal
-      disease — that stays with your physician or gastroenterologist. What
+      disease. That stays with your physician or gastroenterologist. What
       chiropractic care and functional testing may support is the nervous-system
       side of digestion (the gut and brain are deeply connected) and the upstream
-      inputs — food, bacterial balance, stomach acid, stress. We test to find the
+      inputs: food, bacterial balance, stomach acid, stress. We test to find the
       drivers and work alongside your medical team.
   - q: "What's the difference between IBS and an actual gut infection?"
     a: >-
-      "IBS" is largely a description of symptoms — bloating, irregular stools,
-      discomfort — without naming a cause. A gut infection or bacterial overgrowth
+      "IBS" is largely a description of symptoms (bloating, irregular stools,
+      discomfort) without naming a cause. A gut infection or bacterial overgrowth
       is a specific, findable driver that can produce those exact symptoms. That's
       the point of comprehensive stool testing: it can reveal whether there's an
       identifiable imbalance or pathogen underneath the "IBS" label, which changes
@@ -60,7 +60,7 @@ faqs:
 
 If you've been told you have IBS, "a sensitive stomach," or "just reflux," and you've been handed a PPI, a fiber supplement, or a low-FODMAP printout. You already know that doesn't ask the real question.
 
-Digestive issues are some of the most common patterns we see at The Wellness Way - Mason. They're also some of the most under-tested. Bloating, reflux, constipation, urgency, and irregular stools usually get bucketed into a single label and managed with medication. The label is not a diagnosis of *why* — it's a description of *what.*
+Digestive issues are some of the most common patterns we see at The Wellness Way - Mason. They're also some of the most under-tested. Bloating, reflux, constipation, urgency, and irregular stools usually get bucketed into a single label and managed with medication. The label is not a diagnosis of *why*. It's a description of *what.*
 
 You deserve more than a label.
 
@@ -81,15 +81,9 @@ Many of these get explained away as "just IBS" or "just stress." Common. But not
 
 Standard GI care usually rules out the dramatic stuff (cancer, celiac, IBD) and then defaults to symptom management: acid suppressors, antispasmodics, or fiber. If nothing visible shows up on a scope, you're told it's "functional."
 
-The problem: the gut is not just a tube. It's an engine room. Stomach acid, pancreatic enzymes, bile flow, the microbiome, the gut barrier, and the nervous system that runs all of it have to work in sequence. When one piece is off, the whole line slows or floods. A normal scope tells you the pipes aren't broken, it doesn't tell you whether the engine is running.
+The problem: the gut is not just a tube. It's an engine room. Stomach acid, pancreatic enzymes, bile flow, the microbiome, the gut barrier, and the nervous system that runs all of it have to work in sequence. When one piece is off, the whole line slows or floods. A normal scope tells you the pipes aren't broken. It doesn't tell you whether the engine is running.
 
-A full picture asks better questions:
-
-- **Are you producing enough stomach acid, or is reflux actually a *low* acid pattern?**
-- **Is the microbiome balanced, or is there overgrowth (SIBO, dysbiosis, candida)?**
-- **Is the gut barrier intact, or is it leaking partial proteins?**
-- **Are food triggers driving inflammation?**
-- **Is the vagus nerve. The brake-and-gas of digestion — regulated?**
+A full picture asks better questions. Is there enough stomach acid, or is reflux actually a *low* acid pattern? Is the microbiome balanced, or is there overgrowth (SIBO, dysbiosis, candida)? Is the gut barrier intact, or is it leaking partial proteins? Are food triggers driving inflammation? Is the vagus nerve (the brake-and-gas of digestion) regulated?
 
 When we run the right panels, we frequently find low stomach acid (hypochlorhydria), bacterial overgrowth, or food patterns that explain symptoms a generic IBS label never could.
 
@@ -97,9 +91,9 @@ When we run the right panels, we frequently find low stomach acid (hypochlorhydr
 
 Digestive dysfunction rarely happens in isolation. The Wellness Way 3 T's framework helps us look at why your gut is struggling:
 
-- **Toxins**. Antibiotics, processed foods, alcohol, NSAIDs, and environmental chemicals all damage the microbiome and the gut lining. The damage compounds quietly for years.
+- **Toxins:** antibiotics, processed foods, alcohol, NSAIDs, and environmental chemicals all damage the microbiome and the gut lining. The damage compounds quietly for years.
 - **Traumas:** physical stress, abdominal surgeries, food poisoning, or chronic inflammation can disrupt motility and barrier integrity.
-- Thoughts. Chronic stress shuts down the parasympathetic ("rest and digest") nervous system. When the body lives in fight-or-flight, digestion is the first thing it deprioritizes.
+- **Thoughts:** chronic stress shuts down the parasympathetic ("rest and digest") nervous system. When the body lives in fight-or-flight, digestion is the first thing it deprioritizes.
 
 You may have one of these driving the bus. You may have all three. We test to find out which.
 
@@ -117,21 +111,21 @@ Tests are recommended, never required. We walk through cost and rationale before
 
 ## A Pattern We See
 
-A pattern we see often: someone who's been handed an "IBS" label, told to try fiber and a low-FODMAP printout, and sent on their way — still bloated, still uncomfortable, still without an answer for why. They've cut out foods, tried probiotics off the shelf, and gotten nowhere.
+A pattern we see often: someone who's been handed an "IBS" label, told to try fiber and a low-FODMAP printout, and sent on their way. Still bloated, still uncomfortable, still without an answer for why. They've cut out foods, tried probiotics off the shelf, and gotten nowhere.
 
 When we run a comprehensive stool analysis, the why often surfaces: bacterial imbalance (dysbiosis), low markers of proper digestion suggesting food isn't breaking down well, signs of inflammation, sometimes an overgrowth no symptom-based label would have caught. The "IBS" was describing the what; the test finds what's underneath.
 
-From there we build a plan around the finding — supporting stomach acid and digestion, rebalancing the gut, addressing food triggers — and we coordinate with their physician or gastroenterologist. We don't promise a specific outcome. But many patients tell us it's the first time anyone looked instead of guessing.
+From there we build a plan around the finding (supporting stomach acid and digestion, rebalancing the gut, addressing food triggers) and coordinate with their physician or gastroenterologist. We don't promise a specific outcome. But many patients tell us it's the first time anyone looked instead of guessing.
 
-*This is a composite — not one specific person — but it reflects a pattern we see most weeks.*
+*This is a composite, not one specific person, but it reflects a pattern we see most weeks.*
 
 ## Working Alongside Your Medical Team
 
-If you're already on a PPI, prokinetic, or other GI medication. **we don't change it**. Medication decisions stay with your prescribing physician or gastroenterologist.
+If you're already on a PPI, prokinetic, or other GI medication, **we don't change it**. Medication decisions stay with your prescribing physician or gastroenterologist.
 
 Our role is different. We help you see the full picture *underneath* the symptoms, build a Health Restoration Plan around the systems your digestion depends on (microbiome, gut barrier, nervous system, food triggers), and partner with your medical team so they can make better-informed decisions over time.
 
-We work alongside your physicians — not in place of them.
+We work alongside your physicians, not in place of them.
 
 ## What a Health Restoration Plan May Include
 
@@ -143,7 +137,7 @@ After we have your results, we build a personalized plan. For digestive patients
 - **Detoxification support** when toxic load is part of the story
 - **Lifestyle adjustments** for meal timing, chewing, sleep, and stress
 
-This is hands-on, one-on-one guidance. Not a generic protocol.
+This is hands-on, one-on-one guidance. Not a generic care plan pulled off a shelf.
 
 ## Ready to See the Full Picture?
 

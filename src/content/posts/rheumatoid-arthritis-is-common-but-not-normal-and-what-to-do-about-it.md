@@ -1,8 +1,8 @@
 ---
-title: Rheumatoid Arthritis is Common but NOT normal — and What to Do About It!
+title: Rheumatoid Arthritis is Common but NOT Normal, and What to Do About It
 date: 2025-10-20
 author: "Dr. Ryan DeNome, DC"
-excerpt: "Rheumatoid arthritis (RA) can feel like your body has turned against you. Achy joints, morning stiffness, swelling, fatigue — they all point to inflammation that's running deeper than the surface. At The Wellness Way - Mason, we believe the key to finding relief is understanding wh…"
+excerpt: "Rheumatoid arthritis (RA) can feel like your body has turned against you. Achy joints, morning stiffness, swelling, fatigue: they all point to inflammation that's running deeper than the surface. At The Wellness Way - Mason, we believe the key to finding relief is understanding wh…"
 image: "/images/posts/rheumatoid-arthritis.jpg"
 imageAlt: "Warm hands holding a black ceramic mug — comforting wellness imagery"
 categories: [gut-health, hormones, autoimmune]
@@ -13,9 +13,9 @@ seoTitle: "Rheumatoid Arthritis: Common, Not Normal"
 seoDescription: Rheumatoid arthritis is common but not normal. The Wellness Way - Mason uses functional testing to find the potential causes of joint inflammation.
 ---
 
-Rheumatoid arthritis (RA) can feel like your body has turned against you. Achy joints, morning stiffness, swelling, fatigue — they all point to inflammation that's running deeper than the surface. At **The Wellness Way - Mason**, we believe the key to finding relief is understanding _why_ your immune system is attacking your joints in the first place.
+Rheumatoid arthritis (RA) can feel like your body has turned against you. Achy joints, morning stiffness, swelling, fatigue: they all point to inflammation that's running deeper than the surface. At **The Wellness Way - Mason**, we believe the key to finding relief is understanding _why_ your immune system is attacking your joints in the first place.
 
-If you've been told "your labs are fine," or you're just managing pain with medication, it may be time to dig deeper. Here's how we test for rheumatoid arthritis — and what you can do right now to start healing from the inside out.
+If you've been told "your labs are fine," or you're just managing pain with medication, it may be time to dig deeper. Here's how we test for rheumatoid arthritis, and what you can do right now to start healing from the inside out.
 
 ## How Rheumatoid Arthritis Is Usually Tested
 
@@ -33,11 +33,11 @@ While these tests identify _that_ inflammation is happening, they don't always e
 
 ## The Wellness Way Approach: Going Beyond the Diagnosis
 
-At **The Wellness Way**, we take testing several steps further. Our goal isn't just to label symptoms — it's to uncover what's driving them.
+At **The Wellness Way**, we take testing several steps further. Our goal isn't just to label symptoms. It's to uncover what's driving them.
 
 > **Important:** Rheumatoid arthritis is a serious autoimmune condition. The Wellness Way - Mason does not diagnose, treat, cure, or reverse RA. Continue working with your rheumatologist or primary-care MD. If you're on a DMARD, biologic, or any other prescribed RA medication, those decisions stay with your prescribing physician. We support, we don't replace.
 
-We use comprehensive testing to look for the _underlying drivers_ of autoimmune inflammation, including:
+We use functional testing to look for the _underlying drivers_ of autoimmune inflammation, including:
 
 - **Food Sensitivity Testing** to see if certain foods are triggering your immune system
 
@@ -47,11 +47,11 @@ We use comprehensive testing to look for the _underlying drivers_ of autoimmune 
 
 - **Allergy and Immune Function Testing** to see how your system is reacting on a deeper level
 
-This functional testing gives us the full picture — and helps us create a personalized plan to support a calmer inflammatory environment and steadier energy. Individual results vary.
+This functional testing gives us the full picture, and helps us create a personalized plan to support a calmer inflammatory environment and steadier energy. Individual results vary.
 
 ## Why Your Immune System Targets the Joints
 
-Your joints aren't the problem — they're just the _victims_ of an immune system under stress. Rheumatoid arthritis develops when your immune system mistakes joint tissue for a threat. The real triggers could be:
+Your joints aren't the problem. They're just the _victims_ of an immune system under stress. Rheumatoid arthritis develops when your immune system mistakes joint tissue for a threat. The real triggers could be:
 
 - Chronic gut inflammation ("leaky gut")
 
@@ -65,7 +65,7 @@ Your joints aren't the problem — they're just the _victims_ of an immune syste
 
 - Hormonal imbalances
 
-When we reduce the total burden on the immune system, we aim to lower the total burden on the immune system so the body has a better environment to recover in.
+When we reduce the total burden on the immune system, the body has a better environment to recover in.
 
 ## What You Can Start Doing Now
 
@@ -75,7 +75,7 @@ While testing is the best place to begin, you can start supporting your body rig
 
 2. **Cut out common triggers:** Gluten, dairy, soy, sugar, and processed foods often worsen inflammation.
 
-3. **Support gut health:** Eat fermented foods or talk to your practitioner about a personalized gut protocol.
+3. **Support gut health:** Eat fermented foods or talk to your practitioner about a personalized gut care plan.
 
 4. **Reduce toxic load:** Filter your water, choose clean household products, and support liver detox pathways naturally.
 
@@ -83,17 +83,17 @@ While testing is the best place to begin, you can start supporting your body rig
 
 ## When to Get Tested
 
-If you experience ongoing fatigue, swollen joints, stiffness (especially in the morning), or other autoimmune symptoms, don't wait until things worsen. Rheumatoid arthritis doesn't have to mean lifelong pain — but early detection and targeted care are essential.
+If you experience ongoing fatigue, swollen joints, stiffness (especially in the morning), or other autoimmune symptoms, don't wait until things worsen. Rheumatoid arthritis doesn't have to mean lifelong pain, but early detection and targeted care are essential.
 
 ## Take the Next Step with The Wellness Way - Mason
 
-At **The Wellness Way - Mason**, we don't guess — we test. Our team helps uncover _why_ your immune system is overreacting and builds a personalized plan that supports your body's natural function — coordinated with your rheumatologist or MD.
+At **The Wellness Way - Mason**, we don't guess. We test. Our team helps uncover _why_ your immune system is overreacting and builds a personalized plan that supports your body's natural function, coordinated with your rheumatologist or MD.
 
 **Ready to uncover what's driving your joint pain?**
 
-Schedule your comprehensive testing and consultation today at **The Wellness Way - Mason** or call our office to get started.
+Schedule your functional testing and consultation today at **The Wellness Way - Mason** or call our office to get started.
 
-Let's find out what your body is trying to tell you — and and take the next step toward feeling more like yourself again.
+Let's find out what your body is trying to tell you, and take the next step toward feeling more like yourself again.
 
 ## Related at The Wellness Way - Mason
 

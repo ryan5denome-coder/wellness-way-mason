@@ -1,5 +1,5 @@
 ---
-title: "Mental Health, Mood, and Brain Function — The Body-Brain Connection, Mason, OH"
+title: "Mental Health, Mood, and Brain Function: The Body-Brain Connection, Mason, OH"
 seoTitle: "Brain & Mental Health Support in Mason, OH | The Wellness Way"
 seoDescription: "Brain fog, anxiety, mood changes? We support the gut, hormones, nervous system, and nutrient status that affect brain function — alongside your psychiatric care."
 excerpt: "Mood swings, anxiety, low motivation, brain fog — they aren't just 'in your head.' How your brain functions is shaped by gut health, hormones, inflammation, and nervous-system regulation."
@@ -19,11 +19,11 @@ testingPanels:
   - "Gut health stool analysis"
 ---
 
-If you've been told your mood, anxiety, focus, or brain fog is "just stress". And you know in your gut something else is going on — you're paying attention to your body for the right reasons.
+If you've been told your mood, anxiety, focus, or brain fog is "just stress". And you know in your gut something else is going on, you're paying attention to your body for the right reasons.
 
 Mood swings, anxiety, low motivation, brain fog. They aren't just "in your head." How your brain functions is shaped by hormone shifts, nutrient status, inflammation, gut health, and how regulated your nervous system is right now. The gut produces the majority of your serotonin. Your brain runs on the nutrients and oxygen the rest of your body delivers. The picture is bigger than psychology.
 
-This is one of the conditions where **working alongside your psychiatrist or therapist matters most.** We don't replace mental health care: we support the foundational systems underneath it.
+This is one of the conditions where **working alongside your psychiatrist or therapist matters most.** We don't replace mental health care. We support the foundational systems underneath it.
 
 ## Symptoms Patients Describe to Us
 
@@ -38,7 +38,7 @@ This is one of the conditions where **working alongside your psychiatrist or the
 
 ## What Most Doctors Miss
 
-When mood or focus issues come up in primary care, the typical workup is brief — TSH, CBC, maybe a vitamin D. Followed by a referral to psychiatry or a prescription for an SSRI or stimulant.
+When mood or focus issues come up in primary care, the typical workup is brief: TSH, CBC, maybe a vitamin D. Followed by a referral to psychiatry or a prescription for an SSRI or stimulant.
 
 That's appropriate for some patients. For many, it skips a foundational step: **the body systems that feed the brain.** A brain running on inflammation, nutrient deficiency, hormonal chaos, or gut dysfunction will struggle no matter what medication is on board.
 
@@ -54,13 +54,13 @@ A complete picture asks:
 
 ## The 3 T's Behind Brain and Mood Issues
 
-- **Thoughts**. Chronic stress is corrosive to brain function. Sustained cortisol elevation shrinks the hippocampus, disrupts neurotransmitter balance, and rewires the threat response. Stress isn't separate from the body.
-- **Toxins:** heavy metals, mold exposure, food sensitivities, environmental neurotoxins all affect cognition and mood. The brain is one of the most chemically sensitive organs in the body.
-- Traumas. Physical inflammation, sleep deprivation, and chronic pain all affect how the brain processes mood and attention. The mind isn't separate from the spine.
+- **Thoughts.** Chronic stress is corrosive to brain function. Sustained cortisol elevation shrinks the hippocampus, disrupts neurotransmitter balance, and rewires the threat response. Stress isn't separate from the body.
+- **Toxins.** Heavy metals, mold exposure, food sensitivities, and environmental neurotoxins all affect cognition and mood. The brain is one of the most chemically sensitive organs in the body.
+- **Traumas.** Physical inflammation, sleep deprivation, and chronic pain all affect how the brain processes mood and attention. The mind isn't separate from the spine.
 
 ## Patterns We've Seen in Our Clinic
 
-Patterns we've seen recently in patients who've come through our office:
+Among patients who've come through our office:
 
 - Anxiety
 - ADD / ADHD (adult and pediatric)
@@ -73,7 +73,7 @@ Patterns we've seen recently in patients who've come through our office:
 - Behavioral regulation challenges in children
 - Autism spectrum support
 
-## Working Alongside Your Mental Health Team — This Is Critical
+## Working Alongside Your Mental Health Team (This Is Critical)
 
 We do not treat or replace psychiatric care. **For any patient whose mental health is being actively managed by a psychiatrist, psychologist, or therapist, our role is complementary, not a replacement.**
 
@@ -82,21 +82,21 @@ That means:
 - We don't tell you to stop therapy. We support it.
 - We don't claim to "cure" anxiety, depression, ADHD, or any psychiatric diagnosis. Those are clinical territories that require clinical care.
 
-What we do: support the foundational systems. Gut-brain axis, nutrient status, inflammation, hormone balance, nervous-system regulation: that influence how the brain operates day to day. When those foundations are solid, psychiatric care often works better. Sometimes patients and their psychiatrists find they need less medication over time. That conversation goes through the prescribing doctor.
+What we do: support the foundational systems. The gut-brain axis, nutrient status, inflammation, hormone balance, and nervous-system regulation all shape how the brain operates day to day. When those foundations are solid, psychiatric care often works better. Sometimes patients and their psychiatrists find they need less medication over time. That conversation goes through the prescribing doctor.
 
 ## What a Health Restoration Plan May Include
 
-- **Targeted nutrient repletion**, based on actual lab values, not guessing
-- **Anti-inflammatory nutrition:** addressing food sensitivities and gut inflammation
-- Gut health support. When dysbiosis is part of the picture
-- **Hormone and adrenal support**. When DUTCH or thyroid testing reveals patterns
-- **Chiropractic care:** supports vagal tone and nervous-system regulation
+- **Targeted nutrient repletion** based on actual lab values, not guessing
+- **Nutrition support** addressing food sensitivities and gut inflammation
+- **Gut health support** when dysbiosis is part of the picture
+- **Hormone and adrenal support** when DUTCH or thyroid testing reveals patterns
+- **Chiropractic care** to support vagal tone and nervous-system regulation
 - **Sleep, movement, and stress practices**
-- Coordination with your psychiatrist or therapist. Their treatment plan is the foundation; we add support
+- **Coordination with your psychiatrist or therapist.** Their treatment plan is the foundation; we add support.
 
 ## Ready to See the Full Picture?
 
-If something feels off and "you'll be fine, take this and check back in 6 weeks" hasn't been the answer — your body is asking you to pay attention to *both* the mind and what's feeding it.
+If something feels off and "you'll be fine, take this and check back in 6 weeks" hasn't been the answer, your body is asking you to pay attention to both the mind and what's feeding it.
 
 The body never does anything without a reason.
 

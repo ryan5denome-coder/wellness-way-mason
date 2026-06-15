@@ -1,10 +1,10 @@
 ---
-title: "Hidden Food and Environmental Allergies — Your Immune System Is on Alert"
+title: "Hidden Food and Environmental Allergies: Your Immune System Is on Alert"
 seoTitle: "Allergy Testing in Mason, OH | The Wellness Way"
-seoDescription: "Comprehensive food and environmental allergy testing in Mason, OH. We look beyond the obvious triggers to find what's actually keeping your immune system on alert."
-excerpt: "Allergies aren't just sneezing and hives — they're an immune system stuck in the on position. We test, we don't guess, so you can stop reacting to everyday life."
+seoDescription: "Food and environmental allergy testing in Mason, OH. We look beyond the obvious triggers to find what's actually keeping your immune system on alert."
+excerpt: "Allergies aren't just sneezing and hives. They're an immune system stuck in the on position. We test, we don't guess, so you can stop reacting to everyday life."
 image: "/images/conditions/allergies.jpg"
-imageAlt: "Placeholder — close-up of seasonal pollen on a leaf, representing hidden environmental allergy triggers"
+imageAlt: "Placeholder: close-up of seasonal pollen on a leaf, representing hidden environmental allergy triggers"
 order: 4
 featured: false
 tts: [toxins, traumas]
@@ -56,15 +56,17 @@ When we run the right panels, we frequently find food triggers patients never su
 
 Allergies rarely happen in isolation. The Wellness Way 3 T's framework helps us look at why your immune system is on alert in the first place:
 
-- **Toxins:** environmental chemicals, mold exposure, heavy metals, and processed-food additives all push the immune system toward over-reaction. The more loaded the system, the more it flags everyday inputs as threats.
-- Traumas. Physical stress, gut injury from past antibiotic courses, or a long history of inflammation create a leaky barrier that lets undigested food particles into circulation. The body sees them as foreign and mounts a defense.
-- **Thoughts** — chronic stress shifts immune balance and weakens the gut lining. Stress doesn't *cause* allergies, but it absolutely amplifies them.
+**Toxins** are the first place we look: environmental chemicals, mold exposure, heavy metals, and processed-food additives all push the immune system toward over-reaction. The more loaded the system, the more it flags everyday inputs as threats.
+
+**Traumas** come next. Physical stress, gut injury from past antibiotic courses, or a long history of inflammation create a leaky barrier that lets undigested food particles into circulation. The body sees them as foreign and mounts a defense.
+
+**Thoughts** round it out. Chronic stress shifts immune balance and weakens the gut lining. Stress doesn't *cause* allergies, but it absolutely amplifies them.
 
 You may have one of these driving the bus. You may have all three. We test to find out which.
 
 ## Our Testing Approach
 
-We use comprehensive lab work. Not just a basic prick test. Depending on your story, your panel may include:
+We use targeted lab work, not just a basic prick test. Depending on your story, your panel may include:
 
 - **Immuno Food Allergy Test:** IgG and IgE response to ~190 common foods
 - Environmental allergen panel. Pollens, molds, dust, dander
@@ -92,7 +94,7 @@ After we have your results, we build a personalized plan. For allergy patients, 
 - **Detoxification support** when toxic load is contributing
 - **Lifestyle adjustments** for sleep, stress, and indoor air quality
 
-This is hands-on, one-on-one guidance — not a generic protocol.
+This is hands-on, one-on-one guidance, not a generic care plan.
 
 ## Ready to See the Full Picture?
 

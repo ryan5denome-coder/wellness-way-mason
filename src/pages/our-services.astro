@@ -12,27 +12,27 @@ import labKitsFlatLay from '../assets/clinic/lab-kits-flat-lay.jpg';
 const servicesFaqs = [
   {
     question: 'What chiropractic techniques do you use?',
-    answer: '<p>Dr. Denome is trained in <strong>Diversified, Thompson, Gonstead</strong>, and the <strong>Webster Technique</strong> for prenatal patients. His preference is manual, specific adjustments — focused, technique-driven hands-on work. Lower-force and gentler approaches are available when a patient prefers them or the clinical picture calls for it.</p>',
+    answer: '<p>Dr. Denome is trained in <strong>Diversified, Thompson, Gonstead</strong>, and the <strong>Webster Technique</strong> for prenatal patients. His preference is manual, specific adjustments: focused, technique-driven hands-on work. Lower-force and gentler approaches are available when a patient prefers them or the clinical picture calls for it.</p>',
   },
   {
     question: 'Is soft tissue work an extra charge?',
-    answer: '<p>No. <strong>Cupping, instrument-assisted scraping (Graston-style), and soft tissue mobilization are included with your adjustment</strong> when they\'re indicated. We don\'t upcharge for adjunctive techniques — they\'re part of the visit.</p>',
+    answer: '<p>No. <strong>Cupping, instrument-assisted scraping (Graston-style), and soft tissue mobilization are included with your adjustment</strong> when they\'re indicated. We don\'t upcharge for adjunctive techniques. They\'re part of the visit.</p>',
   },
   {
     question: 'What lab testing is available through health restoration?',
-    answer: '<p>Comprehensive functional lab work, including hormone metabolite panels (<a href="/dutch-test-mason-oh">DUTCH</a>), gut microbiome and stool analysis, food sensitivity testing, complete thyroid panels (TSH, free T3, free T4, reverse T3, antibodies), heavy metal testing, and mold/mycotoxin panels. Tests run through partnerships with Access Medical Labs, Dutch Test, Genova Diagnostics, ImmunoLabs, and Mosaic Labs (OAT and heavy metals). More on our overall approach on the <a href="/functional-medicine-mason-oh">functional medicine page</a>.</p>',
+    answer: '<p>Functional lab work including hormone metabolite panels (<a href="/dutch-test-mason-oh">DUTCH</a>), gut microbiome and stool analysis, food sensitivity testing, complete thyroid panels (TSH, free T3, free T4, reverse T3, antibodies), heavy metal testing, and mold/mycotoxin panels. Tests run through partnerships with Access Medical Labs, Dutch Test, Genova Diagnostics, ImmunoLabs, and Mosaic Labs (OAT and heavy metals). More on our overall approach on the <a href="/functional-medicine-mason-oh">functional medicine page</a>.</p>',
   },
   {
     question: 'What is the Webster Technique?',
-    answer: '<p>A prenatal chiropractic technique focused on analyzing and adjusting the pelvis, surrounding muscles, and ligaments — without twisting, cracking, or popping. It supports optimal fetal positioning and may help ease common pregnancy discomforts like round ligament pain and sacroiliac dysfunction.</p>',
+    answer: '<p>A prenatal chiropractic technique focused on analyzing and adjusting the pelvis, surrounding muscles, and ligaments (without twisting, cracking, or popping). It supports optimal fetal positioning and may help ease common pregnancy discomforts like round ligament pain and sacroiliac dysfunction.</p>',
   },
   {
     question: 'Do you treat children?',
-    answer: '<p>Yes. We provide pediatric chiropractic care from newborns onward, using soft, age-appropriate adjustments. Many families come for support with sleep patterns, feeding challenges, behavioral regulation, and immune support — alongside their pediatrician\'s care.</p>',
+    answer: '<p>Yes. We provide pediatric chiropractic care from newborns onward, using soft, age-appropriate adjustments. Many families come for support with sleep patterns, feeding challenges, behavioral regulation, and immune support, alongside their pediatrician\'s care.</p>',
   },
   {
     question: 'Are virtual consultations available?',
-    answer: '<p>Yes. For health restoration work that doesn\'t require an in-person adjustment — lab review, nutrition guidance, follow-up care — we offer virtual consultations. Especially useful for patients outside the immediate Mason and Cincinnati area.</p>',
+    answer: '<p>Yes. For health restoration work that doesn\'t require an in-person adjustment (lab review, nutrition guidance, follow-up care), we offer virtual consultations. Especially useful for patients outside the immediate Mason and Cincinnati area.</p>',
   },
 ];
 
@@ -59,10 +59,10 @@ const chiroConditions = [
 ];
 
 const testingCategories = [
-  { title: 'Comprehensive lab work', summary: 'Full functional panels — beyond what standard bloodwork looks at.' },
+  { title: 'Full functional lab work', summary: 'Broad panels that go beyond what standard bloodwork looks at.' },
   { title: 'Gut health', summary: 'Stool, microbiome, permeability, and food sensitivity profiles.' },
   { title: 'Hormones (DUTCH)', summary: 'Dried urine metabolites for a fuller hormone picture.' },
-  { title: 'Thyroid', summary: 'TSH, free T3, free T4, reverse T3, and antibodies — the full panel.' },
+  { title: 'Thyroid', summary: 'TSH, free T3, free T4, reverse T3, and antibodies. The full panel.' },
   { title: 'Heavy metals', summary: 'Mercury, lead, aluminum, and other burden panels (incl. Mosaic).' },
   { title: 'Mold / mycotoxins', summary: 'Indoor and environmental exposure markers.' },
   { title: 'Food sensitivity', summary: 'Identify foods triggering inflammation or symptom flares.' },
@@ -79,7 +79,7 @@ const testingCategories = [
 
 <BaseLayout
   title="Chiropractic Care & Health Restoration in Mason, OH"
-  description="Two arms of one practice in Mason, OH: precise manual chiropractic and comprehensive health restoration with functional lab testing."
+  description="Two arms of one practice in Mason, OH: precise manual chiropractic and functional lab-based health restoration."
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
@@ -89,7 +89,7 @@ const testingCategories = [
         <p class="lede">
           Two arms of one practice. <strong>Chiropractic</strong> for hands-on adjustments and the
           conditions chiropractors are known for. <strong>Health restoration</strong> for the deeper
-          work — lab testing, nutrition, supplement protocols, lifestyle support. Pick the door that
+          work: lab testing, nutrition, individual care plans, lifestyle support. Pick the door that
           fits where you are right now.
         </p>
       </div>
@@ -110,7 +110,7 @@ const testingCategories = [
   <SectionContainer width="default" spacing="md">
     <div class="arms">
       <article class="arm arm-chiro">
-        <p class="arm-eyebrow">Arm 1 — Chiropractic</p>
+        <p class="arm-eyebrow">Arm 1: Chiropractic</p>
         <h2 class="arm-title">We Do Health Differently</h2>
         <p class="arm-body">
           Manual, specific adjustments delivered by a chiropractic physician who prefers technique-driven
@@ -124,10 +124,10 @@ const testingCategories = [
       </article>
 
       <article class="arm arm-restoration">
-        <p class="arm-eyebrow">Arm 2 — Health Restoration</p>
+        <p class="arm-eyebrow">Arm 2: Health Restoration</p>
         <h2 class="arm-title">Test, Don't Guess</h2>
         <p class="arm-body">
-          Comprehensive functional lab work paired with nutrition guidance, supplement protocols, and
+          Functional lab work paired with nutrition guidance, individual care plans, and
           lifestyle support. For patients ready to look at the patterns underneath persistent symptoms.
         </p>
         <p class="arm-body">
@@ -147,18 +147,18 @@ const testingCategories = [
     <div class="prose-block">
       <p>
         Dr. Denome is a Doctor of Chiropractic whose strength is <strong>manual, specific
-        adjustments</strong> — focused hands-on work, delivered with intention. He's built his practice
+        adjustments</strong>, focused hands-on work delivered with intention. He's built his practice
         around precise technique rather than a single one-size approach, and he's good at it. Patients
         who've been adjusted before tend to notice the difference quickly.
       </p>
       <p>
         That said, the visit always starts with you. Lower-force and gentler approaches are part of the
         toolkit when a patient prefers them, when the body needs a different entry point, or when the
-        clinical picture calls for it — pediatric, prenatal, acute flare-ups, sensitive nervous systems.
+        clinical picture calls for it (pediatric, prenatal, acute flare-ups, sensitive nervous systems).
         The goal is the right adjustment for the person on the table, not a signature move.
       </p>
       <p>
-        Chiropractic care here sits alongside conventional medical care — not in place of it. We're happy
+        Chiropractic care here sits alongside conventional medical care, not in place of it. We're happy
         to coordinate with your primary, your OB, your physical therapist, or any other provider on your
         team.
       </p>
@@ -175,7 +175,7 @@ const testingCategories = [
       <p class="callout-eyebrow">What's included</p>
       <p class="callout-body">
         <strong>Soft tissue mobilization, cupping, and instrument-assisted scraping</strong> are included
-        in every adjustment when they're indicated. We don't upcharge for adjunctive techniques — they're
+        in every adjustment when they're indicated. We don't upcharge for adjunctive techniques. They're
         part of the visit.
       </p>
     </div>
@@ -202,23 +202,23 @@ const testingCategories = [
 
     <div class="prose-block">
       <p>
-        Health restoration is the deeper arm of the practice — for patients dealing with patterns that
+        Health restoration is the deeper arm of the practice, for patients dealing with patterns that
         haven't moved with standard care, or who want a closer look at how their body is actually
-        running. We start with <a href="/functional-medicine-mason-oh">comprehensive functional lab testing</a>,
+        running. We start with <a href="/functional-medicine-mason-oh">functional lab testing</a>,
         because guessing is expensive and we'd rather ask why first.
       </p>
       <p>
         We partner with the labs we trust to do this well: <strong>Access Medical Labs, Dutch Test,
-        Genova Diagnostics, ImmunoLabs</strong>, and <strong>Mosaic Labs</strong> (for the OAT —
-        organic acids test — and heavy metal panels). <a href="/dutch-test-mason-oh">Hormone metabolites
-        through DUTCH</a>, gut microbiome, food sensitivities, mycotoxins, heavy metals, full thyroid —
-        the depth standard panels miss.
+        Genova Diagnostics, ImmunoLabs</strong>, and <strong>Mosaic Labs</strong> (for the OAT,
+        organic acids test, and heavy metal panels). <a href="/dutch-test-mason-oh">Hormone metabolites
+        through DUTCH</a>, gut microbiome, food sensitivities, mycotoxins, heavy metals, full thyroid.
+        The depth standard panels miss.
       </p>
       <p>
         From there, the plan is yours: nutrition guidance tied to your results (not generic),
-        practitioner-grade supplement protocols matched to what your body is actually asking for, and
+        practitioner-grade supplements matched to what your panels actually show, and
         lifestyle support to make the changes stick. This work runs alongside conventional medical
-        care — keep your primary, keep your specialists, and add a layer that looks at the underlying
+        care. Keep your primary, keep your specialists, and add a layer that looks at the underlying
         drivers.
       </p>
     </div>
@@ -239,15 +239,15 @@ const testingCategories = [
       <h3 class="sub-h">Whole-person care</h3>
       <ul class="whole-person">
         <li>
-          <strong>Nutrition guidance</strong> — individualized to your test results, not a copy-paste
+          <strong>Nutrition guidance</strong> individualized to your test results, not a copy-paste
           food list.
         </li>
         <li>
-          <strong>Supplement protocols</strong> — practitioner-grade, matched to what your panels
-          actually show.
+          <strong>Practitioner-grade supplements</strong> matched to what your panels actually show,
+          not a shelf product someone read about online.
         </li>
         <li>
-          <strong>Lifestyle support</strong> — sleep, stress, movement, environment. The patterns
+          <strong>Lifestyle support:</strong> sleep, stress, movement, environment. The patterns
           underneath the symptoms.
         </li>
       </ul>
@@ -265,7 +265,7 @@ const testingCategories = [
     <h2>The Webster Technique</h2>
     <p>
       A prenatal chiropractic technique focused on analyzing and adjusting the pelvis, surrounding
-      muscles, and ligaments — without twisting, cracking, or popping. By easing tension across pelvic
+      muscles, and ligaments (without twisting, cracking, or popping). By easing tension across pelvic
       structures, it may support optimal fetal positioning and a smoother, more comfortable birth
       experience.
     </p>
@@ -276,7 +276,7 @@ const testingCategories = [
       pain.
     </p>
     <p>
-      The technique is specifically designed for expecting mothers — gentle, supportive, and
+      The technique is specifically designed for expecting mothers: gentle, supportive, and
       pregnancy-appropriate. A Webster-Technique-certified chiropractor is a useful part of a
       complete birth team, working alongside your OB or midwife.
     </p>

@@ -4,7 +4,7 @@ date: 2025-04-29
 author: "Dr. Ryan DeNome, DC"
 excerpt: Dr. Ryan and I are always meal prepping and trying to save time cooking during the week. One way that we really try to save time and start the day off right is by meal prepping our breakfast. We both have gotten our allergies tested and chicken eggs were on our list!
 image: "/images/posts/duck-egg-casserole.jpg"
-imageAlt: "Sunny side up egg on a black ceramic plate — warm breakfast styling"
+imageAlt: "Sunny side up egg on a black ceramic plate, warm breakfast styling"
 categories: [recipes, immune]
 readTime: 2 min read
 complianceReviewed: false
@@ -21,7 +21,7 @@ Food allergies are a common hurdle, and for those sensitive to chicken eggs, fin
 
 Allergic reactions to eggs are primarily triggered by proteins present in them. Chicken eggs harbor four main allergenic proteins: ovomucoid, ovalbumin, ovotransferrin, and lysozyme. Duck eggs, on the other hand, have a slightly different protein structure which might be less likely to trigger an allergic response in some individuals. Even minor differences in protein structure can significantly impact how the human immune system reacts to these proteins.
 
-Duck eggs are slightly larger and have a higher yolk-to-white ratio than chicken eggs, giving them a creamier texture and deeper flavor. They're also packed with protein, omega-3 fatty acids, and essential vitamins like B12 and D — great for starting your day strong.
+Duck eggs are slightly larger and have a higher yolk-to-white ratio than chicken eggs, giving them a creamier texture and deeper flavor. They're also packed with protein, omega-3 fatty acids, and essential vitamins like B12 and D, which makes them a solid way to start your day strong.
 
 ## Duck Egg Breakfast Casserole Recipe
 
@@ -46,7 +46,7 @@ Duck eggs are slightly larger and have a higher yolk-to-white ratio than chicken
 
 ## Make It Your Own
 
-This recipe is versatile — swap in seasonal veggies, or use leftover roasted potatoes. You can also prep it the night before and pop it in the oven the next morning for an easy, stress-free meal.
+This recipe is easy to adapt: swap in seasonal veggies, or use leftover roasted potatoes. You can also prep it the night before and pop it in the oven the next morning for an easy, stress-free meal.
 
 Duck egg casserole is perfect for feeding a family, hosting brunch, or having breakfast that's already made all week. Give it a try and taste the difference duck eggs make.
 

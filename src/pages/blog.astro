@@ -33,15 +33,15 @@ const upcomingEvents = (await getCollection('events'))
 
 <BaseLayout
   title="Health & Wellness Blog | Chiropractor in Mason, OH"
-  description="Articles on chiropractic care, hormones, gut health, thyroid, and the test-don't-guess approach — from Dr. Ryan DeNome at The Wellness Way - Mason."
+  description="Articles on chiropractic care, hormones, gut health, thyroid, and the test-don't-guess approach, from Dr. Ryan DeNome at The Wellness Way - Mason."
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Blog' }]} />
     <div class="blog-hero">
       <h1>Health & Wellness Blog</h1>
       <p class="lede">
-        Real answers for real health challenges. Insights on thyroid health, gut wellness,
-        hormone balance, metabolic health, nutrition, and more — from Dr. Ryan DeNome
+        Real answers for real health challenges. Insights on thyroid health, gut health,
+        hormone balance, metabolic health, nutrition, and more, from Dr. Ryan DeNome
         and the team at {clinic.brandName}.
       </p>
     </div>
@@ -85,7 +85,7 @@ const upcomingEvents = (await getCollection('events'))
     <SectionContainer width="default" spacing="md">
       <div class="events-strip">
         <h2>Join Us In Person</h2>
-        <p class="events-intro">Community gatherings at {clinic.brandName}. Free, open to all — bring a friend.</p>
+        <p class="events-intro">Community gatherings at {clinic.brandName}. Free, open to all. Bring a friend.</p>
         <ul class="events-list">
           {upcomingEvents.map((evt) => (
             <li>

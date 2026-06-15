@@ -14,15 +14,15 @@ const wasSent = Astro.url.searchParams.get('sent') === 'true';
 const contactFaqs = [
   {
     question: 'Do you accept insurance?',
-    answer: '<p>We are a cash-pay practice — that decision keeps us free to spend the time, run the testing, and recommend the care your situation actually calls for, instead of what an insurance code allows. We can provide a superbill on request that you may submit to your insurance for out-of-network reimbursement, but we don\'t bill insurance directly. Our pricing is flat and posted publicly on the <a href="/pricing">Pricing page</a>.</p>',
+    answer: '<p>We are a cash-pay practice. That decision keeps us free to spend the time, run the testing, and recommend the care your situation actually calls for, instead of what an insurance code allows. We can provide a superbill on request that you may submit to your insurance for out-of-network reimbursement, but we don\'t bill insurance directly. Our pricing is flat and posted publicly on the <a href="/pricing">Pricing page</a>.</p>',
   },
   {
     question: 'Do I need a referral?',
-    answer: '<p>No. You can self-refer for chiropractic care or a discovery consultation. If you\'re bringing labs from another provider, please bring them to your visit — we\'d rather build on what already exists than duplicate testing unnecessarily.</p>',
+    answer: '<p>No. You can self-refer for chiropractic care or a discovery consultation. If you\'re bringing labs from another provider, please bring them to your visit. We\'d rather build on what already exists than duplicate testing unnecessarily.</p>',
   },
   {
     question: 'What should I bring to my first appointment?',
-    answer: '<p>Bring any recent labs, imaging reports, current medications and supplement list, and a brief written history of when symptoms started and what you\'ve already tried. If you\'re a pediatric or pregnant patient, bring relevant prenatal or pediatric records. Comfortable clothing is fine — you don\'t need to change for an exam.</p>',
+    answer: '<p>Bring any recent labs, imaging reports, current medications and supplement list, and a brief written history of when symptoms started and what you\'ve already tried. If you\'re a pediatric or pregnant patient, bring relevant prenatal or pediatric records. Comfortable clothing is fine; you don\'t need to change for an exam.</p>',
   },
   {
     question: 'Where do I park?',
@@ -34,11 +34,11 @@ const contactFaqs = [
   },
   {
     question: 'Do you see kids and pregnant moms?',
-    answer: '<p>Yes — pediatric chiropractic and prenatal care are core specialties. Dr. Ryan is certified in the Webster Technique for prenatal patients. We see newborns through teens for chiropractic care and have a pediatric-friendly play space at the clinic.</p>',
+    answer: '<p>Yes. Pediatric chiropractic and prenatal care are core specialties here. Dr. Ryan is certified in the Webster Technique for prenatal patients. We see newborns through teens for chiropractic care and have a pediatric-friendly play space at the clinic.</p>',
   },
   {
     question: 'Are virtual consultations available?',
-    answer: '<p>Yes — virtual <em>health restoration consultations</em> are available for patients outside the immediate Mason / Cincinnati area. In-person chiropractic care obviously requires being in the clinic.</p>',
+    answer: '<p>Yes. Virtual <em>health restoration consultations</em> are available for patients outside the immediate Mason / Cincinnati area. In-person chiropractic care obviously requires being in the clinic.</p>',
   },
 ];
 
@@ -46,20 +46,20 @@ const contactFaqs = [
 
 <BaseLayout
   title="Contact Us | Chiropractor in Mason, OH"
-  description={`Contact ${clinic.brandName} in Mason, OH. Address, hours, phone, and how to schedule a new patient appointment for chiropractic care or comprehensive testing.`}
+  description={`Contact ${clinic.brandName} in Mason, OH. Address, hours, phone, and how to schedule a new patient appointment for chiropractic care or functional lab testing.`}
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
     <h1>Contact Us</h1>
     <p class="lede">
-      Whether you're a new patient ready to schedule, or you have a question first — we'd love to hear from you.
+      Whether you're a new patient ready to schedule, or you have a question first, we'd love to hear from you.
     </p>
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="md">
     <p>
       You don't have to have it all figured out before you reach out. Most of the people who
-      contact us are somewhere in the middle of their story — they've had labs run that came back
+      contact us are somewhere in the middle of their story. They've had labs run that came back
       "fine," they've been bounced between providers, and they're trying to figure out whether
       what we do is the right next step.
     </p>
@@ -70,33 +70,31 @@ const contactFaqs = [
       instead.
     </p>
     <h2>What to expect when you reach out</h2>
-    <ul>
-      <li>
-        <strong>Booking a new patient visit</strong> — the fastest path is the booking button
-        below or on our <a href="/our-services">services page</a>. Self-registration takes about
-        three minutes and you'll get a confirmation email immediately.
-      </li>
-      <li>
-        <strong>General questions</strong> — call <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>
-        during clinic hours or send a message through the form below. We respond to messages
-        within one business day, usually faster.
-      </li>
-      <li>
-        <strong>Pricing or insurance questions</strong> — the short version is we're cash-pay,
-        HSA/FSA accepted, no insurance billing. Full transparent pricing lives on the
-        <a href="/pricing">pricing page</a>.
-      </li>
-      <li>
-        <strong>Already a patient</strong> — for billing, lab orders, or follow-up scheduling,
-        call directly during office hours. The clinic line gets answered by a real person, not
-        a phone tree.
-      </li>
-    </ul>
+    <p>
+      <strong>Booking a new patient visit:</strong> the fastest path is the booking button
+      below or on our <a href="/our-services">services page</a>. Self-registration takes about
+      three minutes and you'll get a confirmation email immediately.
+    </p>
+    <p>
+      <strong>General questions:</strong> call <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>
+      during clinic hours or send a message through the form below. We respond within one business
+      day, usually faster.
+    </p>
+    <p>
+      <strong>Pricing or insurance questions:</strong> the short version is we're cash-pay, HSA/FSA
+      accepted, no insurance billing. Full transparent pricing lives on the
+      <a href="/pricing">pricing page</a>.
+    </p>
+    <p>
+      <strong>Already a patient:</strong> for billing, lab orders, or follow-up scheduling,
+      call directly during office hours. The clinic line gets answered by a real person, not
+      a phone tree.
+    </p>
     <h2>How we work alongside your existing care</h2>
     <p>
       Most of our patients keep their primary care provider and any specialists they're seeing.
       What we do sits alongside conventional medicine, not in place of it. Bring your recent labs
-      and medication list to your first visit — we'd rather build on what's already been done
+      and medication list to your first visit. We'd rather build on what's already been done
       than duplicate testing unnecessarily.
     </p>
     <p>
@@ -109,7 +107,7 @@ const contactFaqs = [
   {wasSent && (
     <SectionContainer width="default" spacing="sm" background="paper">
       <div class="success-banner">
-        ✓ Thanks — your message went through. We'll be in touch within one business day.
+        ✓ Thanks, your message went through. We'll be in touch within one business day.
       </div>
     </SectionContainer>
   )}
@@ -153,7 +151,7 @@ const contactFaqs = [
         <p class="eyebrow">Send us a message</p>
         <p class="form-intro">
           For general questions, scheduling, and connecting. <strong>For new patient intake, please use the
-          Book Appointment button</strong> — that flow is set up to take your full history securely.
+          Book Appointment button</strong> (that flow collects your full history securely).
         </p>
         <ContactForm />
       </div>
