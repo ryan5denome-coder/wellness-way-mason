@@ -60,7 +60,6 @@ const fourSteps = [
 
 const twoArms = [
   {
-    eyebrow: 'Arm 1',
     title: 'Chiropractic',
     slogan: 'We Do Health Differently',
     body: 'Manual, specific adjustments for the conditions chiropractors are known for: back pain, neck pain, sciatica, headaches, sports injury, prenatal (Webster Technique), and pediatric care.',
@@ -68,7 +67,6 @@ const twoArms = [
     cta: { label: 'Book a chiropractic visit', href: 'BOOKING' },
   },
   {
-    eyebrow: 'Arm 2',
     title: 'Health Restoration',
     slogan: "We don't guess. We test.",
     body: 'Lab testing paired with nutrition guidance, a supplement care plan, and lifestyle support. For patients who are ready to look at the patterns underneath persistent symptoms.',
@@ -319,7 +317,6 @@ const threeTs = [
     <div class="arms-grid">
       {twoArms.map((arm) => (
         <article class="arm-tile">
-          <p class="arm-eyebrow">{arm.eyebrow}</p>
           <h3 class="arm-title">{arm.title}</h3>
           <p class="arm-slogan">{arm.slogan}</p>
           <p class="arm-body">{arm.body}</p>
@@ -662,14 +659,6 @@ const threeTs = [
     display: flex;
     flex-direction: column;
     gap: 1rem;
-  }
-  .arm-eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    margin: 0;
-    font-weight: 500;
   }
   .arm-title {
     font-family: var(--font-display);
