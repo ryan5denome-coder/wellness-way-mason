@@ -2,14 +2,11 @@
 # Format: <from> <to> <status>
 # Order matters — first match wins.
 
-# Apex → www (canonical). Both apex + www are attached as Custom Domains to the
-# same Worker, so both serve 200 with identical content. Canonical tags already
-# point to www everywhere (Google dedupes), but a hard 301 is cleaner and clears
-# the Manus audit "non-www serves live pages without redirect" finding (1.1).
-# No redirect loop: the www host does not match this apex-only source rule.
-# If Workers Static Assets ignores absolute-URL sources in _redirects, this is a
-# harmless no-op and we'd fall back to a Cloudflare dashboard Redirect Rule.
-https://thewellnesswaymason.com/* https://www.thewellnesswaymason.com/:splat 301!
+# Apex → www (canonical) is handled by a Cloudflare dashboard Redirect Rule, NOT
+# here. Workers Static Assets _redirects rejects absolute/host-based URLs
+# ("Only relative URLs are allowed"), so a host-match rule cannot live in this
+# file. Canonical tags already point to www everywhere (Google dedupes), and both
+# apex + www are attached as Custom Domains serving identical content.
 
 # Decap CMS — production builds emit /admin (no trailing slash) due to
 # build.format: 'file'. Redirect /admin/ → /admin for users who type the slash.
