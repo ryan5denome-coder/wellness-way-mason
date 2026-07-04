@@ -20,12 +20,12 @@ const pricingFaqs = [
   {
     question: 'How much will I spend on labs my first day?',
     answer:
-      '<p>For a patient with no recent prior testing, a typical first-day lab spend lands somewhere between <strong>$300 and $700</strong>. The exact number depends on which panels we run and what we are trying to understand about your physiology. We will walk through the rationale for each panel before you commit. A full lab catalog with pricing is available as a <a href="/files/lab-pricing.pdf">downloadable PDF</a>.</p>',
+      '<p>For a patient with no recent prior testing, a typical first-day lab spend lands somewhere between <strong>$300 and $700</strong>. The exact number depends on which panels we run and what we are trying to understand about your physiology. We will walk through the reasoning for each panel before you commit to anything. A full lab catalog with pricing is available as a <a href="/files/lab-pricing.pdf">downloadable PDF</a>.</p>',
   },
   {
     question: 'Why aren’t supplement costs listed on this page?',
     answer:
-      '<p>Honest answer: the range is too wide to ball-park before we know what your body actually needs. Individual products run anywhere from <strong>$20 to $130+ each</strong>, and a personalized care plan can include several. We build a recommendation off of your lab results during the Plan / Discovery visit ($300), and you decide what to start with from there.</p>',
+      '<p>Honest answer: the range is too wide to ball-park before we know what your body actually needs. Individual products run anywhere from <strong>$20 to $130+ each</strong>, and a personalized care plan can include several. We build the recommendation from your lab results during the Plan / Discovery visit ($300), and you decide what to start with from there.</p>',
   },
   {
     question: 'Do you take insurance?',
@@ -35,7 +35,7 @@ const pricingFaqs = [
   {
     question: 'Is there a contract or minimum commitment?',
     answer:
-      '<p>No. There are no contracts and no minimum visit packages. We may recommend a sequence of care because consistency tends to produce better outcomes, but you stay because the work is helping (not because you are locked in). You can stop or step back at any time.</p>',
+      '<p>No. There are no contracts and no minimum visit packages. We may recommend a sequence of care because consistency matters in this kind of work, but you stay because the care is helping, not because you are locked in. You can stop or step back at any time.</p>',
   },
 ];
 ---
@@ -46,35 +46,47 @@ const pricingFaqs = [
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Pricing' }]} />
-    <p class="eyebrow">Pricing</p>
-    <h1>Transparent Pricing: No Surprises</h1>
-    <p class="lede">
-      We are pricing-forward on purpose. Patients deserve to know what care costs before they commit,
-      so the numbers below are the real numbers, the same ones we quote in the office.
-    </p>
-    <div class="cta-row">
-      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
-        Book a Consultation
-      </Button>
-      <Button href="#pricing-breakdown" variant="ghost" size="lg">
-        See the pricing
-      </Button>
+    <div class="pricing-hero">
+      <h1>
+        <span class="page-kicker">Transparent Pricing in Mason, OH</span>
+        Real numbers, before you ever walk in.
+      </h1>
+      <p class="lede">
+        We are pricing-forward on purpose. You deserve to know what care costs before you
+        commit, so the numbers below are the real numbers, the same ones we quote in the office.
+      </p>
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
+        <Button href="#pricing-breakdown" variant="ghost" size="lg">
+          See the pricing
+        </Button>
+      </div>
     </div>
   </SectionContainer>
 
   <SectionContainer width="wide" spacing="lg" id="pricing-breakdown">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>The Numbers</p>
+      <h2 data-reveal>Two ways in. Both start at $99.</h2>
+      <p class="value-line" data-reveal="up-sm">
+        Every new patient visit is a flat $99, and you will know what anything
+        else costs before you say yes to it.
+      </p>
+    </div>
     <div class="two-arm-grid">
-      <article class="arm-card">
-        <p class="eyebrow">Chiropractic</p>
-        <h2>We Do Health Differently</h2>
+      <article class="arm-card" data-reveal="up-sm">
+        <h3 class="arm-title">Chiropractic</h3>
+        <p class="arm-slogan">Do Health Differently.</p>
 
         <ul class="price-list">
           <li>
             <div class="price-row">
               <span class="price-label">New patient visit</span>
-              <span class="price-amount">$99</span>
+              <span class="price-amount">$99<span class="price-note">flat</span></span>
             </div>
-            <p class="price-detail">Includes exam, X-rays if clinically indicated, and your first adjustment.</p>
+            <p class="price-detail">Includes your history and exam, X-rays if clinically indicated, and your first adjustment.</p>
           </li>
           <li>
             <div class="price-row">
@@ -97,22 +109,22 @@ const pricingFaqs = [
         </div>
       </article>
 
-      <article class="arm-card">
-        <p class="eyebrow">Health Restoration</p>
-        <h2>Test, Don&rsquo;t Guess</h2>
+      <article class="arm-card" data-reveal="up-sm">
+        <h3 class="arm-title">Health Restoration</h3>
+        <p class="arm-slogan">Test, don&rsquo;t guess.</p>
 
         <ul class="price-list">
           <li>
             <div class="price-row">
               <span class="price-label">New patient visit</span>
-              <span class="price-amount">$99</span>
+              <span class="price-amount">$99<span class="price-note">flat</span></span>
             </div>
-            <p class="price-detail">Intake conversation plus a review of any prior labs you bring.</p>
+            <p class="price-detail">An intake conversation plus a review of any prior labs you bring.</p>
           </li>
           <li>
             <div class="price-row">
               <span class="price-label">Typical first-day lab spend</span>
-              <span class="price-amount">$300&ndash;$700</span>
+              <span class="price-amount price-amount-range">$300 to $700</span>
             </div>
             <p class="price-detail">
               Varies by panel set and depends on what we test. Patients with no recent prior labs
@@ -122,18 +134,18 @@ const pricingFaqs = [
           <li>
             <div class="price-row">
               <span class="price-label">Plan / Discovery visit</span>
-              <span class="price-amount">$300 + supplements</span>
+              <span class="price-amount">$300<span class="price-note">plus supplements</span></span>
             </div>
             <p class="price-detail">
-              Results review, personalized meal plan, and supplement plan built from what your
+              Results review, a personalized meal plan, and a supplement plan built from what your
               labs actually show.
             </p>
           </li>
         </ul>
 
         <aside class="callout">
-          <strong>Supplements range $20&ndash;$130+ each</strong>, which is why we cannot ball-park
-          before we know what your body needs. You decide what to start with after we walk through
+          <strong>Supplements range from $20 to $130+ each</strong>, which is why we cannot ball-park
+          them before we know what your body needs. You decide what to start with after we walk through
           the recommendations together.
         </aside>
 
@@ -143,7 +155,7 @@ const pricingFaqs = [
 
         <div class="arm-cta">
           <Button href={clinic.bookingUrl} variant="primary" size="md" external>
-            Book health restoration consult
+            Book a health restoration consult
           </Button>
         </div>
       </article>
@@ -151,54 +163,54 @@ const pricingFaqs = [
   </SectionContainer>
 
   <SectionContainer width="default" spacing="md" background="paper-soft">
-    <h2 class="section-h2">Cash-pay practice. No insurance friction.</h2>
+    <h2 class="section-h2" data-reveal>Cash-pay practice. No insurance friction.</h2>
     <ul class="cash-grid">
-      <li>
+      <li data-reveal="up-sm">
         <h3>Out-of-network</h3>
         <p>We do not bill insurance, which keeps decisions about your care in the room with you.</p>
       </li>
-      <li>
+      <li data-reveal="up-sm">
         <h3>Superbills on request</h3>
         <p>We will provide a superbill if you want to submit to your insurance for potential reimbursement.</p>
       </li>
-      <li>
+      <li data-reveal="up-sm">
         <h3>HSA &amp; FSA accepted</h3>
         <p>Use pre-tax dollars from your HSA or FSA card for visits, labs, and supplements.</p>
       </li>
-      <li>
+      <li data-reveal="up-sm">
         <h3>No contracts</h3>
         <p>No minimum commitment, no pre-pay packages required. Pay per visit, stop any time.</p>
       </li>
     </ul>
-    <p class="cash-cta">
+    <p class="cash-cta" data-reveal="up-sm">
       Questions about cost before you book?
       <a href={`tel:${clinic.phoneTel}`} class="inline-link">Call the clinic at {clinic.phone}</a>.
     </p>
   </SectionContainer>
 
   <SectionContainer width="default" spacing="lg">
-    <h2 class="section-h2">Pricing FAQs</h2>
+    <h2 class="section-h2" data-reveal>Pricing questions, answered.</h2>
     <FAQAccordion items={pricingFaqs} />
     <div class="faq-cta">
-      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
-        Book a Consultation
+      <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+        Book Your Appointment
       </Button>
     </div>
   </SectionContainer>
 
   <SectionContainer width="narrow" spacing="lg" background="brand">
-    <div class="final-cta">
+    <div class="final-cta" data-reveal>
       <h2>Take the first step. We&rsquo;re right here in Mason, OH.</h2>
       <p>
         Whether you are starting with chiropractic, health restoration, or just a phone call to ask
-        questions, we will meet you wherever you are.
+        questions, we will meet you wherever you are. You have options.
       </p>
       <div class="cta-row cta-row-center">
         <Button href={`tel:${clinic.phoneTel}`} variant="inverse" size="lg">
           Call {clinic.phone}
         </Button>
-        <Button href={clinic.bookingUrl} variant="secondary" size="lg" external>
-          Book a Consultation
+        <Button href={clinic.bookingUrl} variant="secondary" size="lg" external iconAfter>
+          Book Your Appointment
         </Button>
       </div>
     </div>
@@ -206,13 +218,23 @@ const pricingFaqs = [
 </BaseLayout>
 
 <style>
-  .eyebrow {
+  /* === Hero === */
+  .pricing-hero h1 {
+    margin: 0;
+    font-size: var(--text-4xl);
+    line-height: 1.1;
+  }
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline. */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--color-brand-primary-dark);
-    margin: 0 0 0.5rem;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
   }
   .lede {
     color: var(--color-ink-muted);
@@ -231,9 +253,51 @@ const pricingFaqs = [
     justify-content: center;
   }
 
-  .section-h2 {
-    margin: 0 0 1.5rem;
+  /* === Section heads === */
+  .section-head {
+    margin-bottom: 3rem;
+    text-align: center;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin: 0 0 1rem;
+    font-weight: 500;
+  }
+  /* Eyebrow lockup: a short TWW Green rule turns the grey caps label into
+     a composed unit (auto-centered for the centered head). */
+  .section-head .eyebrow::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-brand-primary);
+    margin: 0.9rem auto 0;
+  }
+  .section-head h2 {
+    margin: 0 0 1rem;
     font-size: var(--text-3xl);
+    color: var(--color-ink-strong);
+  }
+  .value-line {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 52ch;
+  }
+
+  .section-h2 {
+    margin: 0 0 1.75rem;
+    font-size: var(--text-3xl);
+    line-height: 1.15;
   }
 
   /* === Two-arm pricing grid === */
@@ -259,9 +323,19 @@ const pricingFaqs = [
     display: flex;
     flex-direction: column;
   }
-  .arm-card h2 {
-    margin: 0 0 1.5rem;
+  .arm-title {
+    margin: 0 0 0.15rem;
+    font-family: var(--font-display);
     font-size: var(--text-2xl);
+    line-height: 1.15;
+    color: var(--color-ink-strong);
+  }
+  .arm-slogan {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-lg);
+    margin: 0 0 1.5rem;
   }
 
   .price-list {
@@ -283,20 +357,36 @@ const pricingFaqs = [
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 0.35rem;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.4rem;
   }
   .price-label {
     font-weight: 600;
     color: var(--color-ink-strong);
     font-size: var(--text-base);
   }
+  /* Lora display amounts, matching the homepage price card. */
   .price-amount {
     font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: 600;
-    color: var(--color-brand-primary-dark);
+    font-weight: 500;
+    font-size: var(--text-3xl);
+    line-height: 1;
+    color: var(--color-ink-strong);
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
     white-space: nowrap;
+  }
+  .price-amount-range {
+    font-size: var(--text-2xl);
+  }
+  .price-note {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-base);
+    font-weight: 400;
+    color: var(--color-brand-primary-dark);
   }
   .price-detail {
     font-size: var(--text-sm);
@@ -396,5 +486,27 @@ const pricingFaqs = [
     margin: 0 auto 2rem;
     font-size: var(--text-lg);
     line-height: 1.55;
+  }
+
+  /* === Responsive type scale (established section-head scale) === */
+  @media (min-width: 768px) {
+    .pricing-hero h1 { font-size: var(--text-5xl); }
+    .section-head h2 { font-size: var(--text-4xl); }
+    .section-h2 { font-size: var(--text-4xl); }
+    .arm-title { font-size: var(--text-3xl); }
+    .final-cta h2 { font-size: var(--text-4xl); }
+    .price-amount { font-size: var(--text-4xl); }
+    .price-amount-range { font-size: var(--text-3xl); }
+  }
+  @media (min-width: 1024px) {
+    .section-head { margin-bottom: 4rem; }
+    .section-head h2 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
+    }
+    .section-h2 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
+    }
   }
 </style>

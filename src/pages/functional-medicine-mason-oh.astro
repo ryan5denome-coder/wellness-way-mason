@@ -9,11 +9,11 @@ import { clinic, site, bylines } from '../lib/site';
 const faqs = [
   {
     q: "What is functional medicine, and how is it different from regular medicine?",
-    a: "Regular medicine is built to identify a disease and then match it with a drug or procedure. That works well when you're in a crisis. Functional health asks a different question: what's loading stress onto your body, and why is it showing up this way? The standard panel measures a handful of markers. A functional panel measures dozens, including the ones that pick up patterns five years earlier. Care addresses the input, not just the alarm.",
+    a: "Regular medicine is built to identify a disease and match it with a drug or procedure, and that works well when you're in a crisis. Functional health asks a different question: what's loading stress onto your body, and why is it showing up this way? A standard panel measures a handful of markers. A functional panel measures dozens, including ones that may pick up a pattern earlier. Care can then address the input, not just the alarm.",
   },
   {
     q: "Is functional medicine in Mason, OH covered by insurance?",
-    a: "We're a cash-pay practice. Most functional lab panels and the consultations around them are not billable to commercial insurance the way a standard sick visit is. The upside: pricing is transparent, you're not constrained to a 7-minute visit slot, and HSA/FSA cards are accepted. We'll walk through cost before any panel is ordered.",
+    a: "We're a cash-pay practice. Most functional lab panels and the consultations around them are not billable to commercial insurance the way a standard sick visit is. The upside: pricing is transparent, your visit isn't squeezed into a short slot, and HSA/FSA cards are accepted. We'll walk through cost before any panel is ordered.",
   },
   {
     q: "Do I have to stop seeing my regular doctor?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "How long until I feel a difference?",
-    a: "Honest answer: it depends on what's driving the pattern and how long it's been there. Patients with a recent gut flare or a clearly modifiable hormone pattern may notice changes within a few weeks. Long-standing autoimmune or thyroid patterns take longer. The body needs time to rebuild what got depleted. We map out an expected timeline at your second visit, after we've seen the lab results, not before.",
+    a: "Honest answer: it depends on what's driving the pattern and how long it's been there. Patients with a recent gut flare or a clearly modifiable hormone pattern may notice changes within a few weeks. Long-standing autoimmune or thyroid patterns take longer. The body often needs time to rebuild what got depleted. We map out an expected timeline at your results visit, after we've seen the lab work, not before.",
   },
   {
     q: "Do you treat children?",
@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: "What's the first visit like?",
-    a: "We sit down and you tell us what's been going on. Not a 7-minute version. The actual story. We review any labs you've had recently, we listen for the patterns, and we talk about whether functional testing makes sense for you. If it does, we walk you through which panels we'd recommend and what each one costs. You leave with a plan. No pressure to commit before you've slept on it.",
+    a: "We sit down and you tell us what's been going on. Not the 7-minute version. The actual story. We review any labs you've had recently, we listen for the patterns, and we talk about whether functional testing makes sense for you. If it does, we walk you through which panels we'd recommend and what each one costs. You leave with a plan. No pressure to commit before you've slept on it.",
   },
 ];
 
@@ -84,16 +84,18 @@ const breadcrumbSchema = {
       { label: 'Functional Medicine in Mason, OH' },
     ]} />
     <div class="hero">
-      <p class="eyebrow">Functional Health Testing · Mason, Ohio</p>
-      <h1>Functional Medicine in Mason, OH</h1>
+      <h1>
+        <span class="page-kicker">Functional Medicine in Mason, OH</span>
+        Deeper testing for the symptoms nobody has explained.
+      </h1>
       <p class="lede">
-        You've been told your labs look "normal" and you still don't feel normal.
-        You're not imagining it. We test, we don't guess. The standard workup
-        usually doesn't run the panels that pick up what's actually going on.
+        You've been told your labs look normal, and you still don't feel like yourself.
+        You're not imagining it. Functional testing looks at markers the standard panel
+        usually leaves out, and it runs alongside the care you already have.
       </p>
       <div class="hero-cta">
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
-          Schedule a Discovery Consultation
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
         </Button>
         <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">
           Call {clinic.phone}
@@ -104,82 +106,88 @@ const breadcrumbSchema = {
 
   <SectionContainer width="prose" spacing="md">
     <p>
-      Functional health is a different question than conventional medicine asks. Conventional
-      care is brilliant at identifying disease and matching it with a treatment, and you should
-      absolutely keep your primary care provider in the loop. We work alongside conventional care,
-      not against it. But if you've had blood work pulled at three different doctors, gotten the
-      same "everything looks fine" message, and you still feel like something's off, the body
-      is telling you something that's not in the standard panel.
+      Functional health starts from a different question than conventional medicine asks.
+      Conventional care is excellent at identifying disease and matching it with a treatment,
+      and you should absolutely keep your primary care provider in the loop. We work alongside
+      conventional care, not in place of it. But if you've had blood work pulled at three
+      different offices, heard "everything looks fine" every time, and you still feel like
+      something is off, your body is raising a signal the standard panel wasn't built to catch.
     </p>
-    <p>
+    <p data-reveal="up-sm">
       That's the gap functional testing fills. Different markers. Deeper resolution. A picture
       instead of a snapshot.
     </p>
     <p>
-      At <strong>The Wellness Way - Mason</strong>, Dr. Ryan DeNome, Doctor of Chiropractic, pairs
-      chiropractic care with comprehensive functional lab panels. We're cash-pay, transparent on
-      pricing, and we don't order a test we can't explain to you. Patients drive from Mason, West
-      Chester, Loveland, Lebanon, and the greater Cincinnati area, and a few from further out
-      when their own neighborhood doesn't have what they're looking for.
+      At <strong>The Wellness Way - Mason</strong>, Dr. Ryan DeNome, Doctor of Chiropractic,
+      pairs <a href="/our-services#chiropractic">chiropractic care</a> with comprehensive
+      functional lab panels through our
+      <a href="/our-services#health-restoration">health restoration arm</a>. We're cash-pay,
+      transparent on pricing, and we don't order a test we can't explain to you. Patients drive
+      from Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area, and a few
+      from further out when their own neighborhood doesn't have what they're looking for.
     </p>
 
-    <h2>The Truth About "Normal" Labs</h2>
+    <h2 data-reveal>What "normal" labs don't tell you</h2>
     <p>
-      Lab ranges are built on population averages. The population they're built on includes a lot
-      of people who are tired, gaining weight, and not sleeping well. "Normal" can mean
-      "average for a sick population," not "optimal for a healthy human."
+      Lab ranges are built on population averages, and the population they're built on includes
+      a lot of people who are tired, gaining weight, and not sleeping well. "Normal" can mean
+      average for that population, not optimal for you.
     </p>
     <p>
       A TSH of 3.5 lands inside the standard range and gets called normal. But your thyroid
-      may be working overtime to hold that number, and you're paying for it with energy, hair,
-      mood, and weight. A single estrogen pulled on day 21 of a cycle and called "balanced" is
-      a little like checking your car's fuel gauge at one moment in the day and deciding the
-      entire fuel system works. The DUTCH panel maps the whole cycle and shows the metabolites,
-      including how your body is using and clearing estrogen. That's where most patterns hide:
-      not in production, but in detox and conversion.
+      may be working overtime to hold that number, and you may be paying for it in energy,
+      hair, mood, and weight. A single estrogen level pulled on day 21 of a cycle and called
+      balanced is a little like checking your car's fuel gauge at one moment in the day and
+      deciding the entire fuel system works. The DUTCH panel maps the whole cycle and shows
+      the metabolites (the breakdown products that reflect how your body is using and clearing
+      estrogen). That's often where a pattern hides: not in production, but in clearance
+      and conversion.
     </p>
     <p>
-      Standard care is built for high-volume throughput. We're built for the conversation that
-      doesn't fit inside a 7-minute slot.
+      None of that is a criticism of your doctor. Standard care is built to move quickly
+      because it has to be. We're built for the conversation that doesn't fit inside a
+      short visit.
     </p>
 
-    <h2>How We Work: The Process</h2>
+    <h2 data-reveal>How we work: the process</h2>
     <p>
       We use The Wellness Way's four-step process: <strong>New Perspective → We Test → We
       Discover → We Guide</strong>. In practice, that looks like four phases:
     </p>
-    <ol>
+    <ol data-reveal="up-sm">
       <li>
-        <strong>Discovery consultation.</strong> You tell us the story. The actual story, not
-        the 7-minute version. We review labs you've had run elsewhere and listen for the
-        patterns the standard workup missed.
+        <strong>New patient visit.</strong> You tell us the story. The actual story, not the
+        rushed version. It's a flat $99, covering the intake conversation and a review of any
+        labs you've had run elsewhere, while we listen for the patterns the standard workup
+        wasn't looking for.
       </li>
       <li>
         <strong>Testing plan.</strong> If functional testing makes sense for you, we recommend
         a specific panel set (usually two or three labs that map together) and we walk through
-        what each one costs before we order anything. Common day-one spend lands between $300
-        and $700 depending on what we're looking at.
+        what each one costs before we order anything. Typical first-day lab spend lands between
+        $300 and $700, depending on what we're looking at.
       </li>
       <li>
-        <strong>Results review.</strong> We sit down with the actual lab reports, side by side
-        with your history, and we name what's loading stress on your system. The Wellness Way
-        framework is the 3 T's: Traumas (physical), Toxins (chemical), Thoughts (emotional).
-        One or two of those is usually the driver.
+        <strong>Results review.</strong> At your Plan / Discovery visit ($300), we sit down
+        with the actual lab reports, side by side with your history, and name what's loading
+        stress on your system. The Wellness Way framework is the 3 T's: Traumas (physical),
+        Toxins (chemical), Thoughts (emotional). One or two of those is usually doing most
+        of the work.
       </li>
       <li>
         <strong>Care plan + follow-through.</strong> Chiropractic adjustments where the nervous
-        system needs support. Targeted nutrition, supplementation, and lifestyle changes where
-        the lab findings point. Retesting at the right interval to confirm we're moving the
-        needle, not guessing.
+        system may need support. Targeted nutrition, supplementation, and lifestyle changes
+        where the lab findings point. Retesting at the right interval so we can see whether
+        the plan is doing its job, and adjust it if it isn't.
       </li>
     </ol>
 
-    <h2>What We See Most</h2>
+    <h2 data-reveal>What we see most</h2>
     <p>
-      Some patterns show up over and over in our practice. The body keeps the same conversations
-      going, even when the surface symptoms look different person to person.
+      Some patterns show up over and over in our practice. The body keeps the same
+      conversations going, even when the surface symptoms look different from person to person.
     </p>
-    <ul>
+    <ul data-reveal="up-sm">
       <li>
         <a href="/conditions/thyroid"><strong>Thyroid patterns.</strong></a> Cold,
         tired, hair loss, weight that won't move, "normal TSH but I don't feel normal."
@@ -191,8 +199,8 @@ const breadcrumbSchema = {
       </li>
       <li>
         <a href="/conditions/autoimmune"><strong>Autoimmune patterns.</strong></a> Hashimoto's,
-        rheumatoid, the cluster of "your labs are getting a little weird but you're
-        not sick enough to treat yet."
+        rheumatoid, and the long stretch where labs look a little off but nothing has
+        a name yet.
       </li>
       <li>
         <a href="/conditions/digestive-issues"><strong>Digestive issues.</strong></a> Bloating,
@@ -204,9 +212,9 @@ const breadcrumbSchema = {
         sleepy. Tired. The kind that doesn't fix with a nap.
       </li>
       <li>
-        <a href="/conditions/heart-disease"><strong>Cardiometabolic risk.</strong></a> The
-        patient whose cholesterol came back "borderline" and got handed a statin
-        prescription without anyone running an inflammation panel or an advanced lipid breakdown.
+        <a href="/conditions/heart-disease"><strong>Cardiometabolic risk.</strong></a> Cholesterol
+        that came back "borderline" and left you with more questions than answers.
+        Advanced lipid and inflammation markers can fill in the rest of that picture.
       </li>
       <li>
         <a href="/conditions/mental-health-brain"><strong>Brain fog and mood patterns.</strong></a> The
@@ -219,16 +227,17 @@ const breadcrumbSchema = {
       </li>
     </ul>
 
-    <h2>Labs We Run</h2>
+    <h2 data-reveal>Labs we run</h2>
     <p>
       We don't run a fixed panel for everyone. We run what fits your story. The ones we order
       most:
     </p>
-    <ul>
+    <ul data-reveal="up-sm">
       <li>
-        <strong>DUTCH panel</strong> (Dried Urine Test for Comprehensive Hormones): sex hormones,
-        adrenal hormones, and the metabolites that show how your body is actually using and
-        clearing them. Maps across the cycle, not a single timepoint.
+        <a href="/dutch-test-mason-oh"><strong>DUTCH panel</strong></a> (Dried Urine Test for
+        Comprehensive Hormones): sex hormones, adrenal hormones, and the metabolites that show
+        how your body is actually using and clearing them. Maps across the cycle, not a single
+        timepoint.
       </li>
       <li>
         <strong>Complete thyroid panel with antibodies:</strong> TSH, Free T3, Free T4, Reverse
@@ -249,24 +258,25 @@ const breadcrumbSchema = {
       <li>
         <strong>TWW Basic Panel:</strong> broad foundational labs the parent brand designed
         to capture inflammation, blood sugar, liver and kidney function, and a few markers
-        most PCP panels skip.
+        a routine panel usually doesn't include.
       </li>
     </ul>
-    <p class="aside-note">
+    <p class="aside-note" data-reveal="up-sm">
       Tests are recommended, never required. We walk through cost and rationale before ordering
       anything. Cash-pay pricing only: most functional panels are not billable to commercial
-      insurance, but HSA/FSA cards are accepted. <a href="/pricing">Full pricing here</a>.
+      insurance, but HSA/FSA cards are accepted. <a href="/pricing">See the full breakdown on
+      our pricing page</a>.
     </p>
 
-    <h2>Why a Doctor of Chiropractic Pairs With Functional Testing</h2>
+    <h2 data-reveal>Why a Doctor of Chiropractic pairs with functional testing</h2>
     <p>
-      Most patients searching for functional medicine in Mason are choosing between two
-      structures: a functional-medicine MD who runs labs but doesn't address the spine and
-      nervous system, or a chiropractor who adjusts but doesn't run labs. The Wellness Way model
-      is the integrated version. Adjustments support the part of the nervous system that
-      regulates digestion, immune response, and hormone signaling. Functional labs reveal what
-      the nervous-system input is actually doing downstream. The two are designed to work
-      together.
+      Most patients searching for functional medicine in Mason are weighing two structures:
+      lab work without hands-on care for the spine and nervous system, or hands-on care
+      without the lab work. The Wellness Way model is the integrated version. Adjustments may
+      support the parts of the nervous system that help regulate digestion, immune response,
+      and hormone signaling, and functional labs can show what's happening downstream. The two
+      are designed to work together. You can see how both arms of the practice fit together
+      on <a href="/our-services">our services page</a>.
     </p>
     <p>
       Dr. DeNome's training is as a Doctor of Chiropractic (chiropractic physician), and his
@@ -276,20 +286,22 @@ const breadcrumbSchema = {
       across the country.
     </p>
 
-    <h2>Pricing, Insurance, and What to Expect</h2>
+    <h2 data-reveal>Pricing, insurance, and what to expect</h2>
     <p>
-      We're a cash-pay practice. That's a deliberate choice. Insurance dictates visit length,
-      what gets covered, and what doesn't. Cash-pay means we can structure visits around what
-      the patient actually needs, run the labs that fit the picture, and charge transparently
-      without surprise bills three months later. <strong>HSA and FSA cards are accepted</strong>
-      for both visits and most lab panels.
+      We're a cash-pay practice, and that's a deliberate choice. Insurance dictates visit
+      length, what gets covered, and what doesn't. Cash-pay means we can structure visits
+      around what the patient actually needs, run the labs that fit the picture, and charge
+      transparently without surprise bills three months later. <strong>HSA and FSA cards are
+      accepted</strong> for both visits and most lab panels.
     </p>
     <p>
-      Typical first-day numbers: <strong>discovery consultation $99</strong>, follow-up
-      adjustments $50, lab panels priced by panel (DUTCH around $400 retail, comprehensive stool
-      around $400, complete thyroid around $200, exact numbers confirmed at booking). For a
-      patient with no recent prior testing, total first-day lab spend usually lands between $300
-      and $700.
+      The numbers: your <strong>new patient visit is a flat $99</strong>, which covers the
+      intake conversation and a review of any labs you already have. Follow-up adjustments
+      are $50, with soft tissue work, cupping, and scraping included at no upcharge. Labs are
+      billed separately and transparently, quoted before anything is ordered; for a patient
+      with no recent prior testing, first-day lab spend usually lands between $300 and $700.
+      The Plan / Discovery visit, where we walk through your results and build the care plan,
+      is $300.
     </p>
     <p>
       What you should never see from us: a bill you weren't expecting, a panel ordered without
@@ -297,8 +309,8 @@ const breadcrumbSchema = {
       transparent pricing is on the pricing page</a>.
     </p>
 
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-list">
+    <h2 data-reveal>Frequently asked questions</h2>
+    <div class="faq-list" data-reveal="up-sm">
       {faqs.map((f) => (
         <details class="faq-item">
           <summary>{f.q}</summary>
@@ -307,29 +319,30 @@ const breadcrumbSchema = {
       ))}
     </div>
 
-    <h2>Final Thoughts</h2>
+    <h2 data-reveal>You don't have to pick a side</h2>
     <p>
       You don't have to feel guilty for not feeling well. You don't have to settle for "your
-      labs look fine." You don't have to choose between conventional medicine and a different
-      conversation. You can have both running at the same time.
+      labs look fine." And you don't have to choose between conventional medicine and a
+      different conversation. You can have both running at the same time.
     </p>
     <p>
       <strong>Common is not normal. Normal doesn't always mean optimal. You have options.</strong>
     </p>
-    <p class="byline">{bylines.reviewed} — Doctor of Chiropractic, The Wellness Way - Mason, Mason, Ohio</p>
+    <p class="byline">{bylines.reviewed} · Doctor of Chiropractic, The Wellness Way - Mason, Mason, Ohio</p>
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="lg" background="paper-soft">
-    <div class="closer-cta">
-      <h2>Ready to Test Instead of Guess?</h2>
+    <div class="closer-cta" data-reveal>
+      <h2>Your first visit is a flat $99.</h2>
+      <p class="value-line">One transparent price. Labs quoted before anything is ordered.</p>
       <p>
-        Schedule a discovery consultation. We'll listen to the story, look at what's already
-        been run, and tell you whether functional testing actually makes sense for what you're
-        dealing with.
+        We'll listen to the whole story, look at what's already been run, and tell you
+        honestly whether functional testing makes sense for what you're dealing with.
+        If it doesn't, we'll say so.
       </p>
       <div class="cta-row">
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
-          Schedule a Discovery Consultation
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
         </Button>
         <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">
           Call {clinic.phone}
@@ -340,34 +353,44 @@ const breadcrumbSchema = {
 </BaseLayout>
 
 <style>
-  .eyebrow {
-    color: var(--color-brand-primary-dark);
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    letter-spacing: 0.1em;
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline. (Pattern from our-services.) */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin: 0 0 0.5rem;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
   }
   .hero h1 {
     font-size: var(--text-4xl);
-    line-height: 1.15;
+    line-height: 1.1;
     margin: 0 0 1rem;
+    max-width: 22ch;
   }
   .lede {
     color: var(--color-ink-muted);
     font-size: var(--text-lg);
     line-height: 1.6;
     max-width: 64ch;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1.75rem;
   }
   .hero-cta {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
   }
+
+  /* Article section heads — established scale, ink-strong not green. */
   h2 {
-    color: var(--color-brand-primary-dark);
-    margin-top: 2.5rem;
+    color: var(--color-ink-strong);
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
   }
   p { line-height: 1.75; }
   ul, ol { line-height: 1.75; padding-left: 1.5rem; }
@@ -420,11 +443,23 @@ const breadcrumbSchema = {
     color: var(--color-ink-muted);
     font-style: italic;
   }
+
+  /* Closer — the page's one conversion moment. */
   .closer-cta { text-align: center; }
-  .closer-cta h2 { margin-top: 0; }
-  .closer-cta p {
+  .closer-cta h2 { margin-top: 0; margin-bottom: 0.75rem; }
+  /* Value-line pattern from our-services: italic Lora proof line. */
+  .value-line {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    margin: 0 auto 1.25rem;
+    max-width: 52ch;
+  }
+  .closer-cta p:not(.value-line) {
     max-width: 50ch;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 1.75rem;
     color: var(--color-ink-muted);
   }
   .cta-row {
@@ -433,7 +468,13 @@ const breadcrumbSchema = {
     flex-wrap: wrap;
     justify-content: center;
   }
+
   @media (min-width: 768px) {
     .hero h1 { font-size: var(--text-5xl); }
+    h2 { font-size: var(--text-4xl); }
+  }
+  @media (min-width: 1024px) {
+    h2 { letter-spacing: -0.022em; }
+    .closer-cta h2 { font-size: var(--text-5xl); }
   }
 </style>

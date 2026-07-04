@@ -18,7 +18,7 @@ const contactFaqs = [
   },
   {
     question: 'Do I need a referral?',
-    answer: '<p>No. You can self-refer for chiropractic care or a discovery consultation. If you\'re bringing labs from another provider, please bring them to your visit. We\'d rather build on what already exists than duplicate testing unnecessarily.</p>',
+    answer: '<p>No. You can self-refer for chiropractic care or health restoration. If you\'re bringing labs from another provider, bring them along to your first visit. We\'d rather build on what already exists than duplicate testing unnecessarily.</p>',
   },
   {
     question: 'What should I bring to my first appointment?',
@@ -30,15 +30,15 @@ const contactFaqs = [
   },
   {
     question: 'How long is a first visit?',
-    answer: '<p>Plan on 60–75 minutes for a new patient discovery consultation and exam. Follow-up adjustments and review-of-findings visits are typically 20–30 minutes.</p>',
+    answer: '<p>Plan on 60 to 75 minutes for a new patient visit and exam. Follow-up adjustments and review-of-findings visits are typically 20 to 30 minutes.</p>',
   },
   {
     question: 'Do you see kids and pregnant moms?',
-    answer: '<p>Yes. Pediatric chiropractic and prenatal care are core specialties here. Dr. Ryan is certified in the Webster Technique for prenatal patients. We see newborns through teens for chiropractic care and have a pediatric-friendly play space at the clinic.</p>',
+    answer: '<p>Yes. Pediatric chiropractic and prenatal care are core parts of the practice. Dr. DeNome is certified in the Webster Technique for prenatal patients. We see newborns through teens for chiropractic care, and the clinic has a pediatric-friendly play space.</p>',
   },
   {
     question: 'Are virtual consultations available?',
-    answer: '<p>Yes. Virtual <em>health restoration consultations</em> are available for patients outside the immediate Mason / Cincinnati area. In-person chiropractic care obviously requires being in the clinic.</p>',
+    answer: '<p>Yes. Virtual <em>health restoration consultations</em> are available for patients outside the immediate Mason / Cincinnati area. In-person chiropractic care does require being in the clinic, but lab reviews and follow-up conversations travel well.</p>',
   },
 ];
 
@@ -50,58 +50,66 @@ const contactFaqs = [
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
-    <h1>Contact Us</h1>
-    <p class="lede">
-      Whether you're a new patient ready to schedule, or you have a question first, we'd love to hear from you.
-    </p>
+    <div class="contact-hero">
+      <h1>
+        <span class="page-kicker">Contact a Chiropractor in Mason, OH</span>
+        Reach out. A real person answers.
+      </h1>
+      <p class="lede">
+        Whether you're ready to schedule or still deciding, we'd love to hear from you.
+        Call, send a message, or book online. Every question is a fair one.
+      </p>
+    </div>
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="md">
-    <p>
-      You don't have to have it all figured out before you reach out. Most of the people who
-      contact us are somewhere in the middle of their story. They've had labs run that came back
-      "fine," they've been bounced between providers, and they're trying to figure out whether
-      what we do is the right next step.
-    </p>
-    <p>
-      That's exactly the conversation we want to have. A short call or message is a no-pressure
-      way to ask whether chiropractic care, functional lab testing, or both might fit what
-      you're dealing with. We'll tell you honestly if we're not the right fit and where to look
-      instead.
-    </p>
-    <h2>What to expect when you reach out</h2>
-    <p>
-      <strong>Booking a new patient visit:</strong> the fastest path is the booking button
-      below or on our <a href="/our-services">services page</a>. Self-registration takes about
-      three minutes and you'll get a confirmation email immediately.
-    </p>
-    <p>
-      <strong>General questions:</strong> call <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>
-      during clinic hours or send a message through the form below. We respond within one business
-      day, usually faster.
-    </p>
-    <p>
-      <strong>Pricing or insurance questions:</strong> the short version is we're cash-pay, HSA/FSA
-      accepted, no insurance billing. Full transparent pricing lives on the
-      <a href="/pricing">pricing page</a>.
-    </p>
-    <p>
-      <strong>Already a patient:</strong> for billing, lab orders, or follow-up scheduling,
-      call directly during office hours. The clinic line gets answered by a real person, not
-      a phone tree.
-    </p>
-    <h2>How we work alongside your existing care</h2>
-    <p>
-      Most of our patients keep their primary care provider and any specialists they're seeing.
-      What we do sits alongside conventional medicine, not in place of it. Bring your recent labs
-      and medication list to your first visit. We'd rather build on what's already been done
-      than duplicate testing unnecessarily.
-    </p>
-    <p>
-      Serving patients across <strong>Mason, West Chester, Loveland, Lebanon, Maineville, and the
-      greater Cincinnati area</strong>. Free parking on-site and an accessible ground-level
-      entrance.
-    </p>
+    <div class="contact-prose">
+      <p data-reveal>
+        You don't have to have it all figured out before you reach out. Most people who
+        contact us are somewhere in the middle of their story: labs that came back "fine,"
+        a string of providers, and a growing sense that something is still being missed.
+        You're not alone in that.
+      </p>
+      <p data-reveal="up-sm">
+        That's exactly the conversation we want to have. A short call or message is a
+        no-pressure way to ask whether chiropractic care, functional lab testing, or both
+        might fit what you're dealing with. If we're not the right fit, we'll say so
+        honestly and point you toward someone who is.
+      </p>
+      <h2 data-reveal>What to expect when you reach out</h2>
+      <p data-reveal="up-sm">
+        <strong>Booking a new patient visit:</strong> the fastest path is the Book Your
+        Appointment button below or on our <a href="/our-services">services page</a>.
+        Self-registration takes about three minutes, and a confirmation email lands right away.
+      </p>
+      <p data-reveal="up-sm">
+        <strong>General questions:</strong> call <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>
+        during clinic hours or send a message through the form below. We respond within one business
+        day, usually faster.
+      </p>
+      <p data-reveal="up-sm">
+        <strong>Pricing or insurance questions:</strong> the short version is we're cash-pay,
+        HSA/FSA accepted, no insurance billing. Every new patient visit is a flat $99, and full
+        transparent pricing lives on the <a href="/pricing">pricing page</a>.
+      </p>
+      <p data-reveal="up-sm">
+        <strong>Already a patient:</strong> for billing, lab orders, or follow-up scheduling,
+        call directly during office hours. The clinic line gets answered by a real person, not
+        a phone tree.
+      </p>
+      <h2 data-reveal>How we work alongside your existing care</h2>
+      <p data-reveal="up-sm">
+        Most of our patients keep their primary care provider and any specialists they're seeing.
+        What we do sits alongside conventional medicine, not in place of it. Bring your recent labs
+        and medication list to your first visit. We'd rather build on what's already been done
+        than duplicate testing unnecessarily.
+      </p>
+      <p data-reveal="up-sm">
+        We see patients from <strong>Mason, West Chester, Loveland, Lebanon, Maineville, and the
+        greater Cincinnati area</strong>, with virtual health restoration consultations available
+        for anyone farther out.
+      </p>
+    </div>
   </SectionContainer>
 
   {wasSent && (
@@ -115,9 +123,20 @@ const contactFaqs = [
   <SectionContainer width="default" spacing="lg" id="book">
     <div class="contact-grid">
       <div class="contact-info">
-        <p class="eyebrow">Quick contact</p>
+        <h2 class="col-title" data-reveal>Reach us directly</h2>
 
-        <div class="info-block">
+        <div class="booking-card" data-reveal>
+          <h3>The fastest way in</h3>
+          <p>
+            Online self-registration takes about three minutes, and every new patient
+            visit is a flat $99, chiropractic or health restoration alike.
+          </p>
+          <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+            Book Your Appointment
+          </Button>
+        </div>
+
+        <div class="info-block" data-reveal="up-sm">
           <h3>Visit us</h3>
           <address>
             {clinic.address.streetAddress}<br />
@@ -125,33 +144,28 @@ const contactFaqs = [
           </address>
         </div>
 
-        <div class="info-block">
+        <div class="info-block" data-reveal="up-sm">
           <h3>Call</h3>
           <p><a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a></p>
         </div>
 
-        <div class="info-block">
+        <div class="info-block" data-reveal="up-sm">
           <h3>Email</h3>
           <p><a href={`mailto:${clinic.email}`}>{clinic.email}</a></p>
         </div>
 
-        <div class="info-block">
-          <h3>Book online</h3>
-          <p>The fastest way to schedule a new patient visit:</p>
-          <Button href={clinic.bookingUrl} variant="primary" size="md" external>Book Appointment</Button>
-        </div>
-
-        <div class="info-block">
+        <div class="info-block" data-reveal="up-sm">
           <h3>Hours</h3>
           <HoursTable />
         </div>
       </div>
 
-      <div class="contact-form-col">
-        <p class="eyebrow">Send us a message</p>
+      <div class="contact-form-col" data-reveal>
+        <h2 class="col-title">Send a message</h2>
         <p class="form-intro">
-          For general questions, scheduling, and connecting. <strong>For new patient intake, please use the
-          Book Appointment button</strong> (that flow collects your full history securely).
+          For general questions, scheduling, and connecting. <strong>For new patient intake,
+          please use the Book Your Appointment button</strong>, since that flow collects your
+          full history securely.
         </p>
         <ContactForm />
       </div>
@@ -159,18 +173,69 @@ const contactFaqs = [
   </SectionContainer>
 
   <SectionContainer width="default" spacing="lg" background="paper-soft">
-    <h2>Find us</h2>
-    <MapEmbed height="450px" />
+    <div class="section-head" data-reveal>
+      <h2>Find us</h2>
+      <p class="section-lede">
+        {clinic.address.streetAddress}, {clinic.address.addressLocality}, {clinic.address.addressRegion} {clinic.address.postalCode}.
+        Free parking sits directly in front of the building, and the entrance is
+        ground-level and accessible.
+      </p>
+    </div>
+    <div data-reveal="up-sm">
+      <MapEmbed height="450px" />
+    </div>
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="lg">
-    <h2>Frequently Asked Questions</h2>
+    <div class="section-head" data-reveal>
+      <h2>Common questions</h2>
+      <p class="section-lede">The practical details people ask before a first visit.</p>
+    </div>
     <FAQAccordion items={contactFaqs} />
   </SectionContainer>
 </BaseLayout>
 
 <style>
-  .lede { color: var(--color-ink-muted); max-width: 60ch; font-size: var(--text-lg); margin: 1rem 0 0; }
+  /* === Hero lockup === */
+  .contact-hero h1 {
+    margin: 0;
+    font-size: var(--text-4xl);
+    line-height: 1.1;
+  }
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline. */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
+  }
+  .lede {
+    color: var(--color-ink-muted);
+    max-width: 60ch;
+    font-size: var(--text-lg);
+    margin: 1.25rem 0 0;
+    line-height: 1.6;
+  }
+
+  /* === Prose section === */
+  .contact-prose p {
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    margin: 0 0 1.1rem;
+  }
+  .contact-prose h2 {
+    font-size: var(--text-2xl);
+    margin: 2.5rem 0 1rem;
+    color: var(--color-ink-strong);
+  }
+
+  /* === Success banner === */
   .success-banner {
     background: var(--color-brand-primary-light);
     color: var(--color-ink-strong);
@@ -179,46 +244,100 @@ const contactFaqs = [
     border-left: 4px solid var(--color-brand-primary);
     font-weight: 500;
   }
+
+  /* === Contact grid === */
   .contact-grid {
     display: grid;
     gap: 3rem;
   }
-  .eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    margin: 0 0 1rem;
+  .col-title {
+    font-size: var(--text-2xl);
+    margin: 0 0 1.5rem;
+    color: var(--color-ink-strong);
   }
+
+  /* Booking card — the page's one conversion moment, styled to match the
+     arm-tile treatment (green top rule, soft card shadow). */
+  .booking-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-top: 4px solid var(--color-brand-primary);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 2.25rem;
+  }
+  .booking-card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    color: var(--color-ink-strong);
+    margin: 0 0 0.6rem;
+  }
+  .booking-card p {
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+    margin: 0 0 1.4rem;
+    font-size: var(--text-base);
+  }
+
+  /* Info blocks — de-uppercased small Lora headings over quiet dividers. */
   .info-block {
-    margin-bottom: 1.75rem;
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--color-line-soft);
   }
   .info-block h3 {
-    font-size: var(--text-base);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 500;
     color: var(--color-ink-strong);
     margin: 0 0 0.5rem;
-    font-family: var(--font-body);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
   }
   .info-block address {
     font-style: normal;
     line-height: 1.6;
     color: var(--color-ink);
   }
-  .info-block p { margin: 0.5rem 0; }
+  .info-block p { margin: 0.25rem 0 0; }
   .form-intro {
     color: var(--color-ink-muted);
     margin: 0 0 1.5rem;
     line-height: 1.6;
   }
 
+  /* === Section heads (Find us, Common questions) === */
+  .section-head {
+    margin-bottom: 2.25rem;
+    max-width: 70ch;
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+  }
+  .section-lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    margin: 1rem 0 0;
+    line-height: 1.6;
+  }
+
+  /* === Responsive type ramp (matches homepage / services scale) === */
+  @media (min-width: 768px) {
+    .contact-hero h1 { font-size: var(--text-5xl); }
+    .section-head h2 { font-size: var(--text-4xl); }
+  }
   @media (min-width: 900px) {
     .contact-grid {
       grid-template-columns: 1fr 1.3fr;
       gap: 4rem;
       align-items: start;
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-head h2 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
     }
   }
 </style>

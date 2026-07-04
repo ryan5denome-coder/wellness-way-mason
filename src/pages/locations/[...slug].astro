@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-// Other locations we serve — cross-link to sibling pages.
+// Other locations we serve: cross-link to sibling pages.
 // (Semrush "only one internal link" fix, 2026-05-12: each location was only
 // linked from /locations index; this adds 3 inbound links per location page.)
 const allLocations = await getCollection('locations');
@@ -26,10 +26,25 @@ const otherLocations = allLocations
   .filter((loc) => loc.id !== entry.id)
   .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 
+// H1 lockup (established pattern): the SEO keyword string rides inside the H1
+// as a kicker line; a short human display line carries the visual headline.
+const kicker = (entry.data.seoTitle ?? entry.data.title).split('|')[0].trim();
+const isHome = entry.id === 'mason-oh';
+const displayLine = isHome
+  ? 'Right here in the neighborhood.'
+  : `Care worth the drive from ${entry.data.locale}.`;
+
+// Location frontmatter is CMS-editable and may contain em/en dashes.
+// Scrub them at render time so visible copy stays within house style.
+const cleanDash = (s?: string) => s?.replace(/\s*[\u2014\u2013]\s*/g, ', ');
+const distanceBadge = isHome
+  ? 'Our home clinic in Mason'
+  : cleanDash(entry.data.distanceFromClinic) ?? entry.data.drivingTime;
+
 // Place schema (locale). Expanded with the clinic's PostalAddress, GeoCoordinates,
 // and containedInPlace (the locale's county/region) so it carries real local-SEO
 // signal instead of a name + description stub (Manus audit 1.5 / 1F). The clinic
-// address is the same physical location serving every locale page — these pages
+// address is the same physical location serving every locale page; these pages
 // describe the service area, anchored to the one Mason office.
 const placeSchema = {
   '@context': 'https://schema.org',
@@ -68,30 +83,22 @@ const placeSchema = {
   ogImage={entry.data.image}
   jsonLd={[placeSchema]}
 >
-  <SectionContainer width="prose" spacing="md" background="paper-soft">
-    <Breadcrumbs
-      trail={[
-        { label: 'Home', href: '/' },
-        { label: 'Locations', href: '/locations' },
-        { label: entry.data.locale },
-      ]}
-    />
-  </SectionContainer>
-
   <article>
-    <SectionContainer width="prose" spacing="md">
+    <SectionContainer width="prose" spacing="md" background="paper-soft">
+      <Breadcrumbs
+        trail={[
+          { label: 'Home', href: '/' },
+          { label: 'Locations', href: '/locations' },
+          { label: entry.data.locale },
+        ]}
+      />
       <header class="loc-header">
-        <p class="eyebrow">Service Area</p>
-        <h1>{entry.data.title}</h1>
+        <h1>
+          <span class="page-kicker">{kicker}</span>
+          {displayLine}
+        </h1>
         <p class="lede">{entry.data.excerpt}</p>
-        {entry.data.distanceFromClinic && (
-          <p class="distance">
-            <strong>{entry.data.drivingTime ?? entry.data.distanceFromClinic}</strong>
-            {entry.data.drivingTime && entry.data.distanceFromClinic && (
-              <span> · {entry.data.distanceFromClinic}</span>
-            )}
-          </p>
-        )}
+        {distanceBadge && <p class="distance-pill">{distanceBadge}</p>}
       </header>
     </SectionContainer>
 
@@ -99,22 +106,22 @@ const placeSchema = {
       <div class="loc-body">
         <Content />
       </div>
-      <p class="loc-byline">{bylines.reviewed} — Doctor of Chiropractic, {clinic.brandName}</p>
+      <p class="loc-byline">{bylines.reviewed} &middot; Doctor of Chiropractic, {clinic.brandName}</p>
     </SectionContainer>
   </article>
 
   {otherLocations.length > 0 && (
     <SectionContainer width="prose" spacing="lg">
-      <h2 class="other-loc-heading">Other Communities We Serve</h2>
-      <p class="other-loc-intro">
-        We see patients from across the greater Cincinnati area. Here are the other communities closest to our Mason office:
+      <h2 class="other-loc-heading" data-reveal>Other communities we serve</h2>
+      <p class="other-loc-intro" data-reveal="up-sm">
+        Same clinic, different drive. Here's where else our patients start the trip:
       </p>
       <ul class="other-locations">
         {otherLocations.map((loc) => (
-          <li>
+          <li data-reveal="up-sm">
             <a href={`/locations/${loc.id}`}>
               <strong>{loc.data.locale}, {loc.data.state}</strong>
-              {loc.data.drivingTime && <span class="loc-meta">{loc.data.drivingTime}</span>}
+              {loc.data.drivingTime && <span class="loc-meta">{cleanDash(loc.data.drivingTime)}</span>}
               <span class="loc-excerpt">{loc.data.excerpt}</span>
             </a>
           </li>
@@ -124,46 +131,85 @@ const placeSchema = {
   )}
 
   <SectionContainer width="prose" spacing="lg" background="paper-soft">
-    <h2>The Wellness Way - Mason</h2>
-    <address class="clinic-nap">
-      <strong>{clinic.brandName}</strong><br />
-      {clinic.addressLine1}<br />
-      {clinic.city}, {clinic.state} {clinic.zip}<br />
-      <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>
-    </address>
-    <HoursTable />
-    <div class="cta-row">
-      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
-      <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+    <div class="visit-block" data-reveal>
+      <h2>Visit us in Mason.</h2>
+      <p class="visit-lede">
+        Wherever you start the drive, the first visit is the same: a flat $99, a real
+        conversation, and a clear next step before you leave.
+      </p>
+      <address class="clinic-nap">
+        <strong>{clinic.brandName}</strong><br />
+        {clinic.address.streetAddress}<br />
+        {clinic.address.addressLocality}, {clinic.address.addressRegion} {clinic.address.postalCode}<br />
+        <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>
+      </address>
+      <HoursTable />
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">
+          Call {clinic.phone}
+        </Button>
+      </div>
     </div>
   </SectionContainer>
 </BaseLayout>
 
 <style>
-  .eyebrow {
-    color: var(--color-brand-primary-dark);
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    letter-spacing: 0.1em;
+  /* === H1 lockup: SEO kicker + human display line (established pattern) === */
+  .loc-header h1 {
+    margin: 0;
+    font-size: var(--text-4xl);
+    line-height: 1.1;
+  }
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin: 0 0 0.5rem;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
   }
   .lede {
     color: var(--color-ink-muted);
     font-size: var(--text-lg);
-    margin: 1rem 0 0.5rem;
+    line-height: 1.6;
+    margin: 1.25rem 0 0;
   }
-  .distance {
+  .distance-pill {
+    display: inline-block;
+    margin: 1.25rem 0 0;
+    padding: 0.4rem 1rem;
+    background: var(--color-brand-primary-soft);
+    border: 1px solid var(--color-brand-primary-light);
+    border-radius: var(--radius-pill);
     font-size: var(--text-sm);
-    color: var(--color-ink-muted);
-    margin: 0;
+    font-weight: 500;
+    color: var(--color-ink-strong);
   }
+
+  /* === Markdown body === */
   .loc-body :global(h2) {
-    color: var(--color-brand-primary-dark);
-    margin-top: 2.5rem;
+    color: var(--color-ink-strong);
+    font-size: var(--text-2xl);
+    margin: 2.75rem 0 0.9rem;
+  }
+  .loc-body :global(h2:first-child) {
+    margin-top: 0;
   }
   .loc-body :global(p) {
     line-height: 1.7;
+    color: var(--color-ink);
+  }
+  .loc-body :global(li) {
+    line-height: 1.65;
+    margin-bottom: 0.5rem;
+  }
+  .loc-body :global(strong) {
+    color: var(--color-ink-strong);
   }
   .loc-byline {
     margin-top: 2rem;
@@ -173,49 +219,53 @@ const placeSchema = {
     color: var(--color-ink-muted);
     font-style: italic;
   }
-  .clinic-nap {
-    font-style: normal;
-    line-height: 1.7;
-    margin: 1rem 0;
-  }
-  .cta-row {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1.5rem;
-  }
+
+  /* === Other communities === */
   .other-loc-heading {
-    font-size: var(--text-2xl);
+    font-size: var(--text-3xl);
     margin: 0 0 1rem;
-    color: var(--color-brand-primary-dark);
+    color: var(--color-ink-strong);
   }
   .other-loc-intro {
     color: var(--color-ink-muted);
-    margin: 0 0 1.5rem;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    margin: 0 0 1.75rem;
   }
   .other-locations {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: grid;
     gap: 1rem;
   }
   .other-locations a {
     display: block;
-    padding: 1rem 1.25rem;
+    padding: 1.25rem 1.5rem;
     border: 1px solid var(--color-line);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper);
+    box-shadow: var(--shadow-card);
     text-decoration: none;
     color: inherit;
-    transition: background 0.15s ease, border-color 0.15s ease;
+    transition: transform var(--duration-fast) var(--ease-soft),
+                box-shadow var(--duration-normal) var(--ease-soft),
+                border-color var(--duration-fast) var(--ease-soft);
   }
   .other-locations a:hover {
-    background: var(--color-paper-warm-tint);
-    border-color: var(--color-brand-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-brand-primary-light);
   }
   .other-locations strong {
-    color: var(--color-brand-primary-dark);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--color-ink-strong);
     display: block;
     margin-bottom: 0.3rem;
+  }
+  .other-locations a:hover strong {
+    color: var(--color-brand-primary-dark);
   }
   .loc-meta {
     display: block;
@@ -229,5 +279,56 @@ const placeSchema = {
     font-size: var(--text-sm);
     color: var(--color-ink-muted);
     line-height: 1.5;
+  }
+
+  /* === Visit block (conversion moment) === */
+  .visit-block h2 {
+    font-size: var(--text-3xl);
+    margin: 0 0 1rem;
+    color: var(--color-ink-strong);
+  }
+  .visit-lede {
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    margin: 0 0 1.75rem;
+    max-width: 52ch;
+  }
+  .clinic-nap {
+    font-style: normal;
+    line-height: 1.75;
+    margin: 0 0 1.75rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+  }
+  .clinic-nap strong {
+    color: var(--color-ink-strong);
+  }
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  /* === Responsive type scale (established) === */
+  @media (min-width: 768px) {
+    .loc-header h1 { font-size: var(--text-5xl); }
+    .loc-body :global(h2) { font-size: var(--text-3xl); }
+    .other-loc-heading { font-size: var(--text-4xl); }
+    .visit-block h2 { font-size: var(--text-4xl); }
+  }
+  @media (min-width: 1024px) {
+    .other-loc-heading,
+    .visit-block h2 { letter-spacing: -0.022em; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .other-locations a,
+    .other-locations a:hover {
+      transform: none !important;
+      transition: none !important;
+    }
   }
 </style>

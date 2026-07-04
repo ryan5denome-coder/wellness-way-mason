@@ -1,0 +1,122 @@
+---
+/**
+ * StickyBookBar — mobile-only fixed bottom booking bar.
+ *
+ * Slides up once the visitor scrolls past ~60% of the first viewport
+ * (IntersectionObserver on a top sentinel, no scroll listeners) and slides
+ * away near the top so it never stacks under the hero CTAs. Replaces the
+ * header CTA on phones. Desktop renders nothing (display: none).
+ */
+import { clinic } from '../lib/site';
+---
+
+<div class="bookbar-sentinel" aria-hidden="true"></div>
+<div class="bookbar" data-visible="false">
+  <a
+    class="bookbar-cta"
+    href={clinic.bookingUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Book Appointment
+    <svg
+      aria-hidden="true"
+      width="14"
+      height="14"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M2.5 8h11M9.5 4l4 4-4 4" />
+    </svg>
+  </a>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const bar = document.querySelector('.bookbar');
+    const sentinel = document.querySelector('.bookbar-sentinel');
+    if (!bar || !sentinel || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(
+      ([entry]) => bar.setAttribute('data-visible', String(!entry.isIntersecting)),
+      { threshold: 0 }
+    );
+    io.observe(sentinel);
+  });
+</script>
+
+<style>
+  .bookbar-sentinel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 60vh;
+    pointer-events: none;
+  }
+  .bookbar {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    .bookbar {
+      display: block;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-top: 1px solid var(--color-line);
+      box-shadow: var(--shadow-popover);
+      padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+      transform: translateY(110%);
+      visibility: hidden;
+      transition:
+        transform var(--duration-normal) var(--ease-soft),
+        visibility 0s linear var(--duration-normal);
+    }
+    .bookbar[data-visible="true"] {
+      transform: translateY(0);
+      visibility: visible;
+      transition:
+        transform var(--duration-normal) var(--ease-soft),
+        visibility 0s;
+    }
+    .bookbar-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      min-height: 48px;
+      background: var(--color-brand-primary);
+      color: var(--color-ink-strong);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: var(--text-base);
+      text-decoration: none;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-card);
+      transition: background var(--duration-fast) var(--ease-soft),
+                  color var(--duration-fast) var(--ease-soft),
+                  transform 80ms var(--ease-soft);
+    }
+    .bookbar-cta:active {
+      transform: scale(0.985);
+    }
+    .bookbar-cta:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bookbar {
+      transition: none;
+    }
+  }
+</style>

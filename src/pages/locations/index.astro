@@ -9,6 +9,10 @@ import { clinic } from '../../lib/site';
 const locations = (await getCollection('locations')).sort(
   (a, b) => a.data.order - b.data.order
 );
+
+// Location frontmatter is CMS-editable and may contain em/en dashes.
+// Scrub them at render time so visible copy stays within house style.
+const cleanDash = (s?: string) => s?.replace(/\s*[\u2014\u2013]\s*/g, ', ');
 ---
 
 <BaseLayout
@@ -17,108 +21,246 @@ const locations = (await getCollection('locations')).sort(
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Locations' }]} />
-    <h1>Service Area</h1>
-    <p class="lede">
-      We're based in Mason, OH and serve patients across the greater Cincinnati area.
-    </p>
+    <div class="hub-hero">
+      <h1>
+        <span class="page-kicker">Service Area &middot; Mason, OH &amp; Greater Cincinnati</span>
+        One clinic in Mason. Neighbors from everywhere.
+      </h1>
+      <p class="lede">
+        Patients drive in from across Butler, Warren, and Hamilton counties. Some are five
+        minutes away, some closer to forty. Find your town below for the drive, the route,
+        and what brings your neighbors in.
+      </p>
+    </div>
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="md">
-    <p>
-      Patients drive in from across Butler, Warren, and Hamilton counties for
-      <strong>chiropractic care and health restoration</strong> at our Mason clinic. The test-don't-guess approach
-      isn't easy to find at the corner-strip-mall chiropractor down the street.
+    <p class="intro-p" data-reveal>
+      Nobody passes a dozen closer chiropractors without a reason. For most of our patients,
+      the reason is the testing: <strong>chiropractic care and health restoration</strong> under
+      one roof, with real lab work behind the plan. Test, don't guess. That turns out to be
+      worth a little highway time.
     </p>
-    <p>
-      Whether you're 5 minutes away or 35, here's what to know about getting to us from your locale.
+    <p class="intro-p" data-reveal="up-sm">
+      Each guide below covers the drive from your town and the patterns we see most from
+      your corner of the map.
     </p>
   </SectionContainer>
 
   <SectionContainer width="default" spacing="lg">
+    <div class="section-head">
+      <h2>Find your town.</h2>
+      <p class="section-lede">
+        Pick your community for directions, drive time, and what we see most from your area.
+      </p>
+    </div>
     <div class="loc-grid">
-      {locations.map((loc) => (
-        <article class="loc-card">
-          <a href={`/locations/${loc.id}`}>
-            <h2>{loc.data.locale}, {loc.data.state}</h2>
-            <p>{loc.data.excerpt}</p>
-            {loc.data.drivingTime && (
-              <p class="drive-time"><strong>{loc.data.drivingTime}</strong> {loc.data.distanceFromClinic && <span> · {loc.data.distanceFromClinic}</span>}</p>
-            )}
-            <span class="card-cta">View {loc.data.locale} guide →</span>
-          </a>
-        </article>
-      ))}
+      {locations.map((loc) => {
+        const drive =
+          loc.id === 'mason-oh'
+            ? 'Our home clinic'
+            : cleanDash(loc.data.distanceFromClinic) ?? loc.data.drivingTime;
+        return (
+          <article class="loc-card" data-reveal="up-sm">
+            <a href={`/locations/${loc.id}`}>
+              <h3>{loc.data.locale}, {loc.data.state}</h3>
+              {drive && <p class="drive-time">{drive}</p>}
+              <p class="loc-excerpt">{loc.data.excerpt}</p>
+              <span class="card-cta">
+                View the {loc.data.locale} guide
+                <span class="cta-arrow" aria-hidden="true">&rarr;</span>
+              </span>
+            </a>
+          </article>
+        );
+      })}
     </div>
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="lg" background="paper-soft">
-    <h2>Don't See Your Town?</h2>
-    <p>
-      We see patients from all over the Cincinnati metro and beyond. If you're outside the immediate
-      area, virtual <strong>health restoration consultations</strong> are available for the testing-and-planning
-      side of care (in-person chiropractic naturally requires being at the clinic).
-    </p>
-    <div class="cta-row">
-      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
-      <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+    <div class="hub-cta" data-reveal>
+      <h2>Don't see your town?</h2>
+      <p>
+        We see patients from across the Cincinnati metro and beyond. If the drive is the only
+        thing in the way, virtual <strong>health restoration consultations</strong> cover the
+        testing and planning side of care. Chiropractic still needs you on the table, but
+        answers travel well. You have options.
+      </p>
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">
+          Call {clinic.phone}
+        </Button>
+      </div>
     </div>
   </SectionContainer>
 </BaseLayout>
 
 <style>
-  .lede {
-    color: var(--color-brand-primary-dark);
-    font-style: italic;
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    margin: 1rem 0 0;
+  /* === H1 lockup: SEO kicker + human display line (established pattern) === */
+  .hub-hero h1 {
+    margin: 0;
+    font-size: var(--text-4xl);
+    line-height: 1.1;
   }
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
+  }
+  .lede {
+    color: var(--color-ink-muted);
+    max-width: 62ch;
+    font-size: var(--text-lg);
+    margin: 1.25rem 0 0;
+    line-height: 1.6;
+  }
+
+  .intro-p {
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    margin: 0 0 1.1rem;
+  }
+  .intro-p:last-child { margin-bottom: 0; }
+  .intro-p strong { color: var(--color-ink-strong); font-weight: 600; }
+
+  /* === Section head (established centered scale) === */
+  .section-head {
+    margin-bottom: 3.5rem;
+    text-align: center;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .section-head h2 {
+    margin: 0 0 1.25rem;
+    font-size: var(--text-3xl);
+    color: var(--color-ink-strong);
+  }
+  .section-lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* === Location cards === */
   .loc-grid {
     display: grid;
-    gap: 1.25rem;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
   .loc-card {
     border: 1px solid var(--color-line);
-    border-radius: 0.6rem;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--color-paper);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--duration-fast) var(--ease-soft),
+                box-shadow var(--duration-normal) var(--ease-soft),
+                border-color var(--duration-fast) var(--ease-soft);
   }
   .loc-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-brand-primary-light);
   }
   .loc-card a {
-    display: block;
-    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.75rem;
     text-decoration: none;
     color: inherit;
   }
-  .loc-card h2 {
-    color: var(--color-brand-primary-dark);
-    margin: 0 0 0.5rem;
-    font-size: var(--text-xl);
-  }
-  .loc-card p {
-    line-height: 1.6;
-    color: var(--color-ink-muted);
+  .loc-card h3 {
+    font-family: var(--font-display);
+    color: var(--color-ink-strong);
     margin: 0 0 0.75rem;
+    font-size: var(--text-2xl);
+    transition: color var(--duration-fast) var(--ease-soft);
+  }
+  .loc-card:hover h3 {
+    color: var(--color-brand-primary-dark);
   }
   .drive-time {
+    align-self: flex-start;
+    background: var(--color-brand-primary-soft);
+    border: 1px solid var(--color-brand-primary-light);
+    border-radius: var(--radius-pill);
+    padding: 0.35rem 0.9rem;
     font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-ink-strong);
+    margin: 0 0 1rem;
+  }
+  .loc-excerpt {
+    line-height: 1.6;
     color: var(--color-ink-muted);
-    margin: 0.5rem 0;
+    margin: 0 0 1.25rem;
+    flex: 1;
   }
   .card-cta {
     color: var(--color-brand-primary-dark);
     font-weight: 600;
     font-size: var(--text-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
   }
+  .cta-arrow {
+    transition: transform var(--duration-fast) var(--ease-soft);
+  }
+  .loc-card:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* === Bottom CTA === */
+  .hub-cta h2 {
+    margin: 0 0 1rem;
+    font-size: var(--text-3xl);
+    color: var(--color-ink-strong);
+  }
+  .hub-cta p {
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+  }
+  .hub-cta strong { color: var(--color-ink-strong); font-weight: 600; }
   .cta-row {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-top: 1.5rem;
+  }
+
+  /* === Responsive type scale (established) === */
+  @media (min-width: 768px) {
+    .hub-hero h1 { font-size: var(--text-5xl); }
+    .section-head h2 { font-size: var(--text-4xl); }
+    .hub-cta h2 { font-size: var(--text-4xl); }
+  }
+  @media (min-width: 1024px) {
+    .section-head { margin-bottom: 4rem; }
+    .section-head h2 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loc-card,
+    .loc-card:hover,
+    .cta-arrow {
+      transform: none !important;
+      transition: none !important;
+    }
   }
 </style>

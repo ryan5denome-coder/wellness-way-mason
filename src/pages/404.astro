@@ -10,25 +10,44 @@ import { clinic } from '../lib/site';
   description="The page you were looking for doesn't exist or has moved. Try one of the links below to find what you need."
   noIndex={true}
 >
-  <SectionContainer width="default" spacing="lg" background="paper-soft">
+  <SectionContainer width="narrow" spacing="xl" background="paper-soft">
     <div class="not-found">
-      <p class="eyebrow">404</p>
-      <h1>This page got lost.</h1>
-      <p class="lede">
-        The page you were looking for either moved or never existed. No drama. Let's get you back on track.
+      <p class="eyebrow eyebrow-lockup" data-reveal>Error 404</p>
+      <h1 data-reveal="up-sm">This page got lost.</h1>
+      <p class="lede" data-reveal="up-sm">
+        The page you were looking for moved, or it never existed in the first place.
+        Nothing is wrong on your end. Here's the quickest way back to what you came for.
       </p>
-      <p>Here's where most people are headed:</p>
-      <ul class="quick-links">
-        <li><a href="/">Home</a> (start over)</li>
-        <li><a href="/our-services">Our Services</a>: chiropractic + health restoration</li>
-        <li><a href="/find-my-condition">Find My Condition</a>: the patterns we see most</li>
-        <li><a href="/pricing">Pricing</a>: what an exam, plan, and ongoing care cost</li>
-        <li><a href="/blog">Blog</a>: articles on hormones, gut health, thyroid, and more</li>
-        <li><a href="/contact">Contact</a>: call, email, or send a message</li>
-      </ul>
-      <div class="cta-row">
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
-        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+      <div class="cta-row" data-reveal="up-sm">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
+        <Button href="/" variant="ghost" size="lg">Back to the homepage</Button>
+      </div>
+      <div class="wayfinding" data-reveal="up-sm">
+        <h2 class="sub-h">You have options.</h2>
+        <ul class="quick-links" role="list">
+          <li>
+            <a href="/our-services">Our Services</a>
+            <span class="link-desc">Chiropractic care and health restoration, two doors into one practice.</span>
+          </li>
+          <li>
+            <a href="/find-my-condition">Find My Condition</a>
+            <span class="link-desc">The symptom patterns we see most.</span>
+          </li>
+          <li>
+            <a href="/pricing">Pricing</a>
+            <span class="link-desc">What a first visit, labs, and ongoing care cost.</span>
+          </li>
+          <li>
+            <a href="/blog">Blog</a>
+            <span class="link-desc">Real answers on hormones, gut health, thyroid, and more.</span>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+            <span class="link-desc">Call, email, or send us a message.</span>
+          </li>
+        </ul>
       </div>
     </div>
   </SectionContainer>
@@ -40,34 +59,111 @@ import { clinic } from '../lib/site';
     margin: 0 auto;
     text-align: left;
   }
+
+  /* Eyebrow lockup — matches the established section-head pattern. */
   .eyebrow {
-    color: var(--color-brand-primary-dark);
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    letter-spacing: 0.1em;
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin: 0 0 0.5rem;
+    color: var(--color-mute);
+    margin: 0 0 1rem;
+    font-weight: 500;
   }
+  .eyebrow-lockup::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-brand-primary);
+    margin: 0.9rem 0 0;
+  }
+
+  .not-found h1 {
+    margin: 0 0 1.25rem;
+    font-size: var(--text-4xl);
+    line-height: 1.1;
+    color: var(--color-ink-strong);
+  }
+
   .lede {
     color: var(--color-ink-muted);
     font-size: var(--text-lg);
-    margin: 1rem 0 2rem;
+    line-height: 1.65;
+    margin: 0 0 2.25rem;
+    max-width: 52ch;
   }
-  .quick-links {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 2rem;
-    display: grid;
-    gap: 0.6rem;
-  }
-  .quick-links a {
-    color: var(--color-brand-primary-dark);
-    font-weight: 600;
-  }
+
   .cta-row {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 1rem;
-    margin-top: 2rem;
+    margin: 0 0 3.5rem;
+  }
+
+  /* De-uppercased Lora sub-head, per the .sub-h pattern on our-services. */
+  .sub-h {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-ink-strong);
+    font-weight: 500;
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-brand-primary);
+    display: inline-block;
+  }
+
+  /* Refined typography list — quiet cousin of the homepage conditions list. */
+  .quick-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .quick-links li {
+    border-bottom: 1px solid var(--color-line);
+    padding: 1rem 0;
+  }
+  .quick-links li:last-child {
+    border-bottom: none;
+  }
+  .quick-links a {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--color-ink-strong);
+    text-decoration: none;
+    position: relative;
+    padding-left: 1.5rem;
+    transition: color var(--duration-fast) var(--ease-soft);
+  }
+  .quick-links a::before {
+    content: "\203A";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-brand-primary);
+    font-weight: 600;
+    transition: transform var(--duration-fast) var(--ease-soft);
+  }
+  .quick-links a:hover {
+    color: var(--color-brand-primary-dark);
+  }
+  .quick-links a:hover::before {
+    transform: translateY(-50%) translateX(4px);
+  }
+  .link-desc {
+    display: block;
+    padding-left: 1.5rem;
+    margin-top: 0.3rem;
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+
+  @media (min-width: 768px) {
+    .not-found h1 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
+    }
   }
 </style>

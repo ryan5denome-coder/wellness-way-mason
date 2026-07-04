@@ -9,15 +9,15 @@ import { clinic, site, bylines } from '../lib/site';
 const faqs = [
   {
     q: "What is the DUTCH test?",
-    a: "DUTCH stands for Dried Urine Test for Comprehensive Hormones. It's a hormone panel that uses four dried urine samples collected over a 24-hour window. The samples capture sex hormones, adrenal hormones, and the metabolites that reveal how your body is actually using and clearing those hormones (the piece most other tests don't show). Made by Precision Analytical, used by functional health practitioners nationally.",
+    a: "DUTCH stands for Dried Urine Test for Comprehensive Hormones. It's a hormone panel that uses four dried urine samples collected over a 24-hour window. The samples capture sex hormones, adrenal (stress gland) hormones, and the metabolites: the leftover pieces your body makes as it breaks hormones down, which help show how your body is using and clearing them. That's the piece most other tests don't measure. Made by Precision Analytical, used by functional health practitioners nationally.",
   },
   {
     q: "How is the DUTCH test different from a blood or saliva hormone test?",
-    a: "A blood draw shows you a single timepoint, usually fasted in the morning. A saliva test gives you a slightly broader window for cortisol. The DUTCH panel maps the full daily curve and shows the metabolites, which is the key part. Production of estrogen matters less than how your body breaks it down. Two patients with identical estrogen production can have very different cancer risk, mood, and PMS patterns based on which detox pathway is dominant. DUTCH is the panel that shows you that pathway.",
+    a: "A blood draw shows you a single timepoint, usually fasted in the morning. A saliva test gives you a slightly broader window for cortisol. The DUTCH panel maps the full daily curve and shows the metabolites, which is the key part. How much estrogen you make often matters less than how your body breaks it down. Two patients with identical estrogen production can have very different symptom and risk patterns depending on which breakdown pathway is dominant, and DUTCH is the panel that shows you that pathway.",
   },
   {
     q: "Who is the DUTCH test for?",
-    a: "Most often: women in their 30s through menopause who feel like something is off and the standard hormone panel from their PCP came back \"normal.\" Common reasons to run it include unpredictable cycles, PMS that has taken over the second half of the month, perimenopause symptoms showing up earlier than expected, anxiety or mood patterns that track with cycle phase, low libido, weight gain that won't move, and trouble sleeping. We also run it for men with low testosterone symptoms or adrenal fatigue patterns.",
+    a: "Most often: women in their 30s through menopause who feel like something is off and the standard hormone panel from their PCP came back \"normal.\" Common reasons to run it include unpredictable cycles, PMS that has taken over the second half of the month, perimenopause symptoms showing up earlier than expected, anxiety or mood patterns that track with cycle phase, low libido, weight gain that won't move, and trouble sleeping. We also run it for men with low testosterone symptoms or the stress-hormone pattern often described as \"adrenal fatigue.\"",
   },
   {
     q: "What does the DUTCH test cost in Mason, OH?",
@@ -29,11 +29,11 @@ const faqs = [
   },
   {
     q: "When in my cycle should I take the DUTCH test?",
-    a: "For women who are still cycling: days 19-22 of a 28-day cycle (the luteal phase). For irregular cycles or PCOS: we time it based on what we're looking for. For women in menopause, on hormonal birth control, or on hormone replacement therapy: timing is more flexible. We'll walk you through the specific window when we order the panel.",
+    a: "For women who are still cycling: days 19-22 of a 28-day cycle (the luteal phase, the stretch between ovulation and your period). For irregular cycles or PCOS: we time it based on what we're looking for. For women in menopause, on hormonal birth control, or on hormone replacement therapy: timing is more flexible. We'll walk you through the specific window when we order the panel.",
   },
   {
     q: "Will the DUTCH test results give me a diagnosis?",
-    a: "Functional lab panels reveal patterns, not diagnoses. We use the DUTCH results to identify where your body's hormone story is loaded: production, conversion, detox, or rhythm. From there, we build a care plan around the pattern. If something on the panel suggests a need for medical evaluation outside our scope, we'll refer you to the appropriate provider.",
+    a: "Functional lab panels show patterns, not diagnoses. We use the DUTCH results to identify where your body's hormone story is loaded: production, conversion, detox, or rhythm. From there, we build a care plan around the pattern. If something on the panel suggests a need for medical evaluation outside our scope, we'll refer you to the appropriate provider.",
   },
   {
     q: "Can I run the DUTCH test if I'm on hormonal birth control or HRT?",
@@ -88,17 +88,18 @@ const breadcrumbSchema = {
       { label: 'DUTCH Test in Mason, OH' },
     ]} />
     <div class="hero">
-      <p class="eyebrow">Hormone Testing · Mason, Ohio</p>
-      <h1>DUTCH Test in Mason, OH</h1>
+      <h1>
+        <span class="page-kicker">DUTCH Test in Mason, OH</span>
+        Hormones move. Your testing should too.
+      </h1>
       <p class="lede">
-        Pulling one estrogen level at a single moment and calling your hormones "balanced"
-        is like checking a fuel gauge once and deciding the engine works. The DUTCH panel
-        maps the full daily curve. And it shows the metabolites, where most patterns
-        actually hide.
+        One estrogen level at one moment is like checking a fuel gauge once and deciding
+        the engine runs fine. The DUTCH panel maps your full daily curve, plus the
+        metabolites: the leftover pieces that show where each hormone went.
       </p>
       <div class="hero-cta">
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
-          Order Your DUTCH Test
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
         </Button>
         <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">
           Call {clinic.phone}
@@ -108,100 +109,108 @@ const breadcrumbSchema = {
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="md">
-    <p>
-      You went to your doctor. They pulled an estrogen, maybe a progesterone, maybe a TSH.
-      Everything came back inside the lab range. You were told your hormones look normal.
-      And you still feel like something is off: your cycle is unpredictable, your mood
-      tanks the week before your period, you're not sleeping the way you used to, weight
-      is moving in the wrong direction and nothing you try makes a dent.
+    <p data-reveal="up-sm">
+      You went to your doctor. They pulled an estrogen level, maybe a progesterone, maybe
+      a TSH (thyroid stimulating hormone, the standard thyroid screen). Everything came
+      back inside the lab range. You were told your hormones look normal. And you still
+      feel like something is off: your cycle is unpredictable, your mood tanks the week
+      before your period, you're not sleeping the way you used to, and the weight is
+      moving in the wrong direction no matter what you try.
     </p>
-    <p>
-      That isn't in your head. The standard hormone workup pulls a snapshot. Hormones don't
-      live in snapshots. They live in patterns, cycles, and conversion pathways. The DUTCH
-      panel is built to capture all three.
+    <p data-reveal="up-sm">
+      That isn't in your head. The standard hormone workup pulls a snapshot, and hormones
+      don't live in snapshots. They live in patterns, cycles, and conversion pathways:
+      the routes your body uses to turn one hormone into another and clear it out. The
+      DUTCH panel is built to capture all three.
     </p>
-    <p>
+    <p data-reveal="up-sm">
       At <strong>The Wellness Way - Mason</strong>, Dr. Ryan DeNome, Doctor of Chiropractic,
       orders and interprets the DUTCH panel as part of our functional health approach. We
-      pair the lab results with chiropractic care, where adjustments support the nervous
-      system that regulates how your body sends hormonal signals in the first place. We
-      work alongside your primary care provider, not in place of them. This is the layer
-      most standard workups don't cover.
+      pair the lab results with chiropractic care, where adjustments may support the
+      nervous system that helps regulate hormonal signaling. All of it runs alongside
+      your primary care provider, never in place of them.
     </p>
 
-    <h2>What the DUTCH Test Actually Measures</h2>
-    <p>
+    <h2 data-reveal>What the DUTCH Test Actually Measures</h2>
+    <p data-reveal="up-sm">
       DUTCH stands for <strong>Dried Urine Test for Comprehensive Hormones</strong>. It uses
       four dried urine samples collected over 24 hours: first morning, mid-morning, late
       afternoon, and bedtime. From those four samples the lab measures roughly 35 hormone
-      markers and metabolites.
+      markers and metabolites. Metabolites are the leftover pieces your body makes as it
+      breaks a hormone down, and they help show where each hormone went after it was made.
     </p>
-    <p>The DUTCH Complete panel includes:</p>
-    <ul>
+    <p data-reveal="up-sm">The DUTCH Complete panel includes:</p>
+    <ul data-reveal="up-sm">
       <li>
-        <strong>Sex hormones:</strong> estrogen (estrone, estradiol, estriol), progesterone
-        and its metabolites, testosterone, DHEA, and the androgen metabolites that show how
-        your body is converting between them.
+        <strong>Sex hormones:</strong> estrogen in its three forms (estrone, estradiol,
+        estriol), progesterone and its metabolites, testosterone, and DHEA, a
+        building-block hormone made by your adrenal glands, the small stress glands that
+        sit on top of your kidneys. Plus the androgen (male-pattern hormone) metabolites
+        that show how your body is converting between them.
       </li>
       <li>
-        <strong>Estrogen metabolism pathways:</strong> the 2-OH, 4-OH, and 16-OH pathways.
-        Which pathway your body favors influences risk patterns and symptom presentation.
-        This is the piece a blood draw cannot show.
+        <strong>Estrogen metabolism pathways:</strong> the 2-OH, 4-OH, and 16-OH pathways,
+        three different routes your body can use to break estrogen down. Which route your
+        body favors is associated with different symptom and risk patterns. This is the
+        piece a blood draw cannot show.
       </li>
       <li>
-        <strong>Cortisol curve:</strong> four daily timepoints mapping your adrenal rhythm.
-        Cortisol that's flat all day looks normal at any single timepoint and very wrong
-        when you see the curve.
+        <strong>Cortisol curve:</strong> cortisol is your primary stress hormone, and the
+        panel maps it at four points across the day. A curve that runs flat all day can
+        look normal at any single timepoint and very different once you see the whole line.
       </li>
       <li>
-        <strong>Cortisol metabolites:</strong> total cortisol production vs. free cortisol.
-        Two patients with the same free cortisol can have very different total production.
+        <strong>Cortisol metabolites:</strong> total cortisol production versus free
+        cortisol, the portion that is circulating and active right now. Two patients with
+        the same free cortisol can have very different total production.
       </li>
       <li>
-        <strong>Melatonin:</strong> overnight melatonin output, important for sleep
-        architecture and immune function.
+        <strong>Melatonin:</strong> overnight output of the hormone that signals your body
+        it's time to sleep, relevant to both sleep quality and immune function.
       </li>
       <li>
-        <strong>Organic acid markers:</strong> neurotransmitter precursors (dopamine,
-        norepinephrine, serotonin breakdown products), B-vitamin status, and oxidative
-        stress markers. Adds context the hormone numbers alone can't give you.
+        <strong>Organic acid markers:</strong> byproducts your cells leave behind,
+        including breakdown products of dopamine, norepinephrine, and serotonin (your
+        brain's signaling chemicals), B-vitamin status, and markers of oxidative stress,
+        the everyday wear and tear on your cells. They add context the hormone numbers
+        alone can't give you.
       </li>
     </ul>
 
-    <h2>Why a Snapshot Isn't Enough</h2>
-    <p>
-      Hormones don't sit still. Estrogen rises and falls across the cycle. Cortisol follows
-      a daily curve that's supposed to peak in the morning and drop by bedtime. A single
-      blood draw at 8 a.m. on day 3 of your cycle gives you one data point on one day at
-      one moment. It tells you very little about how the system is moving.
+    <h2 data-reveal>Why a Snapshot Isn't Enough</h2>
+    <p data-reveal="up-sm">
+      Hormones don't sit still. Estrogen rises and falls across the cycle. Cortisol
+      follows a daily curve that's supposed to peak in the morning and taper by bedtime.
+      A single blood draw at 8 a.m. on day 3 of your cycle gives you one data point on
+      one day at one moment. It tells you very little about how the system is moving.
     </p>
-    <p>
-      The body's hormone story is in the conversion. Estrogen production is fine for most
-      women. What varies is how the body breaks it down. The 2-OH pathway is the
-      protective one. The 4-OH pathway, if dominant, is associated with higher risk
-      patterns. The 16-OH pathway sits in the middle. None of that shows up on a serum
-      estrogen test, no matter how comprehensive the rest of the bloodwork looks.
+    <p data-reveal="up-sm">
+      Much of the hormone story is in the conversion. Estrogen production is adequate for
+      most women. What varies is how the body breaks it down. The 2-OH route is generally
+      considered the gentlest. The 4-OH route, when dominant, is associated with less
+      favorable patterns. The 16-OH route sits in the middle. None of that shows up on a
+      serum (blood) estrogen test, no matter how thorough the rest of the bloodwork looks.
     </p>
-    <p>
+    <p data-reveal="up-sm">
       <strong>The body never does anything without a reason.</strong> The DUTCH panel
-      shows you the reason.
+      helps us look for yours.
     </p>
 
-    <h2>Patterns We Look For</h2>
-    <p>
-      The labs tell a story. Some of the most common patterns we see when patients in
+    <h2 data-reveal>Patterns We Look For</h2>
+    <p data-reveal="up-sm">
+      The labs tell a story. Some of the patterns we see most often when patients in
       Mason, West Chester, Loveland, and Cincinnati run the DUTCH:
     </p>
-    <ul>
+    <ul data-reveal="up-sm">
       <li>
-        <strong>Low progesterone with adequate estrogen.</strong> The pattern behind PMS
-        that takes over the second half of the cycle, anxiety in the luteal phase, and
-        early miscarriage risk.
+        <strong>Low progesterone with adequate estrogen.</strong> The pattern that often
+        sits behind PMS that takes over the second half of the cycle and anxiety that
+        tracks the luteal phase, the stretch between ovulation and your period.
       </li>
       <li>
-        <strong>4-OH dominant estrogen metabolism.</strong> The breakdown pathway
-        associated with higher risk patterns. Often modifiable with targeted nutrition and
-        gut support.
+        <strong>4-OH dominant estrogen metabolism.</strong> The breakdown route associated
+        with less favorable risk patterns, and one that may respond to targeted nutrition
+        and gut support.
       </li>
       <li>
         <strong>Flat cortisol curve.</strong> What most people call "adrenal fatigue."
@@ -210,11 +219,11 @@ const breadcrumbSchema = {
       </li>
       <li>
         <strong>Reversed cortisol curve</strong> (wired at night, flat in the morning).
-        Sleep disruption pattern, often paired with chronic stress or shift work.
+        A sleep disruption pattern, often paired with chronic stress or shift work.
       </li>
       <li>
-        <strong>Elevated androgen metabolites.</strong> The pattern behind acne in adult
-        women, irregular cycles, PCOS confirmation.
+        <strong>Elevated androgen metabolites.</strong> The pattern often seen with adult
+        acne, irregular cycles, and polycystic ovary syndrome (PCOS).
       </li>
       <li>
         <strong>Low DHEA with elevated cortisol.</strong> The body is burning through its
@@ -223,8 +232,8 @@ const breadcrumbSchema = {
       </li>
     </ul>
 
-    <h2>How the Test Process Works</h2>
-    <ol>
+    <h2 data-reveal>How the Test Process Works</h2>
+    <ol data-reveal="up-sm">
       <li>
         <strong>Discovery consultation.</strong> We sit down, you tell us the story. If
         DUTCH is the right panel, we walk you through what it shows and confirm pricing
@@ -242,50 +251,50 @@ const breadcrumbSchema = {
       <li>
         <strong>Results review visit.</strong> We sit with the actual report and walk
         through what each section means in plain language. You leave with a care plan
-        that addresses what the lab is actually showing, not a generic template.
+        built around what the lab is showing, not a generic template.
       </li>
       <li>
         <strong>Retest at the right interval.</strong> Usually 3-6 months after the first
-        round of care, to confirm we're moving the pattern in the right direction.
+        round of care, to see whether the pattern is moving in the right direction.
       </li>
     </ol>
 
-    <h2>When to Run DUTCH vs. When to Wait</h2>
-    <p>
+    <h2 data-reveal>When to Run DUTCH vs. When to Wait</h2>
+    <p data-reveal="up-sm">
       We don't recommend DUTCH for everyone. Functional testing is most useful when there's
       a specific question to answer. Some examples of when DUTCH makes sense:
     </p>
-    <ul>
+    <ul data-reveal="up-sm">
       <li>You've had standard hormone labs run and they came back "normal" while you don't feel normal.</li>
       <li>PMS, perimenopause, or postpartum symptoms that aren't fitting a clean pattern.</li>
       <li>You're considering hormone replacement therapy or coming off hormonal birth control and want a baseline.</li>
       <li>Stress-related symptoms (sleep, energy, weight) that haven't responded to lifestyle changes.</li>
-      <li>Adult acne, irregular cycles, or PCOS workup.</li>
+      <li>Adult acne, irregular cycles, or a PCOS workup.</li>
       <li>Low libido or testosterone-related symptoms in men.</li>
     </ul>
-    <p>When we don't recommend it:</p>
-    <ul>
+    <p data-reveal="up-sm">When we don't recommend it:</p>
+    <ul data-reveal="up-sm">
       <li>You haven't run a basic complete blood count, comprehensive metabolic panel, or thyroid panel yet. Those go first.</li>
       <li>You're acutely ill or just finishing a course of medication that would skew results.</li>
       <li>Pregnancy. DUTCH isn't useful during pregnancy itself. Postpartum once cycles return is fine.</li>
     </ul>
 
-    <h2>DUTCH Test Pricing in Mason, OH</h2>
-    <p>
+    <h2 data-reveal>DUTCH Test Pricing in Mason, OH</h2>
+    <p data-reveal="up-sm">
       We're a cash-pay practice. Approximate retail pricing for the DUTCH Complete panel is
       around <strong>$400</strong>, with exact pricing confirmed at booking. Some patients
       also need a basic foundational panel run alongside (the TWW Basic Panel), in which
       case total first-day lab spend can land between $500 and $700.
     </p>
-    <p>
+    <p data-reveal="up-sm">
       We accept HSA and FSA cards. Most functional lab panels including DUTCH are not
       billable to commercial insurance the way a standard sick visit is, but the trade-off
-      is transparent pricing, a real conversation, and a test that actually answers the
-      question. <a href="/pricing">Full pricing here</a>.
+      is transparent pricing, a real conversation, and a panel matched to the question
+      you're actually asking. <a href="/pricing">Full pricing here</a>.
     </p>
 
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-list">
+    <h2 data-reveal>Frequently Asked Questions</h2>
+    <div class="faq-list" data-reveal="up-sm">
       {faqs.map((f) => (
         <details class="faq-item">
           <summary>{f.q}</summary>
@@ -294,29 +303,29 @@ const breadcrumbSchema = {
       ))}
     </div>
 
-    <h2>Final Thoughts</h2>
-    <p>
-      You don't have to keep guessing. You don't have to settle for "your labs look fine."
-      You don't have to choose between trusting your symptoms and trusting your lab report.
-      A panel that maps the whole story makes both of them make sense.
+    <h2 data-reveal>Final Thoughts</h2>
+    <p data-reveal="up-sm">
+      You don't have to keep guessing, and you don't have to choose between trusting your
+      symptoms and trusting your lab report. A panel that maps the whole story can help
+      both of them make sense.
     </p>
-    <p>
-      <strong>Test, don't guess. Common is not normal. You have options.</strong>
+    <p data-reveal="up-sm">
+      <strong>Test, don't guess.</strong>
     </p>
     <p class="byline">{bylines.reviewed}, Doctor of Chiropractic, The Wellness Way - Mason, Mason, Ohio</p>
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="lg" background="paper-soft">
-    <div class="closer-cta">
+    <div class="closer-cta" data-reveal>
       <h2>Ready to See the Full Picture?</h2>
       <p>
-        Schedule a discovery consultation. We'll talk through whether DUTCH is the right
-        panel for what you're dealing with, walk through pricing, and order the kit to
-        your house if it's a fit.
+        Book an appointment and we'll talk through whether DUTCH is the right panel for
+        what you're dealing with, confirm pricing up front, and ship the kit to your
+        house if it's a fit.
       </p>
       <div class="cta-row">
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>
-          Schedule a Discovery Consultation
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
         </Button>
         <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">
           Call {clinic.phone}
@@ -327,38 +336,50 @@ const breadcrumbSchema = {
 </BaseLayout>
 
 <style>
-  .eyebrow {
-    color: var(--color-brand-primary-dark);
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    letter-spacing: 0.1em;
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline. */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin: 0 0 0.5rem;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
   }
   .hero h1 {
     font-size: var(--text-4xl);
-    line-height: 1.15;
+    line-height: 1.1;
     margin: 0 0 1rem;
+    max-width: 24ch;
   }
   .lede {
     color: var(--color-ink-muted);
     font-size: var(--text-lg);
     line-height: 1.6;
-    max-width: 64ch;
-    margin: 0 0 1.5rem;
+    max-width: 60ch;
+    margin: 0 0 1.75rem;
   }
   .hero-cta {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
   }
+
+  /* Article heads follow the established section-head scale (capped at 4xl
+     inside the 68ch prose measure so headings don't overwhelm the column). */
   h2 {
-    color: var(--color-brand-primary-dark);
-    margin-top: 2.5rem;
+    color: var(--color-ink-strong);
+    font-size: var(--text-3xl);
+    line-height: 1.15;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
   }
   p { line-height: 1.75; }
   ul, ol { line-height: 1.75; padding-left: 1.5rem; }
   li { margin: 0.5rem 0; }
+
   .faq-list {
     display: grid;
     gap: 0.5rem;
@@ -403,7 +424,7 @@ const breadcrumbSchema = {
   .closer-cta h2 { margin-top: 0; }
   .closer-cta p {
     max-width: 50ch;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 1.75rem;
     color: var(--color-ink-muted);
   }
   .cta-row {
@@ -414,5 +435,10 @@ const breadcrumbSchema = {
   }
   @media (min-width: 768px) {
     .hero h1 { font-size: var(--text-5xl); }
+    h2 { font-size: var(--text-4xl); }
+  }
+  @media (min-width: 1024px) {
+    h2 { letter-spacing: -0.022em; }
+    .closer-cta h2 { font-size: var(--text-5xl); }
   }
 </style>

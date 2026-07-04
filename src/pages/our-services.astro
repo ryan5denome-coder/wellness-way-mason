@@ -12,11 +12,11 @@ import labKitsFlatLay from '../assets/clinic/lab-kits-flat-lay.jpg';
 const servicesFaqs = [
   {
     question: 'What chiropractic techniques do you use?',
-    answer: '<p>Dr. Denome is trained in <strong>Diversified, Thompson, Gonstead</strong>, and the <strong>Webster Technique</strong> for prenatal patients. His preference is manual, specific adjustments: focused, technique-driven hands-on work. Lower-force and gentler approaches are available when a patient prefers them or the clinical picture calls for it.</p>',
+    answer: '<p>Dr. DeNome is trained in <strong>Diversified, Thompson, Gonstead</strong>, and the <strong>Webster Technique</strong> for prenatal patients. His preference is manual, specific adjustments: focused, technique-driven hands-on work. Lower-force and gentler approaches are available when a patient prefers them or the clinical picture calls for it.</p>',
   },
   {
     question: 'Is soft tissue work an extra charge?',
-    answer: '<p>No. <strong>Cupping, instrument-assisted scraping (Graston-style), and soft tissue mobilization are included with your adjustment</strong> when they\'re indicated. We don\'t upcharge for adjunctive techniques. They\'re part of the visit.</p>',
+    answer: '<p>No. If <strong>cupping, instrument-assisted scraping (Graston-style), or soft tissue mobilization</strong> is indicated, it happens during your adjustment at no extra charge. There\'s no add-on menu.</p>',
   },
   {
     question: 'What lab testing is available through health restoration?',
@@ -24,11 +24,11 @@ const servicesFaqs = [
   },
   {
     question: 'What is the Webster Technique?',
-    answer: '<p>A prenatal chiropractic technique focused on analyzing and adjusting the pelvis, surrounding muscles, and ligaments (without twisting, cracking, or popping). It supports optimal fetal positioning and may help ease common pregnancy discomforts like round ligament pain and sacroiliac dysfunction.</p>',
+    answer: '<p>A prenatal chiropractic technique focused on analyzing and adjusting the pelvis, surrounding muscles, and ligaments (without twisting, cracking, or popping). It may support optimal fetal positioning and may help ease common pregnancy discomforts like round ligament pain and sacroiliac dysfunction.</p>',
   },
   {
     question: 'Do you treat children?',
-    answer: '<p>Yes. We provide pediatric chiropractic care from newborns onward, using soft, age-appropriate adjustments. Many families come for support with sleep patterns, feeding challenges, behavioral regulation, and immune support, alongside their pediatrician\'s care.</p>',
+    answer: '<p>Yes. We provide pediatric chiropractic care from newborns onward, using soft, age-appropriate adjustments focused on structural and nervous-system support, always alongside your pediatrician\'s care.</p>',
   },
   {
     question: 'Are virtual consultations available?',
@@ -85,12 +85,14 @@ const testingCategories = [
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
     <div class="services-hero">
       <div class="services-hero-text">
-        <h1>Chiropractic Care &amp; Health Restoration in Mason, OH</h1>
+        <h1>
+          <span class="page-kicker">Chiropractic Care &amp; Health Restoration in Mason, OH</span>
+          Care for your spine. Answers for everything else.
+        </h1>
         <p class="lede">
-          Two arms of one practice. <strong>Chiropractic</strong> for hands-on adjustments and the
-          conditions chiropractors are known for. <strong>Health restoration</strong> for the deeper
-          work: lab testing, nutrition, individual care plans, lifestyle support. Pick the door that
-          fits where you are right now.
+          Two arms, one practice. <strong>Chiropractic</strong> for the pain you can point to.
+          <strong>Health restoration</strong> for the symptoms nobody has explained yet.
+          Start where you are, and we'll ask why together.
         </p>
       </div>
       <div class="services-hero-image">
@@ -110,8 +112,8 @@ const testingCategories = [
   <SectionContainer width="default" spacing="md">
     <div class="arms">
       <article class="arm arm-chiro">
-        <p class="arm-eyebrow">Arm 1: Chiropractic</p>
-        <h2 class="arm-title">We Do Health Differently</h2>
+        <h2 class="arm-title">Chiropractic</h2>
+        <p class="arm-slogan">Do Health Differently.</p>
         <p class="arm-body">
           Manual, specific adjustments delivered by a chiropractic physician who prefers technique-driven
           hands-on work. For back pain, neck pain, sciatica, headaches, sports injuries, prenatal
@@ -120,12 +122,12 @@ const testingCategories = [
         <p class="arm-body">
           Looking for just a chiropractor in Mason? You're in the right place.
         </p>
-        <Button href="#chiropractic" variant="ghost" size="md" iconAfter>Jump to chiropractic</Button>
+        <Button href="#chiropractic" variant="ghost" size="md" iconAfter>See chiropractic</Button>
       </article>
 
       <article class="arm arm-restoration">
-        <p class="arm-eyebrow">Arm 2: Health Restoration</p>
-        <h2 class="arm-title">Test, Don't Guess</h2>
+        <h2 class="arm-title">Health Restoration</h2>
+        <p class="arm-slogan">We don't guess. We test.</p>
         <p class="arm-body">
           Functional lab work paired with nutrition guidance, individual care plans, and
           lifestyle support. For patients ready to look at the patterns underneath persistent symptoms.
@@ -133,7 +135,7 @@ const testingCategories = [
         <p class="arm-body">
           Looking for advanced lab work and whole-person care? Start here.
         </p>
-        <Button href="#health-restoration" variant="ghost" size="md" iconAfter>Jump to health restoration</Button>
+        <Button href="#health-restoration" variant="ghost" size="md" iconAfter>See health restoration</Button>
       </article>
     </div>
   </SectionContainer>
@@ -141,26 +143,28 @@ const testingCategories = [
   <SectionContainer width="default" spacing="lg" background="paper" id="chiropractic">
     <div class="section-head">
       <p class="eyebrow">Chiropractic</p>
-      <h2>We Do Health Differently</h2>
+      <h2>Adjustments with intention</h2>
+      <p class="value-line">
+        Manual, specific adjustments, with cupping, scraping, and soft tissue work included
+        at no upcharge.
+      </p>
     </div>
 
     <div class="prose-block">
       <p>
-        Dr. Denome is a Doctor of Chiropractic whose strength is <strong>manual, specific
-        adjustments</strong>, focused hands-on work delivered with intention. He's built his practice
-        around precise technique rather than a single one-size approach, and he's good at it. Patients
-        who've been adjusted before tend to notice the difference quickly.
+        If you've been adjusted before, you'll notice the difference. Dr. DeNome is a Doctor of
+        Chiropractic who works by hand: <strong>manual, specific adjustments</strong> matched to
+        the person on the table, not a one-size routine. Lower-force and gentler techniques are
+        always available for kids, pregnancy, acute flare-ups, and sensitive nervous systems.
       </p>
       <p>
-        That said, the visit always starts with you. Lower-force and gentler approaches are part of the
-        toolkit when a patient prefers them, when the body needs a different entry point, or when the
-        clinical picture calls for it (pediatric, prenatal, acute flare-ups, sensitive nervous systems).
-        The goal is the right adjustment for the person on the table, not a signature move.
+        Cupping, instrument-assisted scraping, and soft tissue mobilization are part of your
+        adjustment whenever they're indicated. If your body needs the work, it's included in
+        the visit.
       </p>
       <p>
-        Chiropractic care here sits alongside conventional medical care, not in place of it. We're happy
-        to coordinate with your primary, your OB, your physical therapist, or any other provider on your
-        team.
+        Chiropractic care here runs alongside your medical team, not around it. Keep your primary
+        care physician, your OB, your physical therapist. We're glad to coordinate with all of them.
       </p>
     </div>
 
@@ -198,28 +202,34 @@ const testingCategories = [
     <div class="section-head">
       <p class="eyebrow">Health Restoration</p>
       <h2>Test, Don't Guess</h2>
+      <p class="value-line">
+        A flat $99 new-patient visit, functional labs billed transparently, and a plan built
+        from your results.
+      </p>
     </div>
 
     <div class="prose-block">
       <p>
-        Health restoration is the deeper arm of the practice, for patients dealing with patterns that
-        haven't moved with standard care, or who want a closer look at how their body is actually
-        running. We start with <a href="/functional-medicine-mason-oh">functional lab testing</a>,
-        because guessing is expensive and we'd rather ask why first.
+        You've heard it before: "everything came back fine." But fine isn't how you feel.
+        Common, but not normal. Chasing symptoms one at a time is like taping over a fire alarm.
+        We'd rather find the fire, so we start with
+        <a href="/functional-medicine-mason-oh">functional lab testing</a>
+        through partners we trust: <strong>Access Medical Labs, Dutch Test, Genova Diagnostics,
+        ImmunoLabs</strong>, and <strong>Mosaic Labs</strong> (for the organic acids test, or OAT,
+        and heavy metal panels). <a href="/dutch-test-mason-oh">Hormone metabolites through DUTCH</a>,
+        gut microbiome, food sensitivities, mycotoxins, heavy metals, full thyroid. The depth
+        standard panels miss.
       </p>
       <p>
-        We partner with the labs we trust to do this well: <strong>Access Medical Labs, Dutch Test,
-        Genova Diagnostics, ImmunoLabs</strong>, and <strong>Mosaic Labs</strong> (for the OAT,
-        organic acids test, and heavy metal panels). <a href="/dutch-test-mason-oh">Hormone metabolites
-        through DUTCH</a>, gut microbiome, food sensitivities, mycotoxins, heavy metals, full thyroid.
-        The depth standard panels miss.
+        Your first health restoration visit is a flat $99. Labs are billed transparently, so you
+        know what a panel costs before you order it. No mystery invoices, no bundled programs you
+        didn't ask for.
       </p>
       <p>
-        From there, the plan is yours: nutrition guidance tied to your results (not generic),
-        practitioner-grade supplements matched to what your panels actually show, and
-        lifestyle support to make the changes stick. This work runs alongside conventional medical
-        care. Keep your primary, keep your specialists, and add a layer that looks at the underlying
-        drivers.
+        From there, the plan is built on what your results actually show: nutrition guidance,
+        practitioner-grade supplements, and lifestyle support that may help address the underlying
+        drivers. It all runs alongside your physician's care, not in place of it. Outside the Mason
+        area? Virtual consults are available for lab review and follow-up.
       </p>
     </div>
 
@@ -261,7 +271,6 @@ const testingCategories = [
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="lg" background="paper-soft" id="webster-technique">
-    <p class="eyebrow">Featured technique</p>
     <h2>The Webster Technique</h2>
     <p>
       A prenatal chiropractic technique focused on analyzing and adjusting the pelvis, surrounding
@@ -270,10 +279,10 @@ const testingCategories = [
       experience.
     </p>
     <p>
-      The Webster Technique creates more space in the uterus for baby to move into an ideal position
-      and helps prepare your pelvis for the physical demands of birth. It may also help ease common
-      pregnancy discomforts like round ligament pain, sacroiliac joint dysfunction, and lower back
-      pain.
+      The technique may help create more space for baby to move into an ideal position and may
+      help prepare your pelvis for the physical demands of birth. It may also help ease common
+      pregnancy discomforts like round ligament pain, sacroiliac joint dysfunction, and lower
+      back pain.
     </p>
     <p>
       The technique is specifically designed for expecting mothers: gentle, supportive, and
@@ -287,16 +296,19 @@ const testingCategories = [
 
   <SectionContainer width="default" spacing="lg">
     <div class="section-head">
-      <p class="eyebrow">Common questions</p>
-      <h2>About our services</h2>
+      <h2>Common questions</h2>
     </div>
     <FAQAccordion items={servicesFaqs} />
   </SectionContainer>
 
   <SectionContainer width="narrow" spacing="lg" background="paper-soft">
     <div class="cta-block">
-      <h2>Change the trajectory of your life today.</h2>
-      <p>Book an appointment to talk through your goals and decide whether we're the right fit.</p>
+      <h2>Start with one visit.</h2>
+      <p>
+        Book an appointment, tell us what's been going on, and get an honest read on whether
+        we're the right fit. You'll leave with a clear next step either way. Come with questions.
+        Come with a folder of old labs. Come as you are.
+      </p>
       <div class="cta-row">
         <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
         <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Book Your Appointment</Button>
@@ -311,6 +323,18 @@ const testingCategories = [
 
   .services-hero { display: grid; gap: 2.5rem; align-items: center; }
   .services-hero h1 { margin: 0; font-size: var(--text-4xl); line-height: 1.1; }
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline. */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
+  }
   .services-hero-image img {
     width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
     border-radius: var(--radius-xl); box-shadow: var(--shadow-card);
@@ -333,20 +357,19 @@ const testingCategories = [
   }
   .arm-chiro { background: var(--color-paper); }
   .arm-restoration { background: var(--color-paper-warm-tint); }
-  .arm-eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-brand-primary-dark);
-    font-weight: 600;
-    margin: 0;
-  }
   .arm-title {
-    margin: 0.25rem 0 0.35rem;
+    margin: 0 0 0.15rem;
     font-size: var(--text-3xl);
     font-family: var(--font-display);
     line-height: 1.15;
     color: var(--color-ink-strong);
+  }
+  .arm-slogan {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-lg);
+    margin: 0 0 0.35rem;
   }
   .arm-body { color: var(--color-ink-muted); line-height: 1.6; margin: 0; }
   .arm > :global(.btn) { align-self: flex-start; margin-top: 0.5rem; }
@@ -371,8 +394,20 @@ const testingCategories = [
     font-size: var(--text-3xl);
     line-height: 1.15;
   }
+  .value-line {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    margin: 1rem 0 0;
+    max-width: 52ch;
+  }
   @media (min-width: 768px) {
     .section-head h2 { font-size: var(--text-4xl); }
+  }
+  @media (min-width: 1024px) {
+    .section-head h2 { font-size: var(--text-5xl); letter-spacing: -0.022em; }
   }
 
   .prose-block {
@@ -390,14 +425,12 @@ const testingCategories = [
 
   .subsection { margin: 2rem 0; }
   .sub-h {
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-brand-primary-dark);
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--color-ink-strong);
+    font-weight: 500;
     margin: 0 0 1rem;
-    padding-bottom: 0.65rem;
+    padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--color-brand-primary);
     display: inline-block;
   }
@@ -448,11 +481,10 @@ const testingCategories = [
     background: var(--color-paper-soft);
   }
   .callout-eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-brand-primary-dark);
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--color-ink-strong);
+    font-weight: 500;
     margin: 0 0 0.5rem;
   }
   .callout-body {

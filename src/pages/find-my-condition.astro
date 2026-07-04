@@ -12,6 +12,32 @@ const conditions = (await getCollection('conditions')).sort(
 
 const featured = conditions.filter((c) => c.data.featured);
 const standard = conditions.filter((c) => !c.data.featured);
+
+// Short display names keep the card headlines glanceable; the full SEO titles
+// live on each condition's own page. Falls back to a cleaned collection title
+// for any future condition without an entry here.
+const displayNames: Record<string, string> = {
+  thyroid: 'Thyroid',
+  'hormone-imbalance': 'Hormone Imbalance',
+  autoimmune: 'Autoimmune Patterns',
+  allergies: 'Allergies',
+  acne: 'Acne',
+  'digestive-issues': 'Digestive Issues',
+  'heart-disease': 'Heart Health',
+  fatigue: 'Fatigue & Low Energy',
+  diabetes: 'Blood Sugar & Diabetes',
+  'joint-and-muscle-pain': 'Joint & Muscle Pain',
+  'weight-loss': "Weight That Won't Move",
+  'mental-health-brain': 'Mental Health & Brain Fog',
+};
+
+const displayName = (c: (typeof conditions)[number]) =>
+  displayNames[c.id] ??
+  c.data.title.replace(' — What Most Doctors Miss', '').replace(' in Mason, OH', '');
+
+// Excerpts come from the content collection; normalize any dash-joined
+// clauses for the on-page card copy (site style: no em/en dashes).
+const cleanExcerpt = (s: string) => s.replace(/\s*[—–]\s*/g, ': ');
 ---
 
 <BaseLayout
@@ -20,47 +46,67 @@ const standard = conditions.filter((c) => !c.data.featured);
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Find My Condition' }]} />
-    <h1>Find My Condition</h1>
-    <p class="lede">
-      If you've been told your labs are "normal" but you still don't feel normal, you're not alone.
-    </p>
+    <div class="page-hero">
+      <h1>
+        <span class="page-kicker">Thyroid, Hormones, Gut &amp; Chronic Conditions in Mason, OH</span>
+        Put a name to what you've been feeling.
+      </h1>
+      <p class="lede">
+        If you've been told your labs are "normal" but you still don't feel normal, you're not
+        alone. These are the patterns we see most, and where to start reading about yours.
+      </p>
+    </div>
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="md">
-    <p>
-      Most of the people who walk through our doors in Mason have already been to two, three, or four
-      other providers across the Cincinnati area. They've been handed a prescription, told to manage
-      stress, or sent home with the words <em>"everything looks fine."</em> But something is still off.
-    </p>
-    <p>
-      At <strong>{clinic.brandName}</strong>, we don't accept "common" as the same thing as "normal."
-      <em>Common is not normal.</em> We ask <em>why</em> your body is doing what it's doing.
-      <strong>We test, we don't guess.</strong>
-    </p>
-    <p>
-      Below are the patterns we see most at our Mason, OH clinic. Each links to a deeper page with the
-      testing approach, the 3 T's framework that applies, and how a
-      <a href="/functional-medicine-mason-oh">functional medicine</a> plan may help.
-      We serve patients across Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area.
-    </p>
-    <p class="lab-link-aside">
-      Curious about specific panels? See <a href="/functional-medicine-mason-oh">our approach to
-      functional medicine in Mason, OH</a> or the dedicated page on the
-      <a href="/dutch-test-mason-oh">DUTCH hormone test</a>.
-    </p>
-    <div class="hero-cta">
-      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
-      <Button href="/our-services" variant="ghost" size="lg">See Our Services</Button>
+    <div class="intro-prose">
+      <p data-reveal>
+        Most of the people who walk through our doors in Mason have already seen two, three, or
+        four other providers across the Cincinnati area. They've been handed a prescription, told
+        to manage their stress, or sent home with the words <em>"everything looks fine."</em>
+        But something still feels off, and nobody has explained why.
+      </p>
+      <p data-reveal="up-sm">
+        At <strong>{clinic.brandName}</strong>, we start from a different premise: your symptoms
+        are signals, not malfunctions. A fire alarm going off doesn't mean the alarm is broken.
+        So we ask why your body is doing what it's doing, and we use targeted lab work to look
+        for the answer instead of guessing at it.
+      </p>
+      <p data-reveal="up-sm">
+        Below are the patterns we see most at our Mason, OH clinic. Each one links to a deeper
+        page covering what the pattern can feel like, the testing we use, and how a
+        <a href="/functional-medicine-mason-oh">functional medicine</a> plan may help. We serve
+        patients across Mason, West Chester, Loveland, Lebanon, and the greater Cincinnati area,
+        always alongside your primary care physician, never in place of them.
+      </p>
+      <p class="lab-link-aside" data-reveal="up-sm">
+        Curious about specific panels? See <a href="/functional-medicine-mason-oh">our approach
+        to functional medicine in Mason, OH</a> or the dedicated page on the
+        <a href="/dutch-test-mason-oh">DUTCH hormone test</a>.
+      </p>
+      <div class="hero-cta" data-reveal="up-sm">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
+        <Button href="/our-services" variant="ghost" size="lg">See our services</Button>
+      </div>
     </div>
   </SectionContainer>
 
   {featured.length > 0 && (
     <SectionContainer width="default" spacing="lg" background="paper-soft">
-      <p class="eyebrow">The patterns we see most</p>
-      <h2>Featured Conditions</h2>
+      <div class="section-head">
+        <p class="eyebrow">Start Here</p>
+        <h2>The patterns we see most.</h2>
+        <p class="section-lede">
+          If your energy, your cycle, or your immune system has been off for months while every
+          test comes back "fine," you're describing something real. Start with the three we're
+          asked about most.
+        </p>
+      </div>
       <div class="condition-grid featured-grid">
         {featured.map((c) => (
-          <article class="condition-card featured">
+          <article class="condition-card featured" id={c.id} data-reveal="up-sm">
             <a href={`/conditions/${c.id}`} class="card-link">
               {c.data.image && (
                 <img
@@ -73,8 +119,8 @@ const standard = conditions.filter((c) => !c.data.featured);
                 />
               )}
               <div class="card-body">
-                <h3>{c.data.title.replace(' — What Most Doctors Miss', '').replace(' in Mason, OH', '')}</h3>
-                <p>{c.data.excerpt}</p>
+                <h3>{displayName(c)}</h3>
+                <p>{cleanExcerpt(c.data.excerpt)}</p>
                 <span class="card-cta">Learn more →</span>
               </div>
             </a>
@@ -85,14 +131,21 @@ const standard = conditions.filter((c) => !c.data.featured);
   )}
 
   <SectionContainer width="default" spacing="lg">
-    <h2>All Conditions We See</h2>
+    <div class="section-head">
+      <h2>All the conditions we see.</h2>
+      <p class="section-lede">
+        Different symptoms, same question: why is your body doing this? However your story
+        starts, being dismissed shouldn't be part of it. Each page covers what the pattern can
+        look like, what we test for, and how care may help.
+      </p>
+    </div>
     <div class="condition-grid standard-grid">
       {standard.map((c) => (
-        <article class="condition-card">
+        <article class="condition-card" id={c.id} data-reveal="up-sm">
           <a href={`/conditions/${c.id}`} class="card-link">
             <div class="card-body">
-              <h3>{c.data.title.replace(' — What Most Doctors Miss', '').replace(' in Mason, OH', '')}</h3>
-              <p>{c.data.excerpt}</p>
+              <h3>{displayName(c)}</h3>
+              <p>{cleanExcerpt(c.data.excerpt)}</p>
               <span class="card-cta">Learn more →</span>
             </div>
           </a>
@@ -101,59 +154,117 @@ const standard = conditions.filter((c) => !c.data.featured);
     </div>
   </SectionContainer>
 
-  <SectionContainer width="prose" spacing="lg" background="paper-soft">
-    <h2>Take the First Step Toward Better Health</h2>
-    <p>
-      If you've recognized yourself in even one of these descriptions, your body is talking. The
-      question is whether anyone has been listening.
-    </p>
-    <p>
-      We do health differently. We test, we don't guess. We work alongside the physicians on your
-      care team, not in place of them. And we believe, because we see it daily in our Mason clinic,
-      that the body can restore function when the right inputs are in place.
-    </p>
-    <p>
-      <strong>Schedule a discovery consultation. Bring your story. Bring your questions. Bring whatever labs and history you have.</strong>
-    </p>
-    <p>We'll listen. We'll test. We'll build a plan with you.</p>
-    <div class="hero-cta">
-      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule Your Consultation</Button>
+  <SectionContainer width="narrow" spacing="lg" background="paper-soft">
+    <div class="cta-block" data-reveal>
+      <h2>Your body is talking. Let's listen together.</h2>
+      <p>
+        If you recognized yourself in even one of these descriptions, that's worth taking
+        seriously. Bring your story, your questions, and whatever labs and history you have.
+        We'll listen, we'll test where it makes sense, and we'll build a plan with you,
+        alongside the physicians already on your care team. You have options.
+      </p>
+      <div class="cta-row">
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">
+          Call {clinic.phone}
+        </Button>
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
+      </div>
+      <p class="byline">{bylines.reviewed}, Doctor of Chiropractic, {clinic.brandName}</p>
     </div>
-    <p class="byline">{bylines.reviewed} — Doctor of Chiropractic, {clinic.brandName}</p>
   </SectionContainer>
 </BaseLayout>
 
 <style>
-  .lede {
-    color: var(--color-brand-primary-dark);
-    font-style: italic;
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    margin: 1rem 0 0;
+  /* === Hero lockup === */
+  .page-hero h1 {
+    margin: 0;
+    font-size: var(--text-4xl);
+    line-height: 1.1;
+    max-width: 22ch;
   }
-  .eyebrow {
-    color: var(--color-brand-primary-dark);
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    letter-spacing: 0.1em;
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline. */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin: 0 0 0.5rem;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
   }
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1.5rem;
+  .lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    margin: 1.25rem 0 0;
+    max-width: 58ch;
+  }
+
+  /* === Intro prose === */
+  .intro-prose p {
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    margin: 0 0 1.1rem;
   }
   .lab-link-aside {
     background: var(--color-paper-warm-tint);
     border-left: 3px solid var(--color-brand-primary);
     padding: 0.85rem 1.25rem;
-    border-radius: 0.4rem;
-    font-size: var(--text-base);
-    color: var(--color-ink-muted);
-    margin: 1rem 0 0;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-base) !important;
+    color: var(--color-ink-muted) !important;
+    margin: 1.5rem 0 0 !important;
   }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  /* === Section heads (established scale) === */
+  .section-head {
+    margin-bottom: 3rem;
+    text-align: center;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin: 0 0 1rem;
+    font-weight: 500;
+  }
+  /* Eyebrow lockup: short TWW Green rule under the caps label. */
+  .section-head .eyebrow::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-brand-primary);
+    margin: 0.9rem auto 0;
+  }
+  .section-head h2 {
+    margin: 0 0 1.25rem;
+    font-size: var(--text-3xl);
+    color: var(--color-ink-strong);
+  }
+  .section-lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* === Condition grids === */
   .condition-grid {
     display: grid;
     gap: 1.5rem;
@@ -166,19 +277,25 @@ const standard = conditions.filter((c) => !c.data.featured);
   }
   .condition-card {
     border: 1px solid var(--color-line);
-    border-radius: 0.6rem;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--color-paper);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: var(--shadow-card);
+    transition:
+      transform var(--duration-fast) var(--ease-soft),
+      box-shadow var(--duration-normal) var(--ease-soft);
+    /* Anchored ids (#thyroid, #fatigue, ...) land below the fixed header. */
+    scroll-margin-top: 6.5rem;
   }
   .condition-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px -10px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-card-hover);
   }
   .card-link {
     display: block;
     text-decoration: none;
     color: inherit;
+    height: 100%;
   }
   .card-image {
     width: 100%;
@@ -187,29 +304,71 @@ const standard = conditions.filter((c) => !c.data.featured);
     display: block;
   }
   .card-body {
-    padding: 1.25rem;
+    padding: 1.5rem;
   }
   .card-body h3 {
-    color: var(--color-brand-primary-dark);
+    color: var(--color-ink-strong);
     margin: 0 0 0.5rem;
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
+    transition: color var(--duration-fast) var(--ease-soft);
+  }
+  .card-link:hover h3 {
+    color: var(--color-brand-primary-dark);
   }
   .card-body p {
     line-height: 1.6;
     color: var(--color-ink-muted);
-    margin: 0 0 0.75rem;
+    margin: 0 0 1rem;
+    font-size: var(--text-sm);
   }
   .card-cta {
     color: var(--color-brand-primary-dark);
     font-weight: 600;
     font-size: var(--text-sm);
   }
+
+  /* === Final CTA === */
+  .cta-block {
+    text-align: center;
+  }
+  .cta-block h2 {
+    margin: 0 0 1rem;
+    font-size: var(--text-3xl);
+  }
+  .cta-block p {
+    color: var(--color-ink-muted);
+    max-width: 52ch;
+    margin: 0 auto 2rem;
+    line-height: 1.65;
+    font-size: var(--text-lg);
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
   .byline {
-    margin-top: 2rem;
+    margin: 2.5rem auto 0;
     padding-top: 1rem;
     border-top: 1px solid var(--color-line);
     font-size: var(--text-sm);
     color: var(--color-ink-muted);
     font-style: italic;
+    max-width: 40rem;
+  }
+
+  /* === Responsive type scale === */
+  @media (min-width: 768px) {
+    .page-hero h1 { font-size: var(--text-5xl); }
+    .section-head h2 { font-size: var(--text-4xl); }
+    .cta-block h2 { font-size: var(--text-4xl); }
+  }
+  @media (min-width: 1024px) {
+    .section-head { margin-bottom: 3.5rem; }
+    .section-head h2 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
+    }
   }
 </style>

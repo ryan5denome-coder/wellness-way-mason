@@ -24,7 +24,7 @@ const aboutFaqs = [
   },
   {
     question: 'What makes The Wellness Way - Mason different from other chiropractors?',
-    answer: '<p>We integrate chiropractic care with in-depth health-restoration lab work, looking at the patterns underneath symptoms instead of just managing what shows up on the surface. We test, we don\'t guess. We work alongside your physicians, not in place of them.</p>',
+    answer: '<p>We pair chiropractic care with in-depth health-restoration lab work, looking at the patterns underneath symptoms instead of only managing what shows up on the surface. Lab testing comes first, so your care plan rests on results instead of another guess. And we work alongside your physicians, not in place of them.</p>',
   },
   {
     question: 'Do you accept new patients?',
@@ -40,39 +40,79 @@ const personJsonLd = personSchema({ full: true });
   description="Meet Dr. Ryan DeNome, DC and the team at The Wellness Way - Mason. Chiropractic care and health restoration in Mason, Ohio for patients tired of being told their labs look fine."
   jsonLd={[personJsonLd]}
 >
+  <!-- Section 1: Hero — kicker lockup H1 + short story-setting lede -->
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
-    <h1>About Us</h1>
-    <p class="lede">
-      We're part of a nationwide network of health restoration clinics built to solve the
-      health challenges others can't. We bring that approach home to Mason, Ohio.
-    </p>
+    <div class="about-hero">
+      <h1>
+        <span class="page-kicker">About The Wellness Way - Mason, Ohio</span>
+        A clinic built to keep asking why.
+      </h1>
+      <p class="lede">
+        We're part of a nationwide network of health restoration clinics that take on
+        the cases others set aside. Dr. Ryan DeNome, DC brought that approach home to
+        Mason, Ohio. This is the story of why.
+      </p>
+    </div>
   </SectionContainer>
 
-  <SectionContainer width="default" spacing="lg">
-    <div class="values-head">
-      <p class="eyebrow">Our foundation</p>
+  <!-- Section 2: The story — "why this clinic exists" is the conversion asset -->
+  <SectionContainer width="narrow" spacing="xl">
+    <div class="story">
+      <h2 data-reveal>Why this clinic exists</h2>
+      <p data-reveal="up-sm">
+        Most people who find us have already done everything right. They went to the
+        doctor. They took the referral. They sat through another fifteen-minute visit
+        and heard some version of the same sentence: everything looks fine.
+      </p>
+      <p data-reveal="up-sm">
+        But fine is not how you feel. And somewhere between the second specialist and
+        the third prescription, a quieter worry sets in. Maybe this is just how it is
+        now. Maybe it really is all in your head. It isn't, and you're not alone.
+      </p>
+      <p data-reveal="up-sm">
+        This clinic exists for that exact moment. The Wellness Way was built on a
+        simple conviction: health is more than the absence of disease, and a symptom
+        is a signal worth investigating, not a noise to silence. So we start with
+        in-depth lab testing and build each care plan on what your results actually
+        show, working alongside your physicians the whole way.
+      </p>
+      <p class="story-turn" data-reveal="up-sm">
+        You shouldn't have to talk anyone into taking your symptoms seriously.
+        Here, that's where we begin.
+      </p>
+      <p class="story-link" data-reveal="up-sm">
+        <a href="https://www.thewellnessway.com/" target="_blank" rel="noopener">Read more about The Wellness Way →</a>
+      </p>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 3: Mission / Philosophy / Vision -->
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <div class="values-head" data-reveal>
+      <p class="eyebrow eyebrow-lockup">Our foundation</p>
       <h2>What we stand for</h2>
     </div>
     <div class="values">
-      <div class="value">
+      <div class="value" data-reveal="up-sm">
         <h3>Mission</h3>
-        <p>Our philosophy is founded on the idea that the human body was not designed for illness, and when properly cared for, can use its innate ability to heal to restore itself.</p>
+        <p>The human body was not designed for illness. When it's properly cared for and properly supported, it has a deep capacity to heal, and our work is to give that capacity its best chance.</p>
       </div>
-      <div class="value">
+      <div class="value" data-reveal="up-sm">
         <h3>Philosophy</h3>
-        <p>We are a health champion for all and a community for change, committed to disrupting the standard approach to care so that everyone can achieve the total wellness they deserve.</p>
+        <p>We are a health champion for all and a community for change, committed to disrupting the standard approach to care so that feeling well is something you get to expect, not something you have to argue for.</p>
       </div>
-      <div class="value">
+      <div class="value" data-reveal="up-sm">
         <h3>Vision</h3>
-        <p>A world where common is not normal. Where people don't accept dismissal, mediocrity, or medication management as the only path to feeling well. We stand in the gap and make sure no stone goes unturned to get to the bottom of your health challenges.</p>
+        <p>A world where common is not normal. Where people don't accept dismissal, mediocrity, or medication management as the only path to feeling well. We stand in the gap so no stone goes unturned.</p>
       </div>
     </div>
   </SectionContainer>
 
-  <SectionContainer width="default" spacing="lg" background="paper-soft">
+  <!-- Section 4: Our space -->
+  <SectionContainer width="default" spacing="lg">
     <div class="our-space">
-      <div class="our-space-image">
+      <div class="our-space-image" data-reveal>
         <Image
           src={pediatricPlayRoom}
           alt="Family-friendly pediatric play room with green tree bookshelf at The Wellness Way - Mason"
@@ -82,8 +122,7 @@ const personJsonLd = personSchema({ full: true });
           quality={82}
         />
       </div>
-      <div class="our-space-text">
-        <p class="eyebrow">Our space</p>
+      <div class="our-space-text" data-reveal="up-sm">
         <h2>A clinic built for real families.</h2>
         <p>
           From newborns to grandparents, our Mason office is designed for the people who walk
@@ -94,28 +133,10 @@ const personJsonLd = personSchema({ full: true });
     </div>
   </SectionContainer>
 
-  <SectionContainer width="prose" spacing="lg">
-    <h2>Who We Are</h2>
-    <p>
-      At The Wellness Way, we believe health is more than the absence of disease. It's the presence
-      of true vitality. As part of a nationwide network of clinics, we are driven by a mission to
-      rethink healthcare and challenge the status quo. Our clinic is dedicated to uncovering the
-      underlying drivers of health issues through in-depth testing, personalized care plans, and a
-      health restoration approach that sets us apart from traditional healthcare.
-    </p>
-    <p>
-      We give patients the knowledge, tools, and support they need to take control of their
-      well-being. Whether you're dealing with chronic symptoms, hormone imbalances, immune
-      challenges, or just want to feel your best, our team is here to walk alongside you.
-    </p>
-    <p>
-      <a href="https://www.thewellnessway.com/" target="_blank" rel="noopener">Read more about The Wellness Way →</a>
-    </p>
-  </SectionContainer>
-
+  <!-- Section 5: Meet Dr. Ryan -->
   <SectionContainer width="default" spacing="lg" id="meet-dr-ryan">
     <div class="provider-grid">
-      <div class="provider-photo">
+      <div class="provider-photo" data-reveal>
         <img
           src="/images/people/dr-ryan-denome.jpg"
           alt="Dr. Ryan DeNome, DC at The Wellness Way - Mason"
@@ -124,37 +145,37 @@ const personJsonLd = personSchema({ full: true });
           height="1500"
         />
       </div>
-      <div class="provider-bio">
-        <p class="eyebrow">Meet Your Chiropractor</p>
+      <div class="provider-bio" data-reveal="up-sm">
+        <p class="eyebrow eyebrow-lockup">Meet Your Chiropractor</p>
         <h2>Dr. Ryan DeNome, DC</h2>
         <p class="bio-title">{owner.jobTitle} | Clinic Owner</p>
         <p>
           Dr. Ryan DeNome is the clinic owner and chiropractic physician at {clinic.brandName}.
-          He is passionate about helping patients overcome health challenges and reclaim their vitality.
-          His journey into chiropractic began when his wife introduced him to the profession, and he
-          immediately recognized the perfect blend of hands-on problem-solving and patient care.
+          He found chiropractic through his wife, who introduced him to the profession, and he
+          recognized it immediately as the work he wanted: hands-on problem solving in service
+          of real people.
         </p>
         <p>
-          He pursued his Doctor of Chiropractic degree at <strong>Life University</strong> in Marietta, Georgia,
-          where he discovered The Wellness Way Student Club during his first week. For nearly four years,
-          he immersed himself in The Wellness Way philosophy, preparing to serve patients beyond
-          conventional chiropractic care.
+          He earned his Doctor of Chiropractic degree at <strong>Life University</strong> in Marietta, Georgia,
+          where he discovered The Wellness Way Student Club during his first week on campus. For
+          nearly four years he trained inside The Wellness Way philosophy, preparing to care for
+          patients beyond conventional chiropractic alone.
         </p>
         <p>
-          Dr. Ryan is especially passionate about supporting <strong>men who feel limited by health challenges</strong>
-          and <strong>moms juggling the stress of home life and wellness struggles</strong>. His goal is to offer
-          hope to those who feel stuck, with care that looks at the underlying drivers of symptoms
-          rather than just managing what shows up on the surface.
+          Dr. Ryan is especially drawn to two kinds of patients: <strong>men who feel limited by health
+          challenges</strong> and <strong>moms running on empty while they care for everyone else</strong>. His goal
+          is to offer hope to people who feel stuck, with care that looks for the underlying
+          drivers of symptoms rather than only managing what shows up on the surface.
         </p>
         <p>
           Certified in the <strong>Webster Technique</strong>, he cares for pregnant mothers,
           weekend warriors, CrossFit competitors, gym-trained athletes, and the everyday blue-collar
-          athlete moving through life. If you want to perform and feel better, he wants to help.
+          athlete moving through life. If you want to feel and perform better, he wants to help.
         </p>
         <p>
-          Outside of the clinic, Dr. Ryan enjoys spending time outdoors with his wife and son: hiking,
-          kayaking, or simply soaking in the beauty of nature. A lifelong adventurer, he and his wife
-          biked 100 miles on their second date.
+          Outside the clinic, Dr. Ryan is usually outdoors with his wife and son: hiking,
+          kayaking, or simply enjoying the quiet. He and his wife biked 100 miles on their
+          second date, so "adventurous" is not a stretch.
         </p>
         <p>
           <a href="/dr-ryan-denome">Read Dr. DeNome's full bio, credentials, and approach →</a>
@@ -162,11 +183,11 @@ const personJsonLd = personSchema({ full: true });
         <blockquote class="ryan-quote">
           "Take care of your body as if you were going to live forever; and take care of your soul as
           if you were going to die tomorrow."
-          <cite>— Saint Augustine of Hippo</cite>
+          <cite>Saint Augustine of Hippo</cite>
         </blockquote>
         <p>
-          Dr. Ryan is honored to bring The Wellness Way approach to his community, helping patients
-          achieve lasting health and a better quality of life.
+          Dr. Ryan is honored to bring The Wellness Way approach to his community, helping
+          patients work toward lasting health and a better quality of life.
         </p>
         <div class="provider-links">
           <a href={owner.url} target="_blank" rel="noopener">LinkedIn →</a>
@@ -176,38 +197,64 @@ const personJsonLd = personSchema({ full: true });
     </div>
   </SectionContainer>
 
+  <!-- Section 6: FAQ -->
   <SectionContainer width="default" spacing="lg">
-    <div class="section-head">
-      <p class="eyebrow">Common questions</p>
-      <h2>About The Wellness Way - Mason</h2>
+    <div class="section-head" data-reveal>
+      <h2>Common questions</h2>
+      <p class="section-lede">
+        What patients ask us most about the clinic, the team, and how we work.
+      </p>
     </div>
     <FAQAccordion items={aboutFaqs} />
   </SectionContainer>
 
-  <SectionContainer width="narrow" spacing="lg" background="paper-soft">
-    <div class="cta-block">
-      <h2>Schedule with Dr. Ryan</h2>
-      <p>New patients welcome. Virtual consultations available.</p>
-      <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Book Appointment</Button>
+  <!-- Section 7: Final CTA — the story's conversion moment -->
+  <SectionContainer width="narrow" spacing="lg" background="paper-warm-tint">
+    <div class="cta-block" data-reveal>
+      <h2>Come tell us your story.</h2>
+      <p>
+        Every new patient visit is a flat $99, whether you're coming in for chiropractic
+        care or health restoration. Bring your questions, your history, and the labs no
+        one has explained yet. New patients are always welcome, and virtual
+        health-restoration consultations are available if you're outside the area.
+      </p>
+      <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>Book Your Appointment</Button>
     </div>
   </SectionContainer>
 </BaseLayout>
 
 <style>
-  .lede { color: var(--color-ink-muted); max-width: 60ch; font-size: var(--text-lg); margin: 1rem 0 0; }
-  .our-space {
-    display: grid;
-    gap: 2.5rem;
-    align-items: center;
+  /* === Hero === */
+  .about-hero h1 {
+    margin: 0;
+    font-size: var(--text-4xl);
+    line-height: 1.1;
   }
-  .our-space-image img {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-card);
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline. */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
   }
-  .our-space-text .eyebrow {
+  .lede {
+    color: var(--color-ink-muted);
+    max-width: 60ch;
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    margin: 1.25rem 0 0;
+  }
+  @media (min-width: 768px) {
+    .about-hero h1 { font-size: var(--text-5xl); }
+  }
+
+  /* === Eyebrow + lockup (established pattern) === */
+  .eyebrow {
     font-size: var(--text-xs);
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -215,40 +262,51 @@ const personJsonLd = personSchema({ full: true });
     margin: 0 0 1rem;
     font-weight: 500;
   }
-  .our-space-text h2 {
-    margin: 0 0 1.25rem;
+  .eyebrow-lockup::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-brand-primary);
+    margin: 0.9rem 0 0;
+  }
+
+  /* === Story — editorial "why this clinic exists" moment === */
+  .story h2 {
+    font-family: var(--font-display);
     font-size: var(--text-3xl);
+    line-height: 1.12;
+    color: var(--color-ink-strong);
+    margin: 0 0 1.75rem;
+    max-width: 24ch;
   }
-  .our-space-text p {
-    color: var(--color-ink-muted);
-    line-height: 1.7;
+  .story p {
+    color: var(--color-ink);
     font-size: var(--text-lg);
-    margin: 0;
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+    max-width: 58ch;
   }
-  @media (min-width: 768px) {
-    .our-space { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
-    .our-space-text h2 { font-size: var(--text-4xl); }
+  .story-turn {
+    font-family: var(--font-display);
+    color: var(--color-ink-strong);
+    font-size: var(--text-xl);
+    line-height: 1.5;
   }
+  .story-link {
+    margin-bottom: 0 !important;
+  }
+
+  /* === Values === */
   .values-head {
     max-width: 70ch;
-    margin: 0 0 2rem;
-  }
-  .values-head .eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-brand-primary-dark);
-    font-weight: 600;
-    margin: 0 0 0.5rem;
+    margin: 0 0 2.5rem;
   }
   .values-head h2 {
     margin: 0;
     font-size: var(--text-3xl);
     line-height: 1.15;
     color: var(--color-ink-strong);
-  }
-  @media (min-width: 768px) {
-    .values-head h2 { font-size: var(--text-4xl); }
   }
   .values {
     display: grid;
@@ -265,6 +323,32 @@ const personJsonLd = personSchema({ full: true });
     line-height: 1.7;
     margin: 0;
   }
+
+  /* === Our space === */
+  .our-space {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .our-space-image img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+  }
+  .our-space-text h2 {
+    margin: 0 0 1.25rem;
+    font-size: var(--text-3xl);
+  }
+  .our-space-text p {
+    color: var(--color-ink-muted);
+    line-height: 1.7;
+    font-size: var(--text-lg);
+    margin: 0;
+  }
+
+  /* === Provider === */
   .provider-grid {
     display: grid;
     gap: 2.5rem;
@@ -276,14 +360,10 @@ const personJsonLd = personSchema({ full: true });
     object-fit: cover;
     aspect-ratio: 4 / 5;
   }
-  .eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-mute);
+  .provider-bio h2 {
     margin: 0 0 0.5rem;
+    font-size: var(--text-3xl);
   }
-  .provider-bio h2 { margin: 0 0 0.5rem; font-size: var(--text-3xl); }
   .bio-title {
     font-family: var(--font-display);
     font-style: italic;
@@ -312,32 +392,64 @@ const personJsonLd = personSchema({ full: true });
     font-size: var(--text-sm);
     color: var(--color-ink-muted);
     font-style: normal;
+    font-family: var(--font-body);
   }
   .provider-links {
     display: flex;
     gap: 1.5rem;
     margin-top: 1.5rem;
   }
+
+  /* === FAQ head === */
   .section-head {
     text-align: center;
     max-width: 60ch;
     margin: 0 auto 2.5rem;
   }
-  .section-head .eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    margin: 0 0 0.75rem;
-    font-weight: 500;
+  .section-head h2 {
+    margin: 0 0 1rem;
+    font-size: var(--text-3xl);
+    color: var(--color-ink-strong);
   }
-  .section-head h2 { margin: 0 0 1rem; font-size: var(--text-3xl); }
+  .section-lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    margin: 0;
+    line-height: 1.6;
+  }
 
+  /* === Final CTA === */
   .cta-block { text-align: center; }
-  .cta-block h2 { margin: 0 0 0.75rem; }
-  .cta-block p { color: var(--color-ink-muted); margin: 0 0 1.5rem; }
+  .cta-block h2 {
+    margin: 0 0 1rem;
+    font-size: var(--text-3xl);
+  }
+  .cta-block p {
+    color: var(--color-ink-muted);
+    max-width: 52ch;
+    margin: 0 auto 2rem;
+    line-height: 1.65;
+  }
 
+  /* === Responsive type scale (established section-head rhythm) === */
   @media (min-width: 768px) {
+    .story h2 { font-size: var(--text-4xl); }
+    .values-head h2 { font-size: var(--text-4xl); }
+    .section-head h2 { font-size: var(--text-4xl); }
+    .our-space { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
+    .our-space-text h2 { font-size: var(--text-4xl); }
     .provider-grid { grid-template-columns: 0.8fr 1.4fr; gap: 3rem; align-items: start; }
+    .provider-bio h2 { font-size: var(--text-4xl); }
+    .cta-block h2 { font-size: var(--text-4xl); }
+  }
+  @media (min-width: 1024px) {
+    .values-head h2 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
+    }
+    .section-head h2 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
+    }
   }
 </style>

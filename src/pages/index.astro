@@ -4,14 +4,13 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Button from '../components/Button.astro';
-import Card from '../components/Card.astro';
 import BlogPostCard from '../components/BlogPostCard.astro';
 import HoursTable from '../components/HoursTable.astro';
 import MapEmbed from '../components/MapEmbed.astro';
 import { clinic } from '../lib/site';
 import pediatricAdjustment from '../assets/clinic/pediatric-adjustment.jpg';
 import adultAdjustment from '../assets/clinic/adult-adjustment.jpg';
-import twwSupplements from '../assets/clinic/tww-supplements-shelf.jpg';
+import labKitsFlatLay from '../assets/clinic/lab-kits-flat-lay.jpg';
 import pediatricPlayRoom from '../assets/clinic/pediatric-play-room.jpg';
 
 const featured = (await getCollection('posts'))
@@ -44,7 +43,7 @@ const fourSteps = [
   {
     n: 2,
     title: 'We Test',
-    body: "Advanced lab work paired with detailed intake tools to find what's actually driving your symptoms, not just what shows up on the surface.",
+    body: "Advanced lab work paired with detailed intake tools to look for what may be driving your symptoms, not just what shows up on the surface.",
   },
   {
     n: 3,
@@ -61,17 +60,17 @@ const fourSteps = [
 const twoArms = [
   {
     title: 'Chiropractic',
-    slogan: 'We Do Health Differently',
+    slogan: 'Do Health Differently.',
     body: 'Manual, specific adjustments for the conditions chiropractors are known for: back pain, neck pain, sciatica, headaches, sports injury, prenatal (Webster Technique), and pediatric care.',
     callout: 'Soft tissue work, cupping, and scraping are included with every adjustment. We don\'t upcharge for adjunctive techniques.',
-    cta: { label: 'Book a chiropractic visit', href: 'BOOKING' },
+    cta: { label: 'See chiropractic', href: '/our-services#chiropractic' },
   },
   {
     title: 'Health Restoration',
     slogan: "We don't guess. We test.",
-    body: 'Lab testing paired with nutrition guidance, a supplement care plan, and lifestyle support. For patients who are ready to look at the patterns underneath persistent symptoms.',
-    callout: 'New patient visits are flat $99. Lab work and supplements are billed separately so you stay in control of what you spend.',
-    cta: { label: 'Book health restoration', href: 'BOOKING' },
+    body: 'Lab testing paired with nutrition guidance, a supplement care plan, and lifestyle support. For patients who are ready to ask why symptoms keep coming back.',
+    callout: 'New patient visits are a flat $99. Lab work and supplements are billed separately so you stay in control of what you spend.',
+    cta: { label: 'See health restoration', href: '/our-services#health-restoration' },
   },
 ];
 
@@ -79,14 +78,14 @@ const threeTs = [
   {
     title: 'Traumas',
     short: 'Physical stress your body has absorbed.',
-    body: "Old injuries, repetitive strain, the way you sit at your desk, structural compensations from years of holding tension. The body remembers, and what it cannot process, it stores. Chiropractic adjustments and movement assessment reveal what is still held in your structure.",
+    body: "Old injuries, repetitive strain, the way you sit at your desk. Years of compensation change how your frame loads and moves, and a chiropractic exam with movement assessment can help show where your structure is still working around old stress.",
     image: '/images/homepage/traumas.jpg',
     alt: 'Woman doing a gentle stretch on a wooden floor, body-aware recovery and physical resilience',
   },
   {
     title: 'Toxins',
     short: 'Chemical stress accumulates quietly.',
-    body: 'From what you eat, breathe, and put on your skin. Food sensitivities, environmental exposures, medication side effects: they add up. Targeted lab work shows where your body is fighting battles you did not know you had.',
+    body: 'From what you eat, breathe, and put on your skin. Food sensitivities, environmental exposures, medication side effects: they add up. Targeted lab work can show where your body may be under stress you did not know about.',
     image: '/images/homepage/toxins.jpg',
     alt: 'Hands rinsing fresh carrots under water, clean food prep representing reduced toxic load',
   },
@@ -97,6 +96,38 @@ const threeTs = [
     image: '/images/homepage/thoughts.jpg',
     alt: 'Open journal on a wooden table in soft morning light, calm reflection and mental wellness',
   },
+];
+
+// First-visit walkthrough — pricing figures must stay in sync with
+// /pricing (pricing.astro FAQ + price cards). Change all locations together.
+const firstVisitSteps = [
+  {
+    title: 'We listen first.',
+    body: 'Bring your story, your symptoms, and any labs you already have. Your history gets real time, not a rushed visit.',
+  },
+  {
+    title: 'A thorough chiropractic exam.',
+    body: 'Dr. DeNome performs a full exam, with X-rays only if they are clinically needed. If deeper lab work makes sense, we explain exactly what each test looks for and why.',
+  },
+  {
+    title: 'You leave with a clear next step.',
+    body: 'Most chiropractic patients receive their first adjustment the same day. Health restoration patients leave knowing which labs come next and what those results may show us. Either way, you set the pace. You have options.',
+  },
+];
+
+const credentials = [
+  'Doctor of Chiropractic (DC)',
+  'Life University graduate',
+  'Webster Technique certified',
+  'Works alongside your PCP',
+];
+
+const labPartners = [
+  { src: '/images/partners/access.png', alt: 'Access Medical Labs', width: 548, height: 130 },
+  { src: '/images/partners/dutch.svg', alt: 'Dutch Test by Precision Analytical' },
+  { src: '/images/partners/genova.svg', alt: 'Genova Diagnostics' },
+  { src: '/images/partners/immunolabs.jpg', alt: 'ImmunoLabs', width: 340, height: 100 },
+  { src: '/images/partners/mosaic.svg', alt: 'Mosaic Diagnostics (OAT and heavy metal testing)' },
 ];
 ---
 
@@ -119,20 +150,16 @@ const threeTs = [
     <div class="hero-bleed-scrim" aria-hidden="true"></div>
     <div class="hero-bleed-inner">
       <div class="hero-bleed-text">
-        <h1 class="hero-headline">
+        <h1 class="hero-headline hero-stagger">
           <span class="hero-kicker">Chiropractic Care in Mason, OH</span>
-          Common is <em>not normal.</em>
+          Your labs are <em>normal.</em> You still feel awful.
         </h1>
-        <p class="hero-positioning">Health restoration starts here.</p>
-        <p class="hero-lede">
-          A chiropractic clinic in Mason, OH built around manual, specific adjustments,
-          and a deeper layer of health restoration when your body is asking for more.
-          We don't guess. We test. We work alongside your physicians, not in place of them.
-          We help your body do what it was designed to do: heal.
+        <p class="hero-lede hero-stagger">
+          The body never does anything without a reason. We test to find yours.
         </p>
-        <div class="hero-bleed-ctas">
+        <div class="hero-bleed-ctas hero-stagger">
           <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
-            Book a Consultation
+            Start Getting Answers
           </Button>
           <Button href="/our-approach" variant="inverse" size="lg" iconAfter>
             See our approach
@@ -142,61 +169,88 @@ const threeTs = [
     </div>
   </section>
 
-  <!-- Section 1.5: Problem / Solution — empathic bridge into the 3 T's -->
-  <SectionContainer width="default" spacing="lg" background="paper">
+  <!-- Section 2: Hook — validate the dismissal before teaching anything -->
+  <SectionContainer width="narrow" spacing="xl" background="paper">
+    <div class="hook">
+      <h2 data-reveal>You've been bounced from doctor to doctor. And you're still tired.</h2>
+      <p data-reveal="up-sm">
+        Another referral, another fifteen-minute visit, another "everything looks fine."
+        Someone told you to manage your stress and never said how. And somewhere on the
+        drive home, you started wondering if it's all in your head.
+      </p>
+      <p class="hook-turn" data-reveal="up-sm">
+        It isn't. Feeling this way may be common, but common is not normal.
+        You're not alone, and you're not out of options.
+      </p>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 3: Problem / Solution — why symptom-chasing fails, what we do instead -->
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
     <div class="ps-grid">
       <div class="ps-col ps-problem">
-        <p class="eyebrow" data-reveal>If this sounds familiar</p>
-        <h2 data-reveal>You've been bounced from doctor to doctor. And you're still tired.</h2>
+        <h2 data-reveal>Why chasing symptoms never quite works</h2>
         <p data-reveal="up-sm">
-          Your labs came back "normal." Another specialist sent you home with another prescription.
-          Someone told you to "manage your stress" and didn't say how. You're exhausted, in pain,
-          or just <em>off</em>, and you're starting to wonder if anyone is actually listening to
-          what your body has been saying.
+          Most care is built to quiet the symptom in front of it. Pain? Something for
+          pain. Fatigue? A shrug and a sleep tip. Each specialist sees one body part, so
+          nobody is watching how your hormones, gut, immune system, and nervous system
+          talk to each other.
         </p>
         <p data-reveal="up-sm">
-          You're not imagining it. And you're not alone.
+          That model is excellent in a crisis. It just wasn't built for the slow,
+          stubborn stuff. The body never does anything without a reason, and when one
+          quick fix follows another while you still feel <em>off</em>, the problem
+          usually isn't you. It's care that manages symptoms without ever asking why
+          they're there.
         </p>
       </div>
       <div class="ps-col ps-solution">
-        <p class="eyebrow" data-reveal>How we work differently</p>
-        <h2 data-reveal>Your body is the smoke alarm. We look for the fire.</h2>
+        <h2 data-reveal>Find the fire, not just the alarm</h2>
         <p data-reveal="up-sm">
-          Symptoms are signals: your body telling you something is off. As a chiropractic
-          physician working alongside your existing PCP and specialists, we run targeted
-          functional testing that goes deeper than a standard panel. Labs that ask <em>why</em>
-          your body is doing what it's doing, and what's actually connecting these symptoms to
-          each other.
+          A smoke alarm doing its job is loud, annoying, and right. Silencing it doesn't
+          put out the fire, and your symptoms work the same way: signals, not
+          malfunctions. So we start with a different question. Why is your body
+          sounding the alarm?
         </p>
         <p data-reveal="up-sm">
-          Then we sit down with you and build a plan together, one that addresses the underlying
-          drivers, not just the alarm. We don't guess. We test.
+          Targeted functional lab work looks for the pattern underneath, across three
+          kinds of stress: Traumas (physical), Toxins (chemical), and Thoughts
+          (emotional). Then we sit down together, walk through your results in plain
+          English, and build a plan that fits your real life. Test, don't guess. And all
+          of it happens alongside your PCP and specialists, never in place of them.
         </p>
         <p class="ps-bridge" data-reveal="up-sm">
-          Here's how we look at the patterns underneath.
+          And when we say test, we mean real labs. Here's who runs them.
         </p>
       </div>
     </div>
   </SectionContainer>
 
-  <!-- Section 1.7: Lab partners strip — trust signal for "we test" claim -->
-  <SectionContainer width="default" spacing="md" background="paper-soft" ariaLabel="Lab partners">
+  <!-- Section 4: Lab partners — single slow marquee, the receipt for "we test" -->
+  <SectionContainer width="wide" spacing="md" background="paper-soft" ariaLabel="Lab partners">
     <div class="lab-strip">
       <p class="lab-strip-eyebrow" data-reveal>Lab partners we trust</p>
-      <ul class="lab-strip-list" role="list">
-        <li><img src="/images/partners/access.png" alt="Access Medical Labs" loading="lazy" width="548" height="130" /></li>
-        <li><img src="/images/partners/dutch.svg" alt="Dutch Test by Precision Analytical" loading="lazy" /></li>
-        <li><img src="/images/partners/genova.svg" alt="Genova Diagnostics" loading="lazy" /></li>
-        <li><img src="/images/partners/immunolabs.jpg" alt="ImmunoLabs" loading="lazy" width="340" height="100" /></li>
-        <li><img src="/images/partners/mosaic.svg" alt="Mosaic Diagnostics (OAT and heavy metal testing)" loading="lazy" /></li>
-      </ul>
+      <div class="lab-marquee">
+        <div class="lab-track">
+          <ul class="lab-strip-list" role="list">
+            {labPartners.map((p) => (
+              <li><img src={p.src} alt={p.alt} loading="lazy" width={p.width} height={p.height} /></li>
+            ))}
+          </ul>
+          <ul class="lab-strip-list" role="presentation" aria-hidden="true">
+            {labPartners.map((p) => (
+              <li><img src={p.src} alt="" loading="lazy" width={p.width} height={p.height} /></li>
+            ))}
+          </ul>
+        </div>
+      </div>
       <p class="lab-strip-caption" data-reveal="up-sm">
         We work with Access, Dutch, Genova, ImmunoLabs, and Mosaic (for OAT and heavy metal panels), so health restoration reaches the depth that standard panels miss.
       </p>
     </div>
   </SectionContainer>
 
-  <!-- Section 2: The 3 T's — image-led, alternating layout -->
+  <!-- Section 5: The 3 T's — image-led, alternating layout -->
   <SectionContainer width="default" spacing="xl" background="paper-soft">
     <div class="section-head">
       <p class="eyebrow">The Wellness Way Approach</p>
@@ -224,13 +278,77 @@ const threeTs = [
     </div>
   </SectionContainer>
 
-  <!-- Section 3: Conditions — refined typography list, not card grid -->
+  <!-- Section 6: First visit — proof panel: walkthrough, transparent pricing,
+       verifiable credentials. Everything here is checkable before you visit. -->
+  <SectionContainer width="default" spacing="xl" background="paper-warm-tint" ariaLabel="Your first visit">
+    <div class="visit-grid">
+      <div class="visit-intro" data-reveal>
+        <p class="eyebrow eyebrow-lockup">Your first visit</p>
+        <h2>What your first visit looks like.</h2>
+        <p class="visit-lede">
+          No mystery pricing and no pressure. Here is the whole visit, start to finish,
+          so you can walk in knowing what to expect.
+        </p>
+        <div class="price-card">
+          <p class="price-title">Every new patient visit</p>
+          <p class="price-amount">$99<span class="price-flat">flat</span></p>
+          <p class="price-body">
+            For chiropractic, that covers your exam, X-rays if they're needed, and your
+            first adjustment. Follow-up adjustments are $50 with soft tissue work,
+            cupping, and scraping included. For health restoration, it covers your
+            intake conversation and a review of any labs you bring.
+          </p>
+        </div>
+        <div class="visit-ctas">
+          <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+            Start Getting Answers
+          </Button>
+          {clinic.gbpUrl && (
+            <a class="reviews-link" href={clinic.gbpUrl} target="_blank" rel="noopener noreferrer">
+              Read our Google reviews
+            </a>
+          )}
+        </div>
+      </div>
+      <div class="visit-steps-col">
+        <ol class="visit-steps">
+          {firstVisitSteps.map((s, i) => (
+            <li data-reveal="up-sm">
+              <span class="visit-num" aria-hidden="true">{i + 1}</span>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <Image
+          class="visit-photo"
+          src={labKitsFlatLay}
+          alt="Functional lab kits from Access, DUTCH, Genova, and ImmunoLabs at The Wellness Way - Mason"
+          widths={[480, 720, 960, 1440]}
+          sizes="(min-width: 1024px) 45vw, 100vw"
+          loading="lazy"
+          quality={82}
+        />
+      </div>
+    </div>
+    <ul class="cred-strip" role="list" data-reveal="up-sm">
+      {credentials.map((c) => (
+        <li>
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5L13.5 4" /></svg>
+          {c}
+        </li>
+      ))}
+    </ul>
+  </SectionContainer>
+
+  <!-- Section 7: Conditions — refined typography list, not card grid -->
   <SectionContainer width="narrow" spacing="lg">
     <div class="section-head">
-      <p class="eyebrow">Conditions We See</p>
       <h2>Common, but not normal.</h2>
       <p class="section-lede">
-        Most patients walk through our doors after being told their labs are "normal" while still
+        Patients often walk through our doors after being told their labs are "normal" while still
         feeling anything but. Here are some of the patterns we see most.
       </p>
     </div>
@@ -244,73 +362,12 @@ const threeTs = [
     </div>
   </SectionContainer>
 
-  <!-- Section 4: Expertise — feature cards on warm-tint -->
-  <SectionContainer width="default" spacing="lg" background="paper-warm-tint">
+  <!-- Section 8: Two arms intro — chiropractic vs health restoration -->
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
     <div class="section-head">
-      <p class="eyebrow">Our Expertise</p>
-      <h2>Chiropractic care + functional testing, integrated.</h2>
-    </div>
-    <div class="expertise-grid">
-      <Card
-        title="Health Restoration"
-        variant="feature"
-        image={twwSupplements}
-        imageAlt="Wellness Way branded liquid herbal supplements on the clinic shelf"
-      >
-        <p>
-          We address gut health, hormone balance, nutrition, stress, thyroid, mold, and weight
-          management, among other patterns. We don't guess. We test.
-        </p>
-        <span slot="footer"><a href="/our-services">Explore services →</a></span>
-      </Card>
-      <Card
-        title="Chiropractic Adjustments"
-        variant="feature"
-        image={adultAdjustment}
-        imageAlt="Hands-on chiropractic adjustment of the upper back at The Wellness Way - Mason"
-      >
-        <p>
-          Gentle, hands-on adjustments to improve mobility and address mechanical drivers of pain.
-          Pregnancy and pediatric care, sciatica, back & neck pain, sports performance, and
-          Webster Technique for prenatal patients.
-        </p>
-        <span slot="footer"><a href="/our-services">See techniques →</a></span>
-      </Card>
-    </div>
-  </SectionContainer>
-
-  <!-- Section 4b: Atmosphere — full-bleed clinic interior with overlay panel -->
-  <section class="atmosphere-bleed" aria-label="Our space">
-    <Image
-      class="atmosphere-bleed-image"
-      src={pediatricPlayRoom}
-      alt="Family-friendly pediatric play room with green tree bookshelf at The Wellness Way - Mason"
-      widths={[640, 960, 1280, 1920, 2560]}
-      sizes="100vw"
-      loading="lazy"
-      quality={82}
-    />
-    <div class="atmosphere-bleed-scrim" aria-hidden="true"></div>
-    <div class="atmosphere-bleed-inner">
-      <div class="atmosphere-card">
-        <p class="eyebrow">Built for the whole family</p>
-        <h2>Pediatric &amp; prenatal care in a space for every age.</h2>
-        <p>
-          From newborns to grandparents, the clinic is designed for real families with real lives.
-          Pediatric play space, prenatal-comfortable adjusting tables, calm lighting, and a team
-          that knows your kids by name.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4c: Two arms intro — chiropractic vs health restoration -->
-  <SectionContainer width="default" spacing="lg">
-    <div class="section-head">
-      <p class="eyebrow">Two arms of one practice</p>
       <h2>Pick the door that fits where you are right now.</h2>
       <p class="section-lede">
-        Chiropractic for hands-on adjustments and the conditions chiropractors are known for.
+        Chiropractic for hands-on adjustments and the pain you can point to.
         Health restoration for the deeper testing-based work. Same approach, two paths in.
       </p>
     </div>
@@ -321,13 +378,7 @@ const threeTs = [
           <p class="arm-slogan">{arm.slogan}</p>
           <p class="arm-body">{arm.body}</p>
           <aside class="arm-callout">{arm.callout}</aside>
-          <Button
-            href={arm.cta.href === 'BOOKING' ? clinic.bookingUrl : arm.cta.href}
-            variant="primary"
-            size="md"
-            external={arm.cta.href === 'BOOKING'}
-            iconAfter
-          >
+          <Button href={arm.cta.href} variant="ghost" size="md" iconAfter>
             {arm.cta.label}
           </Button>
         </article>
@@ -335,13 +386,12 @@ const threeTs = [
     </div>
   </SectionContainer>
 
-  <!-- Section 5: 4-Step Process — vertical with connecting line -->
-  <SectionContainer width="default" spacing="xl" background="paper-soft">
+  <!-- Section 9: 4-Step Process — vertical timeline, line fills as you scroll -->
+  <SectionContainer width="default" spacing="xl">
     <div class="section-head">
-      <p class="eyebrow">The Wellness Way 4-Step Process</p>
       <h2>How we work with you.</h2>
       <p class="section-lede">
-        Whichever door you came through, the underlying approach is the same.
+        Whichever door you came through, The Wellness Way 4-Step Process is the same.
       </p>
     </div>
     <ol class="steps">
@@ -357,10 +407,63 @@ const threeTs = [
     </ol>
   </SectionContainer>
 
-  <!-- Section 6: Featured posts -->
+  <!-- Section 10: Atmosphere — full-bleed clinic interior with overlay panel -->
+  <section class="atmosphere-bleed" aria-label="Our space">
+    <Image
+      class="atmosphere-bleed-image"
+      src={pediatricPlayRoom}
+      alt="Family-friendly pediatric play room with green tree bookshelf at The Wellness Way - Mason"
+      widths={[640, 960, 1280, 1920, 2560]}
+      sizes="100vw"
+      loading="lazy"
+      quality={82}
+    />
+    <div class="atmosphere-bleed-scrim" aria-hidden="true"></div>
+    <div class="atmosphere-bleed-inner">
+      <div class="atmosphere-card">
+        <h2>Pediatric &amp; prenatal care in a space for every age.</h2>
+        <p>
+          From newborns to grandparents, the clinic is designed for real families with real lives.
+          Pediatric play space, prenatal-comfortable adjusting tables, calm lighting, and a team
+          that knows your kids by name.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 11: Meet Dr. Ryan — image-text grid -->
+  <SectionContainer width="default" spacing="xl" background="paper-warm">
+    <div class="provider-teaser">
+      <div class="provider-text">
+        <p class="eyebrow eyebrow-lockup">Meet Your Chiropractor</p>
+        <h2>Dr. Ryan DeNome, DC</h2>
+        <p class="provider-lede">
+          Doctor of Chiropractic, Life University graduate, and Cincinnati native.
+          Certified in the Webster Technique. Especially passionate about supporting men feeling
+          limited by health challenges, mothers running on empty while caring for everyone else,
+          and patients with complex cases who haven't found answers in conventional care.
+        </p>
+        <blockquote class="ryan-quote">
+          "It is health that is real wealth and not pieces of gold and silver."
+          <cite>Mahatma Gandhi</cite>
+        </blockquote>
+        <Button href="/about-us" variant="link" iconAfter>Read full bio</Button>
+      </div>
+      <div class="provider-photo">
+        <img
+          src="/images/people/dr-ryan-denome.jpg"
+          alt="Dr. Ryan DeNome, DC at The Wellness Way - Mason"
+          loading="lazy"
+          width="1500"
+          height="1500"
+        />
+      </div>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 12: Featured posts -->
   <SectionContainer width="default" spacing="lg" background="paper-soft">
     <div class="section-head">
-      <p class="eyebrow">From the journal</p>
       <h2>Latest insights</h2>
       <p class="section-lede">Real answers, real conditions, real explanations.</p>
     </div>
@@ -384,41 +487,10 @@ const threeTs = [
     </div>
   </SectionContainer>
 
-  <!-- Section 7: Meet Dr. Ryan — image-text grid -->
-  <SectionContainer width="default" spacing="xl" background="paper-warm">
-    <div class="provider-teaser">
-      <div class="provider-text">
-        <p class="eyebrow">Meet Your Chiropractor</p>
-        <h2>Dr. Ryan DeNome, DC</h2>
-        <p class="provider-lede">
-          Doctor of Chiropractic, Life University graduate, and Cincinnati native.
-          Certified in the Webster Technique. Especially passionate about supporting men feeling
-          limited by health challenges, mothers juggling stress and wellness, and patients with
-          complex cases who haven't found answers in conventional care.
-        </p>
-        <blockquote class="ryan-quote">
-          "It is health that is real wealth and not pieces of gold and silver."
-          <cite>— Mahatma Gandhi</cite>
-        </blockquote>
-        <Button href="/about-us" variant="link" iconAfter>Read full bio</Button>
-      </div>
-      <div class="provider-photo">
-        <img
-          src="/images/people/dr-ryan-denome.jpg"
-          alt="Dr. Ryan DeNome, DC at The Wellness Way - Mason"
-          loading="lazy"
-          width="1500"
-          height="1500"
-        />
-      </div>
-    </div>
-  </SectionContainer>
-
-  <!-- Section 8: Service area + map -->
+  <!-- Section 13: Service area + map -->
   <SectionContainer width="default" spacing="lg">
     <div class="service-area-grid">
       <div>
-        <p class="eyebrow">Where We Are</p>
         <h2>Serving Mason and the Greater Cincinnati Area</h2>
         <p class="service-lede">
           We see patients from {clinic.serviceArea.join(', ')}, and beyond.
@@ -436,16 +508,15 @@ const threeTs = [
     </div>
   </SectionContainer>
 
-  <!-- Section 9: Hours -->
+  <!-- Section 14: Hours -->
   <SectionContainer width="narrow" spacing="md" background="paper-soft">
     <div class="hours-section">
-      <p class="eyebrow">When We're Here</p>
       <h2>Clinic Hours</h2>
       <HoursTable />
     </div>
   </SectionContainer>
 
-  <!-- Section 10: Final CTA — full-bleed photo with TWW Green tint overlay -->
+  <!-- Section 15: Final CTA — full-bleed photo with TWW Green tint overlay -->
   <section class="final-cta-bleed" aria-label="Book a consultation">
     <Image
       class="final-cta-image"
@@ -459,10 +530,14 @@ const threeTs = [
     />
     <div class="final-cta-scrim" aria-hidden="true"></div>
     <div class="final-cta-inner">
-      <h2>Ready to listen to what your body has been saying?</h2>
-      <p>Bring your story. Bring your questions. Bring whatever labs and history you have. We'll listen. We'll test. We'll build a plan with you.</p>
+      <h2>Start with a conversation, not a commitment.</h2>
+      <p>
+        Come with your questions, your history, and the folder of labs no one has
+        explained yet. Your first visit is a flat $99, and you'll leave knowing exactly
+        what happens next. We'll listen. We'll ask why. We'll build the plan with you.
+      </p>
       <Button href={clinic.bookingUrl} variant="secondary" size="lg" external iconAfter>
-        Book a Consultation
+        Start Getting Answers
       </Button>
     </div>
   </section>
@@ -484,6 +559,21 @@ const threeTs = [
     margin: 0 0 1rem;
     font-weight: 500;
   }
+  /* Eyebrow lockup: the one added ornament — a short TWW Green rule that
+     turns a grey caps label into a composed unit. */
+  .section-head .eyebrow::after,
+  .eyebrow-lockup::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-brand-primary);
+    margin: 0.9rem 0 0;
+  }
+  .section-head .eyebrow::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .section-head h2 {
     margin: 0 0 1.25rem;
     font-size: var(--text-3xl);
@@ -498,6 +588,29 @@ const threeTs = [
   .section-cta {
     text-align: center;
     margin-top: 2.5rem;
+  }
+
+  /* === Hook — editorial validation moment === */
+  .hook h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    line-height: 1.12;
+    color: var(--color-ink-strong);
+    margin: 0 0 1.75rem;
+    max-width: 24ch;
+  }
+  .hook p {
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+    max-width: 58ch;
+  }
+  .hook-turn {
+    font-family: var(--font-display);
+    color: var(--color-ink-strong);
+    font-size: var(--text-xl);
+    line-height: 1.5;
   }
 
   /* === Problem / Solution bridge === */
@@ -521,9 +634,9 @@ const threeTs = [
     margin: 0 0 1rem;
   }
   .ps-col p:last-child { margin-bottom: 0; }
-  .ps-col .eyebrow { margin-bottom: 1rem; }
   .ps-problem h2 em,
-  .ps-solution h2 em {
+  .ps-solution h2 em,
+  .ps-col p em {
     font-style: italic;
     color: var(--color-brand-primary-dark);
   }
@@ -560,6 +673,11 @@ const threeTs = [
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
+    transition: transform 600ms var(--ease-soft);
+  }
+  /* Quiet zoom signals the whole row is one unit — the editorial-site tell. */
+  .t-row:hover .t-image img {
+    transform: scale(1.03);
   }
   .t-numeral {
     position: absolute;
@@ -589,6 +707,132 @@ const threeTs = [
     color: var(--color-ink-muted);
     line-height: 1.7;
     margin: 0;
+  }
+
+  /* === First visit proof panel === */
+  .visit-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+  .visit-intro .eyebrow { margin-bottom: 1rem; }
+  .visit-intro h2 {
+    font-size: var(--text-3xl);
+    margin: 0 0 1rem;
+    color: var(--color-ink-strong);
+  }
+  .visit-lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    margin: 0 0 2rem;
+    max-width: 42ch;
+  }
+  .price-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 2rem;
+  }
+  .price-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--color-ink-muted);
+    font-weight: 500;
+    margin: 0 0 0.5rem;
+  }
+  .price-amount {
+    font-family: var(--font-display);
+    font-size: var(--text-5xl);
+    line-height: 1;
+    color: var(--color-ink-strong);
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .price-flat {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-xl);
+    color: var(--color-brand-primary-dark);
+  }
+  .price-body {
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .visit-ctas {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .reviews-link {
+    color: var(--color-ink-strong);
+    font-weight: 500;
+    font-size: var(--text-base);
+  }
+  .visit-steps {
+    list-style: none;
+    margin: 0 0 2.5rem;
+    padding: 0;
+  }
+  .visit-steps li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .visit-steps li:first-child { padding-top: 0; }
+  .visit-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-3xl);
+    line-height: 1;
+    color: var(--color-brand-primary-dark);
+  }
+  .visit-steps h3 {
+    font-size: var(--text-xl);
+    margin: 0 0 0.5rem;
+    color: var(--color-ink-strong);
+  }
+  .visit-steps p {
+    margin: 0;
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+  }
+  .visit-photo {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+  .cred-strip {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 1.5rem 0 0;
+    border-top: 1px solid var(--color-line);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+  }
+  .cred-strip li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--color-ink-strong);
+    font-weight: 500;
+    font-size: var(--text-sm);
+  }
+  .cred-strip svg {
+    color: var(--color-brand-primary-dark);
+    flex-shrink: 0;
   }
 
   /* === Conditions list (refined typography, interactive links) === */
@@ -635,13 +879,6 @@ const threeTs = [
     transform: translateY(-50%) translateX(4px);
   }
   .conditions-list li:last-child { border-bottom: none; }
-
-  /* === Expertise === */
-  .expertise-grid {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: 1fr;
-  }
 
   /* === Two-arms grid (chiro vs health restoration) === */
   .arms-grid {
@@ -695,7 +932,7 @@ const threeTs = [
     }
   }
 
-  /* === 4-step process — vertical timeline === */
+  /* === 4-step process — vertical timeline with scroll-fill === */
   .steps {
     list-style: none;
     padding: 0;
@@ -720,6 +957,23 @@ const threeTs = [
     width: 2px;
     background: var(--color-line);
   }
+  /* Green overlay line draws downward as each step reveals — the timeline
+     "completes" itself while you scroll, enacting the 4-step narrative. */
+  .steps li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    top: 3.5rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-brand-primary);
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 700ms var(--ease-soft) 200ms;
+  }
+  .steps li:global(.is-visible):not(:last-child)::after {
+    transform: scaleY(1);
+  }
   .step-num {
     width: 3rem;
     height: 3rem;
@@ -735,6 +989,10 @@ const threeTs = [
     justify-content: center;
     flex-shrink: 0;
     z-index: 1;
+    transition: background 400ms var(--ease-soft) 200ms;
+  }
+  .steps li:global(.is-visible) .step-num {
+    background: var(--color-brand-primary-soft);
   }
   .step-body { padding-top: 0.4rem; }
   .step-body h3 {
@@ -755,7 +1013,7 @@ const threeTs = [
     grid-template-columns: 1fr;
   }
 
-  /* === Lab partners strip === */
+  /* === Lab partners marquee === */
   .lab-strip {
     text-align: center;
   }
@@ -767,41 +1025,49 @@ const threeTs = [
     margin: 0 0 1.75rem;
     font-weight: 500;
   }
+  .lab-marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    margin-bottom: 1.75rem;
+  }
+  .lab-track {
+    display: flex;
+    width: max-content;
+    animation: lab-drift 40s linear infinite;
+  }
+  .lab-marquee:hover .lab-track {
+    animation-play-state: paused;
+  }
+  @keyframes lab-drift {
+    to { transform: translateX(-50%); }
+  }
   .lab-strip-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 2.5rem;
+    margin: 0;
+    display: flex;
     align-items: center;
-    justify-items: center;
-  }
-  @media (min-width: 768px) {
-    .lab-strip-list {
-      grid-template-columns: repeat(5, 1fr);
-    }
+    gap: 4.5rem;
+    padding-right: 4.5rem;
   }
   .lab-strip-list li {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 56px;
   }
   .lab-strip-list img {
-    max-height: 44px;
-    max-width: 180px;
+    max-height: 48px;
+    max-width: 190px;
     width: auto;
     height: auto;
     object-fit: contain;
     filter: grayscale(100%) opacity(0.65);
-    transition: filter var(--duration-normal) var(--ease-soft),
-                transform var(--duration-normal) var(--ease-soft);
+    transition: filter var(--duration-normal) var(--ease-soft);
   }
   .lab-strip-list li:hover img {
     filter: grayscale(0%) opacity(1);
-    transform: translateY(-2px);
   }
   .lab-strip-caption {
     color: var(--color-ink-muted);
@@ -811,40 +1077,23 @@ const threeTs = [
     line-height: 1.55;
     font-style: italic;
   }
-  @media (min-width: 768px) {
+  @media (prefers-reduced-motion: reduce) {
+    .lab-track {
+      animation: none;
+      width: 100%;
+      justify-content: center;
+    }
+    .lab-track .lab-strip-list[aria-hidden="true"] { display: none; }
     .lab-strip-list {
-      grid-template-columns: repeat(5, 1fr);
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 2rem 2.5rem;
+      padding-right: 0;
     }
-    .lab-strip-list img {
-      max-height: 52px;
-      max-width: 200px;
+    .lab-marquee {
+      mask-image: none;
+      -webkit-mask-image: none;
     }
-  }
-
-  /* === Atmosphere band === */
-  .atmosphere {
-    display: grid;
-    gap: 2.5rem;
-    align-items: center;
-  }
-  .atmosphere-image img {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-card);
-  }
-  .atmosphere-text h2 {
-    margin: 0 0 1.25rem;
-    font-size: var(--text-3xl);
-  }
-  .atmosphere-text p {
-    color: var(--color-ink-muted);
-    line-height: 1.7;
-    font-size: var(--text-lg);
-    max-width: 50ch;
-    margin: 0;
   }
 
   /* === Provider teaser === */
@@ -857,6 +1106,7 @@ const threeTs = [
     font-size: var(--text-4xl);
     margin: 0 0 1.25rem;
   }
+  .provider-text .eyebrow { margin-bottom: 1.25rem; }
   .provider-lede {
     color: var(--color-ink);
     line-height: 1.7;
@@ -916,7 +1166,6 @@ const threeTs = [
 
   /* === Hours === */
   .hours-section { text-align: center; }
-  .hours-section .eyebrow { margin-bottom: 0.75rem; }
   .hours-section h2 {
     margin: 0 0 2rem;
     font-size: var(--text-3xl);
@@ -945,6 +1194,15 @@ const threeTs = [
     object-position: center 35%;
     z-index: -2;
   }
+  /* One-shot 14s settle from 1.06 to 1.0 — a considered, expensive open.
+     Gated behind html.js so crawlers and no-JS visitors see a static hero. */
+  :global(html.js) .hero-bleed-image {
+    animation: hero-settle 14s var(--ease-soft) forwards;
+  }
+  @keyframes hero-settle {
+    from { transform: scale(1.06); }
+    to { transform: scale(1); }
+  }
   .hero-bleed-scrim {
     position: absolute;
     inset: 0;
@@ -964,11 +1222,36 @@ const threeTs = [
     color: var(--color-paper);
   }
   .hero-bleed-text {
-    max-width: 36rem;
+    max-width: 44rem;
   }
-  /* Keyword kicker now lives INSIDE the h1 so the primary keyword is part of
-     the H1 text Google reads (Manus audit 2A), while "Common is not normal."
-     keeps the visual punch. */
+  /* Entrance stagger walks the eye headline -> subtitle -> CTA in reading
+     order. JS-gated; reduced-motion renders static below. */
+  :global(html.js) .hero-stagger {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: hero-rise 850ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  :global(html.js) .hero-stagger:nth-child(2) { animation-delay: 110ms; }
+  :global(html.js) .hero-stagger:nth-child(3) { animation-delay: 220ms; }
+  @keyframes hero-rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html.js) .hero-stagger {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    :global(html.js) .hero-bleed-image {
+      animation: none;
+    }
+  }
+  /* Keyword kicker lives INSIDE the h1 so the primary keyword is part of
+     the H1 text Google reads (Manus audit 2A), while the visitor-mirroring
+     headline keeps the visual punch. */
   .hero-kicker {
     display: block;
     font-family: var(--font-body);
@@ -984,31 +1267,24 @@ const threeTs = [
     font-family: var(--font-display);
     font-weight: 500;
     font-size: var(--text-4xl);
-    line-height: 1.05;
+    line-height: 1.08;
     letter-spacing: -0.02em;
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.5rem;
     color: var(--color-paper);
+    max-width: 21ch;
   }
   .hero-headline em {
     font-style: italic;
     color: var(--color-brand-primary);
     font-weight: 400;
   }
-  .hero-positioning {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: var(--text-lg);
-    color: var(--color-paper);
-    opacity: 0.92;
-    margin: 0 0 1.75rem;
-    font-weight: 400;
-  }
   .hero-lede {
     color: var(--color-paper);
-    opacity: 0.92;
-    font-size: var(--text-lg);
-    line-height: 1.6;
+    opacity: 0.94;
+    font-size: var(--text-xl);
+    line-height: 1.5;
     margin: 0 0 2.5rem;
+    max-width: 34ch;
     text-shadow: 0 1px 8px rgba(0,0,0,0.35);
   }
   .hero-bleed-ctas {
@@ -1059,14 +1335,6 @@ const threeTs = [
     max-width: 32rem;
     border: 1px solid rgba(255,255,255,0.6);
   }
-  .atmosphere-card .eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    margin: 0 0 0.75rem;
-    font-weight: 500;
-  }
   .atmosphere-card h2 {
     margin: 0 0 1rem;
     font-size: var(--text-3xl);
@@ -1101,8 +1369,8 @@ const threeTs = [
     inset: 0;
     background:
       linear-gradient(135deg,
-        rgba(128, 183, 65, 0.92) 0%,
-        rgba(94, 138, 48, 0.82) 100%);
+        rgba(128, 183, 65, 0.94) 0%,
+        rgba(110, 160, 55, 0.88) 100%);
     z-index: -1;
   }
   .final-cta-inner {
@@ -1124,7 +1392,6 @@ const threeTs = [
   }
   .final-cta-inner p {
     color: var(--color-ink-strong);
-    opacity: 0.92;
     max-width: 50ch;
     margin: 0 auto 2.5rem;
     line-height: 1.6;
@@ -1134,6 +1401,7 @@ const threeTs = [
   /* === Responsive === */
   @media (min-width: 768px) {
     .section-head h2 { font-size: var(--text-4xl); }
+    .hook h2 { font-size: var(--text-4xl); }
     .ps-grid {
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
@@ -1152,14 +1420,23 @@ const threeTs = [
       grid-template-columns: 1fr 1fr;
       column-gap: 2.5rem;
     }
-    .expertise-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .atmosphere { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
+    .visit-grid {
+      grid-template-columns: 5fr 6fr;
+      gap: 4rem;
+    }
+    .visit-intro h2 { font-size: var(--text-4xl); }
+    .cred-strip {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 4rem;
+      padding-top: 2rem;
+    }
     .post-grid { grid-template-columns: repeat(3, 1fr); }
     .provider-teaser { grid-template-columns: 1.4fr 1fr; gap: 4rem; }
     .service-area-grid { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
     .steps li { grid-template-columns: 5rem 1fr; gap: 2rem; }
     .step-num { width: 3.5rem; height: 3.5rem; font-size: var(--text-2xl); }
-    .steps li:not(:last-child)::before { left: 1.75rem; top: 4rem; }
+    .steps li:not(:last-child)::before,
+    .steps li:not(:last-child)::after { left: 1.75rem; top: 4rem; }
     .hero-headline { font-size: var(--text-5xl); }
     .hero-bleed-inner { padding: 7rem 2rem; }
     .atmosphere-bleed-inner { padding: 7rem 2rem; }
@@ -1169,9 +1446,18 @@ const threeTs = [
   @media (min-width: 1024px) {
     .hero-headline { font-size: var(--text-6xl); }
     .hero-bleed { min-height: 86vh; }
-  }
-  @media (min-width: 1024px) {
+    .section-head { margin-bottom: 4rem; }
+    .section-head h2 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
+    }
     .provider-text h2 { font-size: var(--text-5xl); }
     .three-ts { gap: 6rem; }
+    /* Sticky intro column: the pricing card and CTA stay in view while the
+       walkthrough scrolls — booking is never more than a glance away. */
+    .visit-intro {
+      position: sticky;
+      top: 6rem;
+    }
   }
 </style>

@@ -1,11 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Button from '../components/Button.astro';
-import Card from '../components/Card.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import { clinic } from '../lib/site';
+import labShelfReach from '../assets/clinic/lab-shelf-reach.jpg';
 
 const approachFaqs = [
   {
@@ -22,7 +23,7 @@ const approachFaqs = [
   },
   {
     question: 'How long does health restoration usually take?',
-    answer: '<p>It depends on what we\'re addressing. Acute pain may resolve in weeks. Chronic patterns and complex cases (autoimmune, hormone, gut) typically take 3–6 months of consistent care to see meaningful change. We build a Health Restoration Plan with realistic timelines and check in regularly.</p>',
+    answer: '<p>It depends on what we\'re addressing. Acute pain may resolve in weeks. Chronic patterns and complex cases (autoimmune, hormone, gut) typically take three to six months of consistent care before meaningful change shows up. We build a Health Restoration Plan with realistic timelines and check in regularly.</p>',
   },
   {
     question: 'Will I have to stop my current medications?',
@@ -33,19 +34,22 @@ const approachFaqs = [
 const threeTs = [
   {
     title: 'Traumas',
-    body: 'Whether from accidents, repetitive stress, poor posture, or old injuries, physical stress creates interference in the nervous system. When your spine and pelvis are misaligned, your brain and body cannot communicate clearly. Chiropractic care addresses that interference.',
+    short: 'Physical stress, stored in the structure.',
+    body: "Car accidents you walked away from. Nine hours a day of desk posture. The labor job that built your shoulders and wore down your low back. Years of compensation change how your frame loads and moves, and that can interfere with how clearly your nervous system communicates. A thorough exam maps where old stress still lives, and specific adjustments may help restore better movement and clearer signaling.",
     image: '/images/homepage/traumas.jpg',
     alt: 'Woman doing a gentle stretch on a wooden floor, body-aware recovery and physical resilience',
   },
   {
     title: 'Toxins',
-    body: "We're surrounded by environmental toxins: in our food, water, air, and personal care products. Toxins disrupt hormones, inflame the gut, suppress immune function, and impair thyroid health. Identifying and reducing toxic burden is a core part of our approach.",
+    short: 'Chemical stress, riding in quietly.',
+    body: "It arrives in food, water, air, cookware, and the products on your skin, and your liver, gut, and hormones have to process all of it. When the load outpaces your capacity, symptoms can surface far from the source. Targeted lab work can show which exposures may be taxing your system, so reducing them becomes a plan instead of a guess.",
     image: '/images/homepage/toxins.jpg',
     alt: 'Hands rinsing fresh carrots under water, clean food prep representing reduced toxic load',
   },
   {
     title: 'Thoughts',
-    body: 'Chronic stress, emotional trauma, and unhealthy mental patterns activate the body\'s stress response, flooding the system with cortisol, suppressing digestion, and disrupting nearly every hormonal pathway. Addressing the mental-emotional dimension is just as important as the physical.',
+    short: 'Emotional stress, written into physiology.',
+    body: "A nervous system stuck in fight-or-flight shifts cortisol, digestion, sleep, and hormone signaling all at once. That's physiology, not weakness, and it is not all in your head. We look at the stress patterns your body is still running, because a plan that ignores them is a plan that works against itself.",
     image: '/images/homepage/thoughts.jpg',
     alt: 'Open journal on a wooden table in soft morning light, calm reflection and mental clarity',
   },
@@ -55,22 +59,22 @@ const fourSteps = [
   {
     n: 1,
     title: 'A New Perspective',
-    body: "You're more than a patient. You're a person with a unique story. We start by listening: what you hope to achieve, where you've been, and what you've already tried. Your first visit is a fresh perspective, guided by clinicians who push back on the idea that you have to settle for limiting health challenges. Virtual appointments are available for those unable to commute.",
+    body: "Your first visit is a conversation, not a conveyor belt. You talk, we listen: what you've tried, what you've been told, and what you want your health to let you do again. If the drive to Mason is a barrier, virtual appointments are available for health restoration care.",
   },
   {
     n: 2,
     title: 'We Test',
-    body: "Instead of a one-size-fits-all approach, we use advanced testing and the latest diagnostic tools to uncover the driving forces of your health challenges. We're always exploring new testing methods to give you the most accurate, up-to-date insight. This is how we identify the missing pieces: the ones traditional healthcare often overlooks and, as a result, never finds.",
+    body: "Advanced functional lab work paired with detailed intake tools, chosen for your case rather than pulled from a template. The goal is to surface what may be driving your symptoms, including patterns a standard panel was never designed to catch.",
   },
   {
     n: 3,
     title: 'We Discover',
-    body: 'When your results are ready, we go beyond conventional explanations of why your body may not be functioning at its best. We walk you through a clear, in-depth analysis of your results so you understand exactly what your body needs to support healing and move forward. That roadmap is what we call your Health Restoration Plan.',
+    body: "When results are in, we walk through them together in plain English: what's happening, why it may be happening, and what your body needs to start moving in a better direction. That conversation becomes your Health Restoration Plan.",
   },
   {
     n: 4,
     title: 'We Guide',
-    body: 'Following your Health Restoration Plan means working alongside our clinicians and dedicated staff to build lasting change. Whether that looks like hands-on chiropractic care, nutrition guidance, or other personalized therapies, our team knows that no two people are the same. Your individual plan is designed around the specific drivers we found in your testing, not a generic template.',
+    body: "A plan only matters if you can live it. Hands-on chiropractic care, nutrition guidance, a supplement care plan, and lifestyle support, adjusted as your body responds. You're never handed a PDF and left to figure it out alone.",
   },
 ];
 ---
@@ -79,77 +83,131 @@ const fourSteps = [
   title="Our Approach: Chiropractic + Health Restoration"
   description="The Wellness Way - Mason's approach: test, don't guess. Chiropractic care alongside in-depth lab testing to find what's actually driving your symptoms. Mason, OH."
 >
+  <!-- Section 1: Hero — pays off the homepage "See our approach" click -->
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Our Approach' }]} />
-    <p class="eyebrow">{clinic.brandName}</p>
-    <h1>Our Approach: We Do Health Differently</h1>
-    <p class="lede"><strong>Common is not normal.</strong></p>
+    <div class="approach-hero" data-reveal>
+      <div class="approach-hero-text">
+        <h1>
+          <span class="page-kicker">Our Approach: Chiropractic &amp; Health Restoration in Mason, OH</span>
+          Told you're fine? We ask a different question.
+        </h1>
+        <p class="lede">
+          Being dismissed is not the same as being well. When symptoms keep returning, the useful
+          question is not how to quiet them but why they started. Here is how we ask it: three
+          stressors, four steps, real testing.
+        </p>
+      </div>
+      <div class="approach-hero-image">
+        <Image
+          src={labShelfReach}
+          alt="Reaching for a functional lab kit on the shelf at The Wellness Way - Mason"
+          widths={[400, 600, 800, 1200]}
+          sizes="(min-width: 768px) 45vw, 100vw"
+          loading="eager"
+          fetchpriority="high"
+          quality={82}
+        />
+      </div>
+    </div>
   </SectionContainer>
 
+  <!-- Section 2: The thesis — one level deeper than the homepage hook -->
   <SectionContainer width="prose" spacing="lg">
-    <p>
-      Most healthcare today is built around managing symptoms: prescribing a medication for what's
-      showing up on the surface, without ever asking <em>why</em> it's there.
-    </p>
-    <p>
-      At The Wellness Way - Mason, we take a fundamentally different approach. We believe that
-      <strong>common is not normal</strong>, and that your body has the ability to heal when you remove what's
-      interfering with it.
-    </p>
-    <p>
-      We're proud to serve patients throughout Mason, OH and the greater Cincinnati area who are tired
-      of being told "your labs look fine" while still feeling terrible.
-    </p>
-    <p>
-      Unlike the restrictive healthcare mentality, we dig deeper to find answers to life-restricting
-      health challenges. We focus on overcoming the three main causes of interference in the body:
-      <strong>traumas, toxins, and thoughts</strong>. That's how we go beyond symptoms-based care and address your unique
-      physiology in ways that allow your mind and body to find a path back to total health.
-    </p>
+    <div class="intro">
+      <p data-reveal>
+        If you've spent years collecting referrals and reassurances, you know the script. Fifteen
+        minutes, a standard panel, and a conclusion that doesn't match how you actually feel:
+        "everything looks fine."
+      </p>
+      <p class="intro-turn" data-reveal="up-sm">
+        We start from a different premise. Common is not normal.
+      </p>
+      <p data-reveal="up-sm">
+        Running on empty, reacting to foods you've eaten your whole life, hurting in ways no scan
+        has explained: all of that is common, and none of it is normal. Those symptoms are signals
+        worth investigating, not noise to be managed.
+      </p>
+      <p data-reveal="up-sm">
+        So instead of matching each complaint to something that quiets it, we ask what your body is
+        responding to. Physical stress. Chemical stress. Emotional stress. We test for the pattern,
+        explain it in plain English, and build a plan around what we find, working alongside your
+        physician rather than in place of them. Patients come to us from Mason, West Chester,
+        Loveland, and across greater Cincinnati for exactly this kind of second look.
+      </p>
+    </div>
   </SectionContainer>
 
-  <SectionContainer width="default" spacing="lg" background="paper-soft">
+  <!-- Section 3: The 3 T's — the framework, deeper than the homepage version -->
+  <SectionContainer width="default" spacing="xl" background="paper-soft">
     <div class="section-head">
       <p class="eyebrow">The Wellness Way Approach</p>
       <h2>The Three T's</h2>
       <p class="section-lede">
-        The Wellness Way Approach begins with inflammation, which plays a significant role in nearly
-        every health challenge. The drivers of inflammation vary from person to person. Investigation
-        begins with assessing the 3 T's. Targeted testing pinpoints the specific ways each T
-        impacts your health, and that's how we build individual plans instead of guessing.
+        Nearly every stubborn health challenge involves inflammation, and inflammation always has
+        drivers. They differ from person to person, so the investigation starts in the same three
+        places every time.
       </p>
     </div>
     <div class="three-ts">
       {threeTs.map((t) => (
-        <article class="t-card">
+        <article class="t-card" data-reveal="up-sm">
           <img src={t.image} alt={t.alt} loading="lazy" />
           <div class="t-body">
             <h3>{t.title}</h3>
+            <p class="t-short">{t.short}</p>
             <p>{t.body}</p>
           </div>
         </article>
       ))}
     </div>
-    <p class="three-ts-close">
-      When all three sources of interference are addressed together, the body can do what it was
-      designed to do: heal.
+    <p class="three-ts-close" data-reveal="up-sm">
+      Address one T and ignore the other two, and the pattern usually finds its way back.
+      We look at all three from the first visit.
     </p>
   </SectionContainer>
 
-  <SectionContainer width="default" spacing="lg">
+  <!-- Section 4: Testing philosophy — how panels get chosen, on the patient's terms -->
+  <SectionContainer width="prose" spacing="lg" background="paper-warm-tint">
+    <div class="testing-head" data-reveal>
+      <h2>How we decide what to test</h2>
+      <p class="value-line">Test, don't guess. Your story picks the panels, not a template.</p>
+    </div>
+    <div class="testing-body">
+      <p data-reveal="up-sm">
+        You wouldn't pay a mechanic to replace parts at random until the noise stopped. Your body
+        deserves at least that much diligence. Testing exists so your plan is built on
+        measurements instead of hunches.
+      </p>
+      <p data-reveal="up-sm">
+        Based on your history, symptoms, and goals, Dr. DeNome recommends specific functional
+        panels: hormones, thyroid, gut health, food sensitivities, toxic burden. Testing is
+        recommended, never required, and you hear the cost and the reasoning behind every panel
+        before anything is ordered. Labs are billed separately and transparently, so there are no
+        mystery invoices.
+      </p>
+      <p data-reveal="up-sm">
+        And when results come back, you don't get a portal upload and a shrug. We sit down
+        together and translate the numbers: what they suggest, what they rule out, and what
+        happens next.
+      </p>
+    </div>
+  </SectionContainer>
+
+  <!-- Section 5: The 4-Step Process — timeline that fills as you scroll -->
+  <SectionContainer width="default" spacing="xl">
     <div class="section-head">
-      <p class="eyebrow">How We Work With You</p>
-      <h2>The process, step by step</h2>
+      <h2>The 4-Step Process</h2>
       <p class="section-lede">
-        Essential guidance to move past seemingly insurmountable obstacles, through testing,
-        individual plans, and one-on-one support to restore your body to total health.
+        Whether you come in for an adjustment or for answers, the arc is the same. Here is the
+        whole process, so you always know where you are in it.
       </p>
     </div>
     <ol class="steps">
       {fourSteps.map((s) => (
         <li>
           <div class="step-num">{s.n}</div>
-          <div>
+          <div class="step-body">
             <h3>{s.title}</h3>
             <p>{s.body}</p>
           </div>
@@ -158,40 +216,129 @@ const fourSteps = [
     </ol>
   </SectionContainer>
 
+  <!-- Section 6: FAQ -->
   <SectionContainer width="default" spacing="lg" background="paper-soft">
     <div class="section-head">
-      <p class="eyebrow">Common questions</p>
-      <h2>About our approach</h2>
+      <h2>Common questions</h2>
     </div>
     <FAQAccordion items={approachFaqs} />
   </SectionContainer>
 
+  <!-- Section 7: Conversion moment -->
   <SectionContainer width="narrow" spacing="lg">
-    <div class="cta-block">
-      <h2>Tired of chasing symptoms?</h2>
-      <p>Ready for real answers? We're here. The Wellness Way - Mason is currently accepting new patients.</p>
+    <div class="cta-block" data-reveal>
+      <h2>Ready to ask a different question?</h2>
+      <p>
+        Your first visit is a flat $99, and you leave with a clear next step, whichever direction
+        you choose. Bring your history, your old labs, and every question you've been saving.
+      </p>
       <div class="cta-row">
-        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call Us</Button>
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Book a Consultation</Button>
+        <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
       </div>
     </div>
   </SectionContainer>
 </BaseLayout>
 
 <style>
-  .eyebrow {
+  /* === Hero === */
+  .approach-hero {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  .approach-hero h1 {
+    margin: 0;
+    font-size: var(--text-4xl);
+    line-height: 1.1;
+  }
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline. */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
     font-size: var(--text-xs);
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-mute);
-    margin: 0 0 0.75rem;
+    font-weight: 500;
+    margin: 0 0 1rem;
   }
-  .lede { color: var(--color-brand-primary-dark); font-style: italic; font-family: var(--font-display); font-size: var(--text-2xl); margin: 1rem 0 0; }
+  .lede {
+    color: var(--color-ink-muted);
+    max-width: 58ch;
+    font-size: var(--text-lg);
+    margin: 1.25rem 0 0;
+    line-height: 1.6;
+  }
+  .approach-hero-image img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+  }
+  @media (min-width: 768px) {
+    .approach-hero { grid-template-columns: 1.2fr 1fr; gap: 3.5rem; }
+    .approach-hero h1 { font-size: var(--text-5xl); }
+  }
 
-  .section-head { margin-bottom: 2.5rem; max-width: 70ch; }
-  .section-head h2 { margin: 0 0 1rem; }
-  .section-lede { color: var(--color-ink-muted); margin: 0; line-height: 1.65; }
+  /* === Section heads (centered, established scale) === */
+  .section-head {
+    margin-bottom: 3.5rem;
+    text-align: center;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .eyebrow {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin: 0 0 1rem;
+    font-weight: 500;
+  }
+  /* Eyebrow lockup: short TWW Green rule turns the caps label into a
+     composed unit (auto-centered under centered heads). */
+  .section-head .eyebrow::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-brand-primary);
+    margin: 0.9rem auto 0;
+  }
+  .section-head h2 {
+    margin: 0 0 1.25rem;
+    font-size: var(--text-3xl);
+    color: var(--color-ink-strong);
+  }
+  .section-lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    margin: 0;
+    line-height: 1.6;
+  }
 
+  /* === Intro prose === */
+  .intro p {
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+  }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro-turn {
+    font-family: var(--font-display);
+    color: var(--color-ink-strong) !important;
+    font-size: var(--text-xl) !important;
+    line-height: 1.5;
+  }
+
+  /* === Three T's cards === */
   .three-ts {
     display: grid;
     gap: 1.5rem;
@@ -199,77 +346,182 @@ const fourSteps = [
   }
   .t-card {
     background: var(--color-paper);
+    border: 1px solid var(--color-line);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-card);
+    transition:
+      transform var(--duration-normal) var(--ease-soft),
+      box-shadow var(--duration-normal) var(--ease-soft);
+  }
+  .t-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
   }
   .t-card img {
     width: 100%;
     aspect-ratio: 3 / 2;
     object-fit: cover;
   }
-  .t-body { padding: 1.5rem; }
+  .t-body { padding: 1.75rem; }
   .t-body h3 {
-    color: var(--color-brand-primary-dark);
-    margin: 0 0 0.75rem;
+    margin: 0 0 0.35rem;
     font-size: var(--text-2xl);
+    color: var(--color-ink-strong);
   }
-  .t-body p {
+  .t-short {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-base);
+    margin: 0 0 0.85rem;
+  }
+  .t-body p:last-child {
     color: var(--color-ink-muted);
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.65;
   }
   .three-ts-close {
     text-align: center;
-    margin: 2.5rem auto 0;
+    margin: 2.75rem auto 0;
     max-width: 56ch;
-    color: var(--color-ink);
+    color: var(--color-ink-strong);
     font-size: var(--text-lg);
     font-style: italic;
+    font-family: var(--font-display);
   }
 
+  /* === Testing philosophy === */
+  .testing-head { margin-bottom: 1.75rem; }
+  .testing-head h2 {
+    margin: 0;
+    font-size: var(--text-3xl);
+    color: var(--color-ink-strong);
+  }
+  .value-line {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-brand-primary-dark);
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    margin: 1rem 0 0;
+    max-width: 52ch;
+  }
+  .testing-body p {
+    color: var(--color-ink);
+    font-size: var(--text-lg);
+    line-height: 1.7;
+    margin: 0 0 1.25rem;
+  }
+  .testing-body p:last-child { margin-bottom: 0; }
+
+  /* === 4-step process — vertical timeline with scroll-fill === */
   .steps {
     list-style: none;
     padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 2rem;
+    margin: 0 auto;
+    max-width: 56rem;
+    position: relative;
   }
   .steps li {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 4rem 1fr;
     gap: 1.5rem;
-    align-items: start;
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+  .steps li:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    top: 3.5rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-line);
+  }
+  /* Green overlay line draws downward as each step reveals — the timeline
+     "completes" itself while you scroll, enacting the 4-step narrative. */
+  .steps li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    top: 3.5rem;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-brand-primary);
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 700ms var(--ease-soft) 200ms;
+  }
+  .steps li:global(.is-visible):not(:last-child)::after {
+    transform: scaleY(1);
   }
   .step-num {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
-    background: var(--color-brand-primary);
-    color: var(--color-ink-strong);
+    background: var(--color-paper);
+    border: 2px solid var(--color-brand-primary);
+    color: var(--color-brand-primary-dark);
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--text-2xl);
+    font-weight: 500;
+    font-size: var(--text-xl);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    z-index: 1;
+    transition: background 400ms var(--ease-soft) 200ms;
   }
-  .steps h3 { margin: 0 0 0.5rem; font-size: var(--text-xl); }
-  .steps p { margin: 0; color: var(--color-ink); line-height: 1.7; }
+  .steps li:global(.is-visible) .step-num {
+    background: var(--color-brand-primary-soft);
+  }
+  .step-body { padding-top: 0.4rem; }
+  .step-body h3 {
+    margin: 0 0 0.5rem;
+    font-size: var(--text-xl);
+    color: var(--color-ink-strong);
+  }
+  .step-body p {
+    margin: 0;
+    color: var(--color-ink-muted);
+    line-height: 1.65;
+  }
 
+  /* === Final CTA === */
   .cta-block { text-align: center; }
-  .cta-block h2 { font-size: var(--text-3xl); margin: 0 0 1rem; }
-  .cta-block p { color: var(--color-ink-muted); max-width: 50ch; margin: 0 auto 2rem; }
+  .cta-block h2 {
+    margin: 0 0 1rem;
+    font-size: var(--text-3xl);
+  }
+  .cta-block p {
+    color: var(--color-ink-muted);
+    max-width: 50ch;
+    margin: 0 auto 2rem;
+    line-height: 1.65;
+  }
   .cta-row {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
     flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
   }
 
+  /* === Responsive scale (established section-head rhythm) === */
   @media (min-width: 768px) {
-    .steps li { grid-template-columns: 4.5rem 1fr; gap: 2rem; }
-    .step-num { width: 4.5rem; height: 4.5rem; font-size: var(--text-3xl); }
+    .section-head h2 { font-size: var(--text-4xl); }
+    .testing-head h2 { font-size: var(--text-4xl); }
+    .cta-block h2 { font-size: var(--text-4xl); }
+    .steps li { grid-template-columns: 5rem 1fr; gap: 2rem; }
+    .step-num { width: 3.5rem; height: 3.5rem; font-size: var(--text-2xl); }
+    .steps li:not(:last-child)::before,
+    .steps li:not(:last-child)::after { left: 1.75rem; top: 4rem; }
+  }
+  @media (min-width: 1024px) {
+    .section-head { margin-bottom: 4rem; }
+    .section-head h2 {
+      font-size: var(--text-5xl);
+      letter-spacing: -0.022em;
+    }
   }
 </style>

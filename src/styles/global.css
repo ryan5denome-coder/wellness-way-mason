@@ -112,6 +112,12 @@ body {
   margin: 0;
 }
 
+/* Horizontal-overflow guard: a single too-wide element must never give the
+   whole page a sideways scroll on phones. */
+html, body {
+  overflow-x: clip;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 500;            /* Lora reads better at 500 than 700 */
@@ -125,6 +131,10 @@ h1 { font-size: var(--text-5xl); line-height: 1.05; letter-spacing: -0.02em; }
 h2 { font-size: var(--text-3xl); line-height: 1.18; letter-spacing: -0.014em; }
 h3 { font-size: var(--text-2xl); line-height: 1.25; }
 h4 { font-size: var(--text-xl); line-height: 1.3; }
+
+/* Balanced wrapping keeps multi-line display headlines from orphaning a
+   single word on its own line, which is where big type looks cheapest. */
+h1, h2, h3 { text-wrap: balance; }
 
 p { margin-top: 0; }
 
@@ -307,21 +317,8 @@ main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip
   background-size: 100% 1.5px;
 }
 
-/* === Conditions list — interactive hover === */
-.conditions-list li {
-  cursor: default;
-  transition: background var(--duration-fast) var(--ease-soft),
-              padding-left var(--duration-fast) var(--ease-soft),
-              border-color var(--duration-fast) var(--ease-soft);
-}
-.conditions-list li:hover {
-  background: var(--color-brand-primary-soft);
-  padding-left: 2.5rem;
-  border-bottom-color: var(--color-brand-primary-light);
-}
-.conditions-list li:hover::before {
-  color: var(--color-brand-primary-dark);
-}
+/* Conditions-list hover lives on the anchor itself (see index.astro) — the
+   old li-level hover rules double-applied padding and background. */
 
 /* === Service items (services page) — interactive hover === */
 .service-item {

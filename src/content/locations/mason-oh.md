@@ -8,8 +8,8 @@ state: "OH"
 image: "/images/locations/mason-oh.jpg"
 imageAlt: "Storefront of The Wellness Way - Mason on Cox-Smith Road"
 order: 1
-distanceFromClinic: "Home location — Mason, OH"
-drivingTime: "0 min — we are in Mason"
+distanceFromClinic: "Home location: Mason, OH"
+drivingTime: "0 min, we are in Mason"
 ---
 
 If you live in Mason and you've been told your bloodwork "looks fine" while your body keeps telling you something different, you are not imagining it. You're not alone, and you're not broken.

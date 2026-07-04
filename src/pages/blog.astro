@@ -37,27 +37,36 @@ const upcomingEvents = (await getCollection('events'))
 >
   <SectionContainer width="default" spacing="md" background="paper-soft">
     <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Blog' }]} />
-    <div class="blog-hero">
-      <h1>Health & Wellness Blog</h1>
+    <div class="blog-hero" data-reveal>
+      <h1>
+        <span class="page-kicker">Health &amp; Wellness Blog</span>
+        Real answers, written to be understood.
+      </h1>
       <p class="lede">
-        Real answers for real health challenges. Insights on thyroid health, gut health,
-        hormone balance, metabolic health, nutrition, and more, from Dr. Ryan DeNome
-        and the team at {clinic.brandName}.
+        Thyroid, hormones, gut health, nutrition, and the questions patients actually
+        ask, answered in plain English by Dr. Ryan DeNome, DC and the team
+        at {clinic.brandName}.
       </p>
     </div>
   </SectionContainer>
 
   <SectionContainer width="default" spacing="sm">
-    <NewsletterTeaser />
+    <div data-reveal="up-sm">
+      <NewsletterTeaser />
+    </div>
   </SectionContainer>
 
   <SectionContainer width="default" spacing="md">
-    <div class="blog-head">
-      <p class="eyebrow">Latest from the clinic</p>
+    <div class="blog-head" data-reveal>
+      <p class="eyebrow eyebrow-lockup">Latest from the clinic</p>
       <h2>Articles &amp; Recipes</h2>
+      <p class="head-lede">
+        Short reads on the patterns we see in the clinic, plus a few recipes worth
+        keeping. Pick the topic that sounds like your week.
+      </p>
     </div>
     {allCategories.length > 0 && (
-      <div class="category-filter" role="navigation" aria-label="Filter by category">
+      <div class="category-filter" role="navigation" aria-label="Filter by category" data-reveal="up-sm">
         <span class="filter-label">Topics:</span>
         {allCategories.map((cat) => (
           <a href={`#${cat}`} class="cat-link">{cat.replace(/-/g, ' ')}</a>
@@ -83,8 +92,8 @@ const upcomingEvents = (await getCollection('events'))
 
   {upcomingEvents.length > 0 && (
     <SectionContainer width="default" spacing="md">
-      <div class="events-strip">
-        <h2>Join Us In Person</h2>
+      <div class="events-strip" data-reveal>
+        <h2>Join us in person.</h2>
         <p class="events-intro">Community gatherings at {clinic.brandName}. Free, open to all. Bring a friend.</p>
         <ul class="events-list">
           {upcomingEvents.map((evt) => (
@@ -102,33 +111,67 @@ const upcomingEvents = (await getCollection('events'))
   )}
 
   <SectionContainer width="default" spacing="lg" background="paper-soft">
-    <NewsletterSignup />
+    <div data-reveal="up-sm">
+      <NewsletterSignup />
+    </div>
   </SectionContainer>
 </BaseLayout>
 
 <style>
   .blog-hero { padding-top: 1.5rem; }
-  .blog-hero h1 { font-size: var(--text-4xl); margin: 0 0 1rem; }
+  .blog-hero h1 { font-size: var(--text-4xl); margin: 0 0 1rem; line-height: 1.1; }
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline. */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
+  }
   .blog-head {
     max-width: 70ch;
-    margin: 0 0 1.5rem;
+    margin: 0 0 1.75rem;
   }
   .blog-head .eyebrow {
     font-size: var(--text-xs);
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-brand-primary-dark);
-    font-weight: 600;
-    margin: 0 0 0.5rem;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
+  }
+  /* Eyebrow lockup: short TWW Green rule turns the caps label into a
+     composed unit (left-aligned head, so no auto-centering). */
+  .eyebrow-lockup::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-brand-primary);
+    margin: 0.9rem 0 0;
   }
   .blog-head h2 {
-    margin: 0;
-    font-size: var(--text-2xl);
+    margin: 0 0 1rem;
+    font-size: var(--text-3xl);
     line-height: 1.15;
     color: var(--color-ink-strong);
   }
+  .head-lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 58ch;
+  }
   @media (min-width: 768px) {
-    .blog-head h2 { font-size: var(--text-3xl); }
+    .blog-head h2 { font-size: var(--text-4xl); }
+  }
+  @media (min-width: 1024px) {
+    .blog-head h2 { font-size: var(--text-5xl); letter-spacing: -0.022em; }
   }
   .lede { color: var(--color-ink-muted); max-width: 60ch; font-size: var(--text-lg); line-height: 1.6; }
   .category-filter {
@@ -158,9 +201,9 @@ const upcomingEvents = (await getCollection('events'))
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
   .events-strip h2 {
-    font-size: var(--text-2xl);
-    margin: 0 0 0.5rem;
-    color: var(--color-brand-primary-dark);
+    font-size: var(--text-3xl);
+    margin: 0 0 0.75rem;
+    color: var(--color-ink-strong);
   }
   .events-intro {
     color: var(--color-ink-muted);
@@ -209,5 +252,6 @@ const upcomingEvents = (await getCollection('events'))
   .events-more a:hover { text-decoration: underline; }
   @media (min-width: 768px) {
     .blog-hero h1 { font-size: var(--text-5xl); }
+    .events-strip h2 { font-size: var(--text-4xl); }
   }
 </style>

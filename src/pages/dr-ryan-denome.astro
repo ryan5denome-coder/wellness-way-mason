@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Button from '../components/Button.astro';
 import { clinic, site, owner } from '../lib/site';
 import { personSchema } from '../lib/schema';
+import adultAdjustment from '../assets/clinic/adult-adjustment.jpg';
 
 // Dedicated author/provider entity page. Serves dual purpose (per Manus audit
 // GEO Gap 1 + 4B): an E-E-A-T author signal for Google's medical YMYL ranking
@@ -21,6 +23,14 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 3, name: 'Dr. Ryan DeNome, DC', item: `${site.url}/dr-ryan-denome` },
   ],
 };
+
+const credentials = [
+  { label: 'Title', value: `Doctor of Chiropractic (${owner.credentials})` },
+  { label: 'Education', value: 'Life University, Marietta, Georgia' },
+  { label: 'Certification', value: 'Webster Technique (prenatal chiropractic)' },
+  { label: 'Practice', value: `${clinic.brandName}, Mason, Ohio` },
+  { label: 'Focus', value: 'Functional lab testing, chiropractic, pediatric and prenatal care' },
+];
 ---
 
 <BaseLayout
@@ -38,7 +48,7 @@ const breadcrumbSchema = {
 
   <SectionContainer width="default" spacing="md">
     <div class="author-grid">
-      <div class="author-photo">
+      <div class="author-photo" data-reveal>
         <img
           src="/images/people/dr-ryan-denome.jpg"
           alt="Dr. Ryan DeNome, DC, Doctor of Chiropractic at The Wellness Way - Mason"
@@ -48,23 +58,26 @@ const breadcrumbSchema = {
           decoding="async"
         />
       </div>
-      <div class="author-intro">
-        <p class="eyebrow">Doctor of Chiropractic · Clinic Owner</p>
-        <h1>Dr. Ryan DeNome, DC</h1>
+      <div class="author-intro" data-reveal="up-sm">
+        <h1>
+          <span class="page-kicker">Doctor of Chiropractic in Mason, OH</span>
+          Dr. Ryan DeNome, DC
+        </h1>
         <p class="lede">
           The chiropractic physician behind The Wellness Way - Mason. Webster Technique
           certified, Life University graduate, and the reviewing clinician for every
           piece of content on this site.
         </p>
-        <ul class="cred-list">
-          <li><strong>Title:</strong> Doctor of Chiropractic ({owner.credentials})</li>
-          <li><strong>Education:</strong> Life University, Doctor of Chiropractic</li>
-          <li><strong>Certification:</strong> Webster Technique (prenatal chiropractic)</li>
-          <li><strong>Practice:</strong> {clinic.brandName}, Mason, Ohio</li>
-          <li><strong>Focus:</strong> Functional lab testing + chiropractic, pediatric &amp; prenatal care</li>
+        <ul class="cred-list" role="list">
+          {credentials.map((c) => (
+            <li>
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5L13.5 4" /></svg>
+              <span><strong>{c.label}:</strong> {c.value}</span>
+            </li>
+          ))}
         </ul>
         <div class="author-cta">
-          <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
+          <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>Book Your Appointment</Button>
           <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
         </div>
       </div>
@@ -72,61 +85,77 @@ const breadcrumbSchema = {
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="md">
-    <h2>About Dr. DeNome</h2>
-    <p>
+    <h2 data-reveal>About Dr. DeNome</h2>
+    <p data-reveal="up-sm">
       Dr. Ryan DeNome is the clinic owner and chiropractic physician at The Wellness Way -
       Mason. His path into chiropractic started when his wife introduced him to the
       profession, and he recognized right away the blend of hands-on problem-solving and
       patient care that fit how he's wired.
     </p>
-    <p>
+    <p data-reveal="up-sm">
       He earned his Doctor of Chiropractic degree at Life University in Marietta, Georgia.
       During his first week there he found The Wellness Way Student Club, and spent nearly
       four years immersed in The Wellness Way philosophy: the idea that the body has an
-      innate ability to heal when you find and address what's actually loading stress onto
+      innate capacity to heal when you find and address what's actually loading stress onto
       it, rather than chasing symptoms one at a time.
     </p>
-    <p>
+    <p data-reveal="up-sm">
       Today he works with patients across Mason, West Chester, Loveland, Lebanon, and the
       greater Cincinnati area. He's especially drawn to two groups: men who feel boxed in by
-      a health challenge no one has gotten to the bottom of, and moms carrying the weight of
-      a household while their own health gets pushed to the back of the line. He's certified
+      a health challenge no one has explained yet, and moms carrying the weight of a
+      household while their own health gets pushed to the back of the line. He's certified
       in the Webster Technique for prenatal care, sees pediatric patients from infancy
       through the teen years, and works with everyday athletes, blue-collar workers, and
       anyone who wants their body to keep up with their life.
     </p>
 
-    <h2>Why Functional Testing + Chiropractic</h2>
-    <p>
+    <h2 data-reveal>Why Testing and Chiropractic Belong Together</h2>
+    <p data-reveal="up-sm">
       Most chiropractors adjust. Most functional-medicine providers run labs. Dr. DeNome
       built his practice around doing both, because the two answer different halves of the
-      same question. Chiropractic care supports the nervous system that regulates digestion,
-      immune response, and hormone signaling. Functional lab panels (DUTCH for hormones, a complete thyroid panel, gut testing)
-      show what those systems are actually doing. One without the other is half a picture.
+      same question. Chiropractic care may support the nervous system, the wiring that
+      regulates digestion, immune response, and hormone signaling. Functional lab panels
+      (DUTCH for hormones, a complete thyroid panel, gut testing) can show what those
+      systems are actually doing. One without the other is half a picture.
     </p>
-    <p>
+    <p data-reveal="up-sm">
       None of this replaces conventional medicine. Dr. DeNome works alongside your primary
       care provider, your OB, and any specialists on your team. The aim is to add the layer
       standard care usually skips: the deeper testing, and the conversation about why your
       body is doing what it's doing.
     </p>
 
-    <h2>In Dr. Ryan's Words</h2>
-    <blockquote>
-      "I got into this because I watched people get told their labs were 'normal' while they
-      clearly weren't okay. The body never does anything without a reason. My job is to find
-      the reason, to test instead of guess, and to walk alongside people who'd mostly given
-      up on getting a real answer. That's the whole practice."
+    <figure class="clinic-figure" data-reveal>
+      <Image
+        class="clinic-photo"
+        src={adultAdjustment}
+        alt="Hands-on chiropractic adjustment at The Wellness Way - Mason"
+        widths={[480, 720, 960, 1440]}
+        sizes="(min-width: 768px) 68ch, 100vw"
+        loading="lazy"
+        quality={82}
+      />
+      <figcaption>
+        Manual, specific adjusting at the Mason clinic. Soft tissue work, cupping, and
+        scraping are included with adjustments, never an upcharge.
+      </figcaption>
+    </figure>
+
+    <h2 data-reveal>In Dr. Ryan's Words</h2>
+    <blockquote class="ryan-quote" data-reveal="up-sm">
+      "I watched too many people get told their labs were normal when they clearly weren't
+      okay. The body never does anything without a reason. My job is to find it."
+      <cite>Dr. Ryan DeNome, DC</cite>
     </blockquote>
-    <p>
+    <p data-reveal="up-sm">
       Outside the clinic, Dr. Ryan is happiest outdoors with his wife and son: hiking,
       kayaking, or just being in it. He and his wife once biked 100 miles on their second
       date, which tells you most of what you need to know about how he approaches a
       challenge.
     </p>
 
-    <h2>Conditions Dr. DeNome Works With Most</h2>
-    <p>
+    <h2 data-reveal>Conditions Dr. DeNome Works With Most</h2>
+    <p data-reveal="up-sm">
       He most often sees patients dealing with <a href="/conditions/thyroid">thyroid patterns</a> (not just TSH),
       <a href="/conditions/hormone-imbalance">hormone imbalance</a> worked up with DUTCH testing,
       <a href="/conditions/autoimmune">autoimmune patterns</a> including Hashimoto's,
@@ -143,14 +172,14 @@ const breadcrumbSchema = {
   </SectionContainer>
 
   <SectionContainer width="prose" spacing="lg" background="paper-soft">
-    <div class="closer">
+    <div class="closer" data-reveal>
       <h2>Work With Dr. DeNome</h2>
       <p>
-        Schedule a discovery consultation. Bring your story, your questions, and whatever
-        labs you already have. We'll listen, we'll test, and we'll build a plan with you.
+        Bring your story, your questions, and any labs you already have. Your first visit
+        is a flat $99, we listen first, and you leave with a clear next step either way.
       </p>
       <div class="author-cta">
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external>Schedule a Consultation</Button>
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>Book Your Appointment</Button>
         <Button href={`tel:${clinic.phoneTel}`} variant="ghost" size="lg">Call {clinic.phone}</Button>
       </div>
     </div>
@@ -158,80 +187,144 @@ const breadcrumbSchema = {
 </BaseLayout>
 
 <style>
-  .eyebrow {
-    color: var(--color-brand-primary-dark);
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    letter-spacing: 0.1em;
+  /* SEO keyword string stays inside the H1 as a kicker line; the display
+     line underneath carries the visual headline (established lockup). */
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    margin: 0 0 0.5rem;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
   }
+
   .author-grid {
     display: grid;
-    gap: 2rem;
+    gap: 2.5rem;
     align-items: center;
   }
   .author-photo img {
     width: 100%;
     max-width: 420px;
-    border-radius: var(--radius-lg);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
     box-shadow: var(--shadow-card);
   }
   .author-intro h1 {
     font-size: var(--text-4xl);
     margin: 0 0 1rem;
-    line-height: 1.15;
+    line-height: 1.1;
   }
   .lede {
     color: var(--color-ink-muted);
     font-size: var(--text-lg);
     line-height: 1.6;
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.5rem;
+    max-width: 52ch;
   }
   .cred-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 1.5rem;
+    margin: 0 0 2rem;
     display: grid;
-    gap: 0.4rem;
+    gap: 0.6rem;
   }
   .cred-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
     font-size: var(--text-base);
     color: var(--color-ink);
+    line-height: 1.5;
   }
-  .cred-list strong { color: var(--color-brand-primary-dark); }
+  .cred-list svg {
+    color: var(--color-brand-primary-dark);
+    flex-shrink: 0;
+    margin-top: 0.3rem;
+  }
+  .cred-list strong {
+    color: var(--color-ink-strong);
+    font-weight: 600;
+  }
   .author-cta {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
   }
+
+  /* Article heads follow the section-head scale, capped at 4xl so they stay
+     proportionate inside the 68ch prose column. */
   h2 {
-    color: var(--color-brand-primary-dark);
-    margin-top: 2.5rem;
+    color: var(--color-ink-strong);
+    font-size: var(--text-3xl);
+    margin: 3rem 0 1.25rem;
   }
   p { line-height: 1.75; }
-  ul { line-height: 1.9; }
-  blockquote {
-    border-left: 4px solid var(--color-brand-primary);
-    padding: 0.5rem 0 0.5rem 1.5rem;
-    margin: 1.5rem 0;
-    font-size: var(--text-lg);
-    color: var(--color-ink);
-    font-style: italic;
+
+  .clinic-figure {
+    margin: 3rem 0;
   }
+  .clinic-photo {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+  .clinic-figure figcaption {
+    margin-top: 0.85rem;
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .ryan-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: var(--text-xl);
+    line-height: 1.5;
+    margin: 1.5rem 0 2rem;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    border-left: 3px solid var(--color-brand-primary);
+    color: var(--color-ink-strong);
+  }
+  .ryan-quote cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    font-style: normal;
+    font-family: var(--font-body);
+  }
+
   .author-foot {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     padding-top: 1.25rem;
     border-top: 1px solid var(--color-line);
     font-size: var(--text-sm);
     color: var(--color-ink-muted);
   }
+
   .closer { text-align: center; }
   .closer h2 { margin-top: 0; }
-  .closer p { max-width: 50ch; margin: 0 auto 1.5rem; color: var(--color-ink-muted); }
+  .closer p {
+    max-width: 50ch;
+    margin: 0 auto 2rem;
+    color: var(--color-ink-muted);
+  }
   .closer .author-cta { justify-content: center; }
+
   @media (min-width: 768px) {
-    .author-grid { grid-template-columns: 0.8fr 1.2fr; gap: 3rem; }
+    .author-grid { grid-template-columns: 0.8fr 1.2fr; gap: 3.5rem; }
     .author-intro h1 { font-size: var(--text-5xl); }
+    h2 { font-size: var(--text-4xl); }
+  }
+  @media (min-width: 1024px) {
+    h2 { letter-spacing: -0.022em; }
+    .closer h2 { font-size: var(--text-5xl); }
   }
 </style>
