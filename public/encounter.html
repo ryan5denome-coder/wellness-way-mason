@@ -80,12 +80,14 @@
   }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
   h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; text-wrap: balance; letter-spacing: -0.01em; }
+  h1 { font-weight: 400; letter-spacing: -0.015em; }
+  section p, ul.plain { max-width: 65ch; }
   p { margin: 0 0 1.05rem; }
   a { color: inherit; }
   .eyebrow {
     font-family: var(--font-body);
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.09em;
     font-size: 12px;
     font-weight: 600;
     color: var(--gold-deep);
@@ -151,12 +153,14 @@
   }
   .btn-gold { background: var(--gold); color: #241c07; }
   .btn-gold:hover { background: var(--gold-bright); transform: translateY(-1px); }
-  .btn-ghost { border-color: rgba(216,184,96,0.5); color: #f0e5c8; }
-  .btn-ghost:hover { border-color: var(--gold-bright); transform: translateY(-1px); }
+  .btn-ghost { border-color: rgba(244,236,216,0.35); color: #f0e5c8; }
+  .btn-ghost:hover { border-color: rgba(244,236,216,0.7); transform: translateY(-1px); }
 
   /* ---------- SECTIONS ---------- */
   section { padding: 52px 0; }
   section + section { border-top: 1px solid var(--border); }
+  #temple, #offer { padding: 76px 0; }
+  #help, #topics, #firstvisit { padding: 44px 0; }
   .section-label { margin-bottom: 12px; }
   h2 { font-size: clamp(24px, 4.6vw, 32px); margin: 0 0 18px; }
   h3 { font-size: 20px; margin: 0 0 8px; }
@@ -191,15 +195,28 @@
 
   .verse {
     font-family: var(--font-display);
-    font-size: 22px;
-    line-height: 1.5;
+    font-size: clamp(24px, 4.4vw, 30px);
+    line-height: 1.35;
+    font-weight: 400;
+    letter-spacing: -0.01em;
     color: var(--text);
-    border-left: 3px solid var(--gold);
-    padding: 4px 0 4px 20px;
-    margin: 4px 0 20px;
+    border: 0;
+    padding: 0;
+    margin: 44px auto 40px;
+    max-width: 22ch;
+    text-align: center;
     font-style: italic;
   }
-  .verse cite { display: block; font-size: 14px; font-style: normal; color: var(--text-soft); margin-top: 8px; letter-spacing: 0.04em; }
+  .verse cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--gold-deep);
+    margin-top: 16px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
 
   .doors { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 22px; }
   .door {
@@ -208,7 +225,7 @@
     border-radius: var(--radius);
     padding: 22px;
   }
-  .door .kicker { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; color: var(--green-deep); }
+  .door .kicker { font-size: 12px; text-transform: uppercase; letter-spacing: 0.09em; font-weight: 600; color: var(--green-deep); }
   .door h3 { margin: 8px 0 6px; }
   .door p { font-size: 15px; margin-bottom: 0; color: var(--text-soft); }
 
@@ -248,7 +265,7 @@
   .offer .eyebrow { color: var(--gold-bright); position: relative; }
   .offer h2 { color: #fbf4e2; position: relative; margin-top: 8px; }
   .price { position: relative; margin: 14px 0 6px; display: flex; align-items: baseline; justify-content: center; gap: 12px; }
-  .price .now { font-family: var(--font-display); font-size: 56px; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+  .price .now { font-family: var(--font-display); font-size: 56px; font-weight: 700; color: var(--gold-bright); line-height: 1; letter-spacing: -0.02em; }
   .price .was { font-size: 20px; color: #b6a882; text-decoration: line-through; }
   .price .cap { font-size: 14px; color: #cdbf9d; letter-spacing: 0.03em; }
   .offer p { position: relative; color: #ddd0b2; max-width: 48ch; margin-left: auto; margin-right: auto; }
@@ -348,8 +365,8 @@
         <div class="eyebrow section-label">Body &amp; spirit</div>
         <h2>Caring for your body is part of the calling.</h2>
         <blockquote class="verse">
-          "Do you not know that your body is a temple of the Holy Spirit within you?"
-          <cite>— 1 Corinthians 6:19</cite>
+          &ldquo;Do you not know that your body is a temple of the Holy Spirit within you?&rdquo;
+          <cite>1 Corinthians 6:19</cite>
         </blockquote>
         <p>Stewarding your health isn't vanity. It's so you can love your family, serve your church, and walk out your calling with energy that lasts. But when your body is sounding an alarm — pain, fatigue, a gut that won't settle — silencing the symptom isn't the same as finding the fire underneath it.</p>
         <p>So we ask a different question: <strong>why is your body sounding the alarm?</strong> Then we test instead of guess, and we build a plan that fits your real life — always alongside your primary care doctor and specialists, never in place of them.</p>
