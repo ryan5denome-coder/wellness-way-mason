@@ -44,6 +44,7 @@
   .cue-overlay span{font-size:clamp(30px,8.5vw,50px);color:var(--leaf);animation:bob 1.6s ease-in-out infinite}
   @keyframes fadein{to{opacity:1}}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  .cue-overlay.hide{animation:none;opacity:0;pointer-events:none;transition:opacity .35s ease}
   @media(prefers-reduced-motion:reduce){.cue-overlay{animation:none;opacity:1}.cue-overlay span{animation:none}}
   /* giveaways */
   .win .cards{grid-template-columns:1fr}
@@ -213,5 +214,14 @@
   <p class="fine">Event details subject to change. Nothing on this page is medical advice — it's a party.</p>
 </footer>
 
+<script>
+(function () {
+  var c = document.querySelector('.cue-overlay');
+  if (!c) return;
+  var hide = function () { c.classList.add('hide'); };
+  window.addEventListener('scroll', hide, { passive: true, once: true });
+  c.addEventListener('click', hide);
+})();
+</script>
 </body>
 </html>
