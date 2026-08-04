@@ -13,163 +13,174 @@
 <meta property="og:type" content="article" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" />
 <style>
   :root {
-    --ink: #17140f;
-    --ground: #faf6ec;
-    --surface: #fffdf8;
-    --surface-2: #f4ecda;
-    --text: #2a251e;
-    --text-soft: #6a6152;
-    --border: #e7dec9;
-    --gold: #c4a24a;
-    --gold-bright: #d8b860;
-    --gold-deep: #8f7226;
-    --green: #7db53f;
-    --green-deep: #4e7a1e;
-    --radius: 14px;
-    --maxw: 720px;
-    --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ground: #14120e; --surface: #1e1b15; --surface-2: #26221a;
-      --text: #ede7d8; --text-soft: #a79e8b; --border: #342c20;
-      --gold: #d0ac54; --gold-bright: #e3c477; --gold-deep: #e3c477;
-      --green: #9acb5f; --green-deep: #b6dd88;
-    }
-  }
-  :root[data-theme="dark"] {
-    --ground: #14120e; --surface: #1e1b15; --surface-2: #26221a;
-    --text: #ede7d8; --text-soft: #a79e8b; --border: #342c20;
-    --gold: #d0ac54; --gold-bright: #e3c477; --gold-deep: #e3c477;
-    --green: #9acb5f; --green-deep: #b6dd88;
-  }
-  :root[data-theme="light"] {
-    --ground: #faf6ec; --surface: #fffdf8; --surface-2: #f4ecda;
-    --text: #2a251e; --text-soft: #6a6152; --border: #e7dec9;
-    --gold: #c4a24a; --gold-bright: #d8b860; --gold-deep: #8f7226;
-    --green: #7db53f; --green-deep: #4e7a1e;
+    /* Brand tokens — mirrored from src/styles/global.css */
+    --green:        #80b741;   /* TWW Green. MARK ONLY — 2.4:1 on white, never carries text */
+    --green-dark:   #5e8a30;   /* hover/focus */
+    --green-ink:    #4b7226;   /* derived: text-safe green, 5.62:1 on white */
+    --green-light:  #cadab2;
+    --green-soft:   #f0f4e8;
+    --beige:        #DCD4C8;
+    --beige-tint:   #f0ebe1;
+    --ink-strong:   #1f2222;
+    --ink:          #414444;
+    --ink-muted:    #5d6060;
+    --mute:         #7a7d7d;
+    --line:         #DDDDDE;
+    --line-soft:    #ececed;
+    --paper:        #FFFFFF;
+    --paper-soft:   #FAFAF9;
+
+    --radius-sm: 4px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-pill: 9999px;
+
+    --shadow-card: 0 2px 8px -2px rgba(31,34,34,.04), 0 6px 20px -8px rgba(31,34,34,.08);
+    --shadow-card-hover: 0 4px 14px -4px rgba(31,34,34,.08), 0 12px 32px -10px rgba(31,34,34,.14);
+    --shadow-focus: 0 0 0 3px rgba(128,183,65,.35);
+
+    --ease-soft: cubic-bezier(.4,0,.2,1);
+    --duration-normal: 240ms;
+
+    --font-display: "Lora", Georgia, "Times New Roman", serif;
+    --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --prose: 68ch;
+    --container: 46rem;
   }
 
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
-    margin: 0; background: var(--ground); color: var(--text);
-    font-family: var(--font-body); font-size: 17px; line-height: 1.7;
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--font-body); font-size: 17px; line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; text-wrap: balance; letter-spacing: -0.01em; }
-  h1 { font-weight: 400; letter-spacing: -0.015em; }
-  section p, ul.plain { max-width: 65ch; }
-  p { margin: 0 0 1.05rem; }
-  a { color: inherit; }
+  .wrap { max-width: var(--container); margin: 0 auto; padding: 0 22px; }
+  h1, h2, h3 { font-family: var(--font-display); color: var(--ink-strong); margin: 0; text-wrap: balance; line-height: 1.2; }
+  h1 { font-weight: 500; letter-spacing: -.015em; }
+  h2 { font-weight: 500; font-size: clamp(1.5rem, 4.4vw, 2rem); margin-bottom: .75rem; }
+  h3 { font-weight: 600; font-size: 1.0625rem; margin-bottom: .3rem; }
+  p { margin: 0 0 1rem; max-width: var(--prose); }
+  p:last-child { margin-bottom: 0; }
+  a { color: var(--green-ink); text-underline-offset: 3px; }
+  a:focus-visible, .btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); border-radius: var(--radius-sm); }
+
+  .skip {
+    position: absolute; left: -9999px; top: 0; background: var(--paper); color: var(--ink-strong);
+    padding: 12px 18px; z-index: 100; border-radius: 0 0 var(--radius-md) 0; font-weight: 600;
+  }
+  .skip:focus { left: 0; box-shadow: var(--shadow-focus); }
+
   .eyebrow {
-    font-family: var(--font-body); text-transform: uppercase; letter-spacing: 0.09em;
-    font-size: 12px; font-weight: 600; color: var(--gold-deep);
+    font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--green-ink); margin-bottom: .6rem;
   }
 
-  /* hero */
-  .hero { position: relative; background: var(--ink); color: #f4ecd8; overflow: hidden; border-bottom: 3px solid var(--gold); }
-  .hero::before {
-    content: ""; position: absolute; top: -30%; left: 50%; width: 900px; height: 900px;
-    transform: translateX(-50%);
-    background: radial-gradient(circle at center, rgba(216,184,96,0.30) 0%, rgba(216,184,96,0.12) 34%, rgba(23,20,15,0) 62%);
-    pointer-events: none;
-  }
-  .hero-inner { position: relative; padding: 46px 22px 50px; text-align: center; }
-  .hero .eyebrow { color: var(--gold-bright); }
-  .hero h1 { font-size: clamp(30px, 6.2vw, 46px); margin: 14px auto 18px; color: #fbf4e2; max-width: 17ch; }
-  .hero p.lede { color: #ddd2b8; font-size: 18px; max-width: 54ch; margin: 0 auto 26px; }
-  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  /* ---------- hero: warm and quiet, not theatrical ---------- */
+  .hero { background: var(--beige-tint); border-bottom: 1px solid var(--beige); }
+  /* padding-block only — the shorthand would wipe .wrap's inline padding */
+  .hero-inner { padding-block: 60px 52px; }
+  .mark { width: 46px; height: 4px; background: var(--green); border-radius: var(--radius-pill); margin-bottom: 26px; }
+  .hero h1 { font-size: clamp(2rem, 6.4vw, 3rem); max-width: 17ch; margin-bottom: 1rem; }
+  .hero .lede { font-size: 1.1875rem; color: var(--ink); max-width: 54ch; margin-bottom: 1.75rem; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn {
-    display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 15px;
-    letter-spacing: 0.01em; padding: 13px 22px; border-radius: 999px; text-decoration: none;
-    cursor: pointer; border: 1.5px solid transparent; transition: transform .15s ease, background .15s ease;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px; padding: 12px 24px; border-radius: var(--radius-pill);
+    font-family: var(--font-body); font-weight: 600; font-size: .9375rem;
+    text-decoration: none; cursor: pointer; border: 1.5px solid transparent;
+    transition: background var(--duration-normal) var(--ease-soft),
+                border-color var(--duration-normal) var(--ease-soft),
+                box-shadow var(--duration-normal) var(--ease-soft);
   }
-  .btn-gold { background: var(--gold); color: #241c07; }
-  .btn-gold:hover { background: var(--gold-bright); transform: translateY(-1px); }
-  .btn-ghost { border-color: rgba(244,236,216,.35); color: #f0e5c8; }
-  .btn-ghost:hover { border-color: rgba(244,236,216,.7); transform: translateY(-1px); }
-  .btn:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+  /* white on #80b741 is 2.4:1 — dark ink on green is 6.69:1 */
+  /* white on #80b741 is 2.4:1 and on #5e8a30 only 4.07:1 — both fail at 15px.
+     Rest state: dark ink on green (6.69:1). Hover: white on green-ink (5.62:1). */
+  .btn-primary { background: var(--green); color: var(--ink-strong); }
+  .btn-primary:hover { background: var(--green-ink); color: #fff; }
+  .btn-secondary { border-color: var(--ink-strong); color: var(--ink-strong); background: transparent; }
+  .btn-secondary:hover { background: var(--ink-strong); color: var(--paper); }
 
-  section { padding: 48px 0; }
-  section + section { border-top: 1px solid var(--border); }
-  .section-label { margin-bottom: 12px; }
-  h2 { font-size: clamp(24px, 4.6vw, 32px); margin: 0 0 18px; }
-  h3 { font-size: 19px; margin: 0 0 6px; }
-  .lead { font-size: 19px; }
-  .soft { color: var(--text-soft); }
+  /* ---------- sections ---------- */
+  section { padding: 54px 0; border-top: 1px solid var(--line-soft); }
+  section:first-of-type { border-top: none; }
+  .band-soft { background: var(--paper-soft); }
+  .band-green { background: var(--green-soft); border-top-color: var(--green-light); border-bottom: 1px solid var(--green-light); }
+  .lead { font-size: 1.1875rem; color: var(--ink); }
+  .soft { color: var(--ink-muted); font-size: .9375rem; }
 
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 26px 0 6px; }
-  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 14px; text-align: center; }
-  .stat .n { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--gold-deep); line-height: 1.1; }
-  .stat .l { font-size: 13px; color: var(--text-soft); margin-top: 4px; }
-  @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 26px 0 4px; }
+  .stat { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px 16px; box-shadow: var(--shadow-card); }
+  .stat .n { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; color: var(--green-ink); line-height: 1.1; }
+  .stat .l { font-size: .875rem; color: var(--ink-muted); margin-top: .35rem; line-height: 1.45; }
+  @media (max-width: 620px) { .stats { grid-template-columns: 1fr; } }
 
-  ul.plain { list-style: none; padding: 0; margin: 18px 0; }
-  ul.plain li { position: relative; padding: 7px 0 7px 30px; border-bottom: 1px solid var(--border); }
+  ul.plain { list-style: none; padding: 0; margin: 1.15rem 0; max-width: var(--prose); }
+  ul.plain li { position: relative; padding: 10px 0 10px 28px; border-bottom: 1px solid var(--line-soft); }
   ul.plain li:last-child { border-bottom: 0; }
-  ul.plain li::before { content: ""; position: absolute; left: 4px; top: 15px; width: 9px; height: 9px; border-radius: 50%; background: var(--green); }
+  ul.plain li::before { content: ""; position: absolute; left: 2px; top: 20px; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 
-  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; margin: 20px 0; }
-  .panel h3 { color: var(--gold-deep); font-size: 17px; letter-spacing: .01em; }
-  .panel .why { color: var(--text-soft); font-size: 15.5px; }
-  .panel + .panel { margin-top: 14px; }
+  .panel { background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--green); border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 12px; box-shadow: var(--shadow-card); }
+  .panel h3 { color: var(--ink-strong); }
+  .panel .tests { font-weight: 500; margin-bottom: .4rem; }
+  .panel .why { color: var(--ink-muted); font-size: .9375rem; margin: 0; }
 
-  .note { border-left: 3px solid var(--green); background: var(--surface-2); padding: 15px 18px; border-radius: 0 var(--radius) var(--radius) 0; margin: 22px 0; }
-  .note.warm { border-left-color: var(--gold); }
+  .note { background: var(--green-soft); border-left: 3px solid var(--green); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 16px 20px; margin: 1.4rem 0; }
+  .band-green .note { background: var(--paper); }
+  .note p { max-width: none; }
 
-  .tablewrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); margin: 20px 0; }
-  table { border-collapse: collapse; width: 100%; min-width: 460px; font-size: 16px; }
-  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  th { font-family: var(--font-body); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--text-soft); font-weight: 600; }
-  tr:last-child td { border-bottom: none; }
-  td strong { font-family: var(--font-display); font-weight: 600; }
-  td.n { white-space: nowrap; font-variant-numeric: tabular-nums; }
-
-  /* Phones open this from a DM — stack tables rather than scrolling them sideways */
-  @media (max-width: 560px) {
-    .tablewrap { border: none; background: transparent; overflow-x: visible; border-radius: 0; }
-    table { min-width: 0; }
-    thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-    tr { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; }
-    tr:last-child td { border-bottom: none; }
-    td { display: block; border-bottom: none; padding: 2px 16px; }
-    td:first-child { padding-top: 14px; }
-    td:last-child { padding-bottom: 14px; color: var(--text-soft); }
-    td.n { color: var(--text); }
-    td[style] { width: auto !important; }
+  .rows { border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; background: var(--paper); margin: 1.25rem 0; box-shadow: var(--shadow-card); }
+  .row { display: grid; grid-template-columns: 11rem 1fr; gap: 0; border-bottom: 1px solid var(--line-soft); }
+  .row:last-child { border-bottom: 0; }
+  .row dt { font-weight: 600; color: var(--ink-strong); padding: 14px 18px; background: var(--paper-soft); }
+  .row dd { margin: 0; padding: 14px 18px; color: var(--ink); }
+  .row dd.num { font-variant-numeric: tabular-nums; }
+  @media (max-width: 620px) {
+    .row { grid-template-columns: 1fr; }
+    .row dt { padding-bottom: 6px; background: var(--paper); }
+    .row dd { padding-top: 0; color: var(--ink-muted); }
   }
 
-  footer { background: var(--ink); color: #cfc4a8; padding: 40px 0 48px; margin-top: 8px; border-top: 3px solid var(--gold); }
-  footer p { max-width: 65ch; }
-  footer .disclaimer { font-size: 12px; color: #8a8069; }
-  footer a { color: #d8c89e; }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  dl { margin: 0; }
+
+  footer { background: var(--ink-strong); color: #c9cccb; padding: 44px 0 52px; }
+  footer p { max-width: var(--prose); }
+  footer .brand { color: var(--paper); font-family: var(--font-display); font-size: 1.0625rem; }
+  footer .disclaimer { font-size: .8125rem; color: #969a99; line-height: 1.6; }
+  footer a { color: var(--green-light); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  }
 </style>
 </head>
 <body>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <header class="hero">
-  <div class="hero-inner">
+  <div class="wrap hero-inner">
+    <div class="mark" role="presentation"></div>
     <div class="eyebrow">The Wellness Way — Mason</div>
     <h1>What a full recurrent loss workup looks like</h1>
     <p class="lede">Every panel we run, why each one matters, what it costs, and the honest note on what it can't tell us.</p>
     <div class="cta-row">
-      <a class="btn btn-gold" href="#cost">See the pricing</a>
-      <a class="btn btn-ghost" href="https://calendly.com/rdenome-thewellnessway">Book a consult</a>
+      <a class="btn btn-primary" href="#cost">See the pricing</a>
+      <a class="btn btn-secondary" href="https://calendly.com/rdenome-thewellnessway">Book a consult</a>
     </div>
   </div>
 </header>
 
-<main>
+<main id="main">
 
   <section>
     <div class="wrap">
-      <div class="eyebrow section-label">Before anything else</div>
+      <div class="eyebrow">Before anything else</div>
       <h2>This is a question list, not a diagnosis</h2>
       <p class="lead">Nothing here says what happened to you. It's the set of things worth measuring in someone who has had two or more losses and been told everything came back normal.</p>
       <p>Bring it to your OB. Bring it to us. Bring it to whoever you trust — <strong>it works either way.</strong></p>
@@ -181,29 +192,27 @@
       </div>
 
       <div class="note">
-        <strong>"Unexplained" isn't the same as "untested."</strong> Between 50 and 75% of recurrent loss gets labeled unexplained. That number describes the standard panel — not your body.
+        <p><strong>"Unexplained" isn't the same as "untested."</strong> Between 50 and 75% of recurrent loss gets labeled unexplained. That number describes the standard panel — not your body.</p>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="band-soft">
     <div class="wrap">
-      <div class="eyebrow section-label">Where the two-loss number comes from</div>
+      <div class="eyebrow">Where the two-loss number comes from</div>
       <h2>You may already qualify</h2>
-      <div class="tablewrap">
-        <table>
-          <tr><td style="width:8.5rem"><strong>ACOG</strong></td><td>"Recurrent pregnancy loss is defined as having two or more miscarriages. After two miscarriages, a thorough physical exam and testing are recommended."</td></tr>
-          <tr><td><strong>ASRM</strong></td><td>Evaluation may proceed after two losses — a position first stated in 2012. Updated in 2026: a pregnancy confirmed by a positive hCG test counts, and losses no longer need to be consecutive.</td></tr>
-          <tr><td><strong>Your insurer</strong></td><td>Coverage policies commonly define it at two or more losses. Denials usually come from a plan-level fertility exclusion or a coding issue — both worth appealing.</td></tr>
-          <tr><td><strong>In the UK</strong></td><td>RCOG still says three or more. Your doctor is following their guideline, not ignoring one.</td></tr>
-        </table>
-      </div>
+      <dl class="rows">
+        <div class="row"><dt>ACOG</dt><dd>"Recurrent pregnancy loss is defined as having two or more miscarriages. After two miscarriages, a thorough physical exam and testing are recommended."</dd></div>
+        <div class="row"><dt>ASRM</dt><dd>Evaluation may proceed after two losses — a position first stated in 2012. Updated in 2026: a pregnancy confirmed by a positive hCG test counts, and losses no longer need to be consecutive.</dd></div>
+        <div class="row"><dt>Your insurer</dt><dd>Coverage policies commonly define it at two or more losses. Denials usually come from a plan-level fertility exclusion or a coding issue — both worth appealing.</dd></div>
+        <div class="row"><dt>In the UK</dt><dd>RCOG still says three or more. Your doctor is following their guideline, not ignoring one.</dd></div>
+      </dl>
     </div>
   </section>
 
-  <section>
+  <section class="band-green">
     <div class="wrap">
-      <div class="eyebrow section-label">If you're not local</div>
+      <div class="eyebrow">If you're not local</div>
       <h2>We work in all 50 states</h2>
       <ul class="plain">
         <li><strong>Your labs come to you.</strong> Most are at-home collection kits, mailed to your door.</li>
@@ -217,51 +226,46 @@
 
   <section>
     <div class="wrap">
-      <div class="eyebrow section-label">Your side</div>
+      <div class="eyebrow">Your side</div>
       <h2>What we run, and why</h2>
       <p class="soft">Grouped by what each one is actually looking at. Not a protocol — a set of inputs we can measure.</p>
 
       <div class="panel">
         <h3>Inflammation &amp; immune load</h3>
-        <p>CRP, ESR, CMP, and <strong>thyroid antibodies (TPO)</strong>.</p>
+        <p class="tests">CRP, ESR, CMP, and thyroid antibodies (TPO)</p>
         <p class="why">A normal TSH does not rule out an immune system attacking the thyroid. TSH is a pituitary signal; antibodies are a separate test that often goes unordered.</p>
       </div>
-
       <div class="panel">
         <h3>Nutrient status</h3>
-        <p>Full iron panel + CBC, vitamin D, magnesium.</p>
+        <p class="tests">Full iron panel + CBC, vitamin D, magnesium</p>
         <p class="why">A ferritin of 15 isn't anemia, so it gets flagged normal — and it's nowhere near where you'd want it going into a pregnancy.</p>
       </div>
-
       <div class="panel">
         <h3>Blood sugar</h3>
-        <p><strong>Fasting insulin</strong>, glucose, HbA1c, lipids.</p>
+        <p class="tests">Fasting insulin, glucose, HbA1c, lipids</p>
         <p class="why">Fasting insulin is the one most often skipped. Insulin climbs years before glucose does — a normal glucose with a high fasting insulin is a picture you'd otherwise miss entirely.</p>
       </div>
-
       <div class="panel">
         <h3>Oxidative stress &amp; toxic load</h3>
-        <p>OAT (organic acids) and MycoTOX.</p>
+        <p class="tests">OAT (organic acids), MycoTOX</p>
         <p class="why">Metabolic and mitochondrial markers, plus mold and mycotoxin exposure. Mold testing is contested in conventional medicine; we measure it, and we don't claim it explains a loss.</p>
       </div>
-
       <div class="panel">
         <h3>Gut &amp; estrogen clearance</h3>
-        <p>Genova 3-day stool.</p>
+        <p class="tests">Genova 3-day stool</p>
         <p class="why">Digestion, absorption, overgrowths, gut inflammation — and how well you clear the estrogen you've already used. Hormones aren't only made; they have to leave.</p>
       </div>
-
       <div class="panel">
         <h3>The cycle itself</h3>
-        <p>DUTCH Cycle Mapping.</p>
+        <p class="tests">DUTCH Cycle Mapping</p>
         <p class="why">Estrogen and progesterone across the whole cycle rather than one morning — whether you ovulated, when, how strongly, and what progesterone did afterward. A standard day-21 draw can miss the peak entirely if you ovulate late.</p>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="band-soft">
     <div class="wrap">
-      <div class="eyebrow section-label">His side</div>
+      <div class="eyebrow">His side</div>
       <h2>Half the equation, usually unmeasured</h2>
       <p>Half the genetic material is his — and that half gets built by his body, out of whatever his body has to work with. In most workups, nothing on his side was ever looked at.</p>
       <p><strong>ASRM, 2026:</strong> "Standard semen analysis parameters do not appear to be predictive of recurrent pregnancy loss." So a normal semen analysis isn't the all-clear it gets treated as.</p>
@@ -272,56 +276,49 @@
         <li><strong>OAT</strong> — mitochondrial and oxidative load</li>
         <li><strong>MycoTOX</strong> — usually a shared household exposure, so worth checking both of you</li>
       </ul>
-      <div class="note warm">
-        <strong>The honest part.</strong> We can't tell you that sorting out his thyroid or his blood sugar changes what happens next. Nobody can honestly tell you that. What we can tell you is that half of this has never been measured.
+      <div class="note">
+        <p><strong>The honest part.</strong> We can't tell you that sorting out his thyroid or his blood sugar changes what happens next. Nobody can honestly tell you that. What we can tell you is that half of this has never been measured.</p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="eyebrow section-label">Not our lane</div>
+      <div class="eyebrow">Not our lane</div>
       <h2>What we don't run — and who does</h2>
       <p class="soft">We'd rather say this plainly than have you find out later.</p>
-      <div class="tablewrap">
-        <table>
-          <thead><tr><th style="width:14rem">Test</th><th>Where to ask</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Semen analysis &amp; sperm DNA fragmentation</strong></td><td>Your OB, an REI, or a reproductive urologist.</td></tr>
-            <tr><td><strong>Karyotype — both partners</strong></td><td>Your OB or an REI. A balanced translocation is real and findable.</td></tr>
-            <tr><td><strong>Tissue (POC) chromosome analysis</strong></td><td>Your OB, at the time of a loss. ASRM now recommends this as a first step — ask before tissue is discarded.</td></tr>
-            <tr><td><strong>Endometrial biopsy</strong></td><td>Your OB or an REI. Silent chronic inflammation of the lining is only found by looking.</td></tr>
-            <tr><td><strong>Saline sonogram / hysteroscopy</strong></td><td>Your OB. A septum can be missed on a standard ultrasound.</td></tr>
-            <tr><td><strong>Celiac diagnosis</strong></td><td>Your GP or a gastroenterologist. Don't go gluten-free before testing — it invalidates the result.</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <dl class="rows">
+        <div class="row"><dt>Semen analysis &amp; sperm DNA fragmentation</dt><dd>Your OB, an REI, or a reproductive urologist.</dd></div>
+        <div class="row"><dt>Karyotype — both partners</dt><dd>Your OB or an REI. A balanced translocation is real and findable.</dd></div>
+        <div class="row"><dt>Tissue (POC) chromosome analysis</dt><dd>Your OB, at the time of a loss. ASRM now recommends this as a first step — ask before tissue is discarded.</dd></div>
+        <div class="row"><dt>Endometrial biopsy</dt><dd>Your OB or an REI. Silent chronic inflammation of the lining is only found by looking.</dd></div>
+        <div class="row"><dt>Saline sonogram / hysteroscopy</dt><dd>Your OB. A septum can be missed on a standard ultrasound.</dd></div>
+        <div class="row"><dt>Celiac diagnosis</dt><dd>Your GP or a gastroenterologist. Don't go gluten-free before testing — it invalidates the result.</dd></div>
+      </dl>
     </div>
   </section>
 
-  <section id="cost">
+  <section id="cost" class="band-soft">
     <div class="wrap">
-      <div class="eyebrow section-label">What it costs</div>
+      <div class="eyebrow">What it costs</div>
       <h2>Straight pricing, no discovery call required</h2>
-      <div class="tablewrap">
-        <table>
-          <thead><tr><th style="width:16rem">What</th><th>Cost</th></tr></thead>
-          <tbody>
-            <tr><td><strong>New patient appointment</strong></td><td class="n">$99</td></tr>
-            <tr><td><strong>Testing, day one</strong></td><td>$300 – $700, depending on which panels we run</td></tr>
-            <tr><td><strong>Follow-up visits</strong></td><td class="n">$10 – $130</td></tr>
-            <tr><td><strong>Supplements, if any</strong></td><td>Within that same range</td></tr>
-            <tr><td><strong>If you're not local</strong></td><td>Exactly the same. Location changes nothing.</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <dl class="rows">
+        <div class="row"><dt>New patient appointment</dt><dd class="num">$99</dd></div>
+        <div class="row"><dt>Testing, day one</dt><dd class="num">$300 – $700, depending on which panels we run</dd></div>
+        <div class="row"><dt>Follow-up visits</dt><dd class="num">$10 – $130</dd></div>
+        <div class="row"><dt>Supplements, if any</dt><dd>Within that same range</dd></div>
+        <div class="row"><dt>If you're not local</dt><dd>Exactly the same. Location changes nothing.</dd></div>
+      </dl>
       <p class="soft">We can't honestly quote one total before we've seen anything — it depends on what the testing shows. What we can do is tell you every number up front. <strong>No discovery call, no "investment" conversation, no five-figure package.</strong> And bring labs you've already paid for; if something's been run recently we'll read it rather than repeat it.</p>
+      <div class="cta-row" style="margin-top:1.5rem">
+        <a class="btn btn-primary" href="https://calendly.com/rdenome-thewellnessway">Book a consult</a>
+      </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="eyebrow section-label">Before you pay anyone</div>
+      <div class="eyebrow">Before you pay anyone</div>
       <h2>What we will not claim</h2>
       <p>You've likely been sold certainty before, and it cost money and time you don't get back. So, plainly:</p>
       <ul class="plain">
@@ -332,23 +329,22 @@
         <li>We will never promise you a baby. Nobody honestly can.</li>
       </ul>
       <div class="note">
-        <strong>What we will do.</strong> Tell you exactly what we test and why. Tell you what each result would change. And tell you when we've found nothing — out loud, without softening it into a supplement plan.
-        <br><br>
-        <strong>Some of what we find can be changed. Some can't. We'll tell you which.</strong>
+        <p><strong>What we will do.</strong> Tell you exactly what we test and why. Tell you what each result would change. And tell you when we've found nothing — out loud, without softening it into a supplement plan.</p>
+        <p style="margin-top:.9rem"><strong>Some of what we find can be changed. Some can't. We'll tell you which.</strong></p>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="band-green">
     <div class="wrap">
-      <div class="eyebrow section-label">Next step</div>
+      <div class="eyebrow">Next step</div>
       <h2>Tell us where you are</h2>
       <p class="lead">How many losses, what's been run, and what you've been told. We'll tell you what we'd look at first.</p>
-      <div class="cta-row" style="justify-content:flex-start">
-        <a class="btn btn-gold" href="https://calendly.com/rdenome-thewellnessway">Book a consult</a>
-        <a class="btn" style="border-color:var(--border);color:var(--text)" href="mailto:mason@thewellnessway.com">Email us</a>
+      <div class="cta-row" style="margin-top:1.4rem">
+        <a class="btn btn-primary" href="https://calendly.com/rdenome-thewellnessway">Book a consult</a>
+        <a class="btn btn-secondary" href="mailto:mason@thewellnessway.com">Email us</a>
       </div>
-      <p class="soft" style="margin-top:22px">If you're grieving and it's heavier than you can carry, please talk to someone who does that work. We can point you to people we trust. A care plan is not a substitute for that, and we'd never pretend it is.</p>
+      <p class="soft" style="margin-top:1.6rem">If you're grieving and it's heavier than you can carry, please talk to someone who does that work. We can point you to people we trust. A care plan is not a substitute for that, and we'd never pretend it is.</p>
     </div>
   </section>
 
@@ -356,7 +352,8 @@
 
 <footer>
   <div class="wrap">
-    <p>The Wellness Way — Mason · Dr. Ryan DeNome, D.C.</p>
+    <p class="brand">The Wellness Way — Mason</p>
+    <p style="color:#c9cccb">Dr. Ryan DeNome, D.C. · <a href="https://www.thewellnesswaymason.com">thewellnesswaymason.com</a></p>
     <p class="disclaimer">This page is for general education. It is not medical advice, not a diagnosis, and not a treatment plan. Our care works alongside your medical providers and is not a substitute for medical diagnosis or treatment — including your OB, REI, or fertility team. Guideline language is quoted from ACOG and ASRM and is current as of 2026. Individual experiences vary, and no outcome is promised or implied.</p>
   </div>
 </footer>
