@@ -19,6 +19,8 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/admin') &&
         !page.includes('/style-guide') &&
+        // /links is the link-in-bio hub — noindex, so keep it out of the sitemap too
+        !page.includes('/links') &&
         !page.includes('/uploads/') &&
         !page.includes('/_'),
       changefreq: 'weekly',

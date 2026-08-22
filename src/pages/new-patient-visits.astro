@@ -1,0 +1,528 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import { clinic, bylines } from '../lib/site';
+
+const bring = [
+  {
+    title: 'Any labs from the last 12 months',
+    body: "Bloodwork, imaging reports, specialist notes. Bring the actual printouts or the patient-portal PDFs, not just what you remember being told.",
+  },
+  {
+    title: 'A list of everything you take',
+    body: 'Prescriptions, over-the-counter, supplements, doses. All of it interacts with the picture, and guessing at the list is how details get missed.',
+  },
+  {
+    title: 'Your story, in your own words',
+    body: "When it started, what makes it better or worse, what you have already tried. You do not need it organized. That is our job.",
+  },
+  {
+    title: 'Clothes you can move in',
+    body: 'For chiropractic visits, something you can be examined and adjusted in comfortably.',
+  },
+];
+
+const chiroSteps = [
+  {
+    n: 1,
+    label: 'Visit One',
+    title: 'History, exam, and your first adjustment',
+    price: '$99 flat',
+    duration: '45 minutes',
+    body: "We start with your history, then a hands-on chiropractic exam to find where movement is restricted and where old stress is still being carried. X-rays if they are clinically indicated. Then your first adjustment, the same day, so you leave having been treated and not just evaluated.",
+  },
+  {
+    n: 2,
+    label: 'Visit Two and Onward',
+    title: 'Follow-up adjustments',
+    price: '$50 per visit',
+    body: "These are adjustment visits. Quick, focused, no repeat of the full workup. Soft tissue work, cupping, and instrument-assisted scraping are included at no upcharge when your body needs them. Frequency depends on what your exam showed and how you respond, and it gets revisited as you improve.",
+  },
+];
+
+const restorationSteps = [
+  {
+    n: 1,
+    label: 'Visit One',
+    title: 'A new perspective',
+    price: '$99 flat',
+    body: "A conversation, not a conveyor belt. You talk, we listen: what you have tried, what you have been told, and what you want your health to let you do again. We review any prior labs you brought with you. If the drive to Mason is the barrier, health restoration visits can be done virtually.",
+  },
+  {
+    n: 2,
+    label: 'Between Visits',
+    title: 'We test',
+    price: 'Typically $300 to $700 on day one',
+    body: "Lab panels are chosen for your case, not pulled from a template. We walk through the reasoning and the cost of each one before anything is ordered, and testing is always recommended rather than required. Patients with recent thorough testing often spend less. The full lab catalog is available as a PDF.",
+  },
+  {
+    n: 3,
+    label: 'Visit Two',
+    title: 'We discover',
+    price: '$300, plus any supplements you choose',
+    body: "Results, in plain English. What is happening, what may be driving it, and what your body needs to start moving in a better direction. You leave with a personalized meal plan and a supplement plan built from what your labs actually showed.",
+  },
+  {
+    n: 4,
+    label: 'Ongoing',
+    title: 'We guide',
+    price: 'Varies by plan',
+    body: "A plan only matters if you can live it. Chiropractic care, nutrition guidance, and lifestyle support, adjusted as your body responds. Retesting when it will change a decision. You are never handed a PDF and left to figure it out alone.",
+  },
+];
+
+const visitFaqs = [
+  {
+    question: 'Do I have to choose between chiropractic and health restoration?',
+    answer:
+      '<p>No. Plenty of patients start with one and add the other later, and plenty run both from the beginning. If you are not sure which door to walk through, book the chiropractic new patient visit and we will sort it out in the room.</p>',
+  },
+  {
+    question: 'Will I get adjusted on my first visit?',
+    answer:
+      '<p>On the chiropractic new patient visit, yes, assuming the exam does not turn up a reason to wait. The health restoration new patient visit is an intake conversation and a review of prior labs, so it does not include an adjustment.</p>',
+  },
+  {
+    question: 'Do I have to run the labs you recommend?',
+    answer:
+      '<p>No. Testing is recommended, never required, and you see the cost and the reasoning before you decide. You stay in control of what gets tested. We would rather test less and explain more than hand you a panel you did not understand buying.</p>',
+  },
+  {
+    question: 'Will you tell me to stop my medications?',
+    answer:
+      '<p>No, and we never advise stopping medications. Your prescribing physician makes those decisions. Our role is to help you understand the systems beneath your symptoms so you and your medical team can make better-informed choices over time. We work alongside conventional care, not in place of it.</p>',
+  },
+  {
+    question: 'How long before I feel different?',
+    answer:
+      '<p>It depends on what we are addressing. Acute pain may resolve in weeks. Chronic patterns like autoimmune, hormone, and gut cases typically take three to six months of consistent care before meaningful change shows up. We build the plan with realistic timelines and check in as we go.</p>',
+  },
+  {
+    question: 'Do you take insurance, and is there a contract?',
+    answer:
+      '<p>We are a cash-pay practice and out-of-network with insurance. We provide a superbill on request if you want to submit for potential reimbursement, and HSA and FSA cards are accepted. There are no contracts and no minimum visit packages.</p>',
+  },
+];
+---
+
+<BaseLayout
+  title="New Patient Visit Schedule | Chiropractor in Mason, OH"
+  description="Exactly what your first visits look like at The Wellness Way - Mason: what to bring, what happens, and what it costs. Chiropractic and health restoration, Mason, OH."
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'New Patient Visits' }]} />
+    <div class="npv-hero" data-reveal>
+      <h1>
+        <span class="page-kicker">New Patient Visit Schedule &mdash; Mason, OH</span>
+        You should know what you&rsquo;re walking into.
+      </h1>
+      <p class="lede">
+        You have probably had the fifteen-minute version of care. Rushed in, handed a
+        conclusion, sent out without ever being told what was actually going to happen. So
+        here is the whole sequence in advance: every visit, what happens in it, and what it
+        costs. No surprises at the front desk.
+      </p>
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your First Visit
+        </Button>
+        <Button href="#before-you-come" variant="ghost" size="lg">
+          What to bring
+        </Button>
+      </div>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="lg">
+    <div class="intro" data-reveal>
+      <p>
+        A smoke detector going off is not the problem. It is the notice that something else is.
+        Most care spends its time on the alarm, which is why symptoms keep coming back once the
+        battery is pulled. Our first visits are built to go find the fire instead, and that
+        takes a real exam, real history, and in a lot of cases real testing. We test, we do not
+        guess.
+      </p>
+      <p>
+        There are two ways in. Chiropractic care, and health restoration. Both start at a flat
+        $99, and the sequence below shows you where each one goes from there.
+      </p>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-warm-tint" id="before-you-come">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>Before You Come In</p>
+      <h2 data-reveal>Four things to bring.</h2>
+      <p class="value-line" data-reveal="up-sm">
+        None of these are required to be seen. Each one makes your first visit sharper.
+      </p>
+    </div>
+    <ul class="bring-grid">
+      {bring.map((b) => (
+        <li data-reveal="up-sm">
+          <h3>{b.title}</h3>
+          <p>{b.body}</p>
+        </li>
+      ))}
+    </ul>
+  </SectionContainer>
+
+  <SectionContainer width="wide" spacing="lg" id="the-sequence">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>The Sequence</p>
+      <h2 data-reveal>Two tracks. Pick the door that fits.</h2>
+    </div>
+
+    <div class="track" data-reveal="up-sm">
+      <div class="track-head">
+        <h3 class="track-title">Chiropractic</h3>
+        <p class="track-slogan">Do Health Differently.</p>
+      </div>
+      <ol class="visit-list">
+        {chiroSteps.map((s) => (
+          <li data-reveal="up-sm">
+            <div class="visit-num" aria-hidden="true">{s.n}</div>
+            <div class="visit-body">
+              <p class="visit-label">{s.label}</p>
+              <h4>{s.title}</h4>
+              <p class="visit-meta">
+                <span class="visit-price">{s.price}</span>
+                {s.duration && <span class="visit-duration">{s.duration}</span>}
+              </p>
+              <p>{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div class="track-cta">
+        <Button href={clinic.bookingUrl} variant="primary" size="md" external>
+          Book a chiropractic visit
+        </Button>
+      </div>
+    </div>
+
+    <div class="track" data-reveal="up-sm">
+      <div class="track-head">
+        <h3 class="track-title">Health Restoration</h3>
+        <p class="track-slogan">Test, don&rsquo;t guess.</p>
+      </div>
+      <ol class="visit-list">
+        {restorationSteps.map((s) => (
+          <li data-reveal="up-sm">
+            <div class="visit-num" aria-hidden="true">{s.n}</div>
+            <div class="visit-body">
+              <p class="visit-label">{s.label}</p>
+              <h4>{s.title}</h4>
+              <p class="visit-meta">
+                <span class="visit-price">{s.price}</span>
+                {s.duration && <span class="visit-duration">{s.duration}</span>}
+              </p>
+              <p>{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div class="track-cta">
+        <Button href={clinic.bookingUrl} variant="primary" size="md" external>
+          Book a health restoration consult
+        </Button>
+        <a href="/files/lab-pricing.pdf" class="pdf-link">View lab pricing PDF &rarr;</a>
+      </div>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <h2 class="section-h2" data-reveal>What we will not do.</h2>
+    <ul class="wont-grid">
+      <li data-reveal="up-sm">
+        <h3>Tell you to stop your medications</h3>
+        <p>That is your prescribing physician&rsquo;s call. We work alongside your medical team.</p>
+      </li>
+      <li data-reveal="up-sm">
+        <h3>Lock you into a package</h3>
+        <p>No contracts, no minimum visit counts. You stay because it is helping.</p>
+      </li>
+      <li data-reveal="up-sm">
+        <h3>Order labs you did not agree to</h3>
+        <p>You see the panel, the reason, and the price before anything is ordered.</p>
+      </li>
+      <li data-reveal="up-sm">
+        <h3>Promise you a cure</h3>
+        <p>We will tell you what we find, what it may mean, and what your options are.</p>
+      </li>
+    </ul>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2 class="section-h2" data-reveal>First-visit questions, answered.</h2>
+    <FAQAccordion items={visitFaqs} />
+  </SectionContainer>
+
+  <SectionContainer width="narrow" spacing="lg" background="paper-warm-tint">
+    <div class="npv-close" data-reveal>
+      <h2>You have options.</h2>
+      <p>
+        You are allowed to want a real answer. You are allowed to ask why instead of settling
+        for what to manage. You are allowed to take up the whole appointment. And you are
+        allowed to start whenever you are ready, not whenever you feel bad enough to justify it.
+      </p>
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your First Visit
+        </Button>
+        <Button href="/contact" variant="ghost" size="lg">
+          Ask us a question first
+        </Button>
+      </div>
+      <p class="byline">{bylines.reviewed}</p>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .npv-hero {
+    max-width: 46rem;
+  }
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1rem;
+  }
+  .npv-hero .lede {
+    font-size: var(--text-lg);
+    color: var(--color-ink-muted);
+    margin-bottom: 2rem;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    align-items: center;
+  }
+
+  .intro p {
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-head {
+    margin-bottom: 2.5rem;
+  }
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin-bottom: 0.5rem;
+  }
+  .value-line {
+    color: var(--color-ink-muted);
+    max-width: 44rem;
+    margin: 0.75rem 0 0;
+  }
+  .section-h2 {
+    margin-bottom: 2rem;
+  }
+
+  /* === What to bring === */
+  .bring-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+  }
+  .bring-grid li {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+  }
+  .bring-grid h3 {
+    font-size: var(--text-lg);
+    margin-bottom: 0.5rem;
+  }
+  .bring-grid p {
+    margin: 0;
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  /* === Tracks === */
+  .track {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 2rem;
+  }
+  .track-head {
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-line-soft);
+    margin-bottom: 1.75rem;
+  }
+  .track-title {
+    margin-bottom: 0.25rem;
+  }
+  .track-slogan {
+    margin: 0;
+    color: var(--color-brand-primary-dark);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    letter-spacing: 0.02em;
+  }
+
+  .visit-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem;
+    display: grid;
+    gap: 1.75rem;
+  }
+  .visit-list li {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  .visit-num {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-brand-primary-soft);
+    color: var(--color-brand-primary-dark);
+    border: 1px solid var(--color-brand-primary-light);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+  }
+  .visit-label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    margin-bottom: 0.25rem;
+  }
+  .visit-body h4 {
+    margin-bottom: 0.35rem;
+  }
+  .visit-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.65rem;
+  }
+  .visit-price {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    background: var(--color-paper-warm-tint);
+    border-radius: var(--radius-sm);
+    padding: 0.15rem 0.55rem;
+  }
+  /* Duration reads as a quieter sibling to the price — same chip shape, no fill,
+     so the number people actually shop on stays the loudest thing in the row. */
+  .visit-duration {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-ink-muted);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-sm);
+    padding: 0.15rem 0.55rem;
+  }
+  .visit-body > p:last-child {
+    margin: 0;
+    color: var(--color-ink-muted);
+    line-height: 1.65;
+  }
+
+  .track-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .pdf-link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+
+  /* === What we won't do === */
+  .wont-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1.5rem;
+  }
+  .wont-grid li {
+    border-left: 3px solid var(--color-brand-primary);
+    padding-left: 1.1rem;
+  }
+  .wont-grid h3 {
+    font-size: var(--text-lg);
+    margin-bottom: 0.4rem;
+  }
+  .wont-grid p {
+    margin: 0;
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  /* === Close === */
+  .npv-close {
+    text-align: center;
+  }
+  .npv-close p {
+    color: var(--color-ink-muted);
+    font-size: var(--text-lg);
+    line-height: 1.65;
+    margin: 0 auto 2rem;
+    max-width: 40rem;
+  }
+  .npv-close .cta-row {
+    justify-content: center;
+  }
+  .byline {
+    margin-top: 2.5rem !important;
+    font-size: var(--text-sm) !important;
+    color: var(--color-mute) !important;
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    .track {
+      padding: 1.5rem 1.25rem;
+    }
+    .visit-list li {
+      grid-template-columns: 2.25rem 1fr;
+      gap: 1rem;
+    }
+    .visit-num {
+      width: 2.25rem;
+      height: 2.25rem;
+      font-size: var(--text-base);
+    }
+  }
+</style>

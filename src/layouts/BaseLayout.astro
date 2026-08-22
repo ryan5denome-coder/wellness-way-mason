@@ -19,6 +19,12 @@ interface Props {
   jsonLd?: Array<Record<string, unknown>>;
   /** Skip the global LocalBusiness schema if a more specific schema is on this page. */
   skipDefaultSchema?: boolean;
+  /**
+   * Chrome-free mode: no Header, Footer, or StickyBookBar. For standalone
+   * destinations like /links that are entered from an off-site profile and
+   * exist only to route the visitor onward.
+   */
+  bare?: boolean;
 }
 
 const {
@@ -28,6 +34,7 @@ const {
   noIndex = false,
   jsonLd = [],
   skipDefaultSchema = false,
+  bare = false,
 } = Astro.props;
 
 // Append the parent brand "The Wellness Way" (not the full local franchise
@@ -124,12 +131,12 @@ const allJsonLd = skipDefaultSchema
   <body>
     <PageLoader />
     <a href="#main" class="skip-link">Skip to main content</a>
-    <Header />
+    {!bare && <Header />}
     <main id="main">
       <slot />
     </main>
-    <Footer />
-    <StickyBookBar />
+    {!bare && <Footer />}
+    {!bare && <StickyBookBar />}
     <script>
       import Lenis from 'lenis';
 
