@@ -24,8 +24,8 @@ const isComposite = source === 'composite';
   </blockquote>
   <figcaption class="testimonial-attribution">
     <span class="attribution-name">{attribution}</span>
-    {condition && <span class="attribution-condition">— {condition}</span>}
-    {isComposite && <span class="composite-flag" title="Composite — combines multiple patient experiences. No identifying details.">Composite</span>}
+    {condition && <span class="attribution-condition">{condition}</span>}
+    {isComposite && <span class="composite-flag" title="Composite. Combines multiple patient experiences. No identifying details.">Composite</span>}
   </figcaption>
 </figure>
 
