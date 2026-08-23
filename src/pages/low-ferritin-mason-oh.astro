@@ -89,7 +89,7 @@ const steps = [
   {
     n: 4,
     t: 'We work on both ends at once',
-    b: 'What is going out and what is coming in. Nutrition built from what your testing showed, support for absorption, and hands-on chiropractic care. Then we retest, because the only way to know whether stores are rebuilding is to measure them again.',
+    b: 'What is going out, what is coming in, and whether any of it is actually landing. Nutrition built from what your testing showed, work on absorption, and hands-on chiropractic care. Then we retest, because the only way to know whether stores are rebuilding is to measure them again.',
   },
 ];
 
@@ -316,6 +316,26 @@ const faqs = [
         </li>
       ))}
     </ol>
+
+    <aside class="gut" data-reveal="up-sm">
+      <p class="eyebrow">If You Already Tried Iron And Nothing Changed</p>
+      <h3>Eating iron and absorbing iron are two different things.</h3>
+      <p>
+        Iron does not get taken in all along your gut. There is one short stretch of small
+        intestine, right after your stomach, where almost all of it crosses over. Everything
+        before that spot is prep work, and stomach acid does a lot of that prep by loosening
+        iron from your food so it can be picked up.
+      </p>
+      <p>
+        So if that stretch is inflamed, or the acid upstream is running low, iron can go in your
+        mouth and straight back out again without ever landing. You did the work. Your body never
+        got the delivery.
+      </p>
+      <p class="gut-close">
+        That is why we look at how your gut is working, not just at how much iron you are getting.
+        Refilling a tank matters a lot less when the problem is that nothing is reaching it.
+      </p>
+    </aside>
   </SectionContainer>
 
   <SectionContainer width="default" spacing="lg">
@@ -515,6 +535,36 @@ const faqs = [
   .chain-list p, .do-list p { margin: 0; color: var(--color-ink-muted); line-height: 1.66; }
   .chain-list sup a { text-decoration: none; font-size: 0.62em; color: var(--color-mute); }
   .do-list { margin-bottom: 0; }
+
+  .gut {
+    margin-top: 2.5rem;
+    max-width: 46rem;
+    background: var(--color-paper);
+    border: var(--hairline) solid var(--color-line);
+    border-left: 3px solid var(--color-brand-primary);
+    border-radius: var(--radius-lg);
+    padding: 1.85rem;
+    box-shadow: var(--shadow-card);
+  }
+  .gut h3 {
+    font-size: var(--text-xl);
+    letter-spacing: -0.014em;
+    margin-bottom: 0.9rem;
+  }
+  .gut p {
+    color: var(--color-ink-muted);
+    line-height: 1.66;
+    margin-bottom: 0.9rem;
+  }
+  .gut-close {
+    color: var(--color-ink-strong) !important;
+    font-family: var(--font-display);
+    font-size: var(--text-lg) !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0 !important;
+    padding-top: 1rem;
+    border-top: var(--hairline) solid var(--color-line-soft);
+  }
 
   .straight {
     background: var(--color-paper);
