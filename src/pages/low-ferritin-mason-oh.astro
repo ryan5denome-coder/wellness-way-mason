@@ -31,34 +31,42 @@ const missedSigns = [
   {
     t: 'Chewing ice',
     b: 'Crunching cups of it. Craving it. This one has a name and it shows up in iron depletion often enough that it belongs on any intake form. Almost nobody mentions it to a doctor, because who brings up ice.',
+    w: 'Honestly, nobody knows for sure. The best guess is that a tired brain likes the jolt of something cold and crunchy. What we do know is that the craving tends to fade once iron comes back up.',
   },
   {
     t: 'Restless legs at night',
     b: 'The crawling, the need to move them, the way it gets worse the stiller you are. You’ve probably filed restless legs under a sleep problem. It sits closer to iron than most people know.',
+    w: 'Your brain uses iron to make the chemical that tells your legs to hold still. Low iron means that message comes through fuzzy. So your legs keep asking to move.',
   },
   {
     t: 'Cold hands and feet',
     b: 'Socks in July. Hands that go white and take forever to come back. Everyone around you is comfortable and you are not.',
+    w: 'Your blood carries heat around your body. When it cannot carry as much, your body protects your middle first, where your heart and lungs live. Hands and feet are last in line.',
   },
   {
     t: 'Hair coming out',
     b: 'In the brush, in the drain, on the pillow. Not a bald spot, just steadily less than there used to be. This is one of the documented skin and hair changes in iron depletion.',
+    w: 'Growing hair costs your body a lot. When supplies get tight, your body pays for the things that keep you alive and stops paying for the things that do not. Hair is near the front of that list.',
   },
   {
     t: 'Dizzy when you stand up fast',
     b: 'The gray-out getting off the couch. Usually written off as dehydration or low blood pressure.',
+    w: 'Stand up quickly and blood drops away from your head for a second. Normally you have plenty to spare. When you do not, your brain goes a beat without enough, and the room goes gray.',
   },
   {
     t: 'Out of breath on the stairs',
     b: 'One flight. You used to run. Nothing about your fitness changed, and yet.',
+    w: 'Oxygen has to hitch a ride on iron to get where it is going. Less iron means fewer rides. Your muscles come up short, so you breathe faster to send more.',
   },
   {
     t: 'A heart that races for no reason',
     b: 'Sitting still, and it takes off. Often called anxiety, and sometimes it is. It is also what a body does when it is trying to move more oxygen with less to carry it.',
+    w: 'Think of delivery trucks. If each truck is carrying less, you send more trucks. Your heart is what sends them, so it speeds up. You feel that as pounding.',
   },
   {
     t: 'Brittle nails and cracked corners of your mouth',
     b: 'Nails that peel and bend. Splits at the corners of your lips that keep coming back. Both are named skin findings in iron depletion.',
+    w: 'Your nails and the corners of your mouth are always building new skin. Building needs iron. When iron runs low, the work gets sloppy. It shows up first where your body builds fastest.',
   },
 ];
 
@@ -206,6 +214,10 @@ const faqs = [
         <li data-reveal="up-sm">
           <h3>{s.t}</h3>
           <p>{s.b}</p>
+          <div class="why">
+            <p class="why-label">Why it happens</p>
+            <p>{s.w}</p>
+          </div>
         </li>
       ))}
     </ul>
@@ -454,6 +466,27 @@ const faqs = [
   .sign-grid h3 { font-size: var(--text-lg); letter-spacing: -0.012em; margin-bottom: 0.45rem; }
   .sign-grid p {
     margin: 0; color: var(--color-ink-muted); font-size: var(--text-sm); line-height: 1.6;
+  }
+  /* The plain-language explanation. Deliberately set on its own tinted ground so it
+     reads as a different register from the description above it. */
+  .why {
+    margin-top: 1.1rem;
+    padding: 0.95rem 1.05rem;
+    background: var(--color-brand-primary-soft);
+    border-radius: var(--radius-md);
+  }
+  .why-label {
+    font-family: var(--font-body) !important;
+    font-size: var(--text-xs) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark) !important;
+    margin: 0 0 0.4rem !important;
+  }
+  .why p:last-child {
+    color: var(--color-ink) !important;
+    line-height: 1.62 !important;
   }
   .sign-note {
     max-width: 44rem; color: var(--color-ink); font-weight: 500;
