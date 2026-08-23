@@ -4,7 +4,7 @@ import SectionContainer from '../components/SectionContainer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Button from '../components/Button.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
-import NewsletterTeaser from '../components/NewsletterTeaser.astro';
+import GuideSignup from '../components/GuideSignup.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { clinic, bylines } from '../lib/site';
 
@@ -149,7 +149,12 @@ const faqs = [
       </p>
     </div>
     <div data-reveal="up-sm">
-      <NewsletterTeaser />
+      <GuideSignup
+        guide="ebv"
+        heading="Find out if this is what is going on."
+        blurb="A short guide on what reactivation actually looks like, what wakes it back up, and which markers are worth running before you accept another normal result."
+        bullets={["What it looks like the second time, when it is not mono anymore", "The ordinary load that keeps the lid off", "What we run, and why a TSH on its own is not a thyroid panel"]}
+      />
     </div>
   </SectionContainer>
 
@@ -294,6 +299,15 @@ const faqs = [
       </div>
       <p class="byline">{bylines.reviewed}</p>
     </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="md" id="get-the-guide">
+    <GuideSignup
+      guide="ebv"
+      heading="Find out if this is what is going on."
+      blurb="A short guide on what reactivation actually looks like, what wakes it back up, and which markers are worth running before you accept another normal result."
+      bullets={["What it looks like the second time, when it is not mono anymore", "The ordinary load that keeps the lid off", "What we run, and why a TSH on its own is not a thyroid panel"]}
+    />
   </SectionContainer>
 
   <SectionContainer width="default" spacing="md" id="newsletter">
