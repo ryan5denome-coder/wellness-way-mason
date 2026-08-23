@@ -4,7 +4,7 @@ import SectionContainer from '../components/SectionContainer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Button from '../components/Button.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
-import NewsletterTeaser from '../components/NewsletterTeaser.astro';
+import GuideSignup from '../components/GuideSignup.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { clinic, bylines } from '../lib/site';
 
@@ -148,11 +148,11 @@ const faqs = [
         other asks how much you have left in reserve. You got the first one.
       </p>
       <div class="cta-row">
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
-          Book Your Appointment
+        <Button href="#get-the-guide" variant="primary" size="lg">
+          Get the free guide
         </Button>
-        <Button href="#signs" variant="ghost" size="lg">
-          See the signs
+        <Button href={clinic.bookingUrl} variant="ghost" size="lg" external iconAfter>
+          Book Your Appointment
         </Button>
       </div>
     </div>
@@ -176,8 +176,13 @@ const faqs = [
         the test that was run was answering a different question.
       </p>
     </div>
-    <div data-reveal="up-sm">
-      <NewsletterTeaser />
+    <div data-reveal="up-sm" id="get-the-guide">
+      <GuideSignup
+        guide="ferritin"
+        heading="Get the low ferritin guide."
+        blurb="Why your iron panel can read normal while your storage sits empty, and what that has to do with the hair, the cold hands, and the tiredness nobody could explain."
+        bullets={["Why a normal hemoglobin does not rule this out", "What low ferritin actually feels like, beyond tired", "What we run, and what to ask for at your next appointment"]}
+      />
     </div>
   </SectionContainer>
 
@@ -362,6 +367,15 @@ const faqs = [
       </div>
       <p class="byline">{bylines.reviewed}</p>
     </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="md" id="get-the-guide-footer">
+    <GuideSignup
+      guide="ferritin"
+      heading="Get the low ferritin guide."
+      blurb="Why your iron panel can read normal while your storage sits empty, and what that has to do with the hair, the cold hands, and the tiredness nobody could explain."
+      bullets={["Why a normal hemoglobin does not rule this out", "What low ferritin actually feels like, beyond tired", "What we run, and what to ask for at your next appointment"]}
+    />
   </SectionContainer>
 
   <SectionContainer width="default" spacing="md" id="newsletter">
