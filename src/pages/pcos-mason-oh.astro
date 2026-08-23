@@ -167,11 +167,11 @@ const pcosFaqs = [
         diagnosis isn’t the same as an answer.
       </p>
       <div class="cta-row">
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
-          Book Your Appointment
+        <Button href="#get-the-guide" variant="primary" size="lg">
+          Get the free guide
         </Button>
-        <Button href="#what-we-test" variant="ghost" size="lg">
-          See what we test
+        <Button href={clinic.bookingUrl} variant="ghost" size="lg" external iconAfter>
+          Book Your Appointment
         </Button>
       </div>
     </div>
@@ -191,7 +191,7 @@ const pcosFaqs = [
         rather go looking for what set it off, and that takes real testing. We test, we don’t guess.
       </p>
     </div>
-    <div data-reveal="up-sm">
+    <div data-reveal="up-sm" id="get-the-guide">
       <GuideSignup
         guide="pcos"
         heading="Get the PCOS guide."
@@ -390,7 +390,7 @@ const pcosFaqs = [
     </div>
   </SectionContainer>
 
-  <SectionContainer width="default" spacing="md" id="get-the-guide">
+  <SectionContainer width="default" spacing="md" id="get-the-guide-footer">
     <GuideSignup
       guide="pcos"
       heading="Get the PCOS guide."
