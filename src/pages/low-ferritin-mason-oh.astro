@@ -1,0 +1,546 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import NewsletterTeaser from '../components/NewsletterTeaser.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import { clinic, bylines } from '../lib/site';
+
+/**
+ * /low-ferritin-mason-oh
+ *
+ * Angles chosen by Ryan: (1) tested for anemia, not for iron, and (2) the
+ * symptoms nobody connects to iron. Ferritin under 50 is the entry criterion,
+ * taken from the CMAJ trial's inclusion threshold rather than from the parent
+ * brand, whose own library gives two conflicting "optimal" ranges (80 to 100
+ * in one article, 35 to 75 in another, both uncited and neither with units).
+ *
+ * The skin section walks ferritin to hormones to PCOS to acne. That chain is
+ * deliberately built as association plus one real mechanism (iron is a required
+ * cofactor for collagen repair), NOT as causation. Low ferritin does not cause
+ * acne and the page says so out loud. Overclaiming there would be the one thing
+ * that discredits everything around it.
+ *
+ * House rules: no dashes of any kind, no medications, no list of what we
+ * decline to do, Plan of Care named, contractions throughout.
+ */
+
+const missedSigns = [
+  {
+    t: 'Chewing ice',
+    b: 'Crunching cups of it. Craving it. This one has a name and it shows up in iron depletion often enough that it belongs on any intake form. Almost nobody mentions it to a doctor, because who brings up ice.',
+  },
+  {
+    t: 'Restless legs at night',
+    b: 'The crawling, the need to move them, the way it gets worse the stiller you are. You’ve probably filed restless legs under a sleep problem. It sits closer to iron than most people know.',
+  },
+  {
+    t: 'Cold hands and feet',
+    b: 'Socks in July. Hands that go white and take forever to come back. Everyone around you is comfortable and you are not.',
+  },
+  {
+    t: 'Hair coming out',
+    b: 'In the brush, in the drain, on the pillow. Not a bald spot, just steadily less than there used to be. This is one of the documented skin and hair changes in iron depletion.',
+  },
+  {
+    t: 'Dizzy when you stand up fast',
+    b: 'The gray-out getting off the couch. Usually written off as dehydration or low blood pressure.',
+  },
+  {
+    t: 'Out of breath on the stairs',
+    b: 'One flight. You used to run. Nothing about your fitness changed, and yet.',
+  },
+  {
+    t: 'A heart that races for no reason',
+    b: 'Sitting still, and it takes off. Often called anxiety, and sometimes it is. It is also what a body does when it is trying to move more oxygen with less to carry it.',
+  },
+  {
+    t: 'Brittle nails and cracked corners of your mouth',
+    b: 'Nails that peel and bend. Splits at the corners of your lips that keep coming back. Both are named skin findings in iron depletion.',
+  },
+];
+
+const steps = [
+  {
+    n: 1,
+    t: 'We start with your history and your cycle',
+    b: 'How heavy your periods actually are, how long they run, what your energy does across the month, what you have already tried. Bring any labs from the past year. If ferritin is on there, we want to see the number, not the word normal.',
+  },
+  {
+    n: 2,
+    t: 'We run ferritin with the markers that make it readable',
+    b: 'Ferritin on its own can mislead, so it goes out alongside a full iron picture, a marker of inflammation, thyroid with antibodies, and blood sugar and insulin. You see the reasoning and the cost of every panel before anything is ordered.',
+  },
+  {
+    n: 3,
+    t: 'We go through the results at your Plan of Care visit',
+    b: 'We sit down and walk it marker by marker. What came back, what stands out, and how it lines up against the symptoms you described. You leave understanding your own labs, which for most women is the first time.',
+  },
+  {
+    n: 4,
+    t: 'We work on both ends at once',
+    b: 'What is going out and what is coming in. Nutrition built from what your testing showed, support for absorption, and hands-on chiropractic care. Then we retest, because the only way to know whether stores are rebuilding is to measure them again.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'My doctor said my bloodwork was normal. Was that wrong?',
+    answer:
+      '<p>No. Your results were almost certainly accurate. A standard CBC measures whether you have enough hemoglobin circulating right now, and if yours is fine, that answer is correct. What a CBC does not measure is how much iron you have in reserve behind it. Those are two different questions, and only one of them got asked.</p>',
+  },
+  {
+    question: 'Why 50? My lab flagged nothing until I was in the teens.',
+    answer:
+      '<p>Lab reference ranges tell you where most people fall. They are not a target. Fifty comes from a trial that enrolled menstruating women with normal hemoglobin and ferritin under 50, gave half of them iron and half a placebo for twelve weeks, and found the iron group’s fatigue dropped noticeably further. That is the number we use as a starting point for a conversation, not a diagnosis.</p>',
+  },
+  {
+    question: 'Can low ferritin cause acne?',
+    answer:
+      '<p>Not directly, and we would rather tell you that than sell you something tidier. What iron does is supply an enzyme your body needs to build and repair collagen, so when stores run low, skin heals slower and marks stay longer. On top of that, the things that drain iron in women and the things that drive hormonal acne often show up in the same person. It is not the reason your skin is breaking out. It is another missing piece, and it is usually the one nobody measured.</p>',
+  },
+  {
+    question: 'I have PCOS. Does that change anything?',
+    answer:
+      '<p>It is worth looking. PCOS often comes with cycles that are irregular, absent, or heavy, and heavy cycles are the leading way women lose iron. You may also already be dealing with hair shedding and skin that will not settle, which are exactly the places low ferritin shows up. Two separate things landing in the same place, and usually only one of them has been investigated.</p>',
+  },
+  {
+    question: 'What if my ferritin comes back high?',
+    answer:
+      '<p>Then we look harder rather than relaxing. Ferritin rises with inflammation, so an inflamed body can post a reassuring number while stores are genuinely low. That is exactly why we run it next to an inflammatory marker instead of alone. A number by itself is not an answer.</p>',
+  },
+  {
+    question: 'What does this cost?',
+    answer:
+      '<p>The health restoration new patient visit is a flat $99. If you have not had recent testing, plan on somewhere between $300 and $700 on day one depending on which panels we run. The Plan of Care visit is $300. Every panel gets explained and priced before it is ordered. Full detail is on our <a href="/pricing">pricing page</a>.</p>',
+  },
+  {
+    question: 'Do I keep seeing my own doctor?',
+    answer:
+      '<p>Yes. We work alongside your medical team. Persistent low iron sometimes points to something that needs a physician’s workup, and when it does, we say so and we send you. If you want your results sent over, tell us and we will.</p>',
+  },
+];
+---
+
+<BaseLayout
+  title="Low Ferritin Testing | Mason, OH"
+  description="Ferritin under 50 with normal hemoglobin. The iron storage number a standard CBC never measures, and the symptoms nobody connects to it. Testing in Mason, Ohio."
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Low Ferritin' }]} />
+    <div class="fer-hero" data-reveal>
+      <h1>
+        <span class="page-kicker">Low Ferritin Testing in Mason, OH</span>
+        You were tested for anemia. Nobody tested your iron.
+      </h1>
+      <p class="lede">
+        Those aren&rsquo;t the same test. One asks whether you have enough blood right now. The
+        other asks how much you have left in reserve. You got the first one.
+      </p>
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
+        <Button href="#signs" variant="ghost" size="lg">
+          See the signs
+        </Button>
+      </div>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="lg">
+    <div class="intro" data-reveal>
+      <p>
+        Hemoglobin is what&rsquo;s in circulation. Ferritin is what&rsquo;s in storage. Your body
+        will empty the storage tank to keep circulation looking normal, and it will do that for
+        years before a standard blood count ever flinches.
+      </p>
+      <p class="pull">
+        Which means a normal CBC and an empty tank are not just possible together. They&rsquo;re
+        the most common way this gets missed.
+      </p>
+      <p>
+        In young women with heavy periods, <strong>fewer than half</strong> of iron deficiency
+        cases are caught when the screening is a hemoglobin or a blood count
+        alone.<sup><a href="#sources">1</a></sup> Not missed by careless people. Missed because
+        the test that was run was answering a different question.
+      </p>
+    </div>
+    <div data-reveal="up-sm">
+      <NewsletterTeaser />
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="narrow" spacing="lg" background="paper-warm-tint" id="fifty">
+    <div class="fifty-block" data-reveal>
+      <p class="eyebrow">The Number</p>
+      <h2>Under 50 is where we start paying attention.</h2>
+      <p>
+        Not because 50 is a diagnosis. Because of what happened when somebody actually tested it.
+      </p>
+      <p>
+        A trial enrolled <strong>198 menstruating women</strong> who were tired, whose hemoglobin
+        was normal, and whose ferritin was <strong>under 50</strong>. Half got iron, half got a
+        placebo, twelve weeks. Fatigue fell 47.7% in the iron group and 28.8% on
+        placebo.<sup><a href="#sources">2</a></sup>
+      </p>
+      <p class="fifty-close">
+        Every one of those women would have been told her blood count was fine. Because it was.
+      </p>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="wide" spacing="lg" id="signs">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>What It Actually Looks Like</p>
+      <h2 data-reveal>The signs nobody connects to iron.</h2>
+      <p class="value-line" data-reveal="up-sm">
+        Fatigue is on every list, and you&rsquo;ve already been dismissed about fatigue. These are
+        the ones that get filed under something else entirely.
+      </p>
+    </div>
+    <ul class="sign-grid">
+      {missedSigns.map((s) => (
+        <li data-reveal="up-sm">
+          <h3>{s.t}</h3>
+          <p>{s.b}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="sign-note" data-reveal="up-sm">
+      You don&rsquo;t need all of them. Most women who turn out to be depleted have three or four
+      and have never once mentioned them in the same appointment, because they don&rsquo;t seem
+      related. That&rsquo;s the whole problem.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft" id="skin">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>Skin, Hair, And Hormones</p>
+      <h2 data-reveal>Why your skin belongs in this conversation.</h2>
+      <p class="value-line" data-reveal="up-sm">
+        This is the part that surprises people, so we&rsquo;re going to walk it one step at a time
+        and be straight with you about where the line is.
+      </p>
+    </div>
+
+    <ol class="chain-list">
+      <li data-reveal="up-sm">
+        <span class="chain-num" aria-hidden="true">1</span>
+        <div>
+          <h3>Iron is a building material, not just a fuel</h3>
+          <p>
+            Your body uses an iron-dependent enzyme to build and stabilize collagen.<sup><a href="#sources">3</a></sup>
+            No iron in the tank means that work slows down. Collagen is what skin repairs itself with.
+          </p>
+        </div>
+      </li>
+      <li data-reveal="up-sm">
+        <span class="chain-num" aria-hidden="true">2</span>
+        <div>
+          <h3>So depleted iron shows up on the outside</h3>
+          <p>
+            The documented skin and hair changes in iron depletion include hair quality loss,
+            brittle nails, pallor, itching, and cracked corners of the mouth.<sup><a href="#sources">3</a></sup>
+            These aren&rsquo;t vanity complaints. They&rsquo;re findings.
+          </p>
+        </div>
+      </li>
+      <li data-reveal="up-sm">
+        <span class="chain-num" aria-hidden="true">3</span>
+        <div>
+          <h3>Which is why marks linger</h3>
+          <p>
+            A breakout that would have faded in three weeks takes three months. The spot outlasts
+            the pimple by a season. Skin that repairs slowly holds onto everything longer.
+          </p>
+        </div>
+      </li>
+      <li data-reveal="up-sm">
+        <span class="chain-num" aria-hidden="true">4</span>
+        <div>
+          <h3>And the same woman is usually losing iron every month</h3>
+          <p>
+            Heavy cycles are the leading way women lose iron. If your periods are heavy, or
+            irregular, or you have PCOS, you may be running a monthly drain while also fighting
+            hormone-driven skin and hair changes. Two different problems landing in the same
+            places, and usually only one of them has been looked at.
+          </p>
+        </div>
+      </li>
+    </ol>
+
+    <aside class="straight" data-reveal="up-sm">
+      <h3>Straight answer on acne</h3>
+      <p>
+        Low ferritin doesn&rsquo;t cause acne. Anyone telling you it does is selling something.
+      </p>
+      <p>
+        What it does is slow the repair, worsen the shedding, and sit quietly underneath a picture
+        that already includes your hormones.
+      </p>
+      <p class="straight-close">
+        It&rsquo;s not the reason your skin is breaking out. But it&rsquo;s another missing piece,
+        and it&rsquo;s the one nobody measured.
+      </p>
+    </aside>
+  </SectionContainer>
+
+  <SectionContainer width="wide" spacing="lg" id="what-we-do">
+    <div class="section-head">
+      <p class="eyebrow" data-reveal>What We Do</p>
+      <h2 data-reveal>How this goes.</h2>
+    </div>
+    <ol class="do-list">
+      {steps.map((s) => (
+        <li data-reveal="up-sm">
+          <span class="do-num" aria-hidden="true">{s.n}</span>
+          <div>
+            <h3>{s.t}</h3>
+            <p>{s.b}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2 class="section-h2" data-reveal>Questions women actually ask.</h2>
+    <FAQAccordion items={faqs} />
+  </SectionContainer>
+
+  <SectionContainer width="narrow" spacing="lg" background="paper-warm-tint">
+    <div class="closer" data-reveal>
+      <p class="closer-line">You&rsquo;re not imagining it.</p>
+      <p class="closer-line">You&rsquo;re not being dramatic.</p>
+      <p class="closer-line closer-last">You were measured for something else.</p>
+      <p class="closer-body">
+        One visit, the right markers, and a conversation where somebody walks you through your own
+        results. That&rsquo;s the whole ask.
+      </p>
+      <div class="cta-row">
+        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
+        <Button href="/new-patient-visits" variant="ghost" size="lg">
+          What the first visit looks like
+        </Button>
+      </div>
+      <p class="byline">{bylines.reviewed}</p>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="md" id="newsletter">
+    <NewsletterSignup />
+  </SectionContainer>
+
+  <SectionContainer width="prose" spacing="md" id="sources">
+    <h2 class="sources-h2">Sources</h2>
+    <ol class="sources-list">
+      <li>
+        Ferritin screening in heavy menstrual bleeding. In adolescents with heavy menstrual
+        bleeding, fewer than half of iron deficiency cases are detected when screening uses
+        hemoglobin or a complete blood count alone.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/27262832/" target="_blank" rel="noopener noreferrer">Iron Deficiency without Anemia: A Common Yet Under-Recognized Diagnosis in Young Women with Heavy Menstrual Bleeding</a>
+      </li>
+      <li>
+        Vaucher P, Druais PL, Waldvogel S, Favrat B. Effect of iron supplementation on fatigue in
+        nonanemic menstruating women with low ferritin: a randomized controlled trial.
+        <em>CMAJ</em>, 2012, volume 184, issue 11, pages 1247 to 1254.
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3414597/" target="_blank" rel="noopener noreferrer">Read the trial</a>.
+        198 women, hemoglobin at or above 12.0 g/dL, ferritin under 50. Source for the 47.7% and
+        28.8% fatigue figures.
+      </li>
+      <li>
+        Wright JA, Richards T, Srai SKS. The role of iron in the skin and cutaneous wound healing.
+        <em>Front Pharmacol</em>, 2014, volume 5, article 156.
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4091310/" target="_blank" rel="noopener noreferrer">Read the review</a>.
+        Source for iron&rsquo;s role in collagen metabolism and for the cutaneous findings in iron
+        deficiency.
+      </li>
+    </ol>
+    <p class="disclaimer">
+      This page is here to teach. It is not medical advice and it is not a substitute for
+      diagnosis or care from your physician. {clinic.brandName} does not diagnose or treat anemia,
+      and nothing here is intended to diagnose, treat, cure, or prevent any disease. Persistent low
+      iron can point to a cause that needs a physician&rsquo;s evaluation, and we refer when it
+      does. We work alongside your medical team.
+    </p>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .fer-hero { max-width: 44rem; }
+  .page-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    font-weight: 500;
+    margin: 0 0 1.1rem;
+  }
+  .fer-hero h1 { letter-spacing: -0.028em; }
+  .fer-hero .lede {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--color-ink-muted);
+    margin-bottom: 2.25rem;
+    max-width: 38rem;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.875rem; align-items: center; }
+
+  .intro p { font-size: var(--text-lg); line-height: 1.68; margin-bottom: 1.35rem; }
+  .intro sup a {
+    text-decoration: none; font-size: 0.62em; padding-left: 0.15em; color: var(--color-mute);
+  }
+  .pull {
+    font-family: var(--font-display);
+    font-size: var(--text-xl) !important;
+    line-height: 1.5 !important;
+    color: var(--color-ink-strong);
+    border-left: 3px solid var(--color-brand-primary);
+    padding-left: 1.25rem;
+    margin: 2rem 0 !important;
+  }
+
+  .section-head { margin-bottom: 2.75rem; }
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin-bottom: 0.55rem;
+  }
+  .section-head h2, .section-h2 { letter-spacing: -0.018em; }
+  .value-line {
+    color: var(--color-ink-muted); max-width: 44rem; margin: 0.85rem 0 0; line-height: 1.65;
+  }
+  .section-h2 { margin-bottom: 1.75rem; }
+
+  /* The number */
+  .fifty-block h2 { letter-spacing: -0.02em; margin-bottom: 1.1rem; }
+  .fifty-block p {
+    color: var(--color-ink-muted); font-size: var(--text-lg); line-height: 1.68; margin-bottom: 1.2rem;
+  }
+  .fifty-block sup a { text-decoration: none; font-size: 0.62em; color: var(--color-mute); }
+  .fifty-close {
+    color: var(--color-ink-strong) !important;
+    font-family: var(--font-display);
+    font-size: var(--text-xl) !important;
+    line-height: 1.45 !important;
+    margin-top: 1.75rem; margin-bottom: 0 !important;
+    padding-top: 1.5rem;
+    border-top: var(--hairline) solid var(--color-line);
+  }
+
+  /* Signs */
+  .sign-grid {
+    list-style: none; padding: 0; margin: 0 0 2rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.25rem;
+  }
+  .sign-grid li {
+    background: var(--color-paper);
+    border: var(--hairline) solid var(--color-line);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.4rem;
+    box-shadow: var(--shadow-card);
+  }
+  .sign-grid h3 { font-size: var(--text-lg); letter-spacing: -0.012em; margin-bottom: 0.45rem; }
+  .sign-grid p {
+    margin: 0; color: var(--color-ink-muted); font-size: var(--text-sm); line-height: 1.6;
+  }
+  .sign-note {
+    max-width: 44rem; color: var(--color-ink); font-weight: 500;
+    border-left: 3px solid var(--color-brand-primary);
+    padding-left: 1.15rem; line-height: 1.65;
+  }
+
+  /* Chain + steps */
+  .chain-list, .do-list {
+    list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: 1.6rem; max-width: 46rem;
+  }
+  .chain-list li, .do-list li {
+    display: grid; grid-template-columns: 2.5rem 1fr; gap: 1.25rem; align-items: start;
+  }
+  .chain-num, .do-num {
+    width: 2.5rem; height: 2.5rem; border-radius: var(--radius-pill);
+    background: var(--color-brand-primary-soft);
+    color: var(--color-brand-primary-dark);
+    border: var(--hairline) solid var(--color-brand-primary-light);
+    display: grid; place-items: center;
+    font-family: var(--font-display); font-weight: 600;
+  }
+  .chain-list h3, .do-list h3 {
+    font-size: var(--text-lg); letter-spacing: -0.012em; margin-bottom: 0.35rem;
+  }
+  .chain-list p, .do-list p { margin: 0; color: var(--color-ink-muted); line-height: 1.66; }
+  .chain-list sup a { text-decoration: none; font-size: 0.62em; color: var(--color-mute); }
+  .do-list { margin-bottom: 0; }
+
+  .straight {
+    background: var(--color-paper);
+    border: var(--hairline) solid var(--color-line);
+    border-left: 3px solid var(--color-brand-primary);
+    border-radius: var(--radius-lg);
+    padding: 1.85rem;
+    max-width: 46rem;
+    box-shadow: var(--shadow-card);
+  }
+  .straight h3 { font-size: var(--text-xl); margin-bottom: 0.9rem; }
+  .straight p { color: var(--color-ink-muted); line-height: 1.66; margin-bottom: 0.85rem; }
+  .straight p:last-child { margin-bottom: 0; }
+  .straight-close {
+    color: var(--color-ink-strong) !important;
+    font-family: var(--font-display);
+    font-size: var(--text-lg) !important;
+    line-height: 1.5 !important;
+    padding-top: 1rem;
+    border-top: var(--hairline) solid var(--color-line-soft);
+  }
+
+  /* Closer */
+  .closer { text-align: center; }
+  .closer-line {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    line-height: 1.2; letter-spacing: -0.022em;
+    color: var(--color-ink-strong);
+    margin: 0 0 0.35rem;
+  }
+  .closer-last { color: var(--color-brand-primary-dark); margin-bottom: 1.75rem; }
+  .closer-body {
+    color: var(--color-ink-muted); font-size: var(--text-lg); line-height: 1.68;
+    margin: 0 auto 2.25rem; max-width: 36rem;
+  }
+  .closer .cta-row { justify-content: center; }
+  .byline {
+    margin-top: 2.75rem !important; font-size: var(--text-sm) !important;
+    color: var(--color-mute) !important; font-style: italic;
+  }
+
+  /* Sources */
+  .sources-h2 { font-size: var(--text-xl); margin-bottom: 1rem; }
+  .sources-list {
+    padding-left: 1.2rem; margin: 0 0 1.85rem;
+    font-size: var(--text-sm); color: var(--color-ink-muted); line-height: 1.62;
+  }
+  .sources-list li { margin-bottom: 0.75rem; }
+  .disclaimer {
+    font-size: var(--text-sm); color: var(--color-mute); line-height: 1.62;
+    border-top: var(--hairline) solid var(--color-line);
+    padding-top: 1.3rem; margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .chain-list li, .do-list li { grid-template-columns: 2.1rem 1fr; gap: 1rem; }
+    .chain-num, .do-num { width: 2.1rem; height: 2.1rem; font-size: var(--text-sm); }
+    .sign-grid li { padding: 1.35rem 1.25rem; }
+    .closer-line { font-size: var(--text-2xl); }
+  }
+</style>
