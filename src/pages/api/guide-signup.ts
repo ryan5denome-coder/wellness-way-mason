@@ -54,7 +54,25 @@ function json(body: unknown, status = 200): Response {
   });
 }
 
-export const POST: APIRoute = async ({ request, locals, clientAddress }) => {
+export const POST: APIRoute = async (context) => {
+  // TEMPORARY: surface the real exception behind a query gate so a production
+  // 500 can be diagnosed without shipping stack traces to the public. Remove
+  // once the cause is fixed.
+  const debug = new URL(context.request.url).searchParams.get('__diag') === 'tww1';
+  try {
+    return await handle(context, debug);
+  } catch (error) {
+    console.error('[guide-signup] unhandled', error);
+    return json(
+      debug
+        ? { ok: false, error: String((error as Error)?.message ?? error), stack: String((error as Error)?.stack ?? '').slice(0, 900) }
+        : { ok: false, error: 'We could not save that just now. Please try again shortly.' },
+      500,
+    );
+  }
+};
+
+const handle: (ctx: Parameters<APIRoute>[0], debug: boolean) => Promise<Response> = async ({ request, locals, clientAddress }) => {
   let payload: Record<string, unknown>;
 
   try {
