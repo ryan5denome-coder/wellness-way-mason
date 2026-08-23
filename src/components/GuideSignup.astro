@@ -1,0 +1,364 @@
+---
+/**
+ * GuideSignup
+ *
+ * Email capture that delivers one specific guide. Distinct from
+ * NewsletterSignup, which subscribes to the monthly list through MailerLite.
+ * This posts to /api/guide-signup, which hands the contact to Mautic and
+ * triggers the delivery campaign for the guide that was requested.
+ *
+ * Design intent: this is the primary conversion on a guide landing page, so it
+ * asks for one thing. Someone who commented MONO on a Reel and tapped through
+ * has already told us which guide they want, so the guide rides along as a prop
+ * rather than a dropdown they have to answer. Every extra decision costs opt-ins.
+ *
+ * Traffic is overwhelmingly Instagram's in-app browser on a phone, so the input
+ * and button are sized for a thumb, and the input is 16px so iOS Safari does not
+ * zoom on focus.
+ *
+ * A hidden honeypot field catches bots. It sits off screen rather than
+ * display:none, because some bots skip fields that are display:none.
+ *
+ * House rules for body copy on these pages: no em dashes, no semicolons,
+ * no colons.
+ */
+
+interface Props {
+  /** Guide key. Must match a value accepted by /api/guide-signup. */
+  guide: 'ebv' | 'pcos';
+  eyebrow?: string;
+  heading: string;
+  blurb: string;
+  /** Short value bullets. Three reads well. Four starts to look like a wall. */
+  bullets?: string[];
+  buttonLabel?: string;
+}
+
+const {
+  guide,
+  eyebrow = 'Free guide',
+  heading,
+  blurb,
+  bullets = [],
+  buttonLabel = 'Send me the guide',
+} = Astro.props;
+
+const formId = `guide-signup-${guide}`;
+const headingId = `${formId}-heading`;
+const emailId = `${formId}-email`;
+const statusId = `${formId}-status`;
+const websiteId = `${formId}-website`;
+---
+
+<section class="guide-signup" data-guide={guide} aria-labelledby={headingId}>
+  <div class="inner">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2 id={headingId}>{heading}</h2>
+    <p class="blurb">{blurb}</p>
+
+    <ul class="bullets">
+      {bullets.map((b) => <li>{b}</li>)}
+    </ul>
+
+    <form class="form" id={formId} novalidate>
+      <label class="field-label" for={emailId}>Where should we send it</label>
+
+      <div class="row">
+        <input
+          id={emailId}
+          class="email"
+          type="email"
+          name="email"
+          inputmode="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          required
+          aria-describedby={statusId}
+        />
+        <button class="submit" type="submit">{buttonLabel}</button>
+      </div>
+
+      <div class="hp" aria-hidden="true">
+        <label for={websiteId}>Website</label>
+        <input id={websiteId} type="text" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <p class="micro">One email with your guide. Unsubscribe any time.</p>
+      <p class="status" id={statusId} role="status" aria-live="polite"></p>
+    </form>
+
+    <noscript>
+      <p class="micro">
+        This form needs JavaScript. You can also <a href="/contact">contact us</a>
+        and we will send the guide over.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+<script>
+  // Progressive enhancement. The form is inert without this, which is an
+  // accepted tradeoff because effectively all of this traffic is Instagram's
+  // in-app browser with JS on. The noscript block covers the remainder.
+  const sections = Array.from(document.querySelectorAll('.guide-signup')) as HTMLElement[];
+  sections.forEach((section) => {
+    const form = section.querySelector('form');
+    const input = section.querySelector('.email') as HTMLInputElement | null;
+    const button = section.querySelector('.submit') as HTMLButtonElement | null;
+    const status = section.querySelector('.status') as HTMLParagraphElement | null;
+    const guide = section.dataset.guide;
+
+    if (!form || !input || !button || !status || !guide) return;
+
+    // Read UTMs off the landing page URL so each Reel is measured separately.
+    // Read once at load rather than at submit, because Instagram's in-app
+    // browser can rewrite the address bar between the two.
+    const params = new URLSearchParams(window.location.search);
+    const utm = {
+      utm_source: params.get('utm_source') ?? '',
+      utm_medium: params.get('utm_medium') ?? '',
+      utm_campaign: params.get('utm_campaign') ?? '',
+      utm_content: params.get('utm_content') ?? '',
+    };
+
+    const setStatus = (message: string, kind: 'error' | 'ok' | '') => {
+      status.textContent = message;
+      status.dataset.kind = kind;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const email = input.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        setStatus('Please enter a valid email address.', 'error');
+        input.focus();
+        return;
+      }
+
+      button.disabled = true;
+      const originalLabel = button.textContent;
+      button.textContent = 'Sending';
+      setStatus('', '');
+
+      try {
+        const response = await fetch('/api/guide-signup', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            guide,
+            website: ((section.querySelector('.hp input') as HTMLInputElement | null)?.value ?? ''),
+            ...utm,
+          }),
+        });
+
+        const data = await response.json().catch(() => ({ ok: false }));
+
+        if (response.ok && data.ok) {
+          // Replace the form outright. Leaving a filled form on screen invites
+          // a second submit and reads as though nothing happened.
+          const inner = section.querySelector('.inner');
+          if (inner) {
+            inner.innerHTML =
+              '<p class="eyebrow">Check your inbox</p>' +
+              '<h2>It is on the way.</h2>' +
+              '<p class="blurb">Your guide should arrive in the next minute or two. ' +
+              'If you do not see it, check your promotions tab or spam folder, ' +
+              'and add us to your contacts so the next one lands properly.</p>';
+          }
+          return;
+        }
+
+        setStatus(data.error ?? 'We could not save that just now. Please try again shortly.', 'error');
+      } catch {
+        setStatus('We could not reach the server. Please try again shortly.', 'error');
+      } finally {
+        button.disabled = false;
+        if (button.textContent === 'Sending') button.textContent = originalLabel;
+      }
+    });
+  });
+</script>
+
+<style>
+  .guide-signup {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    padding: clamp(1.75rem, 5vw, 3rem);
+  }
+
+  .inner {
+    max-width: 34rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 0.75rem;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    line-height: 1.2;
+    color: var(--color-ink-strong);
+    margin: 0 0 0.75rem;
+  }
+
+  .blurb {
+    color: var(--color-ink-muted);
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+  }
+
+  /* Rendered unconditionally, so hide it when a page passes no bullets. */
+  .bullets:empty {
+    display: none;
+  }
+
+  .bullets {
+    list-style: none;
+    margin: 0 0 1.75rem;
+    padding: 0;
+    text-align: left;
+    display: grid;
+    gap: 0.625rem;
+  }
+
+  .bullets li {
+    position: relative;
+    padding-left: 1.75rem;
+    color: var(--color-ink);
+    line-height: 1.5;
+  }
+
+  .bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0.375rem;
+    top: 0.55em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-brand-primary);
+  }
+
+  .field-label {
+    display: block;
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .row {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  /* Stacked on phones, side by side once there is room. Nearly all of this
+     traffic is a phone, so stacked is the default rather than the fallback. */
+  @media (min-width: 34rem) {
+    .row {
+      grid-template-columns: 1fr auto;
+    }
+  }
+
+  .email {
+    width: 100%;
+    min-height: 3.25rem; /* comfortably above the 44px touch target floor */
+    padding: 0.875rem 1rem;
+    font-size: 1rem; /* 16px or larger, otherwise iOS Safari zooms on focus */
+    font-family: var(--font-body);
+    color: var(--color-ink-strong);
+    background: var(--color-paper-soft);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+
+  .email::placeholder {
+    color: var(--color-mute);
+  }
+
+  .email:focus-visible {
+    outline: none;
+    border-color: var(--color-brand-primary);
+    box-shadow: var(--shadow-focus);
+  }
+
+  .submit {
+    min-height: 3.25rem;
+    padding: 0.875rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--color-brand-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 120ms ease, transform 120ms ease;
+  }
+
+  .submit:hover:not(:disabled) {
+    background: var(--color-brand-primary-dark);
+  }
+
+  .submit:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  .submit:disabled {
+    opacity: 0.65;
+    cursor: default;
+  }
+
+  .submit:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+
+  .micro {
+    font-size: 0.8125rem;
+    color: var(--color-mute);
+    margin: 0.875rem 0 0;
+  }
+
+  .status {
+    margin: 0.75rem 0 0;
+    font-size: 0.875rem;
+    min-height: 1.25rem;
+  }
+
+  .status[data-kind='error'] {
+    color: var(--color-danger);
+  }
+
+  /* Off screen rather than display:none, because some bots skip hidden fields. */
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .email,
+    .submit {
+      transition: none;
+    }
+  }
+</style>

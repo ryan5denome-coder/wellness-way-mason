@@ -4,7 +4,7 @@ import SectionContainer from '../components/SectionContainer.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Button from '../components/Button.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
-import NewsletterTeaser from '../components/NewsletterTeaser.astro';
+import GuideSignup from '../components/GuideSignup.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { clinic, bylines } from '../lib/site';
 
@@ -192,7 +192,12 @@ const pcosFaqs = [
       </p>
     </div>
     <div data-reveal="up-sm">
-      <NewsletterTeaser />
+      <GuideSignup
+        guide="pcos"
+        heading="Get the PCOS guide."
+        blurb="Why your blood sugar can read normal while your insulin is not, and the one question worth asking at your next appointment."
+        bullets={["Why normal glucose can sit on top of high insulin", "Nine signs that get explained away one at a time", "The difference between a production, a conversion, and an elimination problem"]}
+      />
     </div>
   </SectionContainer>
 
@@ -383,6 +388,15 @@ const pcosFaqs = [
       </div>
       <p class="byline">{bylines.reviewed}</p>
     </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="md" id="get-the-guide">
+    <GuideSignup
+      guide="pcos"
+      heading="Get the PCOS guide."
+      blurb="Why your blood sugar can read normal while your insulin is not, and the one question worth asking at your next appointment."
+      bullets={["Why normal glucose can sit on top of high insulin", "Nine signs that get explained away one at a time", "The difference between a production, a conversion, and an elimination problem"]}
+    />
   </SectionContainer>
 
   <SectionContainer width="default" spacing="md" id="newsletter">
