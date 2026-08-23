@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
 
 /**
  * POST /api/guide-signup
@@ -54,25 +55,7 @@ function json(body: unknown, status = 200): Response {
   });
 }
 
-export const POST: APIRoute = async (context) => {
-  // TEMPORARY: surface the real exception behind a query gate so a production
-  // 500 can be diagnosed without shipping stack traces to the public. Remove
-  // once the cause is fixed.
-  const debug = new URL(context.request.url).searchParams.get('__diag') === 'tww1';
-  try {
-    return await handle(context, debug);
-  } catch (error) {
-    console.error('[guide-signup] unhandled', error);
-    return json(
-      debug
-        ? { ok: false, error: String((error as Error)?.message ?? error), stack: String((error as Error)?.stack ?? '').slice(0, 900) }
-        : { ok: false, error: 'We could not save that just now. Please try again shortly.' },
-      500,
-    );
-  }
-};
-
-const handle: (ctx: Parameters<APIRoute>[0], debug: boolean) => Promise<Response> = async ({ request, locals, clientAddress }) => {
+export const POST: APIRoute = async ({ request, clientAddress }) => {
   let payload: Record<string, unknown>;
 
   try {
@@ -100,11 +83,12 @@ const handle: (ctx: Parameters<APIRoute>[0], debug: boolean) => Promise<Response
     return json({ ok: false, error: 'Unknown guide requested.' }, 400);
   }
 
-  // Cloudflare exposes runtime bindings on locals.runtime.env. Fall back to
-  // build-time env so `astro dev` works without a Worker context.
-  const env = (locals as { runtime?: { env?: Record<string, string> } })?.runtime?.env ?? {};
-  const mauticBase = (env.MAUTIC_BASE_URL ?? import.meta.env.MAUTIC_BASE_URL ?? '').replace(/\/$/, '');
-  const formId = env.MAUTIC_GUIDE_FORM_ID ?? import.meta.env.MAUTIC_GUIDE_FORM_ID ?? '';
+  // Astro 6 removed Astro.locals.runtime.env. That property is now a getter
+  // that throws, so reading it fails the request outside any try/catch and
+  // surfaces as a bare 500 with an empty body. Bindings come from
+  // 'cloudflare:workers' instead.
+  const mauticBase = String(env.MAUTIC_BASE_URL ?? '').replace(/\/$/, '');
+  const formId = String(env.MAUTIC_GUIDE_FORM_ID ?? '');
 
   if (!mauticBase || !formId) {
     // Fail loudly in the log and softly to the visitor. A misconfigured CRM is
