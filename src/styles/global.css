@@ -93,6 +93,29 @@
   --duration-fast: 180ms;
   --duration-normal: 240ms;
   --duration-slow: 320ms;
+
+  /* iOS motion character. --ease-soft is Material's standard curve: it
+     accelerates and decelerates symmetrically, which reads as "animated".
+     iOS moves the opposite way — it leaves immediately, covers most of the
+     distance early, then settles. Use --ease-ios for anything that MOVES
+     (transform, position, size) and keep --ease-soft for color and opacity,
+     where the symmetric curve is still correct. */
+  --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+  /* Press feedback is deliberately faster than any other motion on the site:
+     the compression must land inside the tap, not after it. */
+  --duration-press: 90ms;
+
+  /* Retina hairline. iOS separators are one device pixel, not one CSS pixel;
+     at 2x/3x a 1px CSS border is visibly heavier than the platform's. The
+     value is overridden per-DPR below. */
+  --hairline: 1px;
+}
+
+/* Sub-pixel separators on retina, where the device can actually draw them. */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  :root {
+    --hairline: 0.5px;
+  }
 }
 
 /* === Base layer === */
@@ -104,6 +127,26 @@ html {
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* iOS Safari paints a translucent grey box over any tapped link or button.
+     Nothing native does this, and it is the single loudest "this is a web
+     page" tell on the platform. Every interactive element here defines its
+     own :active state instead. */
+  -webkit-tap-highlight-color: transparent;
+
+  /* The sticky header is ~57px, so an un-padded anchor jump parks the target
+     heading underneath it — and parks keyboard focus there too. */
+  scroll-padding-top: 5.5rem;
+}
+
+/* Tabular figures ONLY where digits sit in a column and must line up.
+   Setting this on `html` looks tempting but is wrong: tabular-nums forces
+   fixed-advance figures across the whole document and shifts Lora's metrics,
+   which measured ~7.5% wider headings sitewide. */
+.price-amount,
+.hours-table dd,
+.visit-price {
+  font-variant-numeric: tabular-nums;
 }
 
 body {
@@ -116,6 +159,37 @@ body {
    whole page a sideways scroll on phones. */
 html, body {
   overflow-x: clip;
+}
+
+/* A scroll that reaches the end of a nested scroller must not hand the
+   remaining momentum to the page behind it. */
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* === Press feedback ===
+   On touch there is no hover, so without an :active state a tap produces no
+   acknowledgement at all until the next page paints — which on a slow
+   connection reads as "the tap didn't register". Every interactive surface
+   gets the same brief compression. Buttons define their own (Button.astro),
+   so they are excluded here rather than double-transformed. */
+@media (hover: none) {
+  a:not(.btn):active,
+  summary:active,
+  [role="button"]:not(.btn):active {
+    transform: scale(0.985);
+    transition-duration: var(--duration-press);
+  }
+}
+
+/* Chrome, headings, and prices are UI, not prose — never let a double-tap
+   start a text selection on them. Body copy stays selectable. */
+.site-header,
+.btn,
+.eyebrow,
+.page-kicker {
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -206,7 +280,7 @@ img, svg, video {
   transform: translate3d(0, 24px, 0);
   transition:
     opacity 700ms var(--ease-soft),
-    transform 700ms var(--ease-soft);
+    transform 700ms var(--ease-ios);
   will-change: opacity, transform;
 }
 .reveal.is-visible {
@@ -323,7 +397,7 @@ main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip
 /* === Service items (services page) — interactive hover === */
 .service-item {
   cursor: default;
-  transition: transform var(--duration-fast) var(--ease-soft),
+  transition: transform var(--duration-fast) var(--ease-ios),
               box-shadow var(--duration-normal) var(--ease-soft),
               border-left-color var(--duration-fast) var(--ease-soft);
 }
@@ -340,7 +414,7 @@ main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip
 .footer-nav a,
 .footer-social a {
   display: inline-block;
-  transition: transform var(--duration-fast) var(--ease-soft),
+  transition: transform var(--duration-fast) var(--ease-ios),
               color var(--duration-fast) var(--ease-soft),
               opacity var(--duration-fast) var(--ease-soft);
 }
@@ -364,7 +438,7 @@ main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip
   background: var(--color-brand-primary);
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform var(--duration-normal) var(--ease-soft);
+  transition: transform var(--duration-normal) var(--ease-ios);
 }
 .primary-nav a:hover::after,
 .primary-nav a[aria-current="page"]::after {

@@ -86,6 +86,21 @@ const externalAttrs = external
     transition: all var(--duration-normal) var(--ease-soft);
     white-space: nowrap;
     letter-spacing: 0.01em;
+    /* A button must never be the reason its container outgrows the screen.
+       Without this, a long label's min-content width propagates up through
+       grid/flex parents — on /pricing it dragged both arm cards 65px past a
+       375px viewport, clipped by the overflow-x guard rather than fixed. */
+    max-width: 100%;
+  }
+
+  /* Below the phone breakpoint, a two-line button is correct and a card wider
+     than the screen is not. Long CTAs ("Book a health restoration consult")
+     wrap instead of forcing horizontal overflow. */
+  @media (max-width: 30rem) {
+    .btn {
+      white-space: normal;
+      text-wrap: balance;
+    }
   }
   .btn:focus-visible {
     outline: none;
@@ -99,7 +114,7 @@ const externalAttrs = external
   .btn-full { width: 100%; }
 
   .btn-arrow .btn-icon {
-    transition: transform var(--duration-fast) var(--ease-soft);
+    transition: transform var(--duration-fast) var(--ease-ios);
     display: inline-block;
     flex-shrink: 0;
   }

@@ -71,20 +71,20 @@ import { clinic } from '../lib/site';
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: saturate(180%) blur(12px);
       -webkit-backdrop-filter: saturate(180%) blur(12px);
-      border-top: 1px solid var(--color-line);
+      border-top: var(--hairline) solid var(--color-line);
       box-shadow: var(--shadow-popover);
       padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
       transform: translateY(110%);
       visibility: hidden;
       transition:
-        transform var(--duration-normal) var(--ease-soft),
+        transform var(--duration-normal) var(--ease-ios),
         visibility 0s linear var(--duration-normal);
     }
     .bookbar[data-visible="true"] {
       transform: translateY(0);
       visibility: visible;
       transition:
-        transform var(--duration-normal) var(--ease-soft),
+        transform var(--duration-normal) var(--ease-ios),
         visibility 0s;
     }
     .bookbar-cta {
