@@ -117,11 +117,11 @@ const faqs = [
         moved on. Nobody told you the virus stays.
       </p>
       <div class="cta-row">
-        <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
-          Book Your Appointment
+        <Button href="#get-the-guide" variant="primary" size="lg">
+          Get the free guide
         </Button>
-        <Button href="#what-we-do" variant="ghost" size="lg">
-          See what we run
+        <Button href={clinic.bookingUrl} variant="ghost" size="lg" external iconAfter>
+          Book Your Appointment
         </Button>
       </div>
     </div>
@@ -148,7 +148,7 @@ const faqs = [
         Something else did. Something made the job harder.
       </p>
     </div>
-    <div data-reveal="up-sm">
+    <div data-reveal="up-sm" id="get-the-guide">
       <GuideSignup
         guide="ebv"
         heading="Find out if this is what is going on."
@@ -301,7 +301,7 @@ const faqs = [
     </div>
   </SectionContainer>
 
-  <SectionContainer width="default" spacing="md" id="get-the-guide">
+  <SectionContainer width="default" spacing="md" id="get-the-guide-footer">
     <GuideSignup
       guide="ebv"
       heading="Find out if this is what is going on."
