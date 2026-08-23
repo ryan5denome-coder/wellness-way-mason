@@ -7,6 +7,13 @@
 		"directory": "./dist",
 		"binding": "ASSETS"
 	},
+	// Mautic endpoint used by src/pages/api/guide-signup.ts. Neither value is a
+	// secret: the form id appears in any Mautic form embed and the CRM hostname
+	// resolves publicly. Kept here so the binding is version controlled.
+	"vars": {
+		"MAUTIC_BASE_URL": "https://crm.thewellnesswaymason.com",
+		"MAUTIC_GUIDE_FORM_ID": "1"
+	},
 	"observability": {
 		"enabled": true
 	},

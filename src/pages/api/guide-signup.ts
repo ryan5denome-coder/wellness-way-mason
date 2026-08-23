@@ -25,10 +25,14 @@ export const prerender = false;
 const FIELD = {
   email: 'email',
   guide: 'guide_requested',
-  utmSource: 'utm_source',
-  utmMedium: 'utm_medium',
-  utmCampaign: 'utm_campaign',
-  utmContent: 'utm_content',
+  // Mautic reserves utm_source and friends as segment-filter keywords and
+  // refuses to create contact fields with those aliases, so attribution_* is
+  // what the CRM actually stores. The incoming JSON keys stay utm_* because
+  // that is what the landing page URL carries.
+  utmSource: 'attribution_source',
+  utmMedium: 'attribution_medium',
+  utmCampaign: 'attribution_campaign',
+  utmContent: 'attribution_content',
 } as const;
 
 /** Guides we accept. Anything else is rejected rather than passed through. */

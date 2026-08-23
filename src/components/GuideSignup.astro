@@ -160,12 +160,18 @@ const websiteId = `${formId}-website`;
           // a second submit and reads as though nothing happened.
           const inner = section.querySelector('.inner');
           if (inner) {
+            // Copy deliberately promises only what actually happens today.
+            // The guide is still in review, so nothing sends on submit yet.
+            // Saying "check your inbox" here would break the promise on the
+            // very first interaction. Revisit this when the delivery campaign
+            // goes live in Mautic.
             inner.innerHTML =
-              '<p class="eyebrow">Check your inbox</p>' +
-              '<h2>It is on the way.</h2>' +
-              '<p class="blurb">Your guide should arrive in the next minute or two. ' +
-              'If you do not see it, check your promotions tab or spam folder, ' +
-              'and add us to your contacts so the next one lands properly.</p>';
+              '<p class="eyebrow">You are on the list</p>' +
+              '<h2>Got it. Thank you.</h2>' +
+              '<p class="blurb">The guide is in final review right now. ' +
+              'The moment it is signed off it lands in your inbox, and you will be ' +
+              'among the first to get it. Add us to your contacts so it does not ' +
+              'end up in promotions.</p>';
           }
           return;
         }
