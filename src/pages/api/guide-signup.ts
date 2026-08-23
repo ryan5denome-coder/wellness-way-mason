@@ -37,7 +37,7 @@ const FIELD = {
 } as const;
 
 /** Guides we accept. Anything else is rejected rather than passed through. */
-const KNOWN_GUIDES = new Set(['ebv', 'pcos']);
+const KNOWN_GUIDES = new Set(['ebv', 'pcos', 'ferritin']);
 
 /**
  * Deliberately permissive. This only needs to catch obvious typos and junk,
