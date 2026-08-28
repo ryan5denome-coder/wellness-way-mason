@@ -1,7 +1,7 @@
 ---
 title: "Autoimmune Patterns: What Most Doctors Miss, in Mason, OH"
-seoTitle: "Autoimmune & Hashimoto's Support in Mason, OH"
-seoDescription: "Autoimmune testing and support in Mason, OH. We address the inputs driving autoimmune patterns (gut, food, toxins, stress) alongside your medical team."
+seoTitle: "Autoimmune Testing & Support in Mason, OH"
+seoDescription: "Explore testing and health support for autoimmune patterns in Mason, OH, including thyroid, gut, food and lifestyle factors, alongside your medical team."
 excerpt: "Autoimmune patterns rarely start where the diagnosis lands. By the time antibodies show up, the body has been asking for help for years. We test, we don't guess."
 image: "/images/conditions/autoimmune.jpg"
 imageAlt: "Fresh leafy greens, berries, and seeds arranged on a stone surface, anti-inflammatory whole foods"

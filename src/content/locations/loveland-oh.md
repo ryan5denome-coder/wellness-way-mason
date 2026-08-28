@@ -1,7 +1,7 @@
 ---
 title: "Chiropractor in Loveland, OH | The Wellness Way - Mason"
-seoTitle: "Chiropractor in Loveland, OH | Mason, OH"
-seoDescription: "Chiropractor serving Loveland, OH from our Mason, OH clinic. In-depth lab testing, chiropractic care, and personalized health restoration. We test, we don't guess."
+seoTitle: "Chiropractor Serving Loveland, OH | Mason Clinic"
+seoDescription: "Loveland-area patients visit our nearby Mason clinic for chiropractic care and functional lab testing. Explore services, directions and booking options."
 excerpt: "Loveland residents (the cyclists, runners, and active families along the Little Miami Scenic Trail) drive a short fifteen minutes west to The Wellness Way - Mason for testing-first chiropractic and functional care."
 locale: "Loveland"
 state: "OH"

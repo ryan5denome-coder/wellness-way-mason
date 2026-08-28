@@ -1,7 +1,7 @@
 ---
 title: "Heart Health Beyond a Standard Lipid Panel, Mason, OH"
 seoTitle: "Heart Health Testing in Mason, OH | The Wellness Way"
-seoDescription: "Cardiometabolic testing in Mason, OH that goes beyond the standard lipid panel. Inflammation, particle size, blood sugar: the full picture, alongside your physician."
+seoDescription: "Explore cardiometabolic testing in Mason, OH, including advanced lipids, inflammation and blood-sugar markers, alongside care from your physician."
 excerpt: "Heart disease rarely shows up without warning, but the warning signs sit underneath a standard lipid panel. We test for the full picture, alongside your medical team."
 image: "/images/conditions/heart-disease.jpg"
 imageAlt: "Heart-healthy whole foods on a plate: avocado, salmon, fresh greens, representing cardiometabolic care"

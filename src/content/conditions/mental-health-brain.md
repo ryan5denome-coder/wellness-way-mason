@@ -1,7 +1,7 @@
 ---
 title: "Mental Health, Mood, and Brain Function: The Body-Brain Connection, Mason, OH"
-seoTitle: "Brain & Mental Health Support in Mason, OH | The Wellness Way"
-seoDescription: "Brain fog, anxiety, mood changes? We support the gut, hormones, nervous system, and nutrient status that affect brain function — alongside your psychiatric care."
+seoTitle: "Brain Fog & Mental Health Support | Mason, OH"
+seoDescription: "Explore support for brain fog, mood and mental wellbeing in Mason, OH by assessing gut, hormone and nutrient patterns alongside psychiatric care."
 excerpt: "Mood swings, anxiety, low motivation, brain fog — they aren't just 'in your head.' How your brain functions is shaped by gut health, hormones, inflammation, and nervous-system regulation."
 image: "/images/conditions/mental-health-brain.jpg"
 imageAlt: "Calm meditation by a sunlit window — peaceful imagery for mental and brain health support"

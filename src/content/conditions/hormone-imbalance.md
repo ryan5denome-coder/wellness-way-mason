@@ -1,7 +1,7 @@
 ---
 title: "Hormone Imbalance: Common but Not Normal, in Mason, OH"
 seoTitle: "Hormone Testing in Mason, OH | The Wellness Way"
-seoDescription: "Hormone imbalance testing in Mason, OH. Beyond a single estrogen number: full panels reveal what's actually driving fatigue, cycle changes, and mood swings."
+seoDescription: "Explore hormone testing in Mason, OH for fatigue, cycle changes and mood concerns, using broader panels that look beyond a single hormone result."
 excerpt: "Hormone imbalance is one of the most dismissed patterns we see, written off as stress, age, or 'just being a woman.' Standard labs miss most of the picture. We test, we don't guess."
 image: "/images/conditions/hormone-imbalance.jpg"
 imageAlt: "Sliced citrus fruits and fresh herbs arranged on a light wooden surface, whole foods that support hormone balance"

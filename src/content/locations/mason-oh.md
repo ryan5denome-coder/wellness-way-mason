@@ -1,7 +1,7 @@
 ---
 title: "Chiropractor in Mason, OH | The Wellness Way - Mason"
-seoTitle: "Chiropractor in Mason, OH | Mason, OH"
-seoDescription: "Looking for a chiropractor in Mason, OH? The Wellness Way - Mason runs real lab panels alongside chiropractic care. We test, we don't guess."
+seoTitle: "Mason Clinic Location, Hours & Directions"
+seoDescription: "Find The Wellness Way - Mason on Cox-Smith Road. View clinic hours, directions, contact details, services and new-patient booking information."
 excerpt: "The Wellness Way - Mason serves Mason, OH residents who are tired of being told their labs look fine while they still feel exhausted, foggy, or off. Our clinic sits inside the community we serve."
 locale: "Mason"
 state: "OH"

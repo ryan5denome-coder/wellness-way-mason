@@ -1,7 +1,7 @@
 ---
 title: "Acne Is an Inflammation Story, Not a Skin Problem"
-seoTitle: "Acne: What's Underneath the Skin | Mason, OH"
-seoDescription: "Persistent acne in Mason, OH? We look at the gut, hormones, and inflammation patterns underneath the skin, not just what's on top of it. Test, don't guess."
+seoTitle: "Acne & Hormone Testing in Mason, OH"
+seoDescription: "Explore acne testing and support in Mason, OH, including hormone, gut, blood-sugar and inflammation patterns that may affect persistent breakouts."
 excerpt: "Your skin isn't broken. It's reporting. Acne is one of the loudest signals the body sends about what's happening underneath. We test, we don't guess."
 image: "/images/conditions/acne.jpg"
 imageAlt: "Placeholder: close-up of clear skin in natural light, representing inside-out skin health"

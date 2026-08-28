@@ -1,7 +1,7 @@
 ---
 title: "Chiropractor for Cincinnati Patients | The Wellness Way - Mason"
-seoTitle: "Chiropractor for Cincinnati, OH | Mason, OH"
-seoDescription: "Cincinnati patients drive north to The Wellness Way - Mason for chiropractic care and in-depth lab testing that goes beyond what insurance-driven care covers."
+seoTitle: "Chiropractor Serving Cincinnati, OH | Mason Clinic"
+seoDescription: "Cincinnati-area patients visit our Mason clinic for chiropractic care and functional lab testing. View services, travel details and booking options."
 excerpt: "Cincinnati patients regularly drive 25-35 minutes north to The Wellness Way - Mason because what we do here isn't easy to find inside the insurance-driven city-center practices. We test, we don't guess."
 locale: "Cincinnati"
 state: "OH"

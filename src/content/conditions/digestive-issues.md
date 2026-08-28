@@ -1,7 +1,7 @@
 ---
 title: "Digestive Issues: Bloating, Reflux, IBS and the Gut as Engine Room"
-seoTitle: "Digestive Health Testing in Mason, OH | The Wellness Way"
-seoDescription: "Bloating, reflux, IBS, constipation in Mason, OH? Comprehensive gut testing reveals what's actually driving the symptoms, not just a generic IBS label. Test, don't guess."
+seoTitle: "Digestive Health & Gut Testing in Mason, OH"
+seoDescription: "Explore digestive health and gut testing in Mason, OH for concerns such as bloating, reflux, constipation and IBS symptoms. Test, don't guess."
 excerpt: "Your gut runs more than digestion. It runs your immune system, your mood, and your energy. When it's struggling, everything else gets loud. We test, we don't guess."
 image: "/images/conditions/digestive-issues.jpg"
 imageAlt: "Placeholder: bowl of fermented vegetables on a wooden table, representing gut-supportive whole foods"
