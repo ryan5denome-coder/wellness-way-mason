@@ -1,7 +1,7 @@
 ---
 title: "Blood Sugar and Diabetes: The Patterns Standard Care Misses, Mason, OH"
-seoTitle: "Blood Sugar Testing in Mason, OH | The Wellness Way"
-seoDescription: "Diabetes and prediabetes are often spotted years too late. Full blood-sugar testing in Mason, OH: fasting insulin, HbA1c, and the upstream patterns standard care misses."
+seoTitle: "Blood Sugar Testing in Mason, OH"
+seoDescription: "Explore blood sugar testing in Mason, OH, including fasting insulin, glucose and HbA1c, with health support designed to complement your physician's care."
 excerpt: "Diabetes, and the prediabetic patterns that lead to it, is rarely just about blood sugar. By the time fasting glucose trips a diagnostic threshold, the body has been signaling for years."
 image: "/images/conditions/diabetes.jpg"
 imageAlt: "Continuous glucose monitor and healthy whole-food meal, representing full-panel blood sugar testing"

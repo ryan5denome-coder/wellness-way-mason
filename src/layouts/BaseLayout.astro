@@ -12,6 +12,8 @@ interface Props {
   description?: string;
   ogImage?: string;
   noIndex?: boolean;
+  /** Set false when the supplied title is already the complete SEO title. */
+  appendBrand?: boolean;
   /**
    * Optional extra JSON-LD blocks (Article, Person, BreadcrumbList, FAQPage,
    * etc.). LocalBusiness is always emitted on every page.
@@ -32,6 +34,7 @@ const {
   description = clinic.tagline,
   ogImage = site.defaultOgImage,
   noIndex = false,
+  appendBrand = true,
   jsonLd = [],
   skipDefaultSchema = false,
   bare = false,
@@ -42,7 +45,7 @@ const {
 // title cap. "Mason" appears in the body of most page titles already, plus
 // the header, footer, JSON-LD, and OG image — local geo signal is preserved.
 const fullTitle =
-  title.includes(clinic.brandName) || /\bThe Wellness Way\b/i.test(title)
+  !appendBrand || title.includes(clinic.brandName) || /\bThe Wellness Way\b/i.test(title)
     ? title
     : `${title} | The Wellness Way`;
 const canonicalPath = Astro.url.pathname

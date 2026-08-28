@@ -1,7 +1,7 @@
 ---
 title: "Chiropractor in West Chester, OH | The Wellness Way - Mason"
-seoTitle: "Chiropractor in West Chester, OH | Mason, OH"
-seoDescription: "Chiropractor serving West Chester, OH from our Mason, OH clinic: lab testing, chiropractic care, and one-on-one guidance. We test, we don't guess."
+seoTitle: "Chiropractor Serving West Chester, OH | Mason Clinic"
+seoDescription: "West Chester patients visit our Mason clinic for chiropractic care and functional lab testing. View services, directions and new-patient options."
 excerpt: "West Chester families drive a short ten minutes north to The Wellness Way - Mason for testing and care that goes deeper than a TSH check. Young parents, GE Aerospace and UC Health professionals, and growing families make up much of who we serve."
 locale: "West Chester"
 state: "OH"
