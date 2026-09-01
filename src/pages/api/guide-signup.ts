@@ -217,9 +217,17 @@ export const POST: APIRoute = async ({ request }) => {
   // into the `attributes` object below so attribution lives on the contact
   // again and survives whether or not the email sends.
   const attribution: string[] = [];
+  const attributionTags: string[] = [];
   for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content']) {
     const value = String(payload[key] ?? '').trim().slice(0, 200);
-    if (value) attribution.push(`${key}=${value}`);
+    if (!value) continue;
+    attribution.push(`${key}=${value}`);
+    // The tag copy is shortened and stripped to a safe character set. Brevo
+    // comma-separates tags once it stores them, and it rejects a send whose
+    // tags it does not like. These values come off the query string, so anyone
+    // can put anything in them, and a tracking parameter must never be the
+    // reason someone does not get their guide.
+    attributionTags.push(`${key}=${value.replace(/[^A-Za-z0-9._-]/g, '-').slice(0, 60)}`);
   }
 
   // Brevo stores SIGNUP_DATE as text, so send the plain YYYY-MM-DD rather than
@@ -284,7 +292,7 @@ export const POST: APIRoute = async ({ request }) => {
           subject: config.subject,
           htmlContent: guideEmailHtml(config.linkLabel, config.file),
           textContent: guideEmailText(config.linkLabel, config.file),
-          tags: [`guide=${guide}`, ...attribution],
+          tags: [`guide=${guide}`, ...attributionTags],
         }),
       });
 
