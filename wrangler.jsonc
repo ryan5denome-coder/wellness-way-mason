@@ -7,13 +7,13 @@
 		"directory": "./dist",
 		"binding": "ASSETS"
 	},
-	// Mautic endpoint used by src/pages/api/guide-signup.ts. Neither value is a
-	// secret: the form id appears in any Mautic form embed and the CRM hostname
-	// resolves publicly. Kept here so the binding is version controlled.
-	"vars": {
-		"MAUTIC_BASE_URL": "https://crm.thewellnesswaymason.com",
-		"MAUTIC_GUIDE_FORM_ID": "1"
-	},
+	// src/pages/api/guide-signup.ts talks to Brevo. The old MAUTIC_BASE_URL and
+	// MAUTIC_GUIDE_FORM_ID vars lived here and are gone with that instance.
+	//
+	// The Brevo key is a real secret — it can send mail as us — so it is NOT in
+	// this file. Set it once per environment with:
+	//   npx wrangler secret put BREVO_API_KEY
+	// The route answers 502 and logs if the secret is missing.
 	"observability": {
 		"enabled": true
 	},

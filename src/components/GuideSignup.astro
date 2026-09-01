@@ -4,8 +4,8 @@
  *
  * Email capture that delivers one specific guide. Distinct from
  * NewsletterSignup, which subscribes to the monthly list through MailerLite.
- * This posts to /api/guide-signup, which hands the contact to Mautic and
- * triggers the delivery campaign for the guide that was requested.
+ * This posts to /api/guide-signup, which saves the contact in Brevo and emails
+ * the requested guide out on the spot.
  *
  * Design intent: this is the primary conversion on a guide landing page, so it
  * asks for one thing. Someone who commented MONO on a Reel and tapped through
@@ -161,17 +161,21 @@ const websiteId = `${formId}-website`;
           const inner = section.querySelector('.inner');
           if (inner) {
             // Copy deliberately promises only what actually happens today.
-            // The guide is still in review, so nothing sends on submit yet.
-            // Saying "check your inbox" here would break the promise on the
-            // very first interaction. Revisit this when the delivery campaign
-            // goes live in Mautic.
-            inner.innerHTML =
-              '<p class="eyebrow">You are on the list</p>' +
-              '<h2>Got it. Thank you.</h2>' +
-              '<p class="blurb">The guide is in final review right now. ' +
-              'The moment it is signed off it lands in your inbox, and you will be ' +
-              'among the first to get it. Add us to your contacts so it does not ' +
-              'end up in promotions.</p>';
+            // The endpoint reports whether it actually sent, because not every
+            // guide is published yet. Saying "check your inbox" when nothing
+            // sent would break the promise on the very first interaction.
+            inner.innerHTML = data.delivered
+              ? '<p class="eyebrow">On its way</p>' +
+                '<h2>Check your inbox.</h2>' +
+                '<p class="blurb">The guide is in your email right now. ' +
+                'Add us to your contacts so it does not end up in promotions, ' +
+                'and give it a minute if it is not there yet.</p>'
+              : '<p class="eyebrow">You are on the list</p>' +
+                '<h2>Got it. Thank you.</h2>' +
+                '<p class="blurb">The guide is in final review right now. ' +
+                'The moment it is signed off it lands in your inbox, and you will be ' +
+                'among the first to get it. Add us to your contacts so it does not ' +
+                'end up in promotions.</p>';
           }
           return;
         }
