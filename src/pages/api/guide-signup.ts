@@ -76,6 +76,29 @@ const GUIDES = {
     // email, and someone has to mail that list by hand once the guide ships.
     file: null,
   },
+  /**
+   * The live workshop. Not a guide, so it has no PDF. What someone gets back
+   * is a confirmation and, once the room exists, the link to join it.
+   *
+   * The join URL is deliberately an env var rather than a constant. The Demio
+   * room is not created until the night before, and the trial clock is the
+   * reason why. Until WORKSHOP_JOIN_URL is set the confirmation honestly says
+   * the link is coming, and it starts carrying the link the moment the secret
+   * lands. No deploy needed in between.
+   */
+  workshop: {
+    listId: 7,
+    subject: 'You are registered for Thursday',
+    linkLabel: '',
+    file: null,
+    kind: 'workshop',
+  },
+} as const;
+
+/** Everything the workshop email needs to say, in one place. */
+const WORKSHOP = {
+  title: 'What Epstein Barr does after mono ends',
+  when: 'Thursday, September 3 at 8:00 PM Eastern',
 } as const;
 
 /** Guides we accept. Anything else is rejected rather than passed through. */
@@ -131,6 +154,66 @@ function guideEmailHtml(linkLabel: string, file: string): string {
   </div>
 </body>
 </html>`;
+}
+
+/**
+ * The workshop confirmation.
+ *
+ * Written to work in both states. With a join link it is a ticket. Without one
+ * it is still a real confirmation that names the date and says plainly when the
+ * link arrives, because "you are registered" with no detail reads like a
+ * receipt from a machine and gets archived.
+ */
+function workshopEmailHtml(joinUrl: string): string {
+  const address = `${clinic.address.streetAddress}, ${clinic.address.addressLocality}, ${clinic.address.addressRegion} ${clinic.address.postalCode}`;
+
+  const action = joinUrl
+    ? `<p style="margin:0 0 24px;"><a href="${joinUrl}" style="display:inline-block;background:#80b741;color:#ffffff;text-decoration:none;font-weight:600;padding:14px 24px;border-radius:8px;">Join the workshop</a></p>
+    <p style="margin:0 0 24px;">That link works for the whole session. We will send it again an hour before we start, so there is no need to hold on to this email.</p>`
+    : `<p style="margin:0 0 24px;">We will email you the link to join on Wednesday evening, and again an hour before we start. Nothing else is needed from you between now and then.</p>`;
+
+  return `<!doctype html>
+<html lang="en">
+<body style="margin:0;padding:24px;background:#FAFAF9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#414444;line-height:1.6;">
+  <div style="max-width:34rem;margin:0 auto;background:#FFFFFF;border:1px solid #e6e6e4;border-radius:12px;padding:32px;">
+    <p style="margin:0 0 16px;">Hi,</p>
+    <p style="margin:0 0 24px;">You are registered for the free workshop.</p>
+    <div style="margin:0 0 24px;padding:18px 20px;background:#f0f4e8;border-radius:8px;">
+      <p style="margin:0 0 6px;font-weight:600;color:#1f2222;">${WORKSHOP.title}</p>
+      <p style="margin:0;color:#5d6060;">${WORKSHOP.when}</p>
+    </div>
+    ${action}
+    <p style="margin:0 0 24px;">It runs about forty minutes, then there is open time for questions. Come with yours. The questions are the useful part and there is no such thing as one that is too basic.</p>
+    <p style="margin:0;">Dr. Ryan DeNome, DC<br />${clinic.brandName}</p>
+  </div>
+  <div style="max-width:34rem;margin:24px auto 0;font-size:13px;line-height:1.5;color:#5d6060;text-align:center;">
+    <p style="margin:0 0 8px;">${clinic.brandName}<br />${address}<br />${clinic.phone}</p>
+    <p style="margin:0;">You are getting this because you registered for this workshop on our website. If you would rather not hear from us again, reply with the word unsubscribe and we will take you off the list.</p>
+  </div>
+</body>
+</html>`;
+}
+
+function workshopEmailText(joinUrl: string): string {
+  const address = `${clinic.address.streetAddress}, ${clinic.address.addressLocality}, ${clinic.address.addressRegion} ${clinic.address.postalCode}`;
+
+  const action = joinUrl
+    ? ['Join the workshop', joinUrl, '', 'That link works for the whole session. We will send it again an hour before we start, so there is no need to hold on to this email.']
+    : ['We will email you the link to join on Wednesday evening, and again an hour before we start. Nothing else is needed from you between now and then.'];
+
+  return [
+    'Hi,', '',
+    'You are registered for the free workshop.', '',
+    WORKSHOP.title,
+    WORKSHOP.when, '',
+    ...action, '',
+    'It runs about forty minutes, then there is open time for questions. Come with yours. The questions are the useful part and there is no such thing as one that is too basic.', '',
+    'Dr. Ryan DeNome, DC',
+    clinic.brandName, '',
+    '---',
+    clinic.brandName, address, clinic.phone, '',
+    'You are getting this because you registered for this workshop on our website. If you would rather not hear from us again, reply with the word unsubscribe and we will take you off the list.',
+  ].join('\n');
 }
 
 function guideEmailText(linkLabel: string, file: string): string {
@@ -235,6 +318,19 @@ export const POST: APIRoute = async ({ request }) => {
   // clinic reads as "when did this lead come in".
   const signupDate = new Date().toISOString().slice(0, 10);
 
+  // Where the request came from, read off the Cloudflare request rather than
+  // asked for. The signup form has one field on purpose, and every extra field
+  // costs signups, so this is the only way to learn where an audience actually
+  // is without charging them for the answer. Values are absent in local dev.
+  const cf = (request as unknown as { cf?: Record<string, unknown> }).cf ?? {};
+  const geo: Record<string, string> = {};
+  const country = String(cf.country ?? request.headers.get('cf-ipcountry') ?? '').trim().slice(0, 8);
+  const region = String(cf.region ?? '').trim().slice(0, 64);
+  const timezone = String(cf.timezone ?? '').trim().slice(0, 64);
+  if (country) geo.COUNTRY = country;
+  if (region) geo.REGION = region;
+  if (timezone) geo.TIMEZONE = timezone;
+
   // The contact goes first and on its own. Whatever happens to the email after
   // this, the lead is saved and someone can follow up by hand. Losing the
   // contact is the failure that actually costs the clinic money.
@@ -253,6 +349,7 @@ export const POST: APIRoute = async ({ request }) => {
         attributes: {
           GUIDE_REQUESTED: guide,
           SIGNUP_DATE: signupDate,
+          ...geo,
         },
       }),
     });
@@ -276,7 +373,10 @@ export const POST: APIRoute = async ({ request }) => {
   // The contact is already safe in Brevo.
   let delivered = false;
 
-  if (config.file) {
+  const isWorkshop = 'kind' in config && config.kind === 'workshop';
+  const joinUrl = String(env.WORKSHOP_JOIN_URL ?? '').trim();
+
+  if (isWorkshop || config.file) {
     try {
       const sendResponse = await fetch(`${BREVO_API}/smtp/email`, {
         method: 'POST',
@@ -290,8 +390,12 @@ export const POST: APIRoute = async ({ request }) => {
           to: [{ email }],
           replyTo: SENDER,
           subject: config.subject,
-          htmlContent: guideEmailHtml(config.linkLabel, config.file),
-          textContent: guideEmailText(config.linkLabel, config.file),
+          htmlContent: isWorkshop
+            ? workshopEmailHtml(joinUrl)
+            : guideEmailHtml(config.linkLabel, config.file as string),
+          textContent: isWorkshop
+            ? workshopEmailText(joinUrl)
+            : guideEmailText(config.linkLabel, config.file as string),
           tags: [`guide=${guide}`, ...attributionTags],
         }),
       });

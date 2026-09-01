@@ -85,6 +85,29 @@ const allJsonLd = skipDefaultSchema
          so no-JS visitors and crawlers always see fully rendered content. -->
     <script is:inline>document.documentElement.classList.add('js');</script>
 
+    {/* Meta Pixel. Renders only when an ID is set in clinic.yml, so the site
+        ships no tracking at all until the clinic actually wants it.
+
+        It is here rather than in a tag manager because there is exactly one
+        pixel and a manager would be a second thing to keep in sync. The Lead
+        event fires from the signup component on a successful submit, not on
+        page view, so Meta optimises for people who actually register rather
+        than for people who merely land. */}
+    {clinic.analytics.metaPixelId && (
+      <script is:inline define:vars={{ pixelId: clinic.analytics.metaPixelId }}>
+        {`!function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', pixelId);
+        fbq('track', 'PageView');`}
+      </script>
+    )}
+
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />

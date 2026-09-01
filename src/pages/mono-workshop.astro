@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import GuideSignup from '../components/GuideSignup.astro';
+import { clinic } from '../lib/site';
+
+/**
+ * /mono-workshop
+ *
+ * Registration for the live session on Thursday 3 September, 8:00 PM Eastern.
+ *
+ * Written for someone who had mono months or years ago and never got back to
+ * normal. She has usually been told her labs are fine. The page does not argue
+ * with that, it explains what a standard panel does and does not look at.
+ *
+ * The whole page has one job, which is the email field. Everything above it
+ * exists to make that field worth filling in, and there is no second call to
+ * action competing with it.
+ *
+ * House rules carried over from the guide pages:
+ *   - No em dashes, no semicolons, no colons in body copy.
+ *   - No medications named or implied.
+ *   - No claim to treat, cure, or reverse anything.
+ */
+
+const WHEN = 'Thursday, September 3 at 8:00 PM Eastern';
+
+const covers = [
+  {
+    title: 'What a standard EBV panel actually measures',
+    body: 'There are four common markers and they answer different questions. Most people are run on a subset, told the result is normal, and never shown which question went unasked.',
+  },
+  {
+    title: 'Why fatigue outlasts the infection',
+    body: 'The acute illness ends and the tiredness does not. There are mechanisms behind that worth understanding, and none of them are that you are imagining it.',
+  },
+  {
+    title: 'What else gets pulled into it',
+    body: 'Gut function, thyroid markers, and inflammatory signals often move together with a reactivation picture. Looking at one in isolation is how the pattern gets missed.',
+  },
+  {
+    title: 'What a thorough workup covers',
+    body: 'What to ask for, in what order, and what each result would actually tell you.',
+  },
+];
+---
+
+<BaseLayout
+  title={`Free workshop on Epstein Barr and lingering fatigue | ${clinic.brandName}`}
+  description="A free live online workshop on why fatigue can linger long after a mono diagnosis, what a standard EBV panel leaves out, and what a thorough workup covers. Thursday, September 3 at 8:00 PM Eastern."
+>
+  <SectionContainer>
+    <div class="hero">
+      <p class="eyebrow">Free online workshop · {WHEN}</p>
+      <h1>Epstein Barr doesn’t leave the body. It goes quiet.</h1>
+      <p class="lede">
+        Most people are told mono clears up in a few weeks. For a lot of people that
+        is not how it goes. This is a live session on what happens after the acute
+        infection ends, and what a thorough workup actually looks for.
+      </p>
+      <p class="meta">
+        Hosted by Dr. Ryan DeNome, DC. About forty minutes, then open questions.
+        Free to attend.
+      </p>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer background="paper-soft">
+    <h2 class="sec-title">What we’ll go through</h2>
+    <ul class="covers">
+      {covers.map((c) => (
+        <li>
+          <h3>{c.title}</h3>
+          <p>{c.body}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="note">
+      Bring your questions. The second half is open time and there is no such thing
+      as one that is too basic.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer>
+    <GuideSignup
+      guide="workshop"
+      eyebrow="Free workshop"
+      heading="Save your seat"
+      blurb="Thursday, September 3 at 8:00 PM Eastern. We will email you the link to join, and a reminder before we start."
+      bullets={[
+        'Live, with real time for questions',
+        'Free to attend, nothing to buy',
+        'Can’t make it? Register anyway and we will send the replay',
+      ]}
+      buttonLabel="Save my seat"
+    />
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .hero { max-width: 46rem; }
+  .eyebrow {
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 0.9rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.1rem, 5.4vw, 3.2rem);
+    line-height: 1.08;
+    margin: 0 0 1.1rem;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 1.13rem;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+    max-width: 40rem;
+  }
+  .meta { color: var(--color-ink-muted); margin: 0; }
+
+  .sec-title { margin: 0 0 1.6rem; }
+
+  .covers {
+    list-style: none;
+    margin: 0 0 1.6rem;
+    padding: 0;
+    display: grid;
+    gap: 1.4rem;
+  }
+  @media (min-width: 46rem) {
+    .covers { grid-template-columns: 1fr 1fr; gap: 1.8rem 2.4rem; }
+  }
+  .covers h3 {
+    font-size: 1.04rem;
+    margin: 0 0 0.35rem;
+    color: var(--color-ink-strong);
+  }
+  .covers p { margin: 0; color: var(--color-ink-muted); }
+
+  .note { color: var(--color-ink-muted); margin: 0; font-style: italic; }
+</style>

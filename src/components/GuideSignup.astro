@@ -24,8 +24,14 @@
  */
 
 interface Props {
-  /** Guide key. Must match a value accepted by /api/guide-signup. */
-  guide: 'ebv' | 'pcos' | 'ferritin';
+  /**
+   * Guide key. Must match a value accepted by /api/guide-signup.
+   *
+   * 'workshop' is not a guide. It registers a seat at the live session and the
+   * success copy changes accordingly, because telling someone to check their
+   * inbox for a guide they did not ask for is worse than saying nothing.
+   */
+  guide: 'ebv' | 'pcos' | 'ferritin' | 'workshop';
   eyebrow?: string;
   heading: string;
   blurb: string;
@@ -164,7 +170,22 @@ const websiteId = `${formId}-website`;
             // The endpoint reports whether it actually sent, because not every
             // guide is published yet. Saying "check your inbox" when nothing
             // sent would break the promise on the very first interaction.
-            inner.innerHTML = data.delivered
+            // Tell Meta this was a real conversion, not just a visit. Guarded
+            // because the pixel only exists when clinic.yml carries an ID.
+            if (typeof window.fbq === 'function') {
+              window.fbq('track', 'Lead', { content_name: section.dataset.guide });
+            }
+
+            const isWorkshop = section.dataset.guide === 'workshop';
+
+            inner.innerHTML = isWorkshop
+              ? '<p class="eyebrow">Your seat is saved</p>' +
+                '<h2>You are registered.</h2>' +
+                '<p class="blurb">Thursday, September 3 at 8:00 PM Eastern. ' +
+                'A confirmation is in your inbox now, and we will send the link ' +
+                'to join before we start. Add us to your contacts so it does not ' +
+                'end up in promotions.</p>'
+              : data.delivered
               ? '<p class="eyebrow">On its way</p>' +
                 '<h2>Check your inbox.</h2>' +
                 '<p class="blurb">The guide is in your email right now. ' +
