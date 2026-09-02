@@ -49,19 +49,37 @@ const covers = [
   title={`Free workshop on Epstein Barr and lingering fatigue | ${clinic.brandName}`}
   description="A free live online workshop on why fatigue can linger long after a mono diagnosis, what a standard EBV panel leaves out, and what a thorough workup covers. Thursday, September 3 at 8:00 PM Eastern."
 >
-  <SectionContainer>
-    <div class="hero">
-      <p class="eyebrow">Free online workshop · {WHEN}</p>
+  {/* Hero and form are one block on purpose.
+
+      This page is almost entirely paid and story traffic arriving on a phone,
+      and the first version buried the email field 2,177px down, which is 2.7
+      screens. Sixty five people clicked through and one registered. Ad traffic
+      does not scroll to find a form, so the form comes to them. Everything
+      that explains the workshop now sits BELOW the thing that registers you
+      for it. */}
+  <SectionContainer spacing="sm">
+    <div class="hero" id="register">
+      <p class="eyebrow">Free online workshop</p>
       <h1>Epstein Barr doesn’t leave the body. It goes quiet.</h1>
+      <p class="when-line">{WHEN}</p>
       <p class="lede">
-        Most people are told mono clears up in a few weeks. For a lot of people that
-        is not how it goes. This is a live session on what happens after the acute
-        infection ends, and what a thorough workup actually looks for.
+        Most people are told mono clears up in a few weeks. For a lot of people
+        that is not how it goes.
       </p>
-      <p class="meta">
-        Hosted by Dr. Ryan DeNome, DC. About forty minutes, then open questions.
-        Free to attend.
-      </p>
+    </div>
+
+    <div class="signup-slot">
+      <GuideSignup
+        guide="workshop"
+        eyebrow="Free workshop"
+        heading="Save your seat"
+        blurb="Free, live, online. We will email you the link to join and a reminder before we start."
+        bullets={[
+          'Live, with real time for questions',
+          'Can’t make it? Register and we will send the replay',
+        ]}
+        buttonLabel="Save my seat"
+      />
     </div>
   </SectionContainer>
 
@@ -81,19 +99,12 @@ const covers = [
     </p>
   </SectionContainer>
 
-  <SectionContainer>
-    <GuideSignup
-      guide="workshop"
-      eyebrow="Free workshop"
-      heading="Save your seat"
-      blurb="Thursday, September 3 at 8:00 PM Eastern. We will email you the link to join, and a reminder before we start."
-      bullets={[
-        'Live, with real time for questions',
-        'Free to attend, nothing to buy',
-        'Can’t make it? Register anyway and we will send the replay',
-      ]}
-      buttonLabel="Save my seat"
-    />
+  <SectionContainer spacing="sm">
+    <div class="tail">
+      <p class="tail-when">{WHEN}</p>
+      <a class="tail-cta" href="#register">Save my seat</a>
+      <p class="tail-note">Free to attend, nothing to buy.</p>
+    </div>
   </SectionContainer>
 </BaseLayout>
 
@@ -108,18 +119,46 @@ const covers = [
     margin: 0 0 0.9rem;
   }
   .hero h1 {
-    font-size: clamp(2.1rem, 5.4vw, 3.2rem);
+    font-size: clamp(1.85rem, 5vw, 2.9rem);
     line-height: 1.08;
     margin: 0 0 1.1rem;
     text-wrap: balance;
   }
   .lede {
-    font-size: 1.13rem;
+    font-size: 1.06rem;
     color: var(--color-ink);
-    margin: 0 0 1rem;
+    margin: 0;
     max-width: 40rem;
   }
-  .meta { color: var(--color-ink-muted); margin: 0; }
+  .when-line {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 0.7rem;
+  }
+  .signup-slot { margin-top: 1.5rem; }
+
+  .tail { text-align: center; }
+  .tail-when {
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    margin: 0 0 0.9rem;
+  }
+  .tail-cta {
+    display: inline-block;
+    background: var(--color-brand-primary);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.95rem 2rem;
+    border-radius: 999px;
+  }
+  .tail-cta:hover { background: var(--color-brand-primary-dark); color: #ffffff; }
+  .tail-note {
+    margin: 0.8rem 0 0;
+    font-size: 0.92rem;
+    color: var(--color-ink-muted);
+  }
 
   .sec-title { margin: 0 0 1.6rem; }
 
