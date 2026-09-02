@@ -375,8 +375,14 @@ html.lenis-stopped {
    ========================================================================== */
 
 /* === Animated link underline (grows from left on hover) === */
-/* Applied to body links inside prose / content; nav links override below. */
-main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip-list a):not(.cat-pill):not(.cat-link) {
+/* Applied to body links inside prose / content; nav links override below.
+   
+   NOTE the growing :not() list. This rule sets `padding-bottom` as a longhand
+   to make room for its underline, and its specificity beats a component's
+   `padding` shorthand. Any link-shaped component that sets its own padding has
+   to be excluded here or it silently loses its bottom padding and the text sits
+   on the bottom edge. That is what happened to the /links bubbles. */
+main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip-list a):not(.cat-pill):not(.cat-link):not(.lt-link):not(.lt-feature) {
   position: relative;
   text-decoration: none;
   background-image: linear-gradient(currentColor, currentColor);
@@ -387,7 +393,7 @@ main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip
   transition: background-size var(--duration-normal) var(--ease-soft),
               color var(--duration-fast) var(--ease-soft);
 }
-main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip-list a):not(.cat-pill):not(.cat-link):hover {
+main a:not(.btn):not(.brand):not(.skip-link):not([class*="card"]):not(.lab-strip-list a):not(.cat-pill):not(.cat-link):not(.lt-link):not(.lt-feature):hover {
   background-size: 100% 1.5px;
 }
 
