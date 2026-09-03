@@ -98,7 +98,7 @@ const GUIDES = {
 /** Everything the workshop email needs to say, in one place. */
 const WORKSHOP = {
   title: 'What Epstein Barr does after mono ends',
-  when: 'Thursday, September 3 at 8:00 PM Eastern',
+  when: 'Thursday, September 10 at 8:00 PM Eastern',
 } as const;
 
 /** Guides we accept. Anything else is rejected rather than passed through. */
