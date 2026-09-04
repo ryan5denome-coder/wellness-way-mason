@@ -4,10 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Inflammation Talk with Dr. Patrick Flynn · The Wellness Way – Mason</title>
-<meta name="description" content="Dr. Patrick Flynn, founder of The Wellness Way, is coming to Mason, Ohio on Monday, October 26, 2026 for a free evening talk: The Wellness Way approach to inflammation." />
+<meta name="description" content="Dr. Patrick Flynn, founder of The Wellness Way, is coming to Mason, Ohio on Monday, October 26, 2026 for an evening talk: The Wellness Way approach to inflammation." />
 <link rel="canonical" href="https://www.thewellnesswaymason.com/inflammation" />
 <meta property="og:title" content="Inflammation Talk with Dr. Patrick Flynn · Mason, OH" />
-<meta property="og:description" content="A free evening talk on Monday, October 26, 2026. The Wellness Way approach to inflammation, from the founder himself." />
+<meta property="og:description" content="An evening talk on Monday, October 26, 2026. The Wellness Way approach to inflammation, from the founder himself." />
 <meta property="og:url" content="https://www.thewellnesswaymason.com/inflammation" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://www.thewellnesswaymason.com/og/default.jpg" />
@@ -22,7 +22,8 @@
   Update the three items marked  TODO  once confirmed:
     1. Start time  (search for  TODO-TIME)
     2. Location    (search for  TODO-LOCATION)
-    3. RSVP link   (search for  TODO-RSVP) — currently call/text + email
+    3. Ticket price (search for  TODO-PRICE)
+    4. RSVP / ticket link (search for  TODO-RSVP) — currently call/text + email
   ============================================================
 -->
 <style>
@@ -86,7 +87,8 @@
   .lead { font-size: 1.1875rem; color: var(--ink); }
   .soft { color: var(--ink-muted); font-size: .9375rem; }
 
-  .details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 22px 0 6px; }
+  .details { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 22px 0 6px; }
+  @media (max-width: 860px) { .details { grid-template-columns: repeat(2, 1fr); } }
   .detail { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px 16px; box-shadow: var(--shadow-card); }
   .detail .l { font-size: .8125rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-muted); }
   .detail .n { font-family: var(--font-display); font-size: 1.375rem; font-weight: 600; color: var(--ink-strong); line-height: 1.2; margin-top: .3rem; }
@@ -101,6 +103,13 @@
 
   .note { background: var(--green-soft); border-left: 3px solid var(--green); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 16px 20px; margin: 1.4rem 0; }
   .band-green .note { background: var(--paper); }
+  .bio { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: start; margin-top: 6px; }
+  .bio img { width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-card); display: block; }
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 22px 0 8px; }
+  .fact { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 16px 14px; box-shadow: var(--shadow-card); }
+  .fact .n { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; color: var(--green-ink); line-height: 1.1; }
+  .fact .l { font-size: .875rem; color: var(--ink-muted); margin-top: .35rem; line-height: 1.45; }
+  @media (max-width: 620px) { .bio { grid-template-columns: 1fr; } .bio img { max-width: 240px; } .facts { grid-template-columns: 1fr; } }
   .note p { max-width: none; }
 
   footer { background: var(--ink-strong); color: #c9cccb; padding: 44px 0 52px; }
@@ -118,7 +127,7 @@
 <header class="hero">
   <div class="wrap hero-inner">
     <div class="mark" role="presentation"></div>
-    <div class="eyebrow">The Wellness Way — Mason · Free community talk</div>
+    <div class="eyebrow">The Wellness Way — Mason · Community talk</div>
     <div class="pill">Monday evening, October 26, 2026</div>
     <h1>The Wellness Way approach to inflammation</h1>
     <p class="lede">Dr. Patrick Flynn, the founder of The Wellness Way, is coming to Mason for one evening to talk about inflammation: what it is, why so many people are living with it, and how we approach it differently.</p>
@@ -134,8 +143,8 @@
   <section>
     <div class="wrap">
       <div class="eyebrow">The details</div>
-      <h2>Free. One evening. Mason, Ohio.</h2>
-      <p class="lead">Time and location are being finalized. Check back here, or leave your name below and we will let you know the moment they are set.</p>
+      <h2>One evening. Mason, Ohio.</h2>
+      <p class="lead">Time, location, and ticket details are being finalized. Check back here, or leave your name below and we will let you know the moment they are set.</p>
       <div class="details">
         <div class="detail">
           <div class="l">Date</div>
@@ -154,8 +163,14 @@
           <div class="n tbd">To be announced</div>
           <div class="s">Mason, OH area. Venue coming soon.</div>
         </div>
+        <div class="detail">
+          <div class="l">Tickets</div>
+          <!-- TODO-PRICE: replace with the ticket price, e.g. "$25 per person" -->
+          <div class="n tbd">To be announced</div>
+          <div class="s">Paid event. Pricing coming soon.</div>
+        </div>
       </div>
-      <p class="soft">Cost: free. Open to the public. You do not need to be a patient to come, and you are welcome to bring a spouse, a friend, or a family member.</p>
+      <p class="soft">Open to the public. You do not need to be a patient to come, and you are welcome to bring a spouse, a friend, or a family member.</p>
     </div>
   </section>
 
@@ -180,9 +195,21 @@
   <section>
     <div class="wrap">
       <div class="eyebrow">Your speaker</div>
-      <h2>Dr. Patrick Flynn</h2>
-      <p class="lead">Dr. Flynn founded The Wellness Way in Green Bay, Wisconsin in 2005. Today it is a network of more than 50 health restoration clinics across the country, including ours here in Mason.</p>
-      <p>He is known for a direct, no-nonsense way of explaining how the body works, and for the question that drives every Wellness Way clinic: instead of asking how to make a symptom go away, ask why it is there in the first place.</p>
+      <h2>Who is Dr. Patrick Flynn?</h2>
+      <div class="bio">
+        <img src="/images/people/dr-patrick-flynn.jpg" alt="Dr. Patrick Flynn, founder of The Wellness Way" width="800" height="1000" loading="lazy" />
+        <div>
+          <p class="lead">Dr. Patrick Flynn is a chiropractor, the founder and CEO of The Wellness Way, and the reason our clinic in Mason exists. He has been in practice for nearly 30 years, and the approach he built has grown into a network of 61 clinics seeing people from around the world.</p>
+          <p>He did not start out as the picture of health. As a kid he was labeled "troubled" because he struggled to learn, focus, and sit still in a classroom. As a teenager, a series of events led him to discover that underlying immune problems were driving those neurological struggles. Nobody had looked for the cause. That experience became the question behind everything he does: instead of asking how to make a symptom go away, ask why it is there in the first place.</p>
+          <p>He opened his first clinic in 1999 and has since trained thousands of practitioners, including chiropractors, medical doctors, nurse practitioners, pharmacists, and surgeons, in that way of thinking. His training includes Palmer College of Chiropractic, Northwestern Health Sciences University, National University of Health Sciences, and Harvard Medical School's HMX certificate coursework in immunology, which is where his focus on the immune system and hormones comes from.</p>
+          <p>He is the author of two books, <em>I Disagree</em> (2019, an international bestseller) and <em>I Still Disagree</em> (2024), and his public seminars, including The Hormone Connection, have been attended by thousands of people. He describes himself as a small-town country boy who came up with an idea to help people.</p>
+        </div>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="n">1999</div><div class="l">opened his first clinic, nearly 30 years in practice</div></div>
+        <div class="fact"><div class="n">61</div><div class="l">Wellness Way clinics built on his approach</div></div>
+        <div class="fact"><div class="n">2</div><div class="l">books, including the international bestseller <em>I Disagree</em></div></div>
+      </div>
       <p>Your host for the evening is Dr. Ryan DeNome, D.C., clinic owner at The Wellness Way – Mason.</p>
     </div>
   </section>
@@ -191,7 +218,7 @@
     <div class="wrap">
       <div class="eyebrow">Save your seat</div>
       <h2>Tell us you are coming</h2>
-      <p class="lead">Seating will be limited. Call or text the office, or send us an email, and we will hold a spot and send you the time and location as soon as they are confirmed.</p>
+      <p class="lead">Seating will be limited. Call or text the office, or send us an email, and we will hold a spot and send you the time, location, and ticket details as soon as they are confirmed.</p>
       <!-- TODO-RSVP: swap these buttons for an RSVP form link once one exists -->
       <div class="cta-row" style="margin-top:1.4rem">
         <a class="btn btn-primary" href="tel:+12832238376">Call or text (283) 223-8376</a>
@@ -207,7 +234,7 @@
   <div class="wrap">
     <p class="brand">The Wellness Way — Mason</p>
     <p style="color:#c9cccb">Dr. Ryan DeNome, D.C. · <a href="https://www.thewellnesswaymason.com">thewellnesswaymason.com</a> · <a href="tel:+12832238376">(283) 223-8376</a></p>
-    <p class="disclaimer">This event is for general education. It is not medical advice, not a diagnosis, and not a treatment plan. Care at The Wellness Way – Mason works alongside your medical providers and is not a substitute for medical diagnosis or treatment. Individual experiences vary, and no outcome is promised or implied.</p>
+    <p class="disclaimer">Biographical details are drawn from Dr. Flynn's published press kit. This event is for general education. It is not medical advice, not a diagnosis, and not a treatment plan. Care at The Wellness Way – Mason works alongside your medical providers and is not a substitute for medical diagnosis or treatment. Individual experiences vary, and no outcome is promised or implied.</p>
   </div>
 </footer>
 
