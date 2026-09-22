@@ -11,7 +11,7 @@ readTime: 5 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/holistic-adhd-support-for-kids-the-wellness-way-approach"
 seoTitle: "ADHD Support for Kids in Mason, OH"
-seoDescription: "Is your child struggling to focus in school? Learn how The Wellness Way - Mason looks at gut health, food sensitivities, and the nervous system behind focus struggles, alongside your child's medical team."
+seoDescription: "Explore supportive lifestyle factors for children with focus concerns, including food, gut and nervous-system patterns, alongside medical care."
 ---
 
 You got the note from the teacher again. Can't sit still. Doesn't finish the worksheet. Blurts out, drifts off, melts down over something small. At home it's homework that takes two hours and ends in tears (theirs or yours). You've been told it might be ADHD, and maybe it is. But somewhere in the back of your mind a quieter question keeps surfacing: *why is my kid's body working this hard just to get through a normal day?*

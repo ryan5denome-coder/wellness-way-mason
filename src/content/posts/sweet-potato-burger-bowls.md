@@ -13,7 +13,7 @@ seoTitle: Easy Sweet Potato Burger Bowls
 seoDescription: "Easy, healthy sweet potato burger bowls perfect for meal prep. A gut-friendly recipe from The Wellness Way - Mason, Ohio."
 ---
 
-Welcome back for another [#ModayMealInspo](https://www.thewellnesswaymason.com/blog/hashtags/ModayMealInspo).
+Welcome back for another healthy recipe from The Wellness Way.
 
 Looking for a meal that satisfies your taste buds **_and_** fits how we eat at the clinic? Meet your new favorite go-to: the **Sweet Potato Burger Bowl**. This dish is perfect for busy weeknights or meal prepping ahead! We eat this on a regular rotation and it beats having a burger on a regular old bun.
 

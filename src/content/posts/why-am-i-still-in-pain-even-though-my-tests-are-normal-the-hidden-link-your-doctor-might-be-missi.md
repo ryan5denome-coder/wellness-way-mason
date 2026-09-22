@@ -9,8 +9,8 @@ categories: [gut-health, hormones, clinical]
 readTime: 2 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/why-am-i-still-in-pain-even-though-my-tests-are-normal-the-hidden-link-your-doctor-might-be-missi"
-seoTitle: 'Tests "Normal" but Still in Pain? The Hidden Link'
-seoDescription: "Still in pain even though your tests are 'normal'? At The Wellness Way - Mason, we go beyond standard care with chiropractic adjustments and advanced testing to uncover hidden causes and help you feel like yourself again."
+seoTitle: 'Tests "Normal" but Still in Pain?'
+seoDescription: "Still in pain despite normal test results? Explore questions that may help guide a fuller conversation with your healthcare team in Mason, OH."
 ---
 
 Have you ever been told, _"Everything looks fine"_ after getting bloodwork, imaging, or other medical tests, yet you still feel pain, fatigue, headaches, or other symptoms? You're not alone. Many patients walk into **The Wellness Way - Mason** with this exact frustration.

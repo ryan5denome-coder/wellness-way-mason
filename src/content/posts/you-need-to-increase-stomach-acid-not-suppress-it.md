@@ -9,7 +9,7 @@ categories: [gut-health, immune]
 readTime: 3 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/you-need-to-increase-stomach-acid-not-supress-it"
-seoTitle: "You Need to Increase Stomach Acid — Not Suppress It"
+seoTitle: "Stomach Acid and Heartburn: What to Know"
 seoDescription: "Acid reflux? You may need MORE stomach acid, not less. The Wellness Way - Mason on the underlying causes of heartburn and GERD."
 ---
 

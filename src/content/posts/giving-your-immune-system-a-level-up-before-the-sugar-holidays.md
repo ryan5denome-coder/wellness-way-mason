@@ -9,7 +9,7 @@ categories: [gut-health, immune]
 readTime: 3 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/giving-your-immune-system-a-level-up-before-the-sugar-holidays"
-seoTitle: "Strengthen Your Immune System Before the Sugar Holidays"
+seoTitle: "Immune Health Tips for the Holidays"
 seoDescription: "Holiday sugar weakens immunity. Learn how to protect your immune system before the sugar holidays with tips from The Wellness Way - Mason, OH."
 ---
 
