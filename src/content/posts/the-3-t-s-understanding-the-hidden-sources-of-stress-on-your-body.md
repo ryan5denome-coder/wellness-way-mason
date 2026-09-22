@@ -10,8 +10,8 @@ categories: [gut-health, clinical, immune]
 readTime: 5 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/the-3-t-s-understanding-the-hidden-sources-of-stress-on-your-body"
-seoTitle: "The 3 T's: Hidden Sources of Stress on Your Body"
-seoDescription: "Traumas, Toxins, and Thoughts: the three hidden sources of stress on your body, and how chiropractic + functional testing addresses each. The Wellness Way - Mason, OH."
+seoTitle: "The 3 T's of Stress"
+seoDescription: "Learn how Traumas, Toxins and Thoughts can affect stress, pain, fatigue and brain fog, and how a testing-led approach looks for patterns."
 ---
 
 Pain, fatigue, brain fog, a body that just feels *off*: these rarely show up out of nowhere. They're usually the output of stress the body has been quietly absorbing, sometimes for years. The tricky part is that this kind of stress isn't always loud. It builds in the background until the system finally can't keep compensating, and a symptom surfaces.

@@ -9,7 +9,7 @@ categories: [pregnancy, clinical]
 readTime: 2 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/chiropractic-care-the-hidden-key-to-treating-round-ligament-pain-in-pregnancy"
-seoTitle: "Round Ligament Pain in Pregnancy: Chiropractic Care"
+seoTitle: "Round Ligament Pain During Pregnancy"
 seoDescription: "Discover how chiropractic care can ease round ligament pain during pregnancy. Visit our Mason, OH location for expert chiropractic care."
 ---
 

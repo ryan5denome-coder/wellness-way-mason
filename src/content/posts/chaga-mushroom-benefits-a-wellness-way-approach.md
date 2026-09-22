@@ -9,8 +9,8 @@ categories: [immune, gut-health]
 readTime: 2 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/chaga-mushroom-benefits-a-wellness-way-approach"
-seoTitle: "Chaga Mushroom Benefits: A Wellness Way Approach"
-seoDescription: "Discover the benefits of Chaga mushrooms with The Wellness Way. Learn how Chaga may support brain health, immunity, inflammation, and natural energy through proper testing and a personalized care plan."
+seoTitle: "Chaga Mushroom Benefits"
+seoDescription: "Learn about Chaga mushrooms, their traditional uses and considerations for adding them to a broader health plan with The Wellness Way - Mason."
 ---
 
 When people think of superfoods for brain health and immune support, Chaga mushrooms often top the list. At **The Wellness Way - Mason**, we recognize Chaga not as a "magic fix," but as a powerful tool that helps restore balance in the body when used alongside proper testing and personalized care.

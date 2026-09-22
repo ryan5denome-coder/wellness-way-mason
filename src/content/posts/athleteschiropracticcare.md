@@ -10,7 +10,7 @@ readTime: 1 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/athleteschiropracticcare"
 seoTitle: "Why Pro Athletes Use Chiropractic Care"
-seoDescription: "Over 90% of professional athletes use chiropractic care, especially for sports injuries. Discover how adjustments improve performance, speed recovery, and prevent injuries, so you can play like the pros."
+seoDescription: "Learn how athletes use chiropractic care for movement, recovery and injury prevention, and what care may support at The Wellness Way - Mason."
 ---
 
 Whether you're a weekend warrior, high school athlete, or pro competitor, your body takes a beating. Training, competition, and even everyday activity put stress on your muscles, joints, and nervous system. It's no surprise that **over 90% of professional athletes use chiropractic care regularly**. Do they know something you don't?

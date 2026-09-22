@@ -11,7 +11,7 @@ readTime: 5 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/bloating-your-body-s-alarm-bell"
 seoTitle: "Bloating - Your Body's Alarm Bell"
-seoDescription: "Bloating is common, but not normal. Learn the gut patterns behind it: low stomach acid, food sensitivities, dysbiosis, and why testing beats guessing. The Wellness Way - Mason."
+seoDescription: "Bloating after meals can have many causes. Explore gut, food and digestion patterns that may be worth discussing with your care team."
 ---
 
 You eat a normal lunch. By mid-afternoon your waistband is tight, your stomach is distended, and you're uncomfortable enough to notice it through a meeting. You've started keeping antacids in your desk and your car. Somewhere along the way you decided this is just how your body works now.

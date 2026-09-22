@@ -9,8 +9,8 @@ categories: [gut-health, hormones, clinical]
 readTime: 3 min read
 complianceReviewed: false
 sourceUrl: "https://www.thewellnesswaymason.com/post/statins-and-heart-health-a-wellness-way-perspective-on-cholesterol-risk-and-underlying stressors"
-seoTitle: "Statins and Heart Health: Beyond Cholesterol"
-seoDescription: "The Wellness Way - Mason's perspective on statins and heart health. Why cholesterol isn't the whole story and how thorough testing reveals what's actually driving cardiovascular risk."
+seoTitle: "Statins & Heart Health"
+seoDescription: "A practical look at statins, cholesterol and cardiovascular risk, with questions to discuss with your prescribing clinician."
 ---
 
 Statins are some of the most prescribed medications in the world, often handed out as the first line of defense against high cholesterol and heart disease. But at [**The Wellness Way - Mason**](https://www.thewellnesswaymason.com/), we believe your heart health deserves more than a prescription. It deserves a full investigation into the _why_ behind your numbers.
