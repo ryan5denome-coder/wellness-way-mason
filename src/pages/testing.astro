@@ -1,0 +1,441 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import GuideSignup from '../components/GuideSignup.astro';
+import { clinic } from '../lib/site';
+
+/**
+ * /testing
+ *
+ * The destination for the TEST keyword that runs under almost every Reel, so
+ * it has to stand on its own for someone who has seen one video and knows
+ * nothing else about the practice.
+ *
+ * The spine of this page is a correction, not a catalog. Someone landing here
+ * from a video about testing assumes the pitch is "run everything". The page
+ * says the opposite in the hero and again before the catalog, because the
+ * actual first visit is a triage conversation about where the first dollar
+ * does the most work. The prices are published for the same reason the
+ * pricing page publishes them, which is that a number you can see is less
+ * frightening than a number you cannot.
+ *
+ * House rules carried over from the other landing pages:
+ *   - No em dashes, no semicolons, no colons in body copy.
+ *   - No claim that any test diagnoses, treats, or cures anything.
+ *   - Prices are the real ones from the lab sheet. If that sheet changes,
+ *     this page changes with it.
+ */
+
+const panels = [
+  {
+    group: 'Blood work',
+    lab: 'Access Medical Laboratories',
+    note: 'Where most people start, because it is the widest look for the lowest cost.',
+    items: [
+      { name: 'Basic Panel', price: '$163' },
+      { name: 'Immune Panel', price: '$175' },
+      { name: 'Thyroid Panel', price: '$254' },
+      { name: 'Thyroid with Hormones', price: '$420' },
+      { name: 'Female Panel', price: '$327' },
+      { name: 'Male Panel', price: '$295' },
+      { name: 'CardioMetabolic Panel', price: '$366' },
+      { name: 'Diabetes Panel', price: '$97' },
+      { name: 'No Sugar Panel', price: '$257' },
+      { name: 'Viral Panel', price: '$383' },
+      { name: 'MTHFR Panel', price: '$141' },
+      { name: 'Pituitary Panel', price: '$55' },
+    ],
+  },
+  {
+    group: 'Gut',
+    lab: 'Doctors Data, Genova',
+    note: 'Roughly eighty percent of the immune system lives here, which is why it comes up so often.',
+    items: [
+      { name: 'Comprehensive Stool Analysis with Parasitology', price: '$374' },
+      { name: 'GI Effects', price: '$388' },
+      { name: 'Microbiology Profile', price: '$143' },
+      { name: 'Microbiology', price: '$156' },
+      { name: 'Zonulin, added to a Genova panel', price: '$40' },
+    ],
+  },
+  {
+    group: 'Food reactions',
+    lab: 'Immuno Laboratories',
+    note: 'One hundred and ten foods. A fingerprick option means no blood draw.',
+    items: [
+      { name: 'IgG 110 Foods with Basic 8 IgE', price: '$273' },
+      { name: 'IgG 110 Foods, fingerprick, no IgE', price: '$273' },
+    ],
+  },
+  {
+    group: 'Mold and environmental toxins',
+    lab: 'Mosaic Diagnostics',
+    note: 'Worth looking at when a picture does not add up any other way.',
+    items: [
+      { name: 'MycoTOX Profile', price: '$280' },
+      { name: 'Organic Acid Test', price: '$275' },
+      { name: 'TOXDetect Profile', price: '$314' },
+      { name: 'Glyphosate', price: '$136' },
+    ],
+  },
+  {
+    group: 'Hormones',
+    lab: 'Precision Analytical',
+    note: 'Dried urine across a full day rather than one blood draw at one moment.',
+    items: [{ name: 'DUTCH Comprehensive Hormone Profile', price: '$355' }],
+  },
+  {
+    group: 'Immune and tick-borne',
+    lab: 'I-Labs, MDL',
+    note: 'Narrow and expensive on purpose. These get ordered when something points at them, not on spec.',
+    items: [
+      { name: 'Immune Assessment, functional flow cytometry', price: '$267' },
+      { name: 'Cytokines Extended ELISA 2', price: '$328' },
+      { name: 'Core Lyme Panel', price: '$323' },
+      { name: 'Lyme and Co-Infection, 6 T Cell Elispots', price: '$1,332' },
+    ],
+  },
+  {
+    group: 'Methylation',
+    lab: 'Genova',
+    note: 'Buccal swab or blood, depending on what we need to see.',
+    items: [
+      { name: 'Methylation Bloodwork', price: '$212' },
+      { name: 'Methylation Buccal Swab', price: '$139' },
+    ],
+  },
+  {
+    group: 'Neurotransmitters',
+    lab: 'ZRT Laboratory',
+    note: 'Adult and child versions of the same profile.',
+    items: [
+      { name: 'Adult Neurotransmitters', price: '$229' },
+      { name: 'Child Neurotransmitters', price: '$229' },
+    ],
+  },
+];
+
+const testingFaqs = [
+  {
+    question: 'Do I have to run all of these?',
+    answer:
+      '<p>No, and we would talk you out of it. The list above is a catalog, not a plan. Most people start with one or two panels chosen from their history, and we build from what those results show rather than ordering in parallel and hoping something turns up.</p>',
+  },
+  {
+    question: 'How much will I actually spend on labs the first day?',
+    answer:
+      '<p>For someone with no recent prior testing, first-day lab spend usually lands between <strong>$300 and $700</strong>. If you bring recent results with you it is often less, because we will not repeat work that has already been done. You see the cost of every panel before you agree to any of it.</p>',
+  },
+  {
+    question: 'What if I already have labs from somewhere else?',
+    answer:
+      '<p>Bring them. The $99 health restoration visit includes reviewing prior results, and it is genuinely useful. Previous work often tells us what not to spend money on, which is the cheapest result you can get.</p>',
+  },
+  {
+    question: 'Is testing covered by insurance?',
+    answer:
+      '<p>We are a <strong>cash-pay practice</strong> and out of network. We provide a <strong>superbill on request</strong> if you want to submit for possible reimbursement, and <strong>HSA and FSA cards are accepted</strong> for visits, labs, and supplements.</p>',
+  },
+  {
+    question: 'Do I have to be local to Mason?',
+    answer:
+      `<p>No. We work with people around the country. Testing is shipped to you and appointments happen from home. The practical difference is that you do not come into the office. If it is easier to ask first, call <a href="tel:${clinic.phoneTel}">${clinic.phone}</a>.</p>`,
+  },
+  {
+    question: 'What happens after the results come back?',
+    answer:
+      '<p>The <strong>Plan visit is $300</strong>. We go through what the results show, and you leave with a meal plan and a supplement plan built from your own numbers. Supplements are separate and run anywhere from $20 to $130 or more each, which is why we will not quote them before we know what you need.</p>',
+  },
+];
+---
+
+<BaseLayout
+  title="Functional Lab Testing & Pricing | The Wellness Way - Mason, OH"
+  description="Every lab we run and what each one costs. The first visit is about choosing the right starting point, not ordering everything. Cash-pay, HSA and FSA accepted. Mason, OH."
+>
+  <SectionContainer width="default" spacing="md" background="paper-soft">
+    <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'Testing' }]} />
+    <div class="hero">
+      <p class="eyebrow">Testing at The Wellness Way, Mason</p>
+      <h1>We test. We don’t guess. We also don’t test everything.</h1>
+      <p class="lede">
+        Below is every lab we run and what each one costs. It is a catalog, not a
+        prescription. The job of your first visit is to work out which one or two of
+        these will tell us the most about you, and to leave the rest alone until
+        there is a reason to run them.
+      </p>
+      <div class="cta-row">
+        <Button href="#starting-point" variant="primary" size="lg">
+          How we pick a starting point
+        </Button>
+        <Button href="#catalog" variant="ghost" size="lg">See every lab and price</Button>
+      </div>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" id="starting-point">
+    <div class="thesis">
+      <p class="eyebrow">What the first visit is actually for</p>
+      <h2>Your first appointment is a triage conversation, not a shopping trip.</h2>
+      <p>
+        People arrive expecting us to order one of everything. We don’t, and not because
+        of cost alone. Running eight panels at once buries the signal. When six things
+        come back mildly abnormal, you have spent a lot of money to arrive at a longer
+        list of maybes.
+      </p>
+      <p>
+        So the first visit is spent on a different question. Given your history, your
+        symptoms, and whatever testing you have already had, <strong>where does the
+        first dollar do the most work?</strong> Sometimes that is a $163 basic panel.
+        Sometimes your story points straight at the gut and a stool analysis is worth
+        more than three blood panels. Sometimes you walk out having ordered nothing,
+        because you brought results from six months ago that answer the question already.
+      </p>
+      <p>
+        Then we follow the thread. Each result narrows what is worth looking at next, so
+        the second round of testing is far better aimed than anything we could have
+        guessed on day one.
+      </p>
+      <ul class="principles">
+        <li><strong>We won’t repeat testing you’ve already had.</strong> Bring your prior results and we will read them.</li>
+        <li><strong>You see every price before you agree to anything.</strong> Nothing gets ordered in the background.</li>
+        <li><strong>You can start smaller than we suggest.</strong> It is your money and your pace.</li>
+      </ul>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <h2 class="section-h2">What it costs to start</h2>
+    <ul class="steps">
+      <li>
+        <div class="step-row">
+          <span class="step-label">Health restoration new patient visit</span>
+          <span class="step-price">$99<span class="step-note">flat</span></span>
+        </div>
+        <p>An intake conversation and a review of any prior labs you bring. This is where the starting point gets chosen.</p>
+      </li>
+      <li>
+        <div class="step-row">
+          <span class="step-label">Typical first-day lab spend</span>
+          <span class="step-price step-range">$300 to $700</span>
+        </div>
+        <p>For someone with no recent prior testing. Less if you bring results worth reading. You approve each panel before it is ordered.</p>
+      </li>
+      <li>
+        <div class="step-row">
+          <span class="step-label">Plan visit</span>
+          <span class="step-price">$300<span class="step-note">plus supplements</span></span>
+        </div>
+        <p>Results review, a meal plan, and a supplement plan built from your own numbers. Supplements run $20 to $130 or more each and are chosen with you.</p>
+      </li>
+    </ul>
+    <ul class="cash-grid">
+      <li><h3>Cash-pay, out of network</h3><p>Decisions about your care stay in the room with you.</p></li>
+      <li><h3>Superbills on request</h3><p>Submit to your insurance for possible reimbursement.</p></li>
+      <li><h3>HSA and FSA accepted</h3><p>Pre-tax dollars work for visits, labs, and supplements.</p></li>
+      <li><h3>No contracts</h3><p>No packages, no minimum. Stop or step back any time.</p></li>
+    </ul>
+  </SectionContainer>
+
+  <SectionContainer width="wide" spacing="lg" id="catalog">
+    <div class="section-head">
+      <p class="eyebrow">The full catalog</p>
+      <h2>Every lab we run, and what it costs.</h2>
+      <p class="value-line">
+        Read this as a menu you will mostly not order from. Blood draw is $25 to $40 and
+        is paid where it is done. Testing supplies run $15 to $30.
+      </p>
+    </div>
+
+    <div class="panel-grid">
+      {panels.map((p) => (
+        <section class="panel-card">
+          <header>
+            <h3>{p.group}</h3>
+            <p class="panel-lab">{p.lab}</p>
+            <p class="panel-note">{p.note}</p>
+          </header>
+          <ul>
+            {p.items.map((i) => (
+              <li>
+                <span class="item-name">{i.name}</span>
+                <span class="item-price">{i.price}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg" background="paper-soft">
+    <GuideSignup
+      guide="testing"
+      eyebrow="Take it with you"
+      heading="Want the full sheet to keep?"
+      blurb="We will email you the lab pricing sheet, the same one we hand out in the office. Useful if you want to sit with the numbers or show someone else."
+      buttonLabel="Email me the sheet"
+    />
+  </SectionContainer>
+
+  <SectionContainer width="default" spacing="lg">
+    <h2 class="section-h2">Questions people ask first</h2>
+    <FAQAccordion items={testingFaqs} />
+  </SectionContainer>
+
+  <SectionContainer width="narrow" spacing="lg" background="brand">
+    <div class="final-cta">
+      <h2>Not sure where you’d start? That’s the appointment.</h2>
+      <p>
+        You do not need to know which test you need. Working that out together is what
+        the first visit is for, and you will know every number before you agree to it.
+      </p>
+      <div class="cta-row cta-row-center">
+        <Button href={`tel:${clinic.phoneTel}`} variant="inverse" size="lg">
+          Call {clinic.phone}
+        </Button>
+        <Button href={clinic.bookingUrl} variant="secondary" size="lg" external iconAfter>
+          Book Your Appointment
+        </Button>
+      </div>
+    </div>
+  </SectionContainer>
+</BaseLayout>
+
+<style>
+  .hero { max-width: 46rem; }
+  .eyebrow {
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 0.9rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5.2vw, 3rem);
+    line-height: 1.1;
+    margin: 0 0 1.1rem;
+    text-wrap: balance;
+  }
+  .lede {
+    font-size: 1.1rem;
+    color: var(--color-ink);
+    margin: 0 0 1.6rem;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .cta-row-center { justify-content: center; }
+
+  .thesis { max-width: 44rem; }
+  .thesis h2 {
+    font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+    line-height: 1.18;
+    margin: 0 0 1.1rem;
+    text-wrap: balance;
+  }
+  .thesis p { margin: 0 0 1.1rem; }
+
+  .principles {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .principles li {
+    padding: 0.9rem 1.1rem;
+    background: var(--color-brand-primary-soft);
+    border-radius: 10px;
+    font-size: 0.97rem;
+  }
+
+  .section-h2 { margin: 0 0 1.5rem; }
+  .section-head { max-width: 42rem; margin-bottom: 2rem; }
+  .section-head h2 { margin: 0 0 0.6rem; }
+  .value-line { color: var(--color-ink-muted); margin: 0; }
+
+  .steps { list-style: none; margin: 0 0 2.5rem; padding: 0; display: grid; gap: 1.2rem; }
+  .steps > li {
+    border-top: 1px solid var(--color-line);
+    padding-top: 1rem;
+  }
+  .step-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.35rem;
+  }
+  .step-label { font-weight: 600; color: var(--color-ink-strong); }
+  .step-price {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-brand-primary-dark);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .step-range { font-size: 1.1rem; }
+  .step-note {
+    display: block;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--color-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: right;
+  }
+  .steps p { margin: 0; color: var(--color-ink-muted); font-size: 0.95rem; }
+
+  .cash-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.2rem;
+  }
+  @media (min-width: 40rem) { .cash-grid { grid-template-columns: 1fr 1fr; } }
+  .cash-grid h3 { font-size: 1rem; margin: 0 0 0.25rem; color: var(--color-ink-strong); }
+  .cash-grid p { margin: 0; color: var(--color-ink-muted); font-size: 0.95rem; }
+
+  .panel-grid { display: grid; gap: 1.4rem; }
+  @media (min-width: 46rem) { .panel-grid { grid-template-columns: 1fr 1fr; } }
+  .panel-card {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 14px;
+    padding: 1.3rem 1.4rem;
+  }
+  .panel-card h3 { margin: 0 0 0.2rem; font-size: 1.1rem; color: var(--color-ink-strong); }
+  .panel-lab {
+    margin: 0 0 0.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+  }
+  .panel-note { margin: 0 0 1rem; font-size: 0.92rem; color: var(--color-ink-muted); }
+  .panel-card ul { list-style: none; margin: 0; padding: 0; }
+  .panel-card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.9rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--color-line-soft);
+    font-size: 0.95rem;
+  }
+  .item-name { color: var(--color-ink); }
+  .item-price {
+    font-weight: 600;
+    color: var(--color-ink-strong);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .final-cta { text-align: center; }
+  .final-cta h2 { margin: 0 0 0.8rem; text-wrap: balance; }
+  .final-cta p { margin: 0 0 1.5rem; }
+</style>

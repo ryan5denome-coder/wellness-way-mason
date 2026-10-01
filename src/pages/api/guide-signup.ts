@@ -77,6 +77,18 @@ const GUIDES = {
     file: null,
   },
   /**
+   * The lab pricing sheet. Not a written guide, just the real catalog with
+   * real numbers, which is exactly what someone who commented TEST on a Reel
+   * is asking for. It already exists at that path and is the same sheet the
+   * clinic hands out in the room.
+   */
+  testing: {
+    listId: 8,
+    subject: 'The lab pricing sheet you asked for',
+    linkLabel: 'Open the lab pricing sheet',
+    file: 'https://thewellnesswaymason.com/files/lab-pricing.pdf',
+  },
+  /**
    * The live workshop. Not a guide, so it has no PDF. What someone gets back
    * is a confirmation and, once the room exists, the link to join it.
    *
