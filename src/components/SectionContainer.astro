@@ -19,6 +19,10 @@ interface Props {
   spacing?: 'sm' | 'md' | 'lg' | 'xl' | 'hero';
   id?: string;
   ariaLabel?: string;
+  /** Points aria-labelledby at a heading id inside the section. */
+  labelledBy?: string;
+  /** Extra class on the outer section. Omitted classes leave other pages unchanged. */
+  class?: string;
   as?: 'section' | 'article' | 'div' | 'aside';
   edgeTreatment?: 'none' | 'top-fade' | 'bottom-fade';
 }
@@ -29,16 +33,20 @@ const {
   spacing = 'lg',
   id,
   ariaLabel,
+  labelledBy,
+  class: className,
   as = 'section',
   edgeTreatment = 'none',
 } = Astro.props;
 
 const Tag = as;
-const classes = ['section', `bg-${background}`, `space-${spacing}`, `edge-${edgeTreatment}`].join(' ');
+const classes = ['section', `bg-${background}`, `space-${spacing}`, `edge-${edgeTreatment}`, className]
+  .filter(Boolean)
+  .join(' ');
 const innerClass = `inner inner-${width}`;
 ---
 
-<Tag class={classes} id={id} aria-label={ariaLabel}>
+<Tag class={classes} id={id} aria-label={ariaLabel} aria-labelledby={labelledBy}>
   <div class={innerClass}>
     <slot />
   </div>

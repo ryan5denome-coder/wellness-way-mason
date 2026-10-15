@@ -116,6 +116,9 @@ const panels = [
   },
 ];
 
+/** Exact booking URL. No query string, so nothing extra can land in a link. */
+const firstVisitUrl = 'https://neoplatform.com/dd6a54e3c98/self-registration';
+
 const testingFaqs = [
   {
     question: 'Do I have to run all of these?',
@@ -159,6 +162,29 @@ const testingFaqs = [
     <div class="hero">
       <p class="eyebrow">Testing at The Wellness Way, Mason</p>
       <h1>We test. We don’t guess. We also don’t test everything.</h1>
+      <div class="vsl">
+        <video
+          class="vsl-player"
+          src="/video/testing-vsl.mp4"
+          poster="/video/testing-vsl-poster.jpg"
+          controls
+          playsinline
+          preload="metadata"
+          width="720"
+          height="1280"
+          aria-label="Dr. Ryan DeNome on what the first visit answers"
+        >
+          Your browser does not play this video. You can still book a first visit below.
+        </video>
+        <p class="vsl-note">
+          Stories in this video are composites of common patient experiences, not actual patients. Individual experiences vary.
+        </p>
+        <div class="cta-row vsl-cta">
+          <Button href={firstVisitUrl} variant="primary" size="lg" external iconAfter>
+            Book your $99 first visit
+          </Button>
+        </div>
+      </div>
       <p class="lede">
         Below is every lab we run and what each one costs. It is a catalog, not a
         prescription. The job of your first visit is to work out which one or two of
@@ -171,6 +197,27 @@ const testingFaqs = [
         </Button>
         <Button href="#catalog" variant="ghost" size="lg">See every lab and price</Button>
       </div>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer
+    width="default"
+    spacing="md"
+    background="paper-soft"
+    class="book-offer-section"
+    labelledBy="book-offer-top-title"
+  >
+    <div class="book-offer">
+      <p class="book-offer-eyebrow">Start with one visit</p>
+      <h2 class="book-offer-title" id="book-offer-top-title">You don’t need to pick a test before you book.</h2>
+      <p class="book-offer-lede">The first visit is where we work out which one or two labs are worth running, if any. In clinic in Mason or virtual from home.</p>
+      <div class="cta-row">
+        <Button href={firstVisitUrl} variant="primary" size="lg" external iconAfter>
+          Book your $99 first visit
+        </Button>
+      </div>
+      <p class="book-offer-terms">The $99 covers your health restoration new patient visit: an intake conversation and a review of any prior labs you bring. Labs are separate and you approve each one first. The $99 rate runs through January 31, 2027. Virtual visits are health restoration coaching (labs, diet and lifestyle, supplements); chiropractic care is in clinic only.</p>
+      <p class="book-offer-sign">Dr. Ryan DeNome, D.C. · The Wellness Way Mason</p>
     </div>
   </SectionContainer>
 
@@ -237,6 +284,49 @@ const testingFaqs = [
     </ul>
   </SectionContainer>
 
+  <SectionContainer
+    width="default"
+    spacing="lg"
+    background="paper-warm-tint"
+    id="patient-stories"
+    labelledBy="patient-stories-title"
+  >
+    <div class="testimonials-head">
+      <p class="eyebrow">In their words</p>
+      <h2 id="patient-stories-title">What patients say about starting here</h2>
+      <p>A few notes from people who began with the same first visit described above.</p>
+    </div>
+    <ul class="testimonial-grid">
+      <li>
+        <figure class="testimonial-card">
+          <blockquote>
+            <p>“I’ve been working with Dr. Ryan to getting testing done regarding health issues... Dr. Ryan has not only been very informative he has also been super patient with me. ... I’m very grateful for his patience, professionalism and willingness to help me on my health journey. Thank you Dr. Ryan and The Wellness Way-Mason”</p>
+          </blockquote>
+          <figcaption>NishNiChole</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="testimonial-card">
+          <blockquote>
+            <p>“Dr. Ryan and his staff do such a great job! I felt welcomed, comfortable, and truly cared for, which is rare to find at a doctor's office. He walked me through his plan for my care, so that I fully understood what to expect. ... I was even able to do virtual consults after I moved away! Highly recommend!!”</p>
+          </blockquote>
+          <figcaption>Madison M.</figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="testimonial-card">
+          <blockquote>
+            <p>“Dr. Ryan cares about your overall health which is so refreshing!”</p>
+          </blockquote>
+          <figcaption>Michelle R.</figcaption>
+        </figure>
+      </li>
+      <!-- PLACEHOLDER card 4: no consented quote on file. Do not render a fabricated testimonial in this slot. -->
+      <!-- PLACEHOLDER card 5: no consented quote on file. Do not render a fabricated testimonial in this slot. -->
+    </ul>
+    <p class="testimonials-disclaimer">Individual experiences vary.</p>
+  </SectionContainer>
+
   <SectionContainer width="wide" spacing="lg" id="catalog">
     <div class="section-head">
       <p class="eyebrow">The full catalog</p>
@@ -281,6 +371,26 @@ const testingFaqs = [
   <SectionContainer width="default" spacing="lg">
     <h2 class="section-h2">Questions people ask first</h2>
     <FAQAccordion items={testingFaqs} />
+  </SectionContainer>
+
+  <SectionContainer
+    width="default"
+    spacing="lg"
+    background="paper-soft"
+    labelledBy="book-offer-bottom-title"
+  >
+    <div class="book-offer book-offer-centered">
+      <p class="book-offer-eyebrow">Ready when you are</p>
+      <h2 class="book-offer-title" id="book-offer-bottom-title">One visit to choose where to start.</h2>
+      <p class="book-offer-lede">Bring whatever results you already have. You will see every price before anything is ordered.</p>
+      <div class="cta-row">
+        <Button href={firstVisitUrl} variant="primary" size="lg" external iconAfter>
+          Book your $99 first visit
+        </Button>
+      </div>
+      <p class="book-offer-terms">The $99 covers your health restoration new patient visit: an intake conversation and a review of any prior labs you bring. Labs are separate and you approve each one first. The $99 rate runs through January 31, 2027. Virtual visits are health restoration coaching (labs, diet and lifestyle, supplements); chiropractic care is in clinic only.</p>
+      <p class="book-offer-sign">Dr. Ryan DeNome, D.C. · The Wellness Way Mason</p>
+    </div>
   </SectionContainer>
 
   <SectionContainer width="narrow" spacing="lg" background="brand">
@@ -435,4 +545,128 @@ const testingFaqs = [
   .final-cta { text-align: center; }
   .final-cta h2 { margin: 0 0 0.8rem; text-wrap: balance; }
   .final-cta p { margin: 0 0 1.5rem; }
+
+  /* Video sits under the headline. Phone-shaped, centered, full content width on small screens. */
+  .vsl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 1.6rem;
+  }
+  .vsl-player {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    border-radius: var(--radius-lg);
+    background: var(--color-ink-strong);
+    object-fit: cover;
+  }
+  .vsl-note {
+    max-width: 400px;
+    margin: 0.75rem 0 1rem;
+    font-size: var(--text-xs);
+    line-height: 1.55;
+    color: var(--color-mute);
+    text-align: center;
+  }
+  .vsl-cta { justify-content: center; }
+
+  /* SectionContainer owns .space-md padding. This page drops the top padding
+     so the offer reads as a continuation of the hero above it. */
+  :global(section.book-offer-section.space-md) { padding-top: 0; }
+
+  .book-offer {
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: clamp(1.5rem, 4vw, 2.25rem);
+    max-width: 46rem;
+  }
+  .book-offer-centered { margin-inline: auto; text-align: center; }
+  .book-offer-eyebrow {
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 0.6rem;
+  }
+  .book-offer-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    line-height: 1.2;
+    color: var(--color-ink-strong);
+    margin: 0 0 0.6rem;
+    text-wrap: balance;
+  }
+  .book-offer-lede { margin: 0 0 1.25rem; color: var(--color-ink); }
+  .book-offer-terms {
+    margin: 1rem 0 0;
+    font-size: var(--text-xs);
+    line-height: 1.55;
+    color: var(--color-ink-muted);
+  }
+  .book-offer-sign {
+    margin: 0.6rem 0 0;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-ink-strong);
+  }
+  .book-offer-centered :global(.cta-row) { justify-content: center; }
+
+  .testimonials-head { max-width: 42rem; margin-bottom: 2rem; }
+  .testimonials-head h2 { margin: 0 0 0.6rem; }
+  .testimonials-head p { color: var(--color-ink-muted); margin: 0; }
+  .testimonial-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.4rem;
+  }
+  .testimonial-grid > li { flex: 1 1 100%; display: flex; }
+  @media (min-width: 46rem) {
+    .testimonial-grid > li { flex: 0 1 calc(50% - 0.7rem); }
+  }
+  @media (min-width: 64rem) {
+    .testimonial-grid > li { flex: 0 1 calc(33.333% - 0.94rem); }
+  }
+  .testimonial-card {
+    margin: 0;
+    width: 100%;
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: 14px;
+    padding: 1.3rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .testimonial-card blockquote {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    line-height: 1.5;
+    color: var(--color-ink-strong);
+  }
+  .testimonial-card blockquote p { margin: 0; }
+  .testimonial-card figcaption {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-mute);
+    border-top: 1px solid var(--color-line-soft);
+    padding-top: 0.75rem;
+  }
+  .testimonials-disclaimer {
+    margin: 1.5rem 0 0;
+    font-size: var(--text-xs);
+    color: var(--color-mute);
+    text-align: center;
+  }
 </style>
