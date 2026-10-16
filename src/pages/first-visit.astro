@@ -71,37 +71,34 @@ const faqs = [
       <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'First visit' }]} />
       <p class="eyebrow">Your first visit</p>
       <h1 id="visit-hero-title">What actually happens at your first visit</h1>
-      <!--
-        VIDEO SLOT: nothing visible until a first-visit video exists.
-        Embed it the same way /testing embeds its video. Do not reuse that file.
-
+      <div class="hero-layout">
+        <div class="hero-block">
+          <p class="lede">
+            No pile of tests. You don't need to know which test you need before you come. Working that out together is what the first visit is for.
+          </p>
+          <div class="hero-action">
+            <Button href={firstVisitUrl} variant="primary" size="lg" external iconAfter>
+              Book your $99 first visit
+            </Button>
+            <p class="fine">
+              The $99 covers your health restoration new patient visit, about 45 minutes: an intake conversation and a review of any prior labs you bring. Labs are separate. The $99 rate runs through January 31, 2027.
+            </p>
+          </div>
+        </div>
         <div class="vsl">
           <video
             class="vsl-player"
-            src="/video/first-visit.mp4"
-            poster="/video/first-visit-poster.jpg"
+            src="/video/first-visit-vsl.mp4"
+            poster="/video/first-visit-vsl-poster.jpg"
             controls
             playsinline
             preload="metadata"
             width="720"
             height="1280"
-            aria-label="What happens at your first visit"
+            aria-label="Dr. Ryan DeNome on what happens at your first visit"
           >
             Your browser does not play this video. You can still book a first visit below.
           </video>
-        </div>
-      -->
-      <div class="hero-block">
-        <p class="lede">
-          No pile of tests. You don't need to know which test you need before you come. Working that out together is what the first visit is for.
-        </p>
-        <div class="hero-action">
-          <Button href={firstVisitUrl} variant="primary" size="lg" external iconAfter>
-            Book your $99 first visit
-          </Button>
-          <p class="fine">
-            The $99 covers your health restoration new patient visit, about 45 minutes: an intake conversation and a review of any prior labs you bring. Labs are separate. The $99 rate runs through January 31, 2027.
-          </p>
         </div>
       </div>
 
@@ -224,11 +221,29 @@ const faqs = [
     line-height: 1.36;
     color: var(--color-ink);
   }
+  .hero-layout {
+    display: flex;
+    flex-direction: column;
+  }
   .hero-action {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.4rem;
+  }
+  .vsl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.15rem 0 0;
+  }
+  .vsl-player {
+    width: min(100%, 22.5rem);
+    height: auto;
+    aspect-ratio: 9 / 16;
+    border-radius: var(--radius-lg);
+    background: var(--color-ink-strong);
+    object-fit: contain;
   }
   .fine {
     margin: 0;
@@ -371,11 +386,25 @@ const faqs = [
       margin-bottom: 0.5rem;
       max-width: none;
     }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: 2rem;
+      align-items: start;
+    }
     .hero-block {
       display: grid;
       grid-template-columns: minmax(0, 1.45fr) minmax(17rem, 24rem);
       column-gap: 2rem;
       align-items: start;
+    }
+    .vsl {
+      margin: 0;
+    }
+    .vsl-player {
+      width: auto;
+      height: min(26rem, calc(100svh - 28rem));
+      max-height: 26rem;
     }
     .lede {
       margin: 0;
@@ -471,6 +500,9 @@ const faqs = [
     }
     .hero-action {
       gap: 0.95rem;
+    }
+    .vsl {
+      margin-top: 1.35rem;
     }
     .fine {
       font-size: 0.875rem;
