@@ -448,4 +448,102 @@ const faqs = [
       padding: 1.6rem 1.75rem 1.7rem;
     }
   }
+
+  /* Phone only. Desktop rules above stay as they are. */
+  @media (max-width: 640px) {
+    .visit-top {
+      padding: 0.85rem 1.25rem 1.75rem;
+    }
+    .visit-top :global(.breadcrumbs) {
+      margin-bottom: 0.7rem;
+    }
+    .eyebrow {
+      margin-bottom: 0.7rem;
+    }
+    .visit-top h1 {
+      margin-bottom: 0.95rem;
+      line-height: 1.18;
+    }
+    .lede {
+      margin-bottom: 1.1rem;
+      font-size: 1rem;
+      line-height: 1.58;
+    }
+    .hero-action {
+      gap: 0.95rem;
+    }
+    .fine {
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+    .steps-heading {
+      margin: 1.4rem 0 0.8rem;
+    }
+    .visit-steps {
+      gap: 1.25rem;
+    }
+    .visit-steps li {
+      column-gap: 0.45rem;
+    }
+    .step-num,
+    .visit-steps p {
+      font-size: 0.9375rem;
+      line-height: 1.58;
+    }
+    :global(section.visit-section.space-sm) {
+      padding: 2.15rem 1.25rem;
+    }
+    :global(section.visit-section) h2,
+    .closing h2 {
+      margin-bottom: 0.85rem;
+    }
+    .cost-list {
+      gap: 1.6rem;
+    }
+    .cost-list h3 {
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+    .cost-list p,
+    .next-copy,
+    .closing-line {
+      font-size: 1rem;
+      line-height: 1.58;
+    }
+    .cost-note,
+    .words-note,
+    .closing-contact,
+    .closing-sign {
+      font-size: 0.875rem;
+      line-height: 1.55;
+    }
+    .cost-note {
+      margin-top: 1.15rem;
+    }
+    .next-grid {
+      gap: 1.85rem;
+    }
+    .words-note {
+      margin-top: 0.85rem;
+    }
+    :global(section.visit-section .answer) {
+      font-size: 1rem;
+      line-height: 1.58;
+    }
+    .closing {
+      padding: 1.35rem 1.25rem 2rem;
+    }
+    .closing-inner {
+      padding: 1.45rem 1.2rem 1.55rem;
+    }
+    .closing-line {
+      margin-bottom: 1.05rem;
+    }
+    .closing-contact {
+      margin-top: 1rem;
+    }
+    .closing-sign {
+      margin-top: 0.65rem;
+    }
+  }
 </style>
