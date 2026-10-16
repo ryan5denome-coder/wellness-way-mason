@@ -1,0 +1,50 @@
+---
+/**
+ * Compact first-visit summary for the $99 booking boxes on /testing.
+ * The full walkthrough lives at /first-visit. The booking button stays
+ * outside this component and still goes straight to Neo.
+ */
+---
+
+<aside class="first-visit-compact" aria-label="What happens at your first visit">
+  <p class="first-visit-compact-title">What happens at your first visit</p>
+  <ol>
+    <li>Bring any labs you already have.</li>
+    <li>Tell us your story: what's going on, what you've tried, what you've been told.</li>
+    <li>We read your labs together and pick which one or two tests, if any, are worth running first.</li>
+    <li>You leave with a clear starting point and every price up front.</li>
+  </ol>
+  <a class="first-visit-compact-link" href="/first-visit">See the full first visit walkthrough →</a>
+</aside>
+
+<style>
+  .first-visit-compact {
+    margin: 0 0 0.55rem;
+    text-align: left;
+  }
+  .first-visit-compact-title {
+    margin: 0 0 0.2rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 650;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--color-ink-strong);
+  }
+  ol {
+    margin: 0 0 0.28rem;
+    padding: 0 0 0 1.05rem;
+    font-size: 0.75rem;
+    line-height: 1.28;
+    color: var(--color-ink);
+  }
+  li + li {
+    margin-top: 0.08rem;
+  }
+  .first-visit-compact-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+</style>

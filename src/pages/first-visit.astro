@@ -1,0 +1,451 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Button from '../components/Button.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import { clinic } from '../lib/site';
+
+/** Exact booking URL used on /testing. No query string. */
+const firstVisitUrl = 'https://neoplatform.com/dd6a54e3c98/self-registration';
+
+const steps = [
+  {
+    title: 'Bring what you already have.',
+    body: "Dig out any old labs. We won't repeat work that's already been done.",
+  },
+  {
+    title: 'You tell your story.',
+    body: "What's going on, what you've tried, what you've been told.",
+  },
+  {
+    title: 'We read your labs together.',
+    body: 'Every line, in plain words.',
+  },
+  {
+    title: 'We pick a starting point.',
+    body: "Which one or two tests, if any, are worth running first? You'll see the price of each one up front.",
+  },
+];
+
+const costs = [
+  {
+    title: 'First visit, about 45 minutes: $99.',
+    body: 'An intake conversation and a review of any prior labs you bring. This is where the starting point gets chosen. The $99 rate runs through January 31, 2027.',
+  },
+  {
+    title: 'Labs: usually $300 to $700 the first round.',
+    body: 'For someone with no recent prior testing. Often less if you bring results worth reading.',
+  },
+  {
+    title: 'Plan visit: $300, plus supplements.',
+    body: 'We go through your results, and you leave with a comprehensive, individualized nutrition, lifestyle, and supplement plan built from your own labs, not just another protocol. Supplements run $20 to $130 or more each.',
+  },
+];
+
+const faqs = [
+  {
+    question: 'Do I need to know which test I need?',
+    answer: '<p>No. Working that out together is what the first visit is for.</p>',
+  },
+  {
+    question: 'What if I already have labs from somewhere else?',
+    answer:
+      '<p>Bring them. The $99 visit includes reviewing prior results. Previous work often tells us what not to spend money on.</p>',
+  },
+  {
+    question: 'Do you take insurance?',
+    answer:
+      "<p>We're a self-pay practice and out of network, and labs aren't billed to insurance. HSA and FSA cards are accepted for visits, labs, and supplements.</p>",
+  },
+];
+---
+
+<BaseLayout
+  title="What Happens at Your First Visit | The Wellness Way - Mason, OH"
+  description="Here's exactly how the 45-minute, $99 first visit goes: your story, your old labs, and which one or two tests, if any, are worth running first."
+>
+  <section class="visit-top" aria-labelledby="visit-hero-title">
+    <div class="visit-top-inner">
+      <Breadcrumbs trail={[{ label: 'Home', href: '/' }, { label: 'First visit' }]} />
+      <p class="eyebrow">Your first visit</p>
+      <h1 id="visit-hero-title">What actually happens at your first visit</h1>
+      <!--
+        VIDEO SLOT: nothing visible until a first-visit video exists.
+        Embed it the same way /testing embeds its video. Do not reuse that file.
+
+        <div class="vsl">
+          <video
+            class="vsl-player"
+            src="/video/first-visit.mp4"
+            poster="/video/first-visit-poster.jpg"
+            controls
+            playsinline
+            preload="metadata"
+            width="720"
+            height="1280"
+            aria-label="What happens at your first visit"
+          >
+            Your browser does not play this video. You can still book a first visit below.
+          </video>
+        </div>
+      -->
+      <div class="hero-block">
+        <p class="lede">
+          No pile of tests. You don't need to know which test you need before you come. Working that out together is what the first visit is for.
+        </p>
+        <div class="hero-action">
+          <Button href={firstVisitUrl} variant="primary" size="lg" external iconAfter>
+            Book your $99 first visit
+          </Button>
+          <p class="fine">
+            The $99 covers your health restoration new patient visit, about 45 minutes: an intake conversation and a review of any prior labs you bring. Labs are separate. The $99 rate runs through January 31, 2027.
+          </p>
+        </div>
+      </div>
+
+      <h2 id="how-the-visit-goes" class="steps-heading">How the visit goes</h2>
+      <ol class="visit-steps">
+        {steps.map((step, i) => (
+          <li>
+            <span class="step-num" aria-hidden="true">{i + 1}</span>
+            <p><strong>{step.title}</strong> {step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <SectionContainer
+    width="wide"
+    spacing="sm"
+    id="what-it-costs"
+    labelledBy="what-it-costs-title"
+    class="visit-section"
+  >
+    <h2 id="what-it-costs-title">What it costs</h2>
+    <ul class="cost-list">
+      {costs.map((item) => (
+        <li>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="cost-note">
+      Self-pay, out of network. HSA and FSA cards work for visits, labs, and supplements.
+    </p>
+  </SectionContainer>
+
+  <SectionContainer width="wide" spacing="sm" background="paper-soft" class="visit-section">
+    <div class="next-grid">
+      <div>
+        <h2 id="what-happens-next">What happens next</h2>
+        <p class="next-copy">
+          After your results come back, the Plan visit is where we go through what they show. You'll leave with a comprehensive, individualized nutrition, lifestyle, and supplement plan built from your own labs, not just another protocol, and Dr. Ryan will walk you through what it's going to take to get you from testing to feeling like yourself again. Care plans run $1,475 to $2,250.
+        </p>
+      </div>
+      <div class="words">
+        <p class="eyebrow">In their words</p>
+        <TestimonialCard
+          quote="I felt welcomed, comfortable, and truly cared for… He walked me through his plan for my care, so that I fully understood what to expect."
+          attribution="Madison M."
+          source="signed-consent"
+        />
+        <p class="words-note"><em>Individual experiences vary.</em></p>
+      </div>
+    </div>
+  </SectionContainer>
+
+  <SectionContainer
+    width="default"
+    spacing="sm"
+    id="visit-faq"
+    labelledBy="visit-faq-title"
+    class="visit-section"
+  >
+    <h2 id="visit-faq-title">FAQ</h2>
+    <FAQAccordion items={faqs} />
+  </SectionContainer>
+
+  <section class="closing" aria-labelledby="ready-title">
+    <div class="closing-inner">
+      <h2 id="ready-title">Ready when you are.</h2>
+      <p class="closing-line">
+        Bring whatever results you already have.
+      </p>
+      <div class="cta-row">
+        <Button href={firstVisitUrl} variant="primary" size="lg" external iconAfter>
+          Book your $99 first visit
+        </Button>
+      </div>
+      <p class="closing-contact">
+        Questions first? Call <a href={`tel:${clinic.phoneTel}`}>{clinic.phone}</a>
+        · {clinic.address.streetAddress}, {clinic.address.addressLocality}, {clinic.address.addressRegion} {clinic.address.postalCode}
+      </p>
+      <p class="closing-sign">Dr. Ryan DeNome, D.C. · The Wellness Way Mason</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .visit-top {
+    background: var(--color-paper-soft);
+    padding: 0.5rem 1rem 1.05rem;
+  }
+  .visit-top-inner {
+    width: 100%;
+    max-width: var(--container-wide);
+    margin: 0 auto;
+  }
+  .visit-top :global(.breadcrumbs) {
+    margin: 0 0 0.3rem;
+  }
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 0.28rem;
+  }
+  .visit-top h1 {
+    font-size: 1.5rem;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.4rem;
+    max-width: 16em;
+  }
+  .lede {
+    margin: 0 0 0.55rem;
+    font-size: 0.9rem;
+    line-height: 1.36;
+    color: var(--color-ink);
+  }
+  .hero-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .fine {
+    margin: 0;
+    max-width: 38rem;
+    font-size: 0.72rem;
+    line-height: 1.38;
+    color: var(--color-ink-muted);
+  }
+  .steps-heading {
+    font-size: 1.15rem;
+    line-height: 1.2;
+    margin: 0.85rem 0 0.35rem;
+  }
+  .visit-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.32rem;
+  }
+  .visit-steps li {
+    display: grid;
+    grid-template-columns: 1.05rem minmax(0, 1fr);
+    column-gap: 0.28rem;
+    align-items: baseline;
+  }
+  .step-num {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    color: var(--color-brand-primary-dark);
+    font-variant-numeric: tabular-nums;
+  }
+  .visit-steps p {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    color: var(--color-ink);
+  }
+  .visit-steps strong {
+    color: var(--color-ink-strong);
+    font-weight: 650;
+  }
+
+  :global(section.visit-section.space-sm) {
+    padding: 1.2rem 1rem;
+  }
+  :global(section.visit-section) h2,
+  .closing h2 {
+    font-size: 1.28rem;
+    line-height: 1.2;
+    margin: 0 0 0.55rem;
+  }
+  .cost-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.7rem;
+  }
+  .cost-list h3 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 650;
+    line-height: 1.3;
+    letter-spacing: 0;
+    margin: 0 0 0.2rem;
+  }
+  .cost-list p,
+  .next-copy {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--color-ink);
+  }
+  .cost-note {
+    margin: 0.75rem 0 0;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--color-ink-muted);
+  }
+  .words .eyebrow {
+    margin-bottom: 0.55rem;
+  }
+  .words-note {
+    margin: 0.65rem 0 0;
+    font-size: 0.78rem;
+    color: var(--color-mute);
+  }
+  .next-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .closing {
+    background: var(--color-paper-soft);
+    padding: 0.35rem 1rem 1.5rem;
+  }
+  .closing-inner {
+    max-width: 42rem;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--color-paper);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.15rem 1rem 1.25rem;
+  }
+  .closing-line {
+    margin: 0 0 0.85rem;
+    color: var(--color-ink);
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+  .closing .cta-row {
+    display: flex;
+    justify-content: center;
+  }
+  .closing-contact {
+    margin: 0.8rem 0 0;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--color-ink-muted);
+  }
+  .closing-sign {
+    margin: 0.4rem 0 0;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-ink-strong);
+  }
+
+  @media (min-width: 64rem) {
+    .visit-top {
+      padding: 0.75rem 2rem 1rem;
+    }
+    .visit-top h1 {
+      font-size: 2.35rem;
+      line-height: 1.08;
+      margin-bottom: 0.5rem;
+      max-width: none;
+    }
+    .hero-block {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(17rem, 24rem);
+      column-gap: 2rem;
+      align-items: start;
+    }
+    .lede {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.45;
+    }
+    .fine {
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+    .steps-heading {
+      font-size: 1.45rem;
+      margin: 0.9rem 0 0.5rem;
+    }
+    .visit-steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.7rem;
+      align-items: stretch;
+    }
+    .visit-steps li {
+      display: block;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-radius: 14px;
+      padding: 0.65rem 0.75rem 0.8rem;
+    }
+    .step-num {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+    .visit-steps p {
+      font-size: 0.84rem;
+      line-height: 1.38;
+    }
+    .visit-steps strong {
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    :global(section.visit-section.space-sm) {
+      padding: 1.6rem 2rem 1.85rem;
+    }
+    :global(section.visit-section) h2,
+    .closing h2 {
+      font-size: 1.85rem;
+      margin-bottom: 0.7rem;
+    }
+    .cost-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+      align-items: stretch;
+    }
+    .cost-list li {
+      background: var(--color-paper-soft);
+      border: 1px solid var(--color-line);
+      border-radius: 14px;
+      padding: 0.95rem 1rem 1.05rem;
+    }
+    .next-grid {
+      grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+      gap: 1.5rem 2rem;
+      align-items: start;
+    }
+    .closing {
+      padding: 0.5rem 2rem 2.25rem;
+    }
+    .closing-inner {
+      padding: 1.6rem 1.75rem 1.7rem;
+    }
+  }
+</style>
