@@ -5,6 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Button from '../components/Button.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import GuideSignup from '../components/GuideSignup.astro';
+import FirstVisitWalkthrough from '../components/FirstVisitWalkthrough.astro';
 import { clinic } from '../lib/site';
 
 /**
@@ -183,6 +184,7 @@ const testingFaqs = [
           <p class="book-offer-eyebrow">Start with one visit</p>
           <h2 class="book-offer-title" id="book-offer-top-title">You don’t need to pick a test before you book.</h2>
           <p class="book-offer-lede">The first visit is where we work out which one or two labs are worth running, if any. In clinic in Mason or virtual from home.</p>
+          <FirstVisitWalkthrough />
           <div class="cta-row">
             <Button href={firstVisitUrl} variant="primary" size="lg" external iconAfter>
               Book your $99 first visit
@@ -403,6 +405,7 @@ const testingFaqs = [
       <p class="book-offer-eyebrow">Ready when you are</p>
       <h2 class="book-offer-title" id="book-offer-bottom-title">One visit to choose where to start.</h2>
       <p class="book-offer-lede">Bring whatever results you already have. You will see every price before anything is ordered.</p>
+      <FirstVisitWalkthrough />
       <div class="cta-row">
         <Button href={firstVisitUrl} variant="primary" size="lg" external iconAfter>
           Book your $99 first visit
