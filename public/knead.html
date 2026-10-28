@@ -27,8 +27,9 @@
   Luma and Ryan both say Thursday Nov 5.
   The "limited to 40 guests" line comes from the Luma description.
   Luma itself has NO capacity cap set on the ticket type.
-  Behemoth facts (location, market days, menu) were not verifiable
-  online, so this page only links their Instagram.
+  Behemoth facts (Fort Thomas, flours, lineup, market/coffee days)
+  confirmed by Ryan 2026-10-28. Behemoth logo was cut from the flyer
+  (low-res); swap in an original PNG if Behemoth sends one.
   ============================================================
 -->
 <style>
@@ -79,7 +80,12 @@
       radial-gradient(ellipse 45% 55% at 10% 10%, rgba(120,150,160,.25), transparent 70%),
       linear-gradient(165deg, var(--slate-700) 0%, var(--slate-800) 50%, var(--slate-900) 100%); }
   .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 56px; }
-  .topbar img { height: 34px; width: auto; filter: brightness(0) invert(1); opacity: .92; }
+  .logos { display: flex; align-items: center; gap: 14px; }
+  .logos .tww { display: block; background: #fff; border-radius: 10px; padding: 7px 12px; }
+  .logos .tww img { height: 30px; width: auto; }
+  .logos .x { color: var(--red); font-weight: 700; }
+  .logos .beh { height: 56px; width: auto; }
+  @media (max-width: 420px) { .logos .tww img { height: 24px; } .logos .beh { height: 46px; } .topbar a.small { display: none; } }
   .topbar a.small { color: var(--crumb); font-size: .9rem; font-weight: 600; text-decoration: none; }
   .hero-grid { display: grid; gap: 44px; align-items: center; }
   @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.25fr .75fr; } }
@@ -112,7 +118,13 @@
   @media (min-width: 860px) { .partner-grid { grid-template-columns: 1.3fr .7fr; } }
   .quote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 3vw, 1.7rem); color: var(--crumb); margin: 0 0 14px; }
   .ig-card { background: linear-gradient(160deg, #3a2414, #22170f); border: 1px solid rgba(232,199,156,.25); border-radius: var(--radius); padding: 26px; color: var(--cream); }
-  .ig-card p { color: #d8c8b4; font-size: .95rem; }
+  .ig-card h3 { color: var(--cream); margin-bottom: 12px; }
+  .ig-card .ig-logo { width: 96px; height: auto; margin-bottom: 14px; }
+  .ig-card dl { margin: 0 0 18px; display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; font-size: .95rem; }
+  .ig-card dt { color: var(--crumb); font-weight: 600; }
+  .ig-card dd { margin: 0; color: #e6dccd; }
+  .chips { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips li { border: 1px solid rgba(232,199,156,.35); color: var(--cream); background: rgba(232,199,156,.07); padding: 5px 12px; border-radius: 999px; font-size: .88rem; }
   .ig-card a { display: inline-flex; align-items: center; gap: 8px; color: var(--crumb); font-weight: 700; text-decoration: none; font-size: 1.05rem; }
   .ig-card a:hover { text-decoration: underline; }
   .ig-card svg { width: 20px; height: 20px; }
@@ -167,7 +179,11 @@
 <header class="hero" id="top">
   <div class="wrap">
     <div class="topbar">
-      <a href="/" aria-label="The Wellness Way – Mason home"><img src="/images/brand/tww-logo.png" alt="The Wellness Way – Mason" width="800" height="308" /></a>
+      <div class="logos">
+        <a class="tww" href="/" aria-label="The Wellness Way – Mason home"><img src="/images/brand/tww-logo.png" alt="The Wellness Way" width="800" height="308" /></a>
+        <span class="x" aria-hidden="true">✕</span>
+        <a href="https://www.instagram.com/behemoth_bakery/" target="_blank" rel="noopener"><img class="beh" src="/images/knead/behemoth-logo-white.png" alt="Behemoth Bakery" width="381" height="384" /></a>
+      </div>
       <a class="small" href="tel:+12832238376">(283) 223-8376</a>
     </div>
 
@@ -207,7 +223,7 @@
 
     <div class="steps">
       <div class="step"><div class="n">1</div><h3>Taste</h3><p>A guided tasting of Behemoth's gluten-free breads with a few simple pairings.</p></div>
-      <div class="step"><div class="n">2</div><h3>Learn</h3><p>Dr. Ryan walks through the science of gluten and why some people feel better without it.</p></div>
+      <div class="step"><div class="n">2</div><h3>Learn</h3><p>Dr. Ryan walks you through the science behind gluten, why some people feel better without it, and what it does to the gut.</p></div>
       <div class="step"><div class="n">3</div><h3>Ask</h3><p>Bring your questions about labels, ingredients, and easy swaps. Meet the bakers too.</p></div>
     </div>
   </div>
@@ -218,11 +234,21 @@
     <div>
       <p class="eyebrow">Meet the bakers</p>
       <h2>Behemoth Bakery</h2>
-      <p class="quote">Gluten-free bread worth slowing down for.</p>
-      <p>Behemoth is a small local gluten-free bakery we've loved getting to know. They don't have a website yet. Instagram is the place to see what's coming out of the oven and to ask about orders.</p>
+      <p class="quote">No Gluten. No Compromise. All Flavor.</p>
+      <p>Behemoth is a small gluten-free bakery from Fort Thomas, Kentucky, baking with whole grains, superfoods, and clean ingredients. Instead of wheat, they use flours like millet, sorghum, brown rice, and tapioca, plus psyllium and apple cider vinegar.</p>
+      <p>Their lineup has included ciabatta, focaccia, Italian herbed focaccia, cinnamon raisin swirl, banana bread, and The Pumpkin King, along with cookies, tarts, and pies.</p>
+      <ul class="chips" aria-label="Behemoth baked goods">
+        <li>Ciabatta</li><li>Focaccia</li><li>Italian Herbed Focaccia</li><li>Tiny Wonders</li><li>Cinnamon Raisin Swirl</li><li>Banana Bread</li><li>The Pumpkin King</li>
+      </ul>
     </div>
     <aside class="ig-card">
-      <p>Follow along, and bring your appetite on the 5th.</p>
+      <img class="ig-logo" src="/images/knead/behemoth-logo-white.png" alt="" width="381" height="384" />
+      <h3>Find Behemoth</h3>
+      <dl>
+        <dt>Market</dt><dd>Fort Thomas Farmers Market, Wednesdays 3 to 6 PM</dd>
+        <dt>Coffee</dt><dd>Elliott's Coffee, Saturdays 8 AM to 1 PM</dd>
+        <dt>Orders</dt><dd>Send them a message on Instagram</dd>
+      </dl>
       <a href="https://www.instagram.com/behemoth_bakery/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
         @behemoth_bakery</a>
