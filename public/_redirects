@@ -66,3 +66,9 @@
 /goat-milk /herdshare 301
 /raw-milk /herdshare 301
 /herd-share /herdshare 301
+
+# Knead to Know bread tasting (Nov 5 2026)
+/kneadtoknow /knead 301
+/knead-to-know /knead 301
+/bread /knead 301
+/glutenfree /knead 301

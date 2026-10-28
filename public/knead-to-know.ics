@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Wellness Way Mason//Knead to Know//EN
+BEGIN:VEVENT
+UID:knead-to-know-20261105@thewellnesswaymason.com
+DTSTAMP:20261028T120000Z
+DTSTART:20261105T233000Z
+DTEND:20261106T010000Z
+SUMMARY:Knead to Know: Gluten-Free Bread Tasting
+LOCATION:The Wellness Way - Mason\, 5382 Cox-Smith Rd Suite A\, Mason\, OH 45040
+DESCRIPTION:The Wellness Way Mason x Behemoth Bakery. Tickets: https://luma.com/f4bil2ek
+URL:https://www.thewellnesswaymason.com/knead
+END:VEVENT
+END:VCALENDAR
