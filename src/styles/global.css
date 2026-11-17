@@ -622,7 +622,7 @@ html.lenis-stopped {
   border-bottom: none !important;
 }
 /* The stacked mobile menu marks the current page with a tint, not a rule. */
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
   .primary-nav a::after { display: none; }
 }
 

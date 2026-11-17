@@ -261,7 +261,9 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
   .header-cta { display: flex; }
 
-  @media (max-width: 900px) {
+  /* The full nav needs about 1024px next to the wordmark and CTA; below that
+     the menu button takes over so the name is never cut off. */
+  @media (max-width: 1023px) {
     .menu-toggle { display: flex; }
     /* The open menu is its own rounded card hanging under the pill. */
     .primary-nav {
@@ -297,8 +299,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     }
     .header-inner { gap: 0.75rem; }
   }
-  @media (min-width: 901px) {
+  @media (min-width: 1024px) {
     .menu-toggle { display: none; }
+  }
+  /* Narrow laptops: tighter nav spacing keeps room to spare beside the name. */
+  @media (min-width: 1024px) and (max-width: 1199px) {
+    .header-inner { gap: 1.5rem; }
+    .primary-nav ul { gap: 1.5rem; }
   }
   @media (max-width: 767px) {
     /* Booking moves to the sticky bottom bar on phones, so the header CTA
