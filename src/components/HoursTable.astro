@@ -10,13 +10,18 @@ const { highlightToday = true } = Astro.props;
 // Determine "today" — server-side at build time, harmless that this is build-time
 // not runtime since the highlight is purely cosmetic.
 const todayName = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+
+// clinic.yml stores ranges with an en dash ("8:00am–5:00pm") because the
+// schema.org opening-hours parser in lib/site.ts splits on it. The house
+// style has no dashes in rendered copy, so display them as "8:00am to 5:00pm".
+const displayHours = (h: string) => h.replace(/\s*[–—]\s*/g, ' to ');
 ---
 
 <dl class="hours-table">
   {clinic.hours.map((row) => (
     <div class={`hours-row ${highlightToday && row.day === todayName ? 'is-today' : ''}`}>
       <dt>{row.day}</dt>
-      <dd>{row.hours}</dd>
+      <dd>{displayHours(row.hours)}</dd>
     </div>
   ))}
 </dl>
@@ -25,18 +30,18 @@ const todayName = new Date().toLocaleDateString('en-US', { weekday: 'long' });
   .hours-table {
     margin: 0;
     display: grid;
-    gap: 0.4rem;
+    gap: 0.15rem;
     font-size: var(--text-sm);
   }
   .hours-row {
     display: grid;
-    grid-template-columns: minmax(5rem, max-content) 1fr;
+    /* Fixed day column: every time starts on the same x, so the hours read
+       as a column (the old max-content column moved with each day name). */
+    grid-template-columns: 6.5rem 1fr;
     gap: 1rem;
-    padding: 0.4rem 0;
-    border-bottom: var(--hairline) solid var(--color-line);
-  }
-  .hours-row:last-child {
-    border-bottom: none;
+    padding: 0.4rem 0.75rem;
+    margin: 0 -0.75rem;
+    border-radius: var(--radius-inner);
   }
   .hours-row dt {
     font-weight: 600;
@@ -48,11 +53,7 @@ const todayName = new Date().toLocaleDateString('en-US', { weekday: 'long' });
     color: var(--color-ink-muted);
   }
   .is-today {
-    background: var(--color-brand-primary-light);
-    border-radius: var(--radius-sm);
-    padding: 0.4rem 0.75rem;
-    border-bottom-color: transparent;
-    margin: 0 -0.5rem;
+    background: var(--color-brand-primary-soft);
   }
   .is-today dt, .is-today dd {
     color: var(--color-ink-strong);

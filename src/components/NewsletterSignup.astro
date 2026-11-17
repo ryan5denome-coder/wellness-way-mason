@@ -24,11 +24,10 @@
     <div class="ml-form-embedWrapper embedForm">
       <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
         <div class="ml-form-embedContent">
-          <p class="tww-eyebrow">Newsletter</p>
-          <h2>Get the <em>Test, Don't Guess</em> Newsletter</h2>
+          <h2>Get the <em>Test, Don’t Guess</em> Newsletter</h2>
           <p class="tww-lede">
-            Once a month, we share what we're seeing in patients: testing patterns, recovery stories,
-            and the questions worth asking before you accept "your labs look fine."
+            Once a month, we share what we’re seeing in patients: testing patterns, recovery stories,
+            and the questions worth asking before you accept “your labs look fine.”
             No spam. Unsubscribe any time.
           </p>
         </div>
@@ -87,8 +86,8 @@
         <div class="ml-form-successContent">
           <h2>Thanks. Check your inbox.</h2>
           <p>
-            We just sent you a confirmation email. Click the link inside to confirm and you're in.
-            (If it's not in your inbox, it may have landed in Promotions or Spam, so please rescue it
+            We just sent you a confirmation email. Click the link inside to confirm and you’re in.
+            (If it’s not in your inbox, it may have landed in Promotions or Spam, so please rescue it
             so future emails come through.)
           </p>
         </div>
@@ -122,7 +121,7 @@
   /* Wrapper — swap their #f6f6f6 grey for our brand-warm tint */
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper {
     background-color: var(--color-paper-warm-tint, #f0ebe1);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-lg);
     width: 100% !important;
     max-width: 100% !important;
   }
@@ -168,7 +167,7 @@
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
     background-color: var(--color-paper, #ffffff) !important;
     border-color: var(--color-line, #d8d4cc) !important;
-    border-radius: 0.4rem !important;
+    border-radius: var(--radius-inner) !important;
     color: var(--color-ink, #2d3234) !important;
     font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
     font-size: 0.95rem !important;
@@ -178,14 +177,14 @@
   /* Submit button — swap their black for brand green */
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary {
     background-color: var(--color-brand-primary, #80b741) !important;
-    border: 1px solid var(--color-brand-primary-dark, #5e8a30) !important;
-    border-radius: 0.4rem !important;
+    border: 1px solid transparent !important;
+    border-radius: var(--radius-pill) !important;
     color: var(--color-ink-strong, #1d2024) !important;
     font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
     font-size: 0.95rem !important;
     font-weight: 600 !important;
     padding: 0.75rem 1.4rem !important;
-    transition: background 0.15s ease, color 0.15s ease;
+    transition: background-color var(--duration-fast) var(--ease-soft), color var(--duration-fast) var(--ease-soft);
   }
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary:hover {
     background-color: var(--color-brand-primary-dark, #5e8a30) !important;

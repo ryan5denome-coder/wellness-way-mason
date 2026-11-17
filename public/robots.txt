@@ -1,73 +1,41 @@
 # The Wellness Way - Mason
-# AI crawler allowlist + traditional search engine bots.
-# Explicit per-bot blocks document intent in case a future maintainer
-# narrows the wildcard rule above.
+# Search engines and AI assistants are welcome to crawl and cite this site.
+#
+# All agents share ONE group on purpose. Under RFC 9309 a crawler obeys only
+# the most specific group that names it, so a bot listed in its own group
+# would ignore Disallow rules written under "User-agent: *". Keeping every
+# named bot in the same group as "*" means the private paths apply to all.
 
-User-agent: *
-Allow: /
-
-# Traditional search engines
+# Search engines
 User-agent: Googlebot
-Allow: /
-
 User-agent: Bingbot
-Allow: /
-
 User-agent: Applebot
-Allow: /
-
+User-agent: DuckDuckBot
 # OpenAI
 User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
 User-agent: OAI-SearchBot
-Allow: /
-
+User-agent: ChatGPT-User
 # Anthropic
 User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-# Google / Apple AI training opt-in
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+# Google / Apple AI
 User-agent: Google-Extended
-Allow: /
-
 User-agent: Applebot-Extended
-Allow: /
-
-# Other AI / LLM crawlers
+# Perplexity
 User-agent: PerplexityBot
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
+User-agent: Perplexity-User
+# Other AI / LLM crawlers
 User-agent: Meta-ExternalAgent
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Diffbot
-Allow: /
-
 User-agent: Amazonbot
-Allow: /
-
 User-agent: MistralAI-User
-Allow: /
-
-# Disallow admin / private uploads for all bots
+User-agent: cohere-ai
+User-agent: CCBot
+User-agent: Diffbot
 User-agent: *
+Allow: /
 Disallow: /admin
+Disallow: /api/
 Disallow: /uploads/private/
 
 Sitemap: https://www.thewellnesswaymason.com/sitemap-index.xml

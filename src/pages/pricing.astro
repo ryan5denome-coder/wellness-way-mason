@@ -59,16 +59,12 @@ const pricingFaqs = [
         <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
           Book Your Appointment
         </Button>
-        <Button href="#pricing-breakdown" variant="ghost" size="lg">
-          See the pricing
-        </Button>
       </div>
     </div>
   </SectionContainer>
 
   <SectionContainer width="wide" spacing="lg" id="pricing-breakdown">
     <div class="section-head">
-      <p class="eyebrow" data-reveal>The Numbers</p>
       <h2 data-reveal>Two ways in. Both start at $99.</h2>
       <p class="value-line" data-reveal="up-sm">
         Every new patient visit is a flat $99, and you will know what anything
@@ -150,7 +146,7 @@ const pricingFaqs = [
         </aside>
 
         <p class="pdf-link-wrap">
-          <a href="/files/lab-pricing.pdf" class="pdf-link">View lab pricing PDF &rarr;</a>
+          <Button href="/files/lab-pricing.pdf" variant="link" iconAfter>View lab pricing PDF</Button>
         </p>
 
         <div class="arm-cta">
@@ -191,11 +187,6 @@ const pricingFaqs = [
   <SectionContainer width="default" spacing="lg">
     <h2 class="section-h2" data-reveal>Pricing questions, answered.</h2>
     <FAQAccordion items={pricingFaqs} />
-    <div class="faq-cta">
-      <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
-        Book Your Appointment
-      </Button>
-    </div>
   </SectionContainer>
 
   <SectionContainer width="narrow" spacing="lg" background="brand">
@@ -221,21 +212,10 @@ const pricingFaqs = [
   /* === Hero === */
   .pricing-hero h1 {
     margin: 0;
-    font-size: var(--text-4xl);
-    line-height: 1.1;
+    font-size: var(--text-fluid-h1);
+    line-height: 1.08;
   }
-  /* SEO keyword string stays inside the H1 as a kicker line; the display
-     line underneath carries the visual headline. */
-  .page-kicker {
-    display: block;
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    font-weight: 500;
-    margin: 0 0 1rem;
-  }
+  /* .page-kicker (the SEO keyword line inside the H1) lives in global.css. */
   .lede {
     color: var(--color-ink-muted);
     max-width: 65ch;
@@ -261,27 +241,10 @@ const pricingFaqs = [
     margin-left: auto;
     margin-right: auto;
   }
-  .eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    margin: 0 0 1rem;
-    font-weight: 500;
-  }
-  /* Eyebrow lockup: a short TWW Green rule turns the grey caps label into
-     a composed unit (auto-centered for the centered head). */
-  .section-head .eyebrow::after {
-    content: "";
-    display: block;
-    width: 32px;
-    height: 2px;
-    background: var(--color-brand-primary);
-    margin: 0.9rem auto 0;
-  }
   .section-head h2 {
     margin: 0 0 1rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2);
+    letter-spacing: -0.02em;
     color: var(--color-ink-strong);
   }
   .value-line {
@@ -295,9 +258,10 @@ const pricingFaqs = [
   }
 
   .section-h2 {
-    margin: 0 0 1.75rem;
-    font-size: var(--text-3xl);
-    line-height: 1.15;
+    margin: 0 0 2.25rem;
+    font-size: var(--text-fluid-h2);
+    letter-spacing: -0.02em;
+    line-height: 1.12;
   }
 
   /* === Two-arm pricing grid === */
@@ -315,13 +279,15 @@ const pricingFaqs = [
 
   .arm-card {
     background: var(--color-paper);
-    border: 1px solid var(--color-line);
+    border: var(--hairline) solid var(--color-line);
     border-radius: var(--radius-lg);
-    padding: 2.25rem;
+    padding: 1.5rem;
     box-shadow: var(--shadow-card);
-    border-top: 4px solid var(--color-brand-primary);
     display: flex;
     flex-direction: column;
+  }
+  @media (min-width: 768px) {
+    .arm-card { padding: 2.5rem; }
   }
   .arm-title {
     margin: 0 0 0.15rem;
@@ -346,7 +312,7 @@ const pricingFaqs = [
     gap: 1.25rem;
   }
   .price-list li {
-    border-bottom: 1px solid var(--color-line);
+    border-bottom: var(--hairline) solid var(--color-line);
     padding-bottom: 1.25rem;
   }
   .price-list li:last-child {
@@ -396,9 +362,9 @@ const pricingFaqs = [
   }
 
   .callout {
-    background: var(--color-paper-soft);
-    border-left: 3px solid var(--color-brand-primary);
-    border-radius: var(--radius-md);
+    background: var(--color-brand-primary-soft);
+    /* Nested radius: sits inside the radius-lg card. */
+    border-radius: var(--radius-inner);
     padding: 1rem 1.25rem;
     font-size: var(--text-sm);
     color: var(--color-ink);
@@ -408,16 +374,6 @@ const pricingFaqs = [
 
   .pdf-link-wrap {
     margin: 0 0 1.5rem;
-  }
-  .pdf-link {
-    color: var(--color-brand-primary-dark);
-    font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 0.22em;
-    text-decoration-thickness: 1px;
-  }
-  .pdf-link:hover {
-    text-decoration-thickness: 2px;
   }
 
   .arm-cta {
@@ -429,26 +385,20 @@ const pricingFaqs = [
   .cash-grid {
     list-style: none;
     padding: 0;
-    margin: 0 0 1.75rem;
+    margin: 0 0 2.5rem;
     display: grid;
-    gap: 1.25rem;
+    gap: 2rem 2.5rem;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
-  .cash-grid li {
-    background: var(--color-paper);
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-md);
-    padding: 1.25rem 1.5rem;
-  }
+  /* Four facts in a row, grouped by spacing alone. */
   .cash-grid h3 {
     margin: 0 0 0.5rem;
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
     color: var(--color-ink-strong);
   }
   .cash-grid p {
     margin: 0;
     color: var(--color-ink-muted);
-    font-size: var(--text-sm);
     line-height: 1.55;
   }
   .cash-cta {
@@ -457,20 +407,8 @@ const pricingFaqs = [
     font-size: var(--text-base);
   }
   .inline-link {
-    color: var(--color-brand-primary-dark);
     font-weight: 600;
-    text-decoration: underline;
-    text-underline-offset: 0.22em;
-  }
-  .inline-link:hover {
-    text-decoration-thickness: 2px;
-  }
-
-  /* === FAQ section CTA === */
-  .faq-cta {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
+    white-space: nowrap;
   }
 
   /* === Final CTA === */
@@ -479,7 +417,7 @@ const pricingFaqs = [
   }
   .final-cta h2 {
     margin: 0 0 1rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
   }
   .final-cta p {
     max-width: 52ch;
@@ -490,23 +428,11 @@ const pricingFaqs = [
 
   /* === Responsive type scale (established section-head scale) === */
   @media (min-width: 768px) {
-    .pricing-hero h1 { font-size: var(--text-5xl); }
-    .section-head h2 { font-size: var(--text-4xl); }
-    .section-h2 { font-size: var(--text-4xl); }
     .arm-title { font-size: var(--text-3xl); }
-    .final-cta h2 { font-size: var(--text-4xl); }
     .price-amount { font-size: var(--text-4xl); }
     .price-amount-range { font-size: var(--text-3xl); }
   }
   @media (min-width: 1024px) {
     .section-head { margin-bottom: 4rem; }
-    .section-head h2 {
-      font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
-    }
-    .section-h2 {
-      font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
-    }
   }
 </style>

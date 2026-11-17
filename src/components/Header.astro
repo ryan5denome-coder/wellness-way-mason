@@ -52,7 +52,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
           return (
             <li>
               <a href={item.href} aria-current={isActive ? 'page' : undefined}>
-                {item.label}
+                <span class="nav-label" data-text={item.label}>{item.label}</span>
               </a>
             </li>
           );
@@ -82,7 +82,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
     // Scroll acknowledgment: once the top sentinel leaves the viewport the
     // header gains a soft shadow (pre-rendered on ::after, crossfaded via
-    // opacity — never transitioning box-shadow). IntersectionObserver, no
+    // opacity, never transitioning box-shadow). IntersectionObserver, no
     // scroll listener.
     const sentinel = document.querySelector('.header-scroll-sentinel');
     const header = document.querySelector('.site-header');
@@ -161,10 +161,20 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     flex-direction: column;
     gap: 4px;
     background: transparent;
-    border: 1px solid var(--color-line);
+    border: 0;
     border-radius: var(--radius-md);
+    /* 44px tap target without a visible box around the icon. */
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
     padding: 0.5rem;
+    margin-right: -0.5rem;
     cursor: pointer;
+  }
+  .menu-toggle:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
   }
   .menu-bar {
     width: 22px;
@@ -187,15 +197,32 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     font-weight: 500;
     padding: 0.5rem 0;
     border-bottom: 2px solid transparent;
-    transition: all var(--duration-fast) var(--ease-soft);
+    transition: color var(--duration-fast) var(--ease-soft);
     position: relative;
+  }
+  /* The current page is set in semibold. An invisible semibold copy of every
+     label reserves that width up front, so the nav never shifts by a pixel
+     between pages. */
+  .nav-label {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-label::after {
+    content: attr(data-text);
+    font-weight: 600;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    user-select: none;
+    pointer-events: none;
   }
   .primary-nav a:hover {
     color: var(--color-brand-primary-dark);
   }
   .primary-nav a[aria-current="page"] {
     color: var(--color-ink-strong);
-    border-bottom-color: var(--color-brand-primary);
+    font-weight: 600;
   }
 
   .header-cta { display: flex; }
@@ -225,12 +252,10 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       display: block;
       padding: 0.85rem 1.5rem;
       border-bottom: none;
-      border-left: 3px solid transparent;
     }
+    .nav-label { align-items: flex-start; }
     .primary-nav a[aria-current="page"] {
-      border-bottom: none;
-      border-left-color: var(--color-brand-primary);
-      background: var(--color-paper-soft);
+      background: var(--color-brand-primary-soft);
     }
   }
   @media (min-width: 901px) {

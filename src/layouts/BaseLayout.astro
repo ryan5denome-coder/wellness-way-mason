@@ -112,7 +112,9 @@ const allJsonLd = skipDefaultSchema
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
-    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    {noIndex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
 
     <!-- OpenGraph -->
     <meta property="og:type" content="website" />
@@ -121,6 +123,7 @@ const allJsonLd = skipDefaultSchema
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={fullTitle} />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
@@ -130,8 +133,9 @@ const allJsonLd = skipDefaultSchema
     <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Favicons + PWA icons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#80b741" />

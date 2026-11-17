@@ -38,7 +38,7 @@ const fourSteps = [
   {
     n: 1,
     title: 'A New Perspective',
-    body: "You're a person with a real story, not a chart number. Your first visit is a conversation with a clinician who starts from the premise that you shouldn't have to settle for feeling this way.",
+    body: "You’re a person with a real story, not a chart number. Your first visit is a conversation with a clinician who starts from the premise that you shouldn’t have to settle for feeling this way.",
   },
   {
     n: 2,
@@ -48,7 +48,7 @@ const fourSteps = [
   {
     n: 3,
     title: 'We Discover',
-    body: "We sit down with you and walk through your results: what's actually happening, why it's happening, and what your body needs to start moving in a different direction. That becomes your individual care plan.",
+    body: "We sit down with you and walk through your results: what’s actually happening, why it’s happening, and what your body needs to start moving in a different direction. That becomes your individual care plan.",
   },
   {
     n: 4,
@@ -62,12 +62,12 @@ const twoArms = [
     title: 'Chiropractic',
     slogan: 'Do Health Differently.',
     body: 'Manual, specific adjustments for the conditions chiropractors are known for: back pain, neck pain, sciatica, headaches, sports injury, prenatal (Webster Technique), and pediatric care.',
-    callout: 'Soft tissue work, cupping, and scraping are included with every adjustment. We don\'t upcharge for adjunctive techniques.',
+    callout: 'Soft tissue work, cupping, and scraping are included with every adjustment. We don’t upcharge for adjunctive techniques.',
     cta: { label: 'See chiropractic', href: '/our-services#chiropractic' },
   },
   {
     title: 'Health Restoration',
-    slogan: "We don't guess. We test.",
+    slogan: "We don’t guess. We test.",
     body: 'Lab testing paired with nutrition guidance, a supplement care plan, and lifestyle support. For patients who are ready to ask why symptoms keep coming back.',
     callout: 'New patient visits are a flat $99. Lab work and supplements are billed separately so you stay in control of what you spend.',
     cta: { label: 'See health restoration', href: '/our-services#health-restoration' },
@@ -152,7 +152,7 @@ const labPartners = [
       <div class="hero-bleed-text">
         <h1 class="hero-headline hero-stagger">
           <span class="hero-kicker">Chiropractic Care in Mason, OH</span>
-          Your labs are <em>normal.</em> You still feel awful.
+          <span class="hero-line">Your labs are normal.</span> <span class="hero-line">You still feel awful.</span>
         </h1>
         <p class="hero-lede hero-stagger">
           The body never does anything without a reason. We test to find yours.
@@ -172,15 +172,15 @@ const labPartners = [
   <!-- Section 2: Hook — validate the dismissal before teaching anything -->
   <SectionContainer width="narrow" spacing="xl" background="paper">
     <div class="hook">
-      <h2 data-reveal>You've been bounced from doctor to doctor. And you're still tired.</h2>
+      <h2 data-reveal>You’ve been bounced from doctor to doctor. And you’re still tired.</h2>
       <p data-reveal="up-sm">
-        Another referral, another fifteen-minute visit, another "everything looks fine."
+        Another referral, another fifteen-minute visit, another “everything looks fine.”
         Someone told you to manage your stress and never said how. And somewhere on the
-        drive home, you started wondering if it's all in your head.
+        drive home, you started wondering if it’s all in your head.
       </p>
       <p class="hook-turn" data-reveal="up-sm">
-        It isn't. Feeling this way may be common, but common is not normal.
-        You're not alone, and you're not out of options.
+        It isn’t. Feeling this way may be common, but common is not normal.
+        You’re not alone, and you’re not out of options.
       </p>
     </div>
   </SectionContainer>
@@ -197,17 +197,17 @@ const labPartners = [
           talk to each other.
         </p>
         <p data-reveal="up-sm">
-          That model is excellent in a crisis. It just wasn't built for the slow,
+          That model is excellent in a crisis. It just wasn’t built for the slow,
           stubborn stuff. The body never does anything without a reason, and when one
           quick fix follows another while you still feel <em>off</em>, the problem
-          usually isn't you. It's care that manages symptoms without ever asking why
-          they're there.
+          usually isn’t you. It’s care that manages symptoms without ever asking why
+          they’re there.
         </p>
       </div>
       <div class="ps-col ps-solution">
         <h2 data-reveal>Find the fire, not just the alarm</h2>
         <p data-reveal="up-sm">
-          A smoke alarm doing its job is loud, annoying, and right. Silencing it doesn't
+          A smoke alarm doing its job is loud, annoying, and right. Silencing it doesn’t
           put out the fire, and your symptoms work the same way: signals, not
           malfunctions. So we start with a different question. Why is your body
           sounding the alarm?
@@ -216,11 +216,11 @@ const labPartners = [
           Targeted functional lab work looks for the pattern underneath, across three
           kinds of stress: Traumas (physical), Toxins (chemical), and Thoughts
           (emotional). Then we sit down together, walk through your results in plain
-          English, and build a plan that fits your real life. Test, don't guess. And all
+          English, and build a plan that fits your real life. Test, don’t guess. And all
           of it happens alongside your PCP and specialists, never in place of them.
         </p>
         <p class="ps-bridge" data-reveal="up-sm">
-          And when we say test, we mean real labs. Here's who runs them.
+          And when we say test, we mean real labs. Here’s who runs them.
         </p>
       </div>
     </div>
@@ -250,7 +250,7 @@ const labPartners = [
     </div>
   </SectionContainer>
 
-  <!-- Section 5: The 3 T's — image-led, alternating layout -->
+  <!-- Section 5: The 3 T’s: image-led, alternating layout -->
   <SectionContainer width="default" spacing="xl" background="paper-soft">
     <div class="section-head">
       <p class="eyebrow">The Wellness Way Approach</p>
@@ -266,7 +266,6 @@ const labPartners = [
         <article class={`t-row ${i % 2 ? 'reverse' : ''}`}>
           <div class="t-image">
             <img src={t.image} alt={t.alt} loading="lazy" />
-            <span class="t-numeral" aria-hidden="true">{i + 1}</span>
           </div>
           <div class="t-text">
             <h3>{t.title}</h3>
@@ -283,7 +282,6 @@ const labPartners = [
   <SectionContainer width="default" spacing="xl" background="paper-warm-tint" ariaLabel="Your first visit">
     <div class="visit-grid">
       <div class="visit-intro" data-reveal>
-        <p class="eyebrow eyebrow-lockup">Your first visit</p>
         <h2>What your first visit looks like.</h2>
         <p class="visit-lede">
           No mystery pricing and no pressure. Here is the whole visit, start to finish,
@@ -293,7 +291,7 @@ const labPartners = [
           <p class="price-title">Every new patient visit</p>
           <p class="price-amount">$99<span class="price-flat">flat</span></p>
           <p class="price-body">
-            For chiropractic, that covers your exam, X-rays if they're needed, and your
+            For chiropractic, that covers your exam, X-rays if they’re needed, and your
             first adjustment. Follow-up adjustments are $50 with soft tissue work,
             cupping, and scraping included. For health restoration, it covers your
             intake conversation and a review of any labs you bring.
@@ -336,7 +334,7 @@ const labPartners = [
     <ul class="cred-strip" role="list" data-reveal="up-sm">
       {credentials.map((c) => (
         <li>
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5L13.5 4" /></svg>
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5L13.5 4" /></svg>
           {c}
         </li>
       ))}
@@ -348,13 +346,13 @@ const labPartners = [
     <div class="section-head">
       <h2>Common, but not normal.</h2>
       <p class="section-lede">
-        Patients often walk through our doors after being told their labs are "normal" while still
+        Patients often walk through our doors after being told their labs are “normal” while still
         feeling anything but. Here are some of the patterns we see most.
       </p>
     </div>
     <ul class="conditions-list">
       {conditions.map((c) => (
-        <li><a href={c.href}>{c.label}</a></li>
+        <li><a href={c.href}><svg class="cond-chevron" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5" /></svg>{c.label}</a></li>
       ))}
     </ul>
     <div class="section-cta">
@@ -435,16 +433,15 @@ const labPartners = [
   <SectionContainer width="default" spacing="xl" background="paper-warm">
     <div class="provider-teaser">
       <div class="provider-text">
-        <p class="eyebrow eyebrow-lockup">Meet Your Chiropractor</p>
         <h2>Dr. Ryan DeNome, DC</h2>
         <p class="provider-lede">
           Doctor of Chiropractic, Life University graduate, and Cincinnati native.
           Certified in the Webster Technique. Especially passionate about supporting men feeling
           limited by health challenges, mothers running on empty while caring for everyone else,
-          and patients with complex cases who haven't found answers in conventional care.
+          and patients with complex cases who haven’t found answers in conventional care.
         </p>
         <blockquote class="ryan-quote">
-          "It is health that is real wealth and not pieces of gold and silver."
+          “It is health that is real wealth and not pieces of gold and silver.”
           <cite>Mahatma Gandhi</cite>
         </blockquote>
         <Button href="/about-us" variant="link" iconAfter>Read full bio</Button>
@@ -516,7 +513,7 @@ const labPartners = [
     </div>
   </SectionContainer>
 
-  <!-- Section 15: Final CTA — full-bleed photo with TWW Green tint overlay -->
+  <!-- Section 15: Final CTA: full-bleed photo with TWW Green tint overlay -->
   <section class="final-cta-bleed" aria-label="Book a consultation">
     <Image
       class="final-cta-image"
@@ -533,8 +530,8 @@ const labPartners = [
       <h2>Start with a conversation, not a commitment.</h2>
       <p>
         Come with your questions, your history, and the folder of labs no one has
-        explained yet. Your first visit is a flat $99, and you'll leave knowing exactly
-        what happens next. We'll listen. We'll ask why. We'll build the plan with you.
+        explained yet. Your first visit is a flat $99, and you’ll leave knowing exactly
+        what happens next. We’ll listen. We’ll ask why. We’ll build the plan with you.
       </p>
       <Button href={clinic.bookingUrl} variant="secondary" size="lg" external iconAfter>
         Start Getting Answers
@@ -551,32 +548,11 @@ const labPartners = [
     margin-left: auto;
     margin-right: auto;
   }
-  .eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    margin: 0 0 1rem;
-    font-weight: 500;
-  }
-  /* Eyebrow lockup: the one added ornament — a short TWW Green rule that
-     turns a grey caps label into a composed unit. */
-  .section-head .eyebrow::after,
-  .eyebrow-lockup::after {
-    content: "";
-    display: block;
-    width: 32px;
-    height: 2px;
-    background: var(--color-brand-primary);
-    margin: 0.9rem 0 0;
-  }
-  .section-head .eyebrow::after {
-    margin-left: auto;
-    margin-right: auto;
-  }
+  /* .eyebrow comes from global.css. */
   .section-head h2 {
     margin: 0 0 1.25rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2);
+    letter-spacing: -0.02em;
     color: var(--color-ink-strong);
   }
   .section-lede {
@@ -593,7 +569,7 @@ const labPartners = [
   /* === Hook — editorial validation moment === */
   .hook h2 {
     font-family: var(--font-display);
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
     line-height: 1.12;
     color: var(--color-ink-strong);
     margin: 0 0 1.75rem;
@@ -621,7 +597,7 @@ const labPartners = [
   }
   .ps-col h2 {
     font-family: var(--font-display);
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
     line-height: 1.15;
     color: var(--color-ink-strong);
     margin: 0 0 1.25rem;
@@ -634,22 +610,14 @@ const labPartners = [
     margin: 0 0 1rem;
   }
   .ps-col p:last-child { margin-bottom: 0; }
-  .ps-problem h2 em,
-  .ps-solution h2 em,
-  .ps-col p em {
-    font-style: italic;
-    color: var(--color-brand-primary-dark);
-  }
-  .ps-solution {
-    position: relative;
-    padding-left: 0;
-  }
+  /* Emphasis in running copy is italic only. Green is kept for actions. */
+  .ps-col p em { font-style: italic; }
   .ps-bridge {
     margin-top: 1.5rem !important;
     font-family: var(--font-display);
-    font-style: italic;
-    color: var(--color-brand-primary-dark);
-    font-size: var(--text-lg);
+    color: var(--color-ink-strong);
+    font-size: var(--text-xl);
+    line-height: 1.5;
   }
 
   /* === 3 T's image-led rows === */
@@ -673,22 +641,11 @@ const labPartners = [
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    transition: transform 600ms var(--ease-soft);
+    transition: transform 600ms var(--ease-ios);
   }
   /* Quiet zoom signals the whole row is one unit — the editorial-site tell. */
   .t-row:hover .t-image img {
     transform: scale(1.03);
-  }
-  .t-numeral {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: var(--text-5xl);
-    color: var(--color-paper);
-    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
-    line-height: 1;
   }
   .t-text h3 {
     font-family: var(--font-display);
@@ -715,9 +672,8 @@ const labPartners = [
     gap: 3rem;
     align-items: start;
   }
-  .visit-intro .eyebrow { margin-bottom: 1rem; }
   .visit-intro h2 {
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
     margin: 0 0 1rem;
     color: var(--color-ink-strong);
   }
@@ -730,7 +686,6 @@ const labPartners = [
   }
   .price-card {
     background: var(--color-paper);
-    border: 1px solid var(--color-line);
     border-radius: var(--radius-lg);
     padding: 1.75rem 2rem;
     box-shadow: var(--shadow-card);
@@ -745,7 +700,8 @@ const labPartners = [
   }
   .price-amount {
     font-family: var(--font-display);
-    font-size: var(--text-5xl);
+    font-size: var(--text-6xl);
+    letter-spacing: -0.02em;
     line-height: 1;
     color: var(--color-ink-strong);
     margin: 0 0 1rem;
@@ -781,20 +737,20 @@ const labPartners = [
     margin: 0 0 2.5rem;
     padding: 0;
   }
+  /* Steps are separated by space alone; the numerals carry the order. */
   .visit-steps li {
     display: grid;
-    grid-template-columns: 3rem 1fr;
+    grid-template-columns: 2.25rem 1fr;
     gap: 1.25rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--color-line);
   }
-  .visit-steps li:first-child { padding-top: 0; }
+  .visit-steps li + li { margin-top: 2.25rem; }
   .visit-num {
     font-family: var(--font-display);
-    font-style: italic;
     font-size: var(--text-3xl);
-    line-height: 1;
+    /* Match the h3's first-line box so numeral and title share a baseline. */
+    line-height: calc(var(--text-xl) * 1.25);
     color: var(--color-brand-primary-dark);
+    font-variant-numeric: lining-nums;
   }
   .visit-steps h3 {
     font-size: var(--text-xl);
@@ -815,9 +771,8 @@ const labPartners = [
   }
   .cred-strip {
     list-style: none;
-    margin: 3rem 0 0;
-    padding: 1.5rem 0 0;
-    border-top: 1px solid var(--color-line);
+    margin: 3.5rem 0 0;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem 2rem;
@@ -843,42 +798,35 @@ const labPartners = [
     display: grid;
     gap: 0;
   }
-  .conditions-list li {
-    border-bottom: 1px solid var(--color-line);
-    position: relative;
-  }
+  /* No rules between rows: the grid's own rhythm groups them. The chevron is
+     the same 1.75-stroke SVG family as the button arrows. */
   .conditions-list li a {
-    display: block;
-    padding: 1rem 0 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 0.75rem;
+    margin: 0 -0.75rem;
+    border-radius: var(--radius-inner);
     color: var(--color-ink-strong);
     font-size: var(--text-lg);
     font-family: var(--font-display);
     font-weight: 400;
     text-decoration: none;
-    position: relative;
-    transition: padding-left var(--duration-fast) var(--ease-soft),
-                color var(--duration-fast) var(--ease-soft),
-                background var(--duration-fast) var(--ease-soft);
+    transition: color var(--duration-fast) var(--ease-soft),
+                background-color var(--duration-fast) var(--ease-soft);
   }
   .conditions-list li a:hover {
     color: var(--color-brand-primary-dark);
-    padding-left: 2.5rem;
     background: var(--color-brand-primary-soft);
   }
-  .conditions-list li a::before {
-    content: "›";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-brand-primary);
-    font-weight: 600;
-    transition: transform var(--duration-fast) var(--ease-soft);
+  .conditions-list :global(.cond-chevron) {
+    flex-shrink: 0;
+    color: var(--color-brand-primary-dark);
+    transition: transform var(--duration-fast) var(--ease-ios);
   }
-  .conditions-list li a:hover::before {
-    transform: translateY(-50%) translateX(4px);
+  .conditions-list li a:hover :global(.cond-chevron) {
+    transform: translateX(3px);
   }
-  .conditions-list li:last-child { border-bottom: none; }
 
   /* === Two-arms grid (chiro vs health restoration) === */
   .arms-grid {
@@ -888,8 +836,6 @@ const labPartners = [
   }
   .arm-tile {
     background: var(--color-paper);
-    border: 1px solid var(--color-line);
-    border-top: 4px solid var(--color-brand-primary);
     border-radius: var(--radius-lg);
     padding: 2rem;
     box-shadow: var(--shadow-card);
@@ -897,6 +843,7 @@ const labPartners = [
     flex-direction: column;
     gap: 1rem;
   }
+  .arm-tile > :global(.btn) { align-self: flex-start; margin-top: 0.5rem; }
   .arm-title {
     font-family: var(--font-display);
     font-size: var(--text-2xl);
@@ -919,11 +866,11 @@ const labPartners = [
   .arm-callout {
     background: var(--color-brand-primary-soft);
     color: var(--color-ink-strong);
-    border-radius: var(--radius-md);
+    /* Nested radius: sits inside the radius-lg tile. */
+    border-radius: var(--radius-inner);
     padding: 1rem 1.25rem;
     font-size: var(--text-sm);
     line-height: 1.5;
-    border-left: 3px solid var(--color-brand-primary);
   }
   @media (min-width: 768px) {
     .arms-grid {
@@ -969,7 +916,7 @@ const labPartners = [
     background: var(--color-brand-primary);
     transform: scaleY(0);
     transform-origin: top center;
-    transition: transform 700ms var(--ease-soft) 200ms;
+    transition: transform 700ms var(--ease-ios) 200ms;
   }
   .steps li:global(.is-visible):not(:last-child)::after {
     transform: scaleY(1);
@@ -1019,7 +966,7 @@ const labPartners = [
   }
   .lab-strip-eyebrow {
     font-size: var(--text-xs);
-    letter-spacing: 0.22em;
+    letter-spacing: var(--tracking-caps);
     text-transform: uppercase;
     color: var(--color-mute);
     margin: 0 0 1.75rem;
@@ -1075,7 +1022,6 @@ const labPartners = [
     max-width: 50ch;
     margin: 0 auto;
     line-height: 1.55;
-    font-style: italic;
   }
   @media (prefers-reduced-motion: reduce) {
     .lab-track {
@@ -1103,10 +1049,12 @@ const labPartners = [
     align-items: center;
   }
   .provider-text h2 {
-    font-size: var(--text-4xl);
+    font-size: var(--text-fluid-h1);
     margin: 0 0 1.25rem;
   }
-  .provider-text .eyebrow { margin-bottom: 1.25rem; }
+  /* On TWW Beige the green link text drops under AA (3.8:1), so the link
+     takes ink here and keeps its underline. */
+  .provider-text :global(.btn-link) { color: var(--color-ink-strong); }
   .provider-lede {
     color: var(--color-ink);
     line-height: 1.7;
@@ -1119,15 +1067,17 @@ const labPartners = [
     font-size: var(--text-lg);
     line-height: 1.5;
     margin: 1.5rem 0 2rem;
-    padding-left: 1.25rem;
-    border-left: 3px solid var(--color-brand-primary);
+    /* Hanging punctuation: the opening quote mark sits in the margin so the
+       text edge, not the mark, lines up with the copy above. */
+    text-indent: -0.42em;
     color: var(--color-ink-strong);
   }
   .ryan-quote cite {
     display: block;
+    text-indent: 0;
     margin-top: 0.5rem;
     font-size: var(--text-sm);
-    color: var(--color-ink-muted);
+    color: var(--color-ink);
     font-style: normal;
     font-family: var(--font-body);
   }
@@ -1147,7 +1097,7 @@ const labPartners = [
   }
   .service-area-grid h2 {
     margin: 0 0 1rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
   }
   .service-lede {
     color: var(--color-ink-muted);
@@ -1155,20 +1105,17 @@ const labPartners = [
     font-size: var(--text-lg);
   }
   .nap-block {
-    background: var(--color-paper-soft);
-    padding: 1.75rem;
-    border-radius: var(--radius-md);
     margin-top: 1.75rem;
     font-style: normal;
     line-height: 1.75;
-    border: 1px solid var(--color-line);
   }
+  .nap-block strong { color: var(--color-ink-strong); }
 
   /* === Hours === */
   .hours-section { text-align: center; }
   .hours-section h2 {
     margin: 0 0 2rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
   }
   .hours-section :global(.hours-table) {
     max-width: 28rem;
@@ -1197,7 +1144,7 @@ const labPartners = [
   /* One-shot 14s settle from 1.06 to 1.0 — a considered, expensive open.
      Gated behind html.js so crawlers and no-JS visitors see a static hero. */
   :global(html.js) .hero-bleed-image {
-    animation: hero-settle 14s var(--ease-soft) forwards;
+    animation: hero-settle 14s var(--ease-ios) forwards;
   }
   @keyframes hero-settle {
     from { transform: scale(1.06); }
@@ -1229,7 +1176,7 @@ const labPartners = [
   :global(html.js) .hero-stagger {
     opacity: 0;
     transform: translateY(18px);
-    animation: hero-rise 850ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: hero-rise 850ms var(--ease-ios) forwards;
   }
   :global(html.js) .hero-stagger:nth-child(2) { animation-delay: 110ms; }
   :global(html.js) .hero-stagger:nth-child(3) { animation-delay: 220ms; }
@@ -1256,28 +1203,25 @@ const labPartners = [
     display: block;
     font-family: var(--font-body);
     font-size: var(--text-xs);
-    letter-spacing: 0.22em;
+    line-height: 1.4;
+    letter-spacing: var(--tracking-caps);
     text-transform: uppercase;
     color: var(--color-paper);
-    opacity: 0.85;
+    opacity: 0.9;
     margin: 0 0 1.25rem;
     font-weight: 500;
   }
   .hero-headline {
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: var(--text-4xl);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    font-size: var(--text-fluid-hero);
+    line-height: 1.06;
+    letter-spacing: -0.022em;
     margin: 0 0 1.5rem;
     color: var(--color-paper);
-    max-width: 21ch;
   }
-  .hero-headline em {
-    font-style: italic;
-    color: var(--color-brand-primary);
-    font-weight: 400;
-  }
+  /* One sentence per line: the turn between them is the whole headline. */
+  .hero-line { display: block; }
   .hero-lede {
     color: var(--color-paper);
     opacity: 0.94;
@@ -1337,7 +1281,7 @@ const labPartners = [
   }
   .atmosphere-card h2 {
     margin: 0 0 1rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
     color: var(--color-ink-strong);
   }
   .atmosphere-card p {
@@ -1383,7 +1327,7 @@ const labPartners = [
   }
   .final-cta-inner h2 {
     color: var(--color-ink-strong);
-    font-size: var(--text-4xl);
+    font-size: var(--text-fluid-h1);
     line-height: 1.1;
     margin: 0 0 1.5rem;
     max-width: 22ch;
@@ -1400,17 +1344,10 @@ const labPartners = [
 
   /* === Responsive === */
   @media (min-width: 768px) {
-    .section-head h2 { font-size: var(--text-4xl); }
-    .hook h2 { font-size: var(--text-4xl); }
     .ps-grid {
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: 5rem;
     }
-    .ps-solution {
-      padding-left: 3rem;
-      border-left: 1px solid var(--color-line);
-    }
-    .ps-col h2 { font-size: var(--text-4xl); }
     .t-row {
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
@@ -1424,11 +1361,10 @@ const labPartners = [
       grid-template-columns: 5fr 6fr;
       gap: 4rem;
     }
-    .visit-intro h2 { font-size: var(--text-4xl); }
     .cred-strip {
-      grid-template-columns: repeat(4, 1fr);
-      margin-top: 4rem;
-      padding-top: 2rem;
+      grid-template-columns: repeat(4, auto);
+      justify-content: space-between;
+      margin-top: 4.5rem;
     }
     .post-grid { grid-template-columns: repeat(3, 1fr); }
     .provider-teaser { grid-template-columns: 1.4fr 1fr; gap: 4rem; }
@@ -1437,21 +1373,13 @@ const labPartners = [
     .step-num { width: 3.5rem; height: 3.5rem; font-size: var(--text-2xl); }
     .steps li:not(:last-child)::before,
     .steps li:not(:last-child)::after { left: 1.75rem; top: 4rem; }
-    .hero-headline { font-size: var(--text-5xl); }
     .hero-bleed-inner { padding: 7rem 2rem; }
     .atmosphere-bleed-inner { padding: 7rem 2rem; }
     .final-cta-inner { padding: 7rem 2rem; }
-    .final-cta-inner h2 { font-size: var(--text-5xl); }
   }
   @media (min-width: 1024px) {
-    .hero-headline { font-size: var(--text-6xl); }
     .hero-bleed { min-height: 86vh; }
     .section-head { margin-bottom: 4rem; }
-    .section-head h2 {
-      font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
-    }
-    .provider-text h2 { font-size: var(--text-5xl); }
     .three-ts { gap: 6rem; }
     /* Sticky intro column: the pricing card and CTA stay in view while the
        walkthrough scrolls — booking is never more than a glance away. */

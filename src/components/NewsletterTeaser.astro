@@ -14,18 +14,17 @@
       <strong>Once a month:</strong> testing patterns and recovery stories from the clinic. No spam.
     </p>
     <a href="#newsletter" class="teaser-link">
-      Sign up <span aria-hidden="true">→</span>
+      Sign up
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg>
     </a>
   </div>
 </aside>
 
 <style>
   .newsletter-teaser {
-    background: var(--color-paper-soft);
-    border: 1px solid var(--color-line);
-    border-left: 3px solid var(--color-brand-primary);
-    border-radius: 0.5rem;
-    padding: 0.75rem 1.25rem;
+    background: var(--color-brand-primary-soft);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.25rem;
     margin: 0;
   }
   .teaser-inner {
@@ -38,31 +37,33 @@
   .teaser-copy {
     margin: 0;
     color: var(--color-ink);
-    font-size: 0.95rem;
+    font-size: var(--text-sm);
     line-height: 1.4;
     flex: 1 1 18rem;
   }
   .teaser-copy strong {
-    color: var(--color-brand-primary-dark);
+    color: var(--color-ink-strong);
     font-weight: 600;
   }
   .teaser-link {
     color: var(--color-brand-primary-dark);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: var(--text-sm);
     text-decoration: none;
     white-space: nowrap;
     flex-shrink: 0;
-    transition: color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color var(--duration-fast) var(--ease-soft);
   }
   .teaser-link:hover {
     color: var(--color-ink-strong);
   }
-  .teaser-link span {
-    display: inline-block;
-    transition: transform 0.18s ease;
+  .teaser-link svg {
+    transition: transform var(--duration-fast) var(--ease-ios);
   }
-  .teaser-link:hover span {
+  .teaser-link:hover svg {
     transform: translateX(3px);
   }
 </style>

@@ -25,16 +25,16 @@ const {
   <!-- Formspree special fields (underscore-prefixed) -->
   <input type="hidden" name="_subject" value="New inquiry from thewellnesswaymason.com" />
   <input type="hidden" name="_next" value={successRedirect} />
-  <!-- Honeypot — bots fill _gotcha, Formspree silently drops them -->
+  <!-- Honeypot: bots fill _gotcha, Formspree silently drops them -->
   <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
 
   <div class="field">
-    <label for="cf-name">Your name <span class="req">*</span></label>
+    <label for="cf-name">Your name <span class="req" aria-hidden="true">*</span></label>
     <input id="cf-name" name="name" type="text" autocomplete="name" required />
   </div>
 
   <div class="field">
-    <label for="cf-email">Email <span class="req">*</span></label>
+    <label for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
     <input id="cf-email" name="email" type="email" autocomplete="email" required />
   </div>
 
@@ -44,7 +44,7 @@ const {
   </div>
 
   <div class="field">
-    <label for="cf-topic">What's on your mind?</label>
+    <label for="cf-topic">What’s on your mind?</label>
     <select id="cf-topic" name="topic">
       <option value="general">General question</option>
       <option value="services">Question about a service</option>
@@ -54,33 +54,67 @@ const {
   </div>
 
   <div class="field">
-    <label for="cf-message">Message <span class="req">*</span></label>
+    <label for="cf-message">Message <span class="req" aria-hidden="true">*</span></label>
     <textarea
       id="cf-message"
       name="message"
       rows="5"
       required
-      placeholder="Please don't include medical history, lab values, or diagnoses here. For new-patient questions, use the Book Appointment button to start the secure intake."
+      placeholder="Please don’t include medical history, lab values, or diagnoses here. For new-patient questions, use the Book Appointment button to start the secure intake."
     ></textarea>
   </div>
 
   <p class="phi-note">
-    For privacy, please don't share medical history, lab results, or diagnoses through this form.
+    For privacy, please don’t share medical history, lab results, or diagnoses through this form.
     Use the <a href="/contact#book">Book Appointment</a> link for the secure intake flow.
   </p>
 
-  <button type="submit" class="submit-btn">Send Message</button>
+  <button type="submit" class="submit-btn">
+    <span class="submit-spinner" aria-hidden="true"></span>
+    <span class="submit-label" data-idle="Send Message" data-busy="Sending…">Send Message</span>
+  </button>
 </form>
+
+<script is:inline>
+  // Loading state: a submit that gives no feedback until the next page paints
+  // gets pressed twice. Native validation runs first (the submit event only
+  // fires on a valid form), then the button locks and says what is happening.
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('form.contact-form').forEach((form) => {
+      form.removeAttribute('novalidate');
+      const btn = form.querySelector('.submit-btn');
+      const label = form.querySelector('.submit-label');
+      if (!btn || !label) return;
+      form.addEventListener('submit', () => {
+        btn.setAttribute('aria-busy', 'true');
+        label.textContent = label.dataset.busy;
+        // Disable on the next tick so the button's own submit still goes out.
+        setTimeout(() => { btn.disabled = true; }, 0);
+      });
+      // Back/forward cache restores the page with the button still locked.
+      window.addEventListener('pageshow', (e) => {
+        if (!e.persisted) return;
+        btn.disabled = false;
+        btn.removeAttribute('aria-busy');
+        label.textContent = label.dataset.idle;
+      });
+    });
+  });
+</script>
 
 <style>
   .contact-form {
     display: grid;
     gap: 1.25rem;
     background: var(--color-paper);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: var(--radius-lg);
+    border: var(--hairline) solid var(--color-line);
     box-shadow: var(--shadow-card);
     max-width: 600px;
+  }
+  @media (min-width: 768px) {
+    .contact-form { padding: 2rem; }
   }
   .field {
     display: grid;
@@ -92,13 +126,14 @@ const {
     font-size: var(--text-sm);
   }
   .req { color: var(--color-danger); }
-  .hint { color: var(--color-mute); font-weight: 400; font-size: var(--text-xs); }
+  .hint { color: var(--color-mute); font-weight: 400; }
 
   input, select, textarea {
     width: 100%;
     padding: 0.75rem 1rem;
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-md);
+    border: 1px solid var(--color-brand-secondary-warm);
+    /* Nested radius: fields sit inside the radius-lg form card. */
+    border-radius: var(--radius-inner);
     font: inherit;
     color: var(--color-ink);
     background: var(--color-paper);
@@ -123,9 +158,7 @@ const {
   .phi-note {
     font-size: var(--text-xs);
     color: var(--color-ink-muted);
-    background: var(--color-paper-tint);
-    border-radius: var(--radius-md);
-    padding: 0.75rem 1rem;
+    line-height: 1.5;
     margin: 0;
   }
 
@@ -134,12 +167,42 @@ const {
     color: var(--color-ink-strong);
     font-weight: 600;
     border: none;
-    padding: 0.85rem 1.5rem;
+    padding: 0.95rem 1.5rem;
     border-radius: var(--radius-pill);
     cursor: pointer;
-    transition: all var(--duration-fast) var(--ease-soft);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    line-height: 1.2;
+    box-shadow: var(--shadow-card);
+    transition: background-color var(--duration-fast) var(--ease-soft),
+                color var(--duration-fast) var(--ease-soft),
+                transform var(--duration-press) var(--ease-ios);
     font-size: var(--text-base);
   }
+  .submit-btn:active { transform: scale(0.985); }
+  .submit-btn[aria-busy="true"] {
+    cursor: progress;
+    background: var(--color-brand-primary-light);
+    color: var(--color-ink-strong);
+    box-shadow: none;
+  }
+  .submit-spinner {
+    display: none;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    animation: submit-spin 700ms linear infinite;
+  }
+  .submit-btn[aria-busy="true"] .submit-spinner { display: inline-block; }
+  @keyframes submit-spin {
+    to { transform: rotate(360deg); }
+  }
+  /* Reduced motion: the global rule stops the spin; the label still changes
+     to "Sending…", which carries the state on its own. */
   .submit-btn:hover {
     background: var(--color-brand-primary-dark);
     color: var(--color-paper);

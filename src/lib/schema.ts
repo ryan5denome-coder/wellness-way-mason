@@ -25,7 +25,9 @@ export function localBusiness(opts: { url?: string; image?: string } = {}): Json
     telephone: clinic.phoneTel,
     email: clinic.email,
     image: opts.image ?? `${site.url}${site.defaultOgImage}`,
+    logo: `${site.url}/icon-512.png`,
     priceRange: '$$',
+    currenciesAccepted: 'USD',
     address: {
       '@type': 'PostalAddress',
       streetAddress: clinic.address.streetAddress,

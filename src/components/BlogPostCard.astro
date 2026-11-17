@@ -26,8 +26,10 @@ const {
 } = Astro.props;
 
 const dateObj = date ? (date instanceof Date ? date : new Date(date)) : null;
+// Short month ("Nov 17, 2025") so author, date and read time hold one line
+// at every card width instead of orphaning the read time on a second row.
 const dateStr = dateObj
-  ? dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  ? dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
   : null;
 ---
 
@@ -35,7 +37,7 @@ const dateStr = dateObj
   <p class="post-excerpt">{excerpt}</p>
   <div slot="footer" class="post-meta">
     <span class="post-author">{author}</span>
-    {dateStr && <span class="post-date">{dateStr}</span>}
+    {dateStr && dateObj && <time class="post-date" datetime={dateObj.toISOString().slice(0, 10)}>{dateStr}</time>}
     {readTime && <span class="post-readtime">{readTime}</span>}
   </div>
 </Card>
@@ -54,18 +56,30 @@ const dateStr = dateObj
   .post-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    /* Row gap 0, and the separator is drawn as each item's own leading
+       margin, so a wrapped row never starts with a stray dot. */
+    gap: 0.15rem 0;
+    margin-left: -1.25rem;
     align-items: center;
     color: var(--color-mute);
     font-size: var(--text-xs);
+    clip-path: inset(0 0 0 1.25rem);
   }
+  .post-meta > * { white-space: nowrap; }
   .post-author {
     color: var(--color-ink-muted);
     font-weight: 500;
+    margin-left: 1.25rem;
   }
+  .post-date, .post-readtime {
+    font-variant-numeric: tabular-nums;
+  }
+  /* Negative margin + clip-path hides the dot of whichever item
+     lands first on a wrapped row. */
   .post-date::before, .post-readtime::before {
     content: "·";
-    margin-right: 0.75rem;
-    color: var(--color-line);
+    display: inline-block;
+    width: 1.25rem;
+    text-align: center;
   }
 </style>

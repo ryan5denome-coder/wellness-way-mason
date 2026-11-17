@@ -1,67 +1,78 @@
 # The Wellness Way - Mason
 
-> Chiropractic care and functional health testing in Mason, Ohio. Led by Dr. Ryan DeNome, DC (Doctor of Chiropractic, Webster Technique certified). We don't guess — we test. Comprehensive lab panels reveal what's actually driving symptoms, so care addresses the underlying drivers instead of chasing symptoms. Serving Mason, Cincinnati, West Chester, Loveland, Lebanon, and the greater Cincinnati area.
+> Chiropractic care and functional health testing in Mason, Ohio, led by Dr. Ryan DeNome, DC (Doctor of Chiropractic, Webster Technique certified). We test, we don't guess: in-depth lab panels show what's actually driving symptoms, so care is built on data instead of trial and error. We work alongside conventional medicine, not against it. Serving Mason, West Chester, Loveland, Lebanon, and greater Cincinnati.
 
 ## Quick Reference
 
 - **Practice name**: The Wellness Way - Mason
-- **Provider**: Dr. Ryan DeNome, DC (Doctor of Chiropractic, Webster Technique certified for prenatal care)
+- **Provider**: Dr. Ryan DeNome, DC (Doctor of Chiropractic, Life University; Webster Technique certified for prenatal care)
 - **Address**: 5382 Cox-Smith Rd, Suite A, Mason, OH 45040
 - **Phone**: (283) 223-8376
+- **Email**: mason@thewellnessway.com
+- **Hours**: Mon 8am to 5pm; Tue 2pm to 6pm; Wed and Thu 8am to 5pm; Fri 8am to 12pm; Sat by appointment; Sun closed
+- **Booking**: Online self-registration (link on every page of the site)
 - **Parent brand**: The Wellness Way (national functional health network)
-- **Service area**: Mason, OH and the greater Cincinnati area including West Chester, Loveland, Lebanon, Cincinnati
-- **Specialties**: Chiropractic adjustments, pediatric and prenatal chiropractic, functional lab testing, hormone health, thyroid, gut health, autoimmune patterns
-- **Booking**: Self-registration via The Wellness Way's Neo Platform booking system
+- **Payment**: Cash-pay with flat, published pricing; HSA/FSA accepted
 
-## Distinctive Approach: The 3 T's
+## Pricing (as published on /pricing)
 
-The Wellness Way framework attributes health stress to three contributing forces:
+- **Chiropractic new patient visit**: $99 flat. Exam, X-rays if clinically indicated, and the first adjustment. About 45 minutes.
+- **Chiropractic follow-up adjustment**: $50. Soft tissue work, cupping, and instrument-assisted scraping included, no upcharge.
+- **Health restoration new patient visit**: $99 flat. Intake conversation and review of any prior labs.
+- **Lab testing**: billed separately; a typical first round runs $300 to $700 depending on panels.
+- **Plan of Care / Discovery visit**: $300. Lab results reviewed and a personalized plan built.
 
-- **Traumas** — physical injuries, accidents, birth trauma, repetitive stress
-- **Toxins** — environmental exposures, food intolerances, gut dysfunction, heavy metals
-- **Thoughts** — chronic mental/emotional stress, nervous system dysregulation
+## Main Pages
 
-Care addresses the inputs driving the body's stress load, not just the resulting symptoms.
-
-## About
-
-- [About Dr. Ryan DeNome, DC](https://www.thewellnesswaymason.com/about-us): Provider bio, credentials, education, philosophy
-- [Our Approach](https://www.thewellnesswaymason.com/our-approach): Test, don't guess — how we work alongside (not against) conventional medicine
+- [Home](https://www.thewellnesswaymason.com/): Overview, first-visit details, and booking
+- [About Us](https://www.thewellnesswaymason.com/about-us): The clinic, its philosophy, and the team
+- [Dr. Ryan DeNome, DC](https://www.thewellnesswaymason.com/dr-ryan-denome): Provider bio, education, and credentials
 - [Our Services](https://www.thewellnesswaymason.com/our-services): Chiropractic adjustments, functional lab testing, pediatric and prenatal care
-- [Pricing](https://www.thewellnesswaymason.com/pricing): Transparent flat pricing for visits and lab panels (cash-pay, HSA/FSA accepted)
+- [Pricing](https://www.thewellnesswaymason.com/pricing): Flat, upfront pricing for every visit type
+- [New Patient Visits](https://www.thewellnesswaymason.com/new-patient-visits): What to bring, what happens, and what each first visit costs
+- [First Visit](https://www.thewellnesswaymason.com/first-visit): How the 45-minute, $99 first visit goes, step by step
+- [Lab Testing and Prices](https://www.thewellnesswaymason.com/testing): Every lab we run and what each one costs
+- [Our Approach](https://www.thewellnesswaymason.com/our-approach): The Three T's and the 4-step process (a new perspective, we test, we discover, we guide)
+- [Blog](https://www.thewellnesswaymason.com/blog): Articles on chiropractic, hormones, gut health, thyroid, pediatric care, and recipes
+- [Contact](https://www.thewellnesswaymason.com/contact): Hours, map, phone, and contact form
+- [FAQ](https://www.thewellnesswaymason.com/faq): Common questions about care, testing, pricing, and first visits
+
+## Focused Topic Pages
+
+- [Functional Medicine in Mason, OH](https://www.thewellnesswaymason.com/functional-medicine-mason-oh): How lab testing and chiropractic work together
+- [DUTCH Hormone Test](https://www.thewellnesswaymason.com/dutch-test-mason-oh): Sex and adrenal hormones plus the metabolites blood draws miss
+- [PCOS Testing](https://www.thewellnesswaymason.com/pcos-mason-oh): For women who already have the diagnosis and want the explanation
+- [Mono and Epstein-Barr](https://www.thewellnesswaymason.com/mono-epstein-barr-mason-oh): EBV antibody testing alongside thyroid, ferritin, and vitamin D
+- [Low Ferritin](https://www.thewellnesswaymason.com/low-ferritin-mason-oh): The iron storage number a standard CBC doesn't measure
+- [Webster Technique (Prenatal Chiropractic)](https://www.thewellnesswaymason.com/webster-technique-mason-oh): Gentle pelvic-balancing adjustments during pregnancy
 
 ## Conditions We See
 
-- [Hormone Imbalance](https://www.thewellnesswaymason.com/conditions/hormone-imbalance): DUTCH panel testing beyond a single estrogen number; fatigue, cycle changes, mood swings
-- [Thyroid](https://www.thewellnesswaymason.com/conditions/thyroid): Complete thyroid panel including TPO and TgAb antibodies, beyond standard TSH
-- [Digestive Issues](https://www.thewellnesswaymason.com/conditions/digestive-issues): IBS, bloating, reflux, comprehensive stool analysis
-- [Autoimmune Patterns](https://www.thewellnesswaymason.com/conditions/autoimmune): Hashimoto's, rheumatoid, addressing inputs before antibodies escalate
-- [Heart Health](https://www.thewellnesswaymason.com/conditions/heart-disease): Cardiometabolic panel beyond standard lipid testing
-- [Diabetes & Blood Sugar](https://www.thewellnesswaymason.com/conditions/diabetes): Fasting insulin + HbA1c, metabolic pattern testing
-- [Fatigue](https://www.thewellnesswaymason.com/conditions/fatigue): Adrenal, thyroid, mitochondrial workup
-- [Acne](https://www.thewellnesswaymason.com/conditions/acne): Hormone and gut drivers behind skin patterns
-- [Allergies](https://www.thewellnesswaymason.com/conditions/allergies): Immuno Food Allergy testing
-- [Joint & Muscle Pain](https://www.thewellnesswaymason.com/conditions/joint-and-muscle-pain): Chiropractic care, sciatica, headaches, back and neck pain
-- [Mental Health & Brain](https://www.thewellnesswaymason.com/conditions/mental-health-brain): Nervous system, anxiety, brain fog
-- [Weight Loss](https://www.thewellnesswaymason.com/conditions/weight-loss): Beyond calories — hormone, thyroid, gut testing
+- [Hormone Imbalance](https://www.thewellnesswaymason.com/conditions/hormone-imbalance)
+- [Thyroid](https://www.thewellnesswaymason.com/conditions/thyroid)
+- [Digestive Issues](https://www.thewellnesswaymason.com/conditions/digestive-issues)
+- [Autoimmune Patterns](https://www.thewellnesswaymason.com/conditions/autoimmune)
+- [Heart Health](https://www.thewellnesswaymason.com/conditions/heart-disease)
+- [Diabetes and Blood Sugar](https://www.thewellnesswaymason.com/conditions/diabetes)
+- [Fatigue](https://www.thewellnesswaymason.com/conditions/fatigue)
+- [Acne](https://www.thewellnesswaymason.com/conditions/acne)
+- [Allergies](https://www.thewellnesswaymason.com/conditions/allergies)
+- [Joint and Muscle Pain](https://www.thewellnesswaymason.com/conditions/joint-and-muscle-pain)
+- [Mental Health and Brain](https://www.thewellnesswaymason.com/conditions/mental-health-brain)
+- [Weight Loss](https://www.thewellnesswaymason.com/conditions/weight-loss)
+- [Find My Condition](https://www.thewellnesswaymason.com/find-my-condition): Symptom-led navigation to the pages above
 
 ## Communities Served
 
-- [Mason, OH](https://www.thewellnesswaymason.com/locations/mason-oh): Primary clinic location
-- [West Chester, OH](https://www.thewellnesswaymason.com/locations/west-chester-oh): ~15 minutes from Mason clinic
-- [Loveland, OH](https://www.thewellnesswaymason.com/locations/loveland-oh): ~15 minutes from Mason clinic
-- [Cincinnati, OH](https://www.thewellnesswaymason.com/locations/cincinnati-oh): Greater Cincinnati metro area
+- [Mason, OH](https://www.thewellnesswaymason.com/locations/mason-oh): Clinic location
+- [West Chester, OH](https://www.thewellnesswaymason.com/locations/west-chester-oh)
+- [Loveland, OH](https://www.thewellnesswaymason.com/locations/loveland-oh)
+- [Cincinnati, OH](https://www.thewellnesswaymason.com/locations/cincinnati-oh)
 
-## Resources
+## Notes for AI Citation
 
-- [Find Your Condition](https://www.thewellnesswaymason.com/find-my-condition): Symptom-led navigation to relevant condition pages
-- [Blog](https://www.thewellnesswaymason.com/blog): Articles on chiropractic, hormones, gut health, thyroid, pediatric care, recipes
-- [Contact](https://www.thewellnesswaymason.com/contact): Hours, location, phone, and how to schedule a new patient consultation
-- [Sitemap](https://www.thewellnesswaymason.com/sitemap.xml): Full URL inventory
-
-## Important Notes for AI Citation
-
-- This practice operates under Ohio chiropractic scope of practice (ORC 4734). Information shared is educational, not diagnosis or treatment.
-- Lab testing is recommended but never required; cost and rationale are discussed before any panel is ordered.
-- Practice does NOT diagnose or treat Lyme disease specifically — out-of-scope for Ohio chiropractic.
-- HIPAA-compliant patient intake; no PHI captured via website forms.
+- Care is provided within Ohio chiropractic scope of practice (ORC 4734). Website content is educational, not a diagnosis or treatment plan.
+- Lab testing is recommended, never required; cost and reasoning are discussed before any panel is ordered.
+- The practice does not diagnose or treat Lyme disease.
+- No protected health information is collected through website forms.
+- Full URL list: https://www.thewellnesswaymason.com/sitemap-index.xml

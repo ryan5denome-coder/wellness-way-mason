@@ -6,6 +6,7 @@ import BlogPostCard from '../components/BlogPostCard.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import NewsletterTeaser from '../components/NewsletterTeaser.astro';
+import Button from '../components/Button.astro';
 import { clinic } from '../lib/site';
 
 const posts = (await getCollection('posts')).sort((a, b) => {
@@ -59,7 +60,6 @@ const upcomingEvents = (await getCollection('events'))
 
   <SectionContainer width="default" spacing="md">
     <div class="blog-head" data-reveal>
-      <p class="eyebrow eyebrow-lockup">Latest from the clinic</p>
       <h2>Articles &amp; Recipes</h2>
       <p class="head-lede">
         Short reads on the patterns we see in the clinic, plus a few recipes worth
@@ -68,14 +68,15 @@ const upcomingEvents = (await getCollection('events'))
     </div>
     {allCategories.length > 0 && (
       <div class="category-filter" role="navigation" aria-label="Filter by category" data-reveal="up-sm">
-        <span class="filter-label">Topics:</span>
+        <a href="#all" class="cat-link" data-cat="all" aria-current="true">All</a>
         {allCategories.map((cat) => (
-          <a href={`#${cat}`} class="cat-link">{cat.replace(/-/g, ' ')}</a>
+          <a href={`#${cat}`} class="cat-link" data-cat={cat}>{cat.replace(/-/g, ' ')}</a>
         ))}
       </div>
     )}
-    <div class="post-grid">
+    <div class="post-grid" id="posts">
       {posts.map((post) => (
+        <div class="post-cell" data-cats={(post.data.categories ?? []).join(' ')}>
         <BlogPostCard
           title={post.data.title}
           excerpt={post.data.excerpt ?? ''}
@@ -87,9 +88,41 @@ const upcomingEvents = (await getCollection('events'))
           category={post.data.categories[0]?.replace(/-/g, ' ')}
           readTime={post.data.readTime}
         />
+        </div>
       ))}
     </div>
   </SectionContainer>
+
+  <script is:inline>
+    // Topic filter. The pills are plain #hash links, so /blog#gut-health is
+    // shareable; this shows only the matching cards. Without JS every post
+    // stays visible.
+    document.addEventListener('DOMContentLoaded', () => {
+      const pills = document.querySelectorAll('.cat-link[data-cat]');
+      const cells = document.querySelectorAll('.post-cell');
+      if (!pills.length || !cells.length) return;
+      const known = new Set(Array.from(pills, (p) => p.dataset.cat));
+      const apply = () => {
+        let hash = '';
+        try { hash = decodeURIComponent(location.hash.slice(1)); } catch {}
+        const cat = known.has(hash) ? hash : 'all';
+        pills.forEach((p) => {
+          if (p.dataset.cat === cat) p.setAttribute('aria-current', 'true');
+          else p.removeAttribute('aria-current');
+        });
+        cells.forEach((c) => {
+          c.hidden = cat !== 'all' && !c.dataset.cats.split(' ').includes(cat);
+        });
+      };
+      pills.forEach((p) => p.addEventListener('click', (e) => {
+        e.preventDefault();
+        history.replaceState(null, '', p.dataset.cat === 'all' ? location.pathname : '#' + p.dataset.cat);
+        apply();
+      }));
+      window.addEventListener('hashchange', apply);
+      apply();
+    });
+  </script>
 
   {upcomingEvents.length > 0 && (
     <SectionContainer width="default" spacing="md">
@@ -106,7 +139,7 @@ const upcomingEvents = (await getCollection('events'))
             </li>
           ))}
         </ul>
-        <p class="events-more"><a href="/events">See all events &rarr;</a></p>
+        <p class="events-more"><Button href="/events" variant="link" iconAfter>See all events</Button></p>
       </div>
     </SectionContainer>
   )}
@@ -119,46 +152,17 @@ const upcomingEvents = (await getCollection('events'))
 </BaseLayout>
 
 <style>
-  .blog-hero { padding-top: 1.5rem; }
-  .blog-hero h1 { font-size: var(--text-4xl); margin: 0 0 1rem; line-height: 1.1; }
-  /* SEO keyword string stays inside the H1 as a kicker line; the display
-     line underneath carries the visual headline. */
-  .page-kicker {
-    display: block;
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    font-weight: 500;
-    margin: 0 0 1rem;
-  }
+  .blog-hero h1 { font-size: var(--text-fluid-h1); margin: 0; line-height: 1.08; }
+  /* .page-kicker (the SEO keyword line inside the H1) lives in global.css. */
   .blog-head {
     max-width: 70ch;
     margin: 0 0 1.75rem;
   }
-  .blog-head .eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    font-weight: 500;
-    margin: 0 0 1rem;
-  }
-  /* Eyebrow lockup: short TWW Green rule turns the caps label into a
-     composed unit (left-aligned head, so no auto-centering). */
-  .eyebrow-lockup::after {
-    content: "";
-    display: block;
-    width: 32px;
-    height: 2px;
-    background: var(--color-brand-primary);
-    margin: 0.9rem 0 0;
-  }
   .blog-head h2 {
     margin: 0 0 1rem;
-    font-size: var(--text-3xl);
-    line-height: 1.15;
+    font-size: var(--text-fluid-h2);
+    letter-spacing: -0.02em;
+    line-height: 1.12;
     color: var(--color-ink-strong);
   }
   .head-lede {
@@ -168,13 +172,7 @@ const upcomingEvents = (await getCollection('events'))
     margin: 0;
     max-width: 58ch;
   }
-  @media (min-width: 768px) {
-    .blog-head h2 { font-size: var(--text-4xl); }
-  }
-  @media (min-width: 1024px) {
-    .blog-head h2 { font-size: var(--text-5xl); letter-spacing: -0.022em; }
-  }
-  .lede { color: var(--color-ink-muted); max-width: 60ch; font-size: var(--text-lg); line-height: 1.6; }
+  .lede { color: var(--color-ink-muted); max-width: 60ch; font-size: var(--text-lg); line-height: 1.6; margin: 1.25rem 0 0; }
   .category-filter {
     display: flex;
     flex-wrap: wrap;
@@ -183,26 +181,37 @@ const upcomingEvents = (await getCollection('events'))
     margin-bottom: 2rem;
     font-size: var(--text-sm);
   }
-  .filter-label { color: var(--color-mute); margin-right: 0.5rem; }
   .cat-link {
-    background: var(--color-paper-soft);
-    color: var(--color-ink);
-    padding: 0.35rem 0.85rem;
+    background: var(--color-brand-primary-soft);
+    color: var(--color-ink-strong);
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 0.7rem 0.95rem;
     border-radius: var(--radius-pill);
     text-decoration: none;
     text-transform: capitalize;
-    transition: background var(--duration-fast) var(--ease-soft);
+    transition: background-color var(--duration-fast) var(--ease-soft);
+  }
+  @supports not (text-box: trim-both cap alphabetic) {
+    .cat-link { padding-block: 0.45rem; }
   }
   .cat-link:hover {
     background: var(--color-brand-primary-light);
+    color: var(--color-ink-strong);
   }
+  .cat-link[aria-current="true"] {
+    background: var(--color-ink-strong);
+    color: var(--color-paper);
+  }
+  .post-cell { display: grid; }
+  .post-cell[hidden] { display: none; }
   .post-grid {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
   .events-strip h2 {
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
     margin: 0 0 0.75rem;
     color: var(--color-ink-strong);
   }
@@ -219,20 +228,22 @@ const upcomingEvents = (await getCollection('events'))
   }
   .events-list a {
     display: block;
-    padding: 1rem 1.25rem;
-    border: 1px solid var(--color-line);
+    padding: 1.25rem 1.5rem;
+    background: var(--color-paper-soft);
     border-radius: var(--radius-md);
     text-decoration: none;
     color: inherit;
-    transition: background 0.15s ease, border-color 0.15s ease;
+    transition: background-color var(--duration-fast) var(--ease-soft);
     height: 100%;
   }
   .events-list a:hover {
-    background: var(--color-paper-warm-tint);
-    border-color: var(--color-brand-primary);
+    background: var(--color-brand-primary-soft);
   }
   .events-list strong {
-    color: var(--color-brand-primary-dark);
+    color: var(--color-ink-strong);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 500;
     display: block;
     margin-bottom: 0.4rem;
   }
@@ -242,17 +253,6 @@ const upcomingEvents = (await getCollection('events'))
     line-height: 1.5;
   }
   .events-more {
-    margin-top: 1.25rem;
-    font-size: var(--text-sm);
-  }
-  .events-more a {
-    color: var(--color-brand-primary-dark);
-    text-decoration: none;
-    font-weight: 500;
-  }
-  .events-more a:hover { text-decoration: underline; }
-  @media (min-width: 768px) {
-    .blog-hero h1 { font-size: var(--text-5xl); }
-    .events-strip h2 { font-size: var(--text-4xl); }
+    margin: 1.5rem 0 0;
   }
 </style>

@@ -18,7 +18,7 @@ import { clinic } from '../lib/site';
     target="_blank"
     rel="noopener noreferrer"
   >
-    Book Appointment
+    <span>Book Appointment</span>
     <svg
       aria-hidden="true"
       width="14"
@@ -104,7 +104,7 @@ import { clinic } from '../lib/site';
       box-shadow: var(--shadow-card);
       transition: background var(--duration-fast) var(--ease-soft),
                   color var(--duration-fast) var(--ease-soft),
-                  transform 80ms var(--ease-soft);
+                  transform var(--duration-press) var(--ease-ios);
     }
     .bookbar-cta:active {
       transform: scale(0.985);

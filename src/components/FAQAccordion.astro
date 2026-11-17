@@ -37,7 +37,7 @@ const faqSchema = emitSchema
       <details class="faq-item" name="faq-group" open={i === 0}>
         <summary>
           <span class="q-text">{item.question}</span>
-          <span class="indicator" aria-hidden="true">+</span>
+          <svg class="indicator" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M8 3v10M3 8h10" /></svg>
         </summary>
         <div class="answer" set:html={item.answer} />
       </details>
@@ -54,22 +54,20 @@ const faqSchema = emitSchema
   }
   .faq-list {
     display: grid;
-    gap: 0.5rem;
+    gap: 0;
   }
+  /* Questions are separated by one hairline each instead of sitting in
+     individual boxes: the list reads as one object. */
   .faq-item {
-    background: var(--color-paper);
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: border-color var(--duration-fast) var(--ease-soft);
+    border-bottom: var(--hairline) solid var(--color-line);
   }
-  .faq-item[open] {
-    border-color: var(--color-brand-primary);
+  .faq-item:first-child {
+    border-top: var(--hairline) solid var(--color-line);
   }
   summary {
     list-style: none;
     cursor: pointer;
-    padding: 1.25rem 1.5rem;
+    padding: 1.25rem 0.25rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -78,26 +76,33 @@ const faqSchema = emitSchema
     color: var(--color-ink-strong);
   }
   summary::-webkit-details-marker { display: none; }
-  summary:hover {
-    background: var(--color-paper-soft);
+  summary:hover .q-text {
+    color: var(--color-brand-primary-dark);
+  }
+  summary:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    border-radius: var(--radius-sm);
   }
   .q-text {
     font-family: var(--font-display);
     font-size: var(--text-lg);
+    font-weight: 500;
+    transition: color var(--duration-fast) var(--ease-soft);
   }
   .indicator {
-    font-size: var(--text-2xl);
+    flex-shrink: 0;
     color: var(--color-brand-primary-dark);
-    transition: transform var(--duration-fast) var(--ease-ios);
-    line-height: 1;
+    transition: transform var(--duration-normal) var(--ease-ios);
   }
   .faq-item[open] .indicator {
     transform: rotate(45deg);
   }
   .answer {
-    padding: 0 1.5rem 1.5rem;
+    padding: 0 2.5rem 1.5rem 0.25rem;
     color: var(--color-ink-muted);
     line-height: 1.6;
+    max-width: 72ch;
   }
   .answer :global(p:first-child) { margin-top: 0; }
   .answer :global(p:last-child) { margin-bottom: 0; }

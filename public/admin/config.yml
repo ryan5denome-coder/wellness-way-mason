@@ -24,7 +24,7 @@ public_folder: /uploads
 # Site URL for preview links inside the CMS
 site_url: https://www.thewellnesswaymason.com
 display_url: https://www.thewellnesswaymason.com
-logo_url: /favicon.svg
+logo_url: /icon-192.png
 
 # === Collections ==========================================================
 collections:

@@ -55,6 +55,8 @@ const breadcrumbSchema = {
     font-size: var(--text-sm);
     color: var(--color-ink-muted);
   }
+  /* Same gap under the trail on every page. */
+  .breadcrumbs { margin-bottom: 1.75rem; }
   .breadcrumbs li {
     display: inline-flex;
     gap: 0.5rem;
@@ -73,6 +75,6 @@ const breadcrumbSchema = {
     font-weight: 500;
   }
   .separator {
-    color: var(--color-line);
+    color: var(--color-mute);
   }
 </style>

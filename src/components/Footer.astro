@@ -127,8 +127,8 @@ const secondaryNav = [
   .site-footer {
     background: var(--color-ink-strong);
     color: var(--color-paper);
-    margin-top: 6rem;
-    border-top: 4px solid var(--color-brand-primary);
+    /* No top margin: every page ends on a full-bleed section, and a white
+       gap between it and the footer read as a layout slip. */
   }
   .site-footer :global(a) {
     color: var(--color-paper);
@@ -150,11 +150,10 @@ const secondaryNav = [
     font-size: var(--text-xs);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: var(--tracking-caps);
     margin: 0 0 1.25rem;
     color: var(--color-paper);
-    opacity: 0.6;
-    font-weight: 600;
+    opacity: 0.7;
   }
   .footer-brand {
     font-family: var(--font-display);
@@ -196,7 +195,7 @@ const secondaryNav = [
   .footer-hours :global(.hours-row dt) { color: var(--color-paper); opacity: 0.95; }
   .footer-hours :global(.hours-row dd) { color: var(--color-paper); opacity: 0.7; }
   .footer-hours :global(.is-today) {
-    background: rgba(128, 183, 65, 0.18);
+    background: rgba(128, 183, 65, 0.22);
   }
   .footer-hours :global(.is-today dt),
   .footer-hours :global(.is-today dd) {
@@ -218,7 +217,7 @@ const secondaryNav = [
   }
 
   .footer-base {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: var(--hairline) solid rgba(255,255,255,0.16);
   }
   .footer-base-inner {
     max-width: var(--container-default);
@@ -233,7 +232,7 @@ const secondaryNav = [
   .footer-copy {
     margin: 0;
     color: var(--color-paper);
-    opacity: 0.55;
+    opacity: 0.7;
     font-size: var(--text-xs);
   }
   .footer-social {
@@ -250,7 +249,9 @@ const secondaryNav = [
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.08);
     text-decoration: none;
-    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    transition: background-color var(--duration-fast) var(--ease-soft),
+                color var(--duration-fast) var(--ease-soft),
+                transform var(--duration-fast) var(--ease-ios);
   }
   .footer-social a:hover {
     background: var(--color-brand-primary);

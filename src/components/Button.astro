@@ -83,7 +83,12 @@ const externalAttrs = external
     border: 1px solid transparent;
     cursor: pointer;
     text-decoration: none;
-    transition: all var(--duration-normal) var(--ease-soft);
+    transition:
+      background-color var(--duration-fast) var(--ease-soft),
+      color var(--duration-fast) var(--ease-soft),
+      border-color var(--duration-fast) var(--ease-soft),
+      box-shadow var(--duration-normal) var(--ease-soft),
+      transform var(--duration-fast) var(--ease-ios);
     white-space: nowrap;
     letter-spacing: 0.01em;
     /* A button must never be the reason its container outgrows the screen.
@@ -101,6 +106,8 @@ const externalAttrs = external
       white-space: normal;
       text-wrap: balance;
     }
+    /* A wrapped pill label centres; left-ragged lines in a pill look broken. */
+    .btn:not(.btn-link) .btn-label { text-align: center; }
   }
   .btn:focus-visible {
     outline: none;
@@ -110,6 +117,15 @@ const externalAttrs = external
   .btn-sm { padding: 0.5rem 1.1rem; font-size: var(--text-sm); }
   .btn-md { padding: 0.75rem 1.5rem; font-size: var(--text-base); }
   .btn-lg { padding: 0.95rem 2rem; font-size: var(--text-base); letter-spacing: 0.015em; }
+
+  /* Where text-box trimming is supported (see global.css) the label box
+     shrinks to cap height, about 0.47em shorter. Add it back as padding so
+     the button keeps its height and the label sits optically centred. */
+  @supports (text-box: trim-both cap alphabetic) {
+    .btn-sm:not(.btn-link) { padding-block: 0.72rem; }
+    .btn-md:not(.btn-link) { padding-block: 1rem; }
+    .btn-lg:not(.btn-link) { padding-block: 1.2rem; }
+  }
 
   .btn-full { width: 100%; }
 
@@ -125,7 +141,23 @@ const externalAttrs = external
      where no hover exists. Drops the hover lift while pressed. */
   .btn:active {
     transform: scale(0.985);
-    transition-duration: 80ms;
+    transition-duration: var(--duration-press);
+  }
+
+  /* Optical alignment: the arrow's visual weight sits right of its box, so a
+     pill with an icon reads left-heavy at equal padding. Pull the trailing
+     edge in slightly. Link-style buttons have no pill to balance. */
+  .btn-arrow:not(.btn-link).btn-sm { padding-right: 0.95rem; }
+  .btn-arrow:not(.btn-link).btn-md { padding-right: 1.3rem; }
+  .btn-arrow:not(.btn-link).btn-lg { padding-right: 1.75rem; }
+
+  /* Loading state for submit buttons: set aria-busy="true" + disabled. */
+  .btn[aria-busy="true"],
+  .btn:disabled {
+    cursor: progress;
+    opacity: 0.75;
+    transform: none;
+    box-shadow: none;
   }
 
   /* === Primary — TWW Green === */
@@ -183,13 +215,26 @@ const externalAttrs = external
     color: var(--color-brand-primary-dark);
     padding: 0.25rem 0;
     text-decoration: underline;
-    text-underline-offset: 0.22em;
+    text-underline-offset: 0.2em;
     text-decoration-thickness: 1px;
-    border-radius: 0;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    border-radius: var(--radius-sm);
     font-weight: 600;
+    white-space: normal;
+    /* Inline, so when the label wraps the arrow follows the last word
+       instead of floating at the far edge of a flex row. */
+    display: inline;
+  }
+  .btn-link .btn-icon {
+    display: inline-block;
+    vertical-align: -0.1em;
+    margin-left: 0.35em;
+    /* The arrow is not part of the link text: keep the underline off it. */
+    text-decoration: none;
   }
   .btn-link:hover {
-    color: var(--color-brand-primary);
-    text-decoration-thickness: 2px;
+    color: var(--color-ink-strong);
+    text-decoration-color: currentColor;
   }
 </style>

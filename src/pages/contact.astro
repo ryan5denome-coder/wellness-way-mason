@@ -14,15 +14,15 @@ const wasSent = Astro.url.searchParams.get('sent') === 'true';
 const contactFaqs = [
   {
     question: 'Do you accept insurance?',
-    answer: '<p>We are a cash-pay practice. That decision keeps us free to spend the time, run the testing, and recommend the care your situation actually calls for, instead of what an insurance code allows. We can provide a superbill on request that you may submit to your insurance for out-of-network reimbursement, but we don\'t bill insurance directly. Our pricing is flat and posted publicly on the <a href="/pricing">Pricing page</a>.</p>',
+    answer: '<p>We are a cash-pay practice. That decision keeps us free to spend the time, run the testing, and recommend the care your situation actually calls for, instead of what an insurance code allows. We can provide a superbill on request that you may submit to your insurance for out-of-network reimbursement, but we don’t bill insurance directly. Our pricing is flat and posted publicly on the <a href="/pricing">Pricing page</a>.</p>',
   },
   {
     question: 'Do I need a referral?',
-    answer: '<p>No. You can self-refer for chiropractic care or health restoration. If you\'re bringing labs from another provider, bring them along to your first visit. We\'d rather build on what already exists than duplicate testing unnecessarily.</p>',
+    answer: '<p>No. You can self-refer for chiropractic care or health restoration. If you’re bringing labs from another provider, bring them along to your first visit. We’d rather build on what already exists than duplicate testing unnecessarily.</p>',
   },
   {
     question: 'What should I bring to my first appointment?',
-    answer: '<p>Bring any recent labs, imaging reports, current medications and supplement list, and a brief written history of when symptoms started and what you\'ve already tried. If you\'re a pediatric or pregnant patient, bring relevant prenatal or pediatric records. Comfortable clothing is fine; you don\'t need to change for an exam.</p>',
+    answer: '<p>Bring any recent labs, imaging reports, current medications and supplement list, and a brief written history of when symptoms started and what you’ve already tried. If you’re a pediatric or pregnant patient, bring relevant prenatal or pediatric records. Comfortable clothing is fine; you don’t need to change for an exam.</p>',
   },
   {
     question: 'Where do I park?',
@@ -56,7 +56,7 @@ const contactFaqs = [
         Reach out. A real person answers.
       </h1>
       <p class="lede">
-        Whether you're ready to schedule or still deciding, we'd love to hear from you.
+        Whether you’re ready to schedule or still deciding, we’d love to hear from you.
         Call, send a message, or book online. Every question is a fair one.
       </p>
     </div>
@@ -65,15 +65,15 @@ const contactFaqs = [
   <SectionContainer width="prose" spacing="md">
     <div class="contact-prose">
       <p data-reveal>
-        You don't have to have it all figured out before you reach out. Most people who
-        contact us are somewhere in the middle of their story: labs that came back "fine,"
+        You don’t have to have it all figured out before you reach out. Most people who
+        contact us are somewhere in the middle of their story: labs that came back “fine,”
         a string of providers, and a growing sense that something is still being missed.
-        You're not alone in that.
+        You’re not alone in that.
       </p>
       <p data-reveal="up-sm">
-        That's exactly the conversation we want to have. A short call or message is a
+        That’s exactly the conversation we want to have. A short call or message is a
         no-pressure way to ask whether chiropractic care, functional lab testing, or both
-        might fit what you're dealing with. If we're not the right fit, we'll say so
+        might fit what you’re dealing with. If we’re not the right fit, we’ll say so
         honestly and point you toward someone who is.
       </p>
       <h2 data-reveal>What to expect when you reach out</h2>
@@ -88,7 +88,7 @@ const contactFaqs = [
         day, usually faster.
       </p>
       <p data-reveal="up-sm">
-        <strong>Pricing or insurance questions:</strong> the short version is we're cash-pay,
+        <strong>Pricing or insurance questions:</strong> the short version is we’re cash-pay,
         HSA/FSA accepted, no insurance billing. Every new patient visit is a flat $99, and full
         transparent pricing lives on the <a href="/pricing">pricing page</a>.
       </p>
@@ -99,9 +99,9 @@ const contactFaqs = [
       </p>
       <h2 data-reveal>How we work alongside your existing care</h2>
       <p data-reveal="up-sm">
-        Most of our patients keep their primary care provider and any specialists they're seeing.
+        Most of our patients keep their primary care provider and any specialists they’re seeing.
         What we do sits alongside conventional medicine, not in place of it. Bring your recent labs
-        and medication list to your first visit. We'd rather build on what's already been done
+        and medication list to your first visit. We’d rather build on what’s already been done
         than duplicate testing unnecessarily.
       </p>
       <p data-reveal="up-sm">
@@ -114,8 +114,9 @@ const contactFaqs = [
 
   {wasSent && (
     <SectionContainer width="default" spacing="sm" background="paper">
-      <div class="success-banner">
-        ✓ Thanks, your message went through. We'll be in touch within one business day.
+      <div class="success-banner" role="status">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5L13.5 4" /></svg>
+        Thanks, your message went through. We’ll be in touch within one business day.
       </div>
     </SectionContainer>
   )}
@@ -199,21 +200,10 @@ const contactFaqs = [
   /* === Hero lockup === */
   .contact-hero h1 {
     margin: 0;
-    font-size: var(--text-4xl);
-    line-height: 1.1;
+    font-size: var(--text-fluid-h1);
+    line-height: 1.08;
   }
-  /* SEO keyword string stays inside the H1 as a kicker line; the display
-     line underneath carries the visual headline. */
-  .page-kicker {
-    display: block;
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    font-weight: 500;
-    margin: 0 0 1rem;
-  }
+  /* .page-kicker (the SEO keyword line inside the H1) lives in global.css. */
   .lede {
     color: var(--color-ink-muted);
     max-width: 60ch;
@@ -237,13 +227,16 @@ const contactFaqs = [
 
   /* === Success banner === */
   .success-banner {
-    background: var(--color-brand-primary-light);
+    background: var(--color-brand-primary-soft);
     color: var(--color-ink-strong);
     padding: 1rem 1.5rem;
     border-radius: var(--radius-md);
-    border-left: 4px solid var(--color-brand-primary);
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
+  .success-banner svg { flex-shrink: 0; color: var(--color-brand-primary-dark); }
 
   /* === Contact grid === */
   .contact-grid {
@@ -259,13 +252,13 @@ const contactFaqs = [
   /* Booking card — the page's one conversion moment, styled to match the
      arm-tile treatment (green top rule, soft card shadow). */
   .booking-card {
-    background: var(--color-paper);
-    border: 1px solid var(--color-line);
-    border-top: 4px solid var(--color-brand-primary);
+    background: var(--color-brand-primary-soft);
     border-radius: var(--radius-lg);
-    padding: 1.75rem 2rem;
-    box-shadow: var(--shadow-card);
-    margin-bottom: 2.25rem;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .booking-card { padding: 1.75rem 2rem; }
   }
   .booking-card h3 {
     font-family: var(--font-display);
@@ -275,17 +268,16 @@ const contactFaqs = [
     margin: 0 0 0.6rem;
   }
   .booking-card p {
-    color: var(--color-ink-muted);
+    color: var(--color-ink);
     line-height: 1.6;
     margin: 0 0 1.4rem;
     font-size: var(--text-base);
   }
 
   /* Info blocks — de-uppercased small Lora headings over quiet dividers. */
-  .info-block {
-    padding: 1.4rem 0;
-    border-top: 1px solid var(--color-line-soft);
-  }
+  /* Grouped by spacing: each block is a heading with its detail tight
+     underneath and clear air before the next. */
+  .info-block { margin-top: 2rem; }
   .info-block h3 {
     font-family: var(--font-display);
     font-size: var(--text-lg);
@@ -312,8 +304,9 @@ const contactFaqs = [
   }
   .section-head h2 {
     margin: 0;
-    font-size: var(--text-3xl);
-    line-height: 1.15;
+    font-size: var(--text-fluid-h2);
+    letter-spacing: -0.02em;
+    line-height: 1.12;
   }
   .section-lede {
     color: var(--color-ink-muted);
@@ -323,21 +316,11 @@ const contactFaqs = [
   }
 
   /* === Responsive type ramp (matches homepage / services scale) === */
-  @media (min-width: 768px) {
-    .contact-hero h1 { font-size: var(--text-5xl); }
-    .section-head h2 { font-size: var(--text-4xl); }
-  }
   @media (min-width: 900px) {
     .contact-grid {
       grid-template-columns: 1fr 1.3fr;
       gap: 4rem;
       align-items: start;
-    }
-  }
-  @media (min-width: 1024px) {
-    .section-head h2 {
-      font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
     }
   }
 </style>

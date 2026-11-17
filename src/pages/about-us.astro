@@ -12,7 +12,7 @@ import pediatricPlayRoom from '../assets/clinic/pediatric-play-room.jpg';
 const aboutFaqs = [
   {
     question: 'What kind of patients does The Wellness Way - Mason see?',
-    answer: '<p>Adults, children, and prenatal patients across Mason and the greater Cincinnati area. Most patients have already been to multiple providers and been told their labs are "normal" while still not feeling well. Common patterns include fatigue, hormone imbalance, gut issues, autoimmune presentations, thyroid dysfunction, and complex cases that haven\'t responded to standard care.</p>',
+    answer: '<p>Adults, children, and prenatal patients across Mason and the greater Cincinnati area. Most patients have already been to multiple providers and been told their labs are “normal” while still not feeling well. Common patterns include fatigue, hormone imbalance, gut issues, autoimmune presentations, thyroid dysfunction, and complex cases that haven’t responded to standard care.</p>',
   },
   {
     question: 'Where is the clinic located?',
@@ -20,7 +20,7 @@ const aboutFaqs = [
   },
   {
     question: 'Who is Dr. Ryan DeNome, DC?',
-    answer: '<p>Dr. Ryan DeNome, DC is the clinic owner and chiropractic physician at The Wellness Way - Mason. He is a graduate of Life University in Marietta, Georgia, a Cincinnati native, and certified in the Webster Technique for prenatal chiropractic care. His clinical focus is supporting men with health challenges, mothers juggling stress and wellness, and complex cases that haven\'t found answers in conventional care.</p>',
+    answer: '<p>Dr. Ryan DeNome, DC is the clinic owner and chiropractic physician at The Wellness Way - Mason. He is a graduate of Life University in Marietta, Georgia, a Cincinnati native, and certified in the Webster Technique for prenatal chiropractic care. His clinical focus is supporting men with health challenges, mothers juggling stress and wellness, and complex cases that haven’t found answers in conventional care.</p>',
   },
   {
     question: 'What makes The Wellness Way - Mason different from other chiropractors?',
@@ -49,7 +49,7 @@ const personJsonLd = personSchema({ full: true });
         A clinic built to keep asking why.
       </h1>
       <p class="lede">
-        We're part of a nationwide network of health restoration clinics that take on
+        We’re part of a nationwide network of health restoration clinics that take on
         the cases others set aside. Dr. Ryan DeNome, DC brought that approach home to
         Mason, Ohio. This is the story of why.
       </p>
@@ -68,7 +68,7 @@ const personJsonLd = personSchema({ full: true });
       <p data-reveal="up-sm">
         But fine is not how you feel. And somewhere between the second specialist and
         the third prescription, a quieter worry sets in. Maybe this is just how it is
-        now. Maybe it really is all in your head. It isn't, and you're not alone.
+        now. Maybe it really is all in your head. It isn’t, and you’re not alone.
       </p>
       <p data-reveal="up-sm">
         This clinic exists for that exact moment. The Wellness Way was built on a
@@ -78,11 +78,11 @@ const personJsonLd = personSchema({ full: true });
         show, working alongside your physicians the whole way.
       </p>
       <p class="story-turn" data-reveal="up-sm">
-        You shouldn't have to talk anyone into taking your symptoms seriously.
-        Here, that's where we begin.
+        You shouldn’t have to talk anyone into taking your symptoms seriously.
+        Here, that’s where we begin.
       </p>
       <p class="story-link" data-reveal="up-sm">
-        <a href="https://www.thewellnessway.com/" target="_blank" rel="noopener">Read more about The Wellness Way →</a>
+        <Button href="https://www.thewellnessway.com/" variant="link" external iconAfter>Read more about The Wellness Way</Button>
       </p>
     </div>
   </SectionContainer>
@@ -90,13 +90,12 @@ const personJsonLd = personSchema({ full: true });
   <!-- Section 3: Mission / Philosophy / Vision -->
   <SectionContainer width="default" spacing="lg" background="paper-soft">
     <div class="values-head" data-reveal>
-      <p class="eyebrow eyebrow-lockup">Our foundation</p>
       <h2>What we stand for</h2>
     </div>
     <div class="values">
       <div class="value" data-reveal="up-sm">
         <h3>Mission</h3>
-        <p>The human body was not designed for illness. When it's properly cared for and properly supported, it has a deep capacity to heal, and our work is to give that capacity its best chance.</p>
+        <p>The human body was not designed for illness. When it’s properly cared for and properly supported, it has a deep capacity to heal, and our work is to give that capacity its best chance.</p>
       </div>
       <div class="value" data-reveal="up-sm">
         <h3>Philosophy</h3>
@@ -104,7 +103,7 @@ const personJsonLd = personSchema({ full: true });
       </div>
       <div class="value" data-reveal="up-sm">
         <h3>Vision</h3>
-        <p>A world where common is not normal. Where people don't accept dismissal, mediocrity, or medication management as the only path to feeling well. We stand in the gap so no stone goes unturned.</p>
+        <p>A world where common is not normal. Where people don’t accept dismissal, mediocrity, or medication management as the only path to feeling well. We stand in the gap so no stone goes unturned.</p>
       </div>
     </div>
   </SectionContainer>
@@ -146,9 +145,8 @@ const personJsonLd = personSchema({ full: true });
         />
       </div>
       <div class="provider-bio" data-reveal="up-sm">
-        <p class="eyebrow eyebrow-lockup">Meet Your Chiropractor</p>
         <h2>Dr. Ryan DeNome, DC</h2>
-        <p class="bio-title">{owner.jobTitle} | Clinic Owner</p>
+        <p class="bio-title">{owner.jobTitle}, Clinic Owner</p>
         <p>
           Dr. Ryan DeNome is the clinic owner and chiropractic physician at {clinic.brandName}.
           He found chiropractic through his wife, who introduced him to the profession, and he
@@ -175,14 +173,11 @@ const personJsonLd = personSchema({ full: true });
         <p>
           Outside the clinic, Dr. Ryan is usually outdoors with his wife and son: hiking,
           kayaking, or simply enjoying the quiet. He and his wife biked 100 miles on their
-          second date, so "adventurous" is not a stretch.
-        </p>
-        <p>
-          <a href="/dr-ryan-denome">Read Dr. DeNome's full bio, credentials, and approach →</a>
+          second date, so “adventurous” is not a stretch.
         </p>
         <blockquote class="ryan-quote">
-          "Take care of your body as if you were going to live forever; and take care of your soul as
-          if you were going to die tomorrow."
+          “Take care of your body as if you were going to live forever; and take care of your soul as
+          if you were going to die tomorrow.”
           <cite>Saint Augustine of Hippo</cite>
         </blockquote>
         <p>
@@ -190,8 +185,9 @@ const personJsonLd = personSchema({ full: true });
           patients work toward lasting health and a better quality of life.
         </p>
         <div class="provider-links">
-          <a href={owner.url} target="_blank" rel="noopener">LinkedIn →</a>
-          <a href={`mailto:${owner.email}`}>Email →</a>
+          <Button href="/dr-ryan-denome" variant="link" iconAfter>Read Dr. DeNome’s full bio, credentials, and approach</Button>
+          <a href={owner.url} target="_blank" rel="noopener">LinkedIn</a>
+          <a href={`mailto:${owner.email}`}>Email</a>
         </div>
       </div>
     </div>
@@ -208,15 +204,15 @@ const personJsonLd = personSchema({ full: true });
     <FAQAccordion items={aboutFaqs} />
   </SectionContainer>
 
-  <!-- Section 7: Final CTA — the story's conversion moment -->
+  <!-- Section 7: Final CTA — the story’s conversion moment -->
   <SectionContainer width="narrow" spacing="lg" background="paper-warm-tint">
     <div class="cta-block" data-reveal>
       <h2>Come tell us your story.</h2>
       <p>
-        Every new patient visit is a flat $99, whether you're coming in for chiropractic
+        Every new patient visit is a flat $99, whether you’re coming in for chiropractic
         care or health restoration. Bring your questions, your history, and the labs no
         one has explained yet. New patients are always welcome, and virtual
-        health-restoration consultations are available if you're outside the area.
+        health-restoration consultations are available if you’re outside the area.
       </p>
       <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>Book Your Appointment</Button>
     </div>
@@ -227,21 +223,10 @@ const personJsonLd = personSchema({ full: true });
   /* === Hero === */
   .about-hero h1 {
     margin: 0;
-    font-size: var(--text-4xl);
-    line-height: 1.1;
+    font-size: var(--text-fluid-h1);
+    line-height: 1.08;
   }
-  /* SEO keyword string stays inside the H1 as a kicker line; the display
-     line underneath carries the visual headline. */
-  .page-kicker {
-    display: block;
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    font-weight: 500;
-    margin: 0 0 1rem;
-  }
+  /* .page-kicker (the SEO keyword line inside the H1) lives in global.css. */
   .lede {
     color: var(--color-ink-muted);
     max-width: 60ch;
@@ -249,32 +234,11 @@ const personJsonLd = personSchema({ full: true });
     line-height: 1.6;
     margin: 1.25rem 0 0;
   }
-  @media (min-width: 768px) {
-    .about-hero h1 { font-size: var(--text-5xl); }
-  }
-
-  /* === Eyebrow + lockup (established pattern) === */
-  .eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-mute);
-    margin: 0 0 1rem;
-    font-weight: 500;
-  }
-  .eyebrow-lockup::after {
-    content: "";
-    display: block;
-    width: 32px;
-    height: 2px;
-    background: var(--color-brand-primary);
-    margin: 0.9rem 0 0;
-  }
 
   /* === Story — editorial "why this clinic exists" moment === */
   .story h2 {
     font-family: var(--font-display);
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
     line-height: 1.12;
     color: var(--color-ink-strong);
     margin: 0 0 1.75rem;
@@ -304,18 +268,19 @@ const personJsonLd = personSchema({ full: true });
   }
   .values-head h2 {
     margin: 0;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2);
+    letter-spacing: -0.02em;
     line-height: 1.15;
     color: var(--color-ink-strong);
   }
   .values {
     display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
   .value h3 {
-    color: var(--color-brand-primary-dark);
-    font-size: var(--text-xl);
+    color: var(--color-ink-strong);
+    font-size: var(--text-2xl);
     margin: 0 0 0.75rem;
   }
   .value p {
@@ -339,7 +304,7 @@ const personJsonLd = personSchema({ full: true });
   }
   .our-space-text h2 {
     margin: 0 0 1.25rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
   }
   .our-space-text p {
     color: var(--color-ink-muted);
@@ -355,19 +320,17 @@ const personJsonLd = personSchema({ full: true });
   }
   .provider-photo img {
     width: 100%;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     box-shadow: var(--shadow-card);
     object-fit: cover;
     aspect-ratio: 4 / 5;
   }
   .provider-bio h2 {
     margin: 0 0 0.5rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
   }
   .bio-title {
-    font-family: var(--font-display);
-    font-style: italic;
-    color: var(--color-brand-primary-dark);
+    color: var(--color-ink-muted);
     font-size: var(--text-lg);
     margin: 0 0 1.5rem;
   }
@@ -376,18 +339,20 @@ const personJsonLd = personSchema({ full: true });
     line-height: 1.7;
     margin: 0 0 1rem;
   }
+  /* Same quote treatment as the homepage: no box, no rule. The serif italic
+     and the hanging quote mark are enough to set it apart. */
   .ryan-quote {
-    background: var(--color-paper-soft);
-    border-left: 4px solid var(--color-brand-primary);
-    padding: 1.25rem 1.5rem;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
     font-family: var(--font-display);
     font-style: italic;
-    color: var(--color-ink);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-size: var(--text-xl);
+    line-height: 1.5;
+    color: var(--color-ink-strong);
+    text-indent: -0.42em;
   }
   .ryan-quote cite {
     display: block;
+    text-indent: 0;
     margin-top: 0.5rem;
     font-size: var(--text-sm);
     color: var(--color-ink-muted);
@@ -396,9 +361,13 @@ const personJsonLd = personSchema({ full: true });
   }
   .provider-links {
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
     margin-top: 1.5rem;
   }
+  .provider-links :global(.btn-link) { flex-basis: 100%; }
+  .provider-links a:not(:global(.btn)) { font-weight: 500; }
 
   /* === FAQ head === */
   .section-head {
@@ -408,7 +377,8 @@ const personJsonLd = personSchema({ full: true });
   }
   .section-head h2 {
     margin: 0 0 1rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2);
+    letter-spacing: -0.02em;
     color: var(--color-ink-strong);
   }
   .section-lede {
@@ -422,7 +392,7 @@ const personJsonLd = personSchema({ full: true });
   .cta-block { text-align: center; }
   .cta-block h2 {
     margin: 0 0 1rem;
-    font-size: var(--text-3xl);
+    font-size: var(--text-fluid-h2-sm);
   }
   .cta-block p {
     color: var(--color-ink-muted);
@@ -433,23 +403,9 @@ const personJsonLd = personSchema({ full: true });
 
   /* === Responsive type scale (established section-head rhythm) === */
   @media (min-width: 768px) {
-    .story h2 { font-size: var(--text-4xl); }
-    .values-head h2 { font-size: var(--text-4xl); }
-    .section-head h2 { font-size: var(--text-4xl); }
-    .our-space { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
-    .our-space-text h2 { font-size: var(--text-4xl); }
-    .provider-grid { grid-template-columns: 0.8fr 1.4fr; gap: 3rem; align-items: start; }
-    .provider-bio h2 { font-size: var(--text-4xl); }
-    .cta-block h2 { font-size: var(--text-4xl); }
-  }
-  @media (min-width: 1024px) {
-    .values-head h2 {
-      font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
-    }
-    .section-head h2 {
-      font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
-    }
+    .our-space { grid-template-columns: 1.2fr 1fr; gap: 4rem; }
+    /* The real room is the feature here, so it gets the wider column. */
+    .our-space-image img { aspect-ratio: 1 / 1; }
+    .provider-grid { grid-template-columns: 0.8fr 1.4fr; gap: 4rem; align-items: start; }
   }
 </style>
