@@ -101,12 +101,13 @@ import { clinic } from '../lib/site';
     margin: 0 0 3.5rem;
   }
 
-  /* De-uppercased Lora sub-head, per the .sub-h pattern on our-services. */
+  /* De-uppercased sub-head, per the .sub-h pattern on our-services. */
   .sub-h {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
     font-size: var(--text-xl);
     color: var(--color-ink-strong);
-    font-weight: 500;
+    font-weight: 700;
     margin: 0 0 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--color-brand-primary);
@@ -127,7 +128,9 @@ import { clinic } from '../lib/site';
     border-bottom: none;
   }
   .quick-links a {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 700;
     font-size: var(--text-lg);
     color: var(--color-ink-strong);
     text-decoration: none;
@@ -163,7 +166,6 @@ import { clinic } from '../lib/site';
   @media (min-width: 768px) {
     .not-found h1 {
       font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
     }
   }
 </style>

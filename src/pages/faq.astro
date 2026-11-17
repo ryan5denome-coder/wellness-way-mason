@@ -252,9 +252,10 @@ const breadcrumbSchema = {
   }
   .faq-item[open] { border-color: var(--color-brand-primary); }
   .faq-item summary {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
     font-size: var(--text-lg);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-ink-strong);
     cursor: pointer;
     list-style: none;
@@ -296,7 +297,6 @@ const breadcrumbSchema = {
   @media (min-width: 1024px) {
     .faq-cta h2 {
       font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
     }
   }
 </style>

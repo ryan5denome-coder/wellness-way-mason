@@ -49,7 +49,7 @@ const pricingFaqs = [
     <div class="pricing-hero">
       <h1>
         <span class="page-kicker">Transparent Pricing in Mason, OH</span>
-        Real numbers, before you ever walk in.
+        Real numbers, <span class="accent">before you ever walk in.</span>
       </h1>
       <p class="lede">
         We are pricing-forward on purpose. You deserve to know what care costs before you
@@ -213,7 +213,7 @@ const pricingFaqs = [
   .pricing-hero h1 {
     margin: 0;
     font-size: var(--text-fluid-h1);
-    line-height: 1.08;
+    line-height: 1;
   }
   /* .page-kicker (the SEO keyword line inside the H1) lives in global.css. */
   .lede {
@@ -244,7 +244,6 @@ const pricingFaqs = [
   .section-head h2 {
     margin: 0 0 1rem;
     font-size: var(--text-fluid-h2);
-    letter-spacing: -0.02em;
     color: var(--color-ink-strong);
   }
   .value-line {
@@ -260,7 +259,6 @@ const pricingFaqs = [
   .section-h2 {
     margin: 0 0 2.25rem;
     font-size: var(--text-fluid-h2);
-    letter-spacing: -0.02em;
     line-height: 1.12;
   }
 
@@ -291,7 +289,9 @@ const pricingFaqs = [
   }
   .arm-title {
     margin: 0 0 0.15rem;
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 700;
     font-size: var(--text-2xl);
     line-height: 1.15;
     color: var(--color-ink-strong);
@@ -334,8 +334,9 @@ const pricingFaqs = [
   }
   /* Lora display amounts, matching the homepage price card. */
   .price-amount {
-    font-family: var(--font-display);
-    font-weight: 500;
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 700;
     font-size: var(--text-3xl);
     line-height: 1;
     color: var(--color-ink-strong);
@@ -387,10 +388,16 @@ const pricingFaqs = [
     padding: 0;
     margin: 0 0 2.5rem;
     display: grid;
-    gap: 2rem 2.5rem;
+    gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
-  /* Four facts in a row, grouped by spacing alone. */
+  /* Four facts as white cards on the page tint. */
+  .cash-grid li {
+    background: var(--color-paper);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+  }
   .cash-grid h3 {
     margin: 0 0 0.5rem;
     font-size: var(--text-xl);

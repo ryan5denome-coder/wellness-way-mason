@@ -386,7 +386,6 @@ const whoFor = [
     .section-head { margin-bottom: 3.5rem; }
     .section-head h2 {
       font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
     }
   }
 
@@ -399,10 +398,11 @@ const whoFor = [
     margin: 0 auto;
   }
   .sub-h {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
     font-size: var(--text-xl);
     color: var(--color-ink-strong);
-    font-weight: 500;
+    font-weight: 700;
     margin: 0 0 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--color-brand-primary);
@@ -430,7 +430,7 @@ const whoFor = [
   .article-block { margin: 0 0 3rem; }
   .article-block:last-child { margin-bottom: 0; }
   .article-block h2 {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: var(--text-2xl);
     color: var(--color-ink-strong);
     margin: 0 0 1rem;
@@ -478,10 +478,11 @@ const whoFor = [
     background: var(--color-paper-soft);
   }
   .price-note-title {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
     font-size: var(--text-lg);
     color: var(--color-ink-strong);
-    font-weight: 500;
+    font-weight: 700;
     margin: 0 0 0.5rem;
   }
   .price-note-body {
@@ -493,7 +494,9 @@ const whoFor = [
 
   /* === FAQ === */
   .faq-head {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 700;
     font-size: var(--text-2xl);
     color: var(--color-ink-strong);
     margin: 0 0 1.5rem;
@@ -509,8 +512,9 @@ const whoFor = [
     background: var(--color-paper);
   }
   .faq-item summary {
-    font-family: var(--font-display);
-    font-weight: 600;
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 700;
     color: var(--color-ink-strong);
     cursor: pointer;
     list-style: none;

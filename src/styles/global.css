@@ -42,10 +42,25 @@
 
   /* === Surfaces === */
   --color-paper: #FFFFFF;                  /* primary background — clean */
-  --color-paper-soft: #FAFAF9;             /* alt sections — subtle off-white */
+  --color-paper-soft: #f0f2ee;             /* page tint: cool grey with a breath of the brand green.
+                                              White cards sit on it. green-dark 4.9:1, mute 4.9:1 */
   --color-paper-warm: #DCD4C8;             /* TWW Beige — accent sections */
   --color-paper-warm-tint: #f0ebe1;        /* derived: pale beige */
   --color-paper-cool: #f5f6f6;             /* derived: very pale grey */
+
+  /* === Dark band (rhythm sections, newsletter, footer) ===
+     A charcoal pulled toward the brand green so it reads as "forest", not
+     neutral black. White on it is 17:1, the muted tone 10.6:1, TWW Green 7.6:1. */
+  --color-band: #151b16;
+  --color-band-raised: #1f2721;
+  --color-band-line: rgba(255, 255, 255, 0.14);
+  --color-on-band: #ffffff;
+  --color-on-band-muted: #c3cbc1;
+
+  /* Accent phrase in display headlines. Both stops clear 3:1 (large text)
+     on white and on the page tint; the band pair is for dark sections. */
+  --gradient-accent: linear-gradient(92deg, #3f6220 0%, #5b8f2b 100%);
+  --gradient-accent-on-band: linear-gradient(92deg, #80b741 0%, #a9d76e 100%);
 
   /* === Status === */
   --color-success: #4d7326;                /* uses brand-primary-dark */
@@ -57,6 +72,13 @@
   /* Lora: warm serif for headlines (uipro: calm wellness mood) */
   /* Inter: precise sans for body (better legibility than Raleway for medical copy) */
   --font-display: "Lora", Georgia, "Times New Roman", serif;
+  /* Display direction (Nov 2026): headlines are Inter at heavy weight, set
+     tight. Lora stays as the brand's serif voice: wordmark, slogans, quotes
+     and the short "turn" lines. --font-display is kept pointing at Lora so
+     those accents keep working; headings use --font-heading. */
+  --font-heading: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --tracking-display: -0.04em;
+  --tracking-heading: -0.025em;
   --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --text-xs: 0.8125rem;
@@ -75,18 +97,20 @@
      instead of jumping at 768/1024, so there is no width where a headline
      is suddenly a size too big for its measure. Endpoints match the fixed
      steps above (4xl -> 6xl, 4xl -> 5xl, 3xl -> 5xl, 3xl -> 4xl). */
-  --text-fluid-hero: clamp(2.5rem, 1.55rem + 4.1vw, 4.5rem);
-  --text-fluid-h1: clamp(2.5rem, 1.9rem + 2.6vw, 3.5rem);
-  --text-fluid-h2: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);
-  --text-fluid-h2-sm: clamp(2rem, 1.75rem + 1.05vw, 2.5rem);
+  --text-fluid-hero: clamp(2.75rem, 1.35rem + 5.4vw, 5.5rem);
+  --text-fluid-h1: clamp(2.375rem, 1.5rem + 3.6vw, 4.25rem);
+  --text-fluid-h2: clamp(2rem, 1.35rem + 2.7vw, 3.5rem);
+  --text-fluid-h2-sm: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  /* The one giant figure per page (stat moment). */
+  --text-fluid-stat: clamp(5rem, 2.5rem + 11vw, 10rem);
 
   /* Tracking for all-caps labels (kickers, eyebrows, footer heads). */
-  --tracking-caps: 0.18em;
+  --tracking-caps: 0.2em;
 
   /* === Layout === */
   --container-prose: 68ch;
   --container-narrow: 56rem;
-  --container-default: 76rem;
+  --container-default: 80rem;
   --container-wide: 88rem;
 
   --radius-sm: 4px;
@@ -102,6 +126,9 @@
   /* === Shadows (Soft UI Evolution — softer than flat, clearer than neumorphism) === */
   --shadow-card: 0 2px 8px -2px rgba(31, 34, 34, 0.04), 0 6px 20px -8px rgba(31, 34, 34, 0.08);
   --shadow-card-hover: 0 4px 14px -4px rgba(31, 34, 34, 0.08), 0 12px 32px -10px rgba(31, 34, 34, 0.14);
+  /* Floating chrome and photo cards: three stacked layers, widest last. */
+  --shadow-float: 0 1px 2px rgba(21, 27, 22, 0.05), 0 6px 16px -6px rgba(21, 27, 22, 0.1), 0 24px 48px -20px rgba(21, 27, 22, 0.18);
+  --shadow-photo: 0 2px 4px rgba(21, 27, 22, 0.06), 0 14px 28px -10px rgba(21, 27, 22, 0.22), 0 40px 70px -30px rgba(21, 27, 22, 0.35);
   --shadow-popover: 0 12px 36px -8px rgba(31, 34, 34, 0.18);
   --shadow-focus: 0 0 0 3px rgba(128, 183, 65, 0.35);
   --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.6);
@@ -140,7 +167,7 @@
 html {
   font-family: var(--font-body);
   color: var(--color-ink);
-  background: var(--color-paper);
+  background: var(--color-paper-soft);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -152,9 +179,9 @@ html {
      own :active state instead. */
   -webkit-tap-highlight-color: transparent;
 
-  /* The sticky header is ~57px, so an un-padded anchor jump parks the target
-     heading underneath it — and parks keyboard focus there too. */
-  scroll-padding-top: 5.5rem;
+  /* The floating header is ~56px plus its 12px inset, so an un-padded anchor
+     jump parks the target heading underneath it, and keyboard focus too. */
+  scroll-padding-top: 6rem;
 }
 
 /* Tabular figures ONLY where digits sit in a column and must line up.
@@ -211,18 +238,55 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 500;            /* Lora reads better at 500 than 700 */
-  letter-spacing: -0.012em;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: var(--tracking-heading);
   color: var(--color-ink-strong);
   margin-top: 0;
   line-height: 1.18;
 }
 
-h1 { font-size: var(--text-5xl); line-height: 1.05; letter-spacing: -0.02em; }
-h2 { font-size: var(--text-3xl); line-height: 1.18; letter-spacing: -0.014em; }
-h3 { font-size: var(--text-2xl); line-height: 1.25; }
+/* Display tier: heavy and tight. Line-height stays just above 1 so two-line
+   headlines read as one block without descenders touching the next line. */
+h1 { font-size: var(--text-fluid-h1); font-weight: 800; line-height: 1; letter-spacing: var(--tracking-display); }
+h2 { font-size: var(--text-fluid-h2-sm); font-weight: 800; line-height: 1.04; letter-spacing: var(--tracking-display); }
+h3 { font-size: var(--text-2xl); line-height: 1.2; }
 h4 { font-size: var(--text-xl); line-height: 1.3; }
+
+/* Accent phrase inside a display headline: the brand green as a quiet
+   gradient. Falls back to solid green text where background-clip is missing. */
+.accent {
+  color: var(--color-brand-primary-dark);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    /* Descenders clip against the background box at line-height 1. */
+    padding-bottom: 0.08em;
+  }
+  .bg-band .accent,
+  .on-dark .accent,
+  .on-band .accent {
+    background-image: var(--gradient-accent-on-band);
+  }
+}
+/* Forced colours drop backgrounds, which would leave clipped text invisible. */
+@media (forced-colors: active) {
+  .accent {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: CanvasText;
+  }
+}
+
+/* The page's first section decides what the floating header sits on. */
+body:has(main > .bg-paper:first-child) { background: var(--color-paper); }
+body:has(main > .bg-paper-warm-tint:first-child) { background: var(--color-paper-warm-tint); }
+body:has(main > .bg-paper-warm:first-child) { background: var(--color-paper-warm); }
 
 /* Balanced wrapping keeps multi-line display headlines from orphaning a
    single word on its own line, which is where big type looks cheapest. */
@@ -252,15 +316,58 @@ sup, sub { line-height: 0; }
 .eyebrow {
   display: block;
   font-family: var(--font-body);
-  font-size: var(--text-xs);
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 700;
   line-height: 1.4;
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
-  color: var(--color-mute);
-  margin: 0 0 1rem;
+  color: var(--color-brand-primary-dark);
+  margin: 0 0 1.1rem;
   text-wrap: balance;
 }
+/* Green label text is 3.8:1 on TWW Beige, so labels take ink there. */
+.bg-paper-warm .page-kicker,
+.bg-paper-warm .eyebrow { color: var(--color-ink-strong); }
+
+/* === Dark surfaces ===
+   .on-dark is set by SectionContainer background="band" and by .cta-panel.
+   Page-scoped rules
+   colour their own headings and paragraphs with a scoped attribute, so these
+   carry three inert :not() classes (scoped rules reach 0,3,1) to win without !important (repeating the
+   class itself gets collapsed by the CSS minifier). */
+.on-dark:not(.x):not(.y):not(.z) :is(h1, h2, h3, h4) { color: var(--color-on-band); }
+.on-dark:not(.x):not(.y):not(.z) :is(p, li, dd, address) { color: var(--color-on-band-muted); }
+.on-dark:not(.x):not(.y):not(.z) :is(strong, dt) { color: var(--color-on-band); }
+.on-dark:not(.x):not(.y):not(.z) :is(.eyebrow, .page-kicker) { color: var(--color-brand-primary); }
+.on-dark:not(.x):not(.y):not(.z) a:not(.btn) { color: var(--color-on-band); }
+.on-dark:not(.x):not(.y):not(.z) a:not(.btn):hover { color: var(--color-brand-primary); }
+.on-dark:not(.x):not(.y):not(.z) .btn-ghost {
+  background: transparent;
+  color: var(--color-on-band);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: none;
+}
+.on-dark:not(.x):not(.y):not(.z) .btn-ghost:hover {
+  background: var(--color-on-band);
+  color: var(--color-band);
+  border-color: var(--color-on-band);
+}
+.on-dark:not(.x):not(.y):not(.z) .btn-link { color: var(--color-brand-primary); }
+.on-dark:not(.x):not(.y):not(.z) .btn-link:hover { color: var(--color-on-band); }
+/* Closing CTA as a dark rounded panel on the page tint. It never touches the
+   dark footer, so the two read as separate beats. */
+.cta-panel {
+  background: var(--color-band);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-float);
+  padding: clamp(2.5rem, 1.5rem + 5vw, 5rem) clamp(1.5rem, 0.5rem + 5vw, 4.5rem);
+  text-align: center;
+}
+.cta-panel:not(.x):not(.y):not(.z) h2 {
+  font-size: var(--text-fluid-h2);
+  margin-bottom: 1.25rem;
+}
+.on-dark ::selection { background: var(--color-brand-primary); color: var(--color-band); }
 
 /* Narrow card columns: allow hyphenation so a long word cannot leave a
    ragged hole (lang="en" is set on <html>). */

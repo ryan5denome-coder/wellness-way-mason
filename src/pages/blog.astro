@@ -42,7 +42,7 @@ const upcomingEvents = (await getCollection('events'))
     <div class="blog-hero" data-reveal>
       <h1>
         <span class="page-kicker">Health &amp; Wellness Blog</span>
-        Real answers, written to be understood.
+        Real answers, <span class="accent">written to be understood.</span>
       </h1>
       <p class="lede">
         Thyroid, hormones, gut health, nutrition, and the questions patients actually
@@ -152,7 +152,7 @@ const upcomingEvents = (await getCollection('events'))
 </BaseLayout>
 
 <style>
-  .blog-hero h1 { font-size: var(--text-fluid-h1); margin: 0; line-height: 1.08; }
+  .blog-hero h1 { font-size: var(--text-fluid-h1); margin: 0; line-height: 1; }
   /* .page-kicker (the SEO keyword line inside the H1) lives in global.css. */
   .blog-head {
     max-width: 70ch;
@@ -161,7 +161,6 @@ const upcomingEvents = (await getCollection('events'))
   .blog-head h2 {
     margin: 0 0 1rem;
     font-size: var(--text-fluid-h2);
-    letter-spacing: -0.02em;
     line-height: 1.12;
     color: var(--color-ink-strong);
   }
@@ -200,7 +199,7 @@ const upcomingEvents = (await getCollection('events'))
     color: var(--color-ink-strong);
   }
   .cat-link[aria-current="true"] {
-    background: var(--color-ink-strong);
+    background: var(--color-band);
     color: var(--color-paper);
   }
   .post-cell { display: grid; }
@@ -208,7 +207,7 @@ const upcomingEvents = (await getCollection('events'))
   .post-grid {
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   }
   .events-strip h2 {
     font-size: var(--text-fluid-h2-sm);
@@ -224,7 +223,7 @@ const upcomingEvents = (await getCollection('events'))
     padding: 0;
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   }
   .events-list a {
     display: block;
@@ -241,9 +240,10 @@ const upcomingEvents = (await getCollection('events'))
   }
   .events-list strong {
     color: var(--color-ink-strong);
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
     font-size: var(--text-lg);
-    font-weight: 500;
+    font-weight: 700;
     display: block;
     margin-bottom: 0.4rem;
   }

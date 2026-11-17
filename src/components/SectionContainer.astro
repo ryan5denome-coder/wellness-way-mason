@@ -10,12 +10,13 @@
  *   paper-warm-tint (pale beige) — subtler warmth
  *   paper-cool (pale grey) — neutral accent
  *   ink (TWW Dark Grey) — inverted, for hero/CTA breaks
+ *   band (forest charcoal): dark rhythm band; text colours handled in global.css
  *   brand (TWW Green) — high-impact accent
  *   transparent — no background
  */
 interface Props {
   width?: 'narrow' | 'default' | 'wide' | 'prose';
-  background?: 'paper' | 'paper-soft' | 'paper-warm' | 'paper-warm-tint' | 'paper-cool' | 'ink' | 'brand' | 'transparent';
+  background?: 'paper' | 'paper-soft' | 'paper-warm' | 'paper-warm-tint' | 'paper-cool' | 'ink' | 'band' | 'brand' | 'transparent';
   spacing?: 'sm' | 'md' | 'lg' | 'xl' | 'hero';
   id?: string;
   ariaLabel?: string;
@@ -40,7 +41,7 @@ const {
 } = Astro.props;
 
 const Tag = as;
-const classes = ['section', `bg-${background}`, `space-${spacing}`, `edge-${edgeTreatment}`, className]
+const classes = ['section', `bg-${background}`, background === 'band' ? 'on-dark' : '', `space-${spacing}`, `edge-${edgeTreatment}`, className]
   .filter(Boolean)
   .join(' ');
 const innerClass = `inner inner-${width}`;
@@ -61,6 +62,7 @@ const innerClass = `inner inner-${width}`;
   .bg-paper-warm-tint { background: var(--color-paper-warm-tint); color: var(--color-ink); }
   .bg-paper-cool { background: var(--color-paper-cool); color: var(--color-ink); }
   .bg-ink { background: var(--color-ink-strong); color: var(--color-paper); }
+  .bg-band { background: var(--color-band); color: var(--color-on-band-muted); }
   .bg-brand { background: var(--color-brand-primary); color: var(--color-ink-strong); }
   .bg-transparent { background: transparent; }
 

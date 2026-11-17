@@ -20,8 +20,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     <a href="/" class="brand" aria-label={`${clinic.brandName} home`}>
       <svg
         class="brand-mark"
-        width="14"
-        height="14"
+        width="30"
+        height="30"
         viewBox="0 0 24 24"
         fill="currentColor"
         aria-hidden="true"
@@ -78,6 +78,17 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
         toggle.setAttribute('aria-expanded', String(!expanded));
         nav.classList.toggle('open');
       });
+      const close = () => {
+        if (!nav.classList.contains('open')) return;
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      };
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+      nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }));
     }
 
     // Scroll acknowledgment: once the top sentinel leaves the viewport the
@@ -105,35 +116,45 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     height: 8px;
     pointer-events: none;
   }
+  /* Floating pill header. The sticky wrapper is transparent and inset from
+     the viewport edges; the white pill inside carries the surface, so page
+     colour shows around it and content scrolls underneath. */
   .site-header {
-    border-bottom: var(--hairline) solid var(--color-line);
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
     position: sticky;
     top: 0;
     z-index: 50;
-    transition: border-color var(--duration-normal) var(--ease-soft);
-  }
-  .site-header::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+    padding: 0.75rem 1rem 0;
     pointer-events: none;
-    box-shadow: 0 8px 24px -12px rgba(31, 34, 34, 0.18);
-    opacity: 0;
-    transition: opacity var(--duration-normal) var(--ease-soft);
   }
-  .site-header.is-scrolled { border-bottom-color: transparent; }
-  .site-header.is-scrolled::after { opacity: 1; }
   .header-inner {
+    pointer-events: auto;
+    position: relative;
     max-width: var(--container-default);
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    /* Nested radius: the CTA pill sits 0.5rem inside the bar on the right. */
+    padding: 0.5rem 0.5rem 0.5rem 1.25rem;
     display: flex;
     align-items: center;
     gap: 2rem;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 0 0 var(--hairline) rgba(21, 27, 22, 0.08), var(--shadow-card);
   }
+  /* Scroll acknowledgment: the deeper shadow is pre-rendered and crossfaded
+     with opacity, never by transitioning box-shadow. */
+  .header-inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: var(--shadow-float);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-soft);
+  }
+  .site-header.is-scrolled .header-inner::after { opacity: 1; }
   .brand {
     text-decoration: none;
     color: var(--color-ink-strong);
@@ -146,15 +167,28 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     align-items: center;
     gap: 0.65rem;
     letter-spacing: -0.005em;
+    min-width: 0;
   }
+  .brand-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* Puzzle mark on a dark roundel: the green reads at a glance at 30px. */
   .brand-mark {
     display: inline-block;
-    width: 14px;
-    height: 14px;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    padding: 7px;
+    border-radius: 50%;
+    background: var(--color-band);
     color: var(--color-brand-primary);
     flex-shrink: 0;
+    transition: transform var(--duration-normal) var(--ease-ios);
   }
   .brand:hover { color: var(--color-brand-primary-dark); }
+  .brand:hover .brand-mark { transform: rotate(-12deg); }
 
   .menu-toggle {
     display: flex;
@@ -195,7 +229,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     color: var(--color-ink);
     font-size: var(--text-sm);
     font-weight: 500;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
     border-bottom: 2px solid transparent;
     transition: color var(--duration-fast) var(--ease-soft);
     position: relative;
@@ -229,47 +263,52 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
   @media (max-width: 900px) {
     .menu-toggle { display: flex; }
+    /* The open menu is its own rounded card hanging under the pill. */
     .primary-nav {
       display: none;
       position: absolute;
-      top: 100%;
+      top: calc(100% + 0.5rem);
       left: 0;
       right: 0;
       background: var(--color-paper);
-      border-bottom: var(--hairline) solid var(--color-line);
-      box-shadow: var(--shadow-card);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 0 var(--hairline) rgba(21, 27, 22, 0.08), var(--shadow-float);
+      overflow: hidden;
     }
     .primary-nav.open { display: block; }
     .primary-nav ul {
       flex-direction: column;
       gap: 0;
-      padding: 1rem 0;
+      padding: 0.5rem;
     }
     .primary-nav li {
       width: 100%;
     }
     .primary-nav a {
       display: block;
-      padding: 0.85rem 1.5rem;
+      padding: 0.85rem 1rem;
       border-bottom: none;
+      /* Nested radius: card radius (20px) minus the 8px list padding. */
+      border-radius: var(--radius-md);
     }
     .nav-label { align-items: flex-start; }
     .primary-nav a[aria-current="page"] {
       background: var(--color-brand-primary-soft);
     }
+    .header-inner { gap: 0.75rem; }
   }
   @media (min-width: 901px) {
     .menu-toggle { display: none; }
   }
   @media (max-width: 767px) {
-    /* Booking moves to the sticky bottom bar on phones — hiding the header
-       CTA declutters the cramped mobile header. */
+    /* Booking moves to the sticky bottom bar on phones, so the header CTA
+       goes and the menu button takes the right edge of the pill. */
     .header-cta { display: none; }
+    .header-inner { padding: 0.25rem 0.75rem 0.25rem 0.75rem; }
+    .menu-toggle { margin-right: -0.35rem; }
   }
   @media (max-width: 480px) {
-    .header-inner {
-      gap: 0.75rem;
-      padding: 0.75rem 1rem;
-    }
+    .site-header { padding: 0.5rem 0.625rem 0; }
+    .brand { font-size: var(--text-sm); gap: 0.5rem; }
   }
 </style>

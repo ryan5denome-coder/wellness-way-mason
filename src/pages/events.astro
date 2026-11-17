@@ -197,10 +197,11 @@ const fmtShort = (d: Date) =>
   }
   .framing p:last-child { margin-bottom: 0; }
   .sub-h {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
     font-size: var(--text-xl);
     color: var(--color-ink-strong);
-    font-weight: 500;
+    font-weight: 700;
     margin: 2.25rem 0 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--color-brand-primary);
@@ -260,7 +261,9 @@ const fmtShort = (d: Date) =>
     margin: 0 auto;
   }
   .empty-title {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 700;
     font-size: var(--text-2xl);
     color: var(--color-ink-strong);
     margin: 0 0 0.75rem;
@@ -292,7 +295,9 @@ const fmtShort = (d: Date) =>
   }
   .past-list li:last-child { border-bottom: none; }
   .past-list a {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 700;
     font-size: var(--text-lg);
     color: var(--color-ink-strong);
   }
@@ -325,7 +330,6 @@ const fmtShort = (d: Date) =>
   @media (min-width: 1024px) {
     .section-head h2 {
       font-size: var(--text-5xl);
-      letter-spacing: -0.022em;
     }
   }
 </style>

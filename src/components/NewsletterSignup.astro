@@ -120,14 +120,45 @@
 
   /* Wrapper — swap their #f6f6f6 grey for our brand-warm tint */
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper {
-    background-color: var(--color-paper-warm-tint, #f0ebe1);
-    border-radius: var(--radius-lg);
+    background-color: var(--color-band, #151b16);
+    border-radius: var(--radius-xl);
     width: 100% !important;
     max-width: 100% !important;
   }
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper.embedForm {
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  /* MailerLite's own stylesheet is not loaded here, so the card supplies its
+     own padding and field layout. Without this the copy sat flush against
+     the card edge. */
+  #mlb2-41071627 .ml-form-embedBody,
+  #mlb2-41071627 .ml-form-successBody {
+    padding: clamp(1.25rem, 0.5rem + 3.5vw, 3rem);
+    text-align: left;
+  }
+  #mlb2-41071627 .ml-form-fieldRow input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+  }
+  #mlb2-41071627 .ml-form-fieldRow input:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+  #mlb2-41071627 .ml-form-embedPermissions { margin: 0.75rem 0 1rem; }
+  #mlb2-41071627 .ml-form-embedPermissions p { margin: 0; }
+  #mlb2-41071627 .ml-form-recaptcha:not(:empty) { margin-bottom: 1rem; }
+  #mlb2-41071627 .ml-form-embedSubmit button.primary { cursor: pointer; }
+  /* The reCAPTCHA widget is a fixed 304px. In a narrow card it is scaled to
+     fit instead of hanging over the edge. */
+  @media (max-width: 26rem) {
+    #mlb2-41071627 .g-recaptcha {
+      transform: scale(0.82);
+      transform-origin: 0 0;
+      margin-bottom: -14px;
+    }
   }
 
   /* Eyebrow */
@@ -142,21 +173,26 @@
 
   /* Heading */
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h2 {
-    color: var(--color-ink-strong, #1d2024);
-    font-family: var(--font-display, 'Lora', Georgia, serif) !important;
-    font-size: 1.65rem !important;
-    font-weight: 500 !important;
-    line-height: 1.25 !important;
+    color: var(--color-on-band, #ffffff) !important;
+    font-family: var(--font-heading, 'Inter', system-ui, sans-serif) !important;
+    font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.1rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: var(--tracking-display) !important;
+    line-height: 1.08 !important;
     margin: 0 0 0.75rem !important;
   }
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h2 em {
+    /* The newsletter's name, set in the serif voice. */
+    font-family: var(--font-display, 'Lora', Georgia, serif);
     font-style: italic;
-    color: var(--color-brand-primary-dark, #5e8a30);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-brand-primary, #80b741);
   }
 
   /* Lede paragraph */
   #mlb2-41071627 .tww-lede {
-    color: var(--color-ink-muted, #5b6066) !important;
+    color: var(--color-on-band-muted, #c3cbc1) !important;
     font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
@@ -167,11 +203,11 @@
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
     background-color: var(--color-paper, #ffffff) !important;
     border-color: var(--color-line, #d8d4cc) !important;
-    border-radius: var(--radius-inner) !important;
-    color: var(--color-ink, #2d3234) !important;
+    border-radius: var(--radius-pill) !important;
+    color: var(--color-ink-strong, #1f2222) !important;
     font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
     font-size: 0.95rem !important;
-    padding: 0.7rem 0.9rem !important;
+    padding: 0.8rem 1.1rem !important;
   }
 
   /* Submit button — swap their black for brand green */
@@ -182,32 +218,32 @@
     color: var(--color-ink-strong, #1d2024) !important;
     font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
     font-size: 0.95rem !important;
-    font-weight: 600 !important;
-    padding: 0.75rem 1.4rem !important;
+    font-weight: 700 !important;
+    padding: 0.8rem 1.4rem !important;
     transition: background-color var(--duration-fast) var(--ease-soft), color var(--duration-fast) var(--ease-soft);
   }
   #mlb2-41071627.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.primary:hover {
-    background-color: var(--color-brand-primary-dark, #5e8a30) !important;
-    color: white !important;
+    background-color: var(--color-on-band, #ffffff) !important;
+    color: var(--color-band, #151b16) !important;
   }
 
   /* Privacy policy link */
   #mlb2-41071627 .ml-form-embedPermissionsContent.privacy-policy p {
-    color: var(--color-ink-muted, #5b6066) !important;
+    color: var(--color-on-band-muted, #c3cbc1) !important;
     font-family: var(--font-body, 'Inter', system-ui, sans-serif) !important;
     font-size: 0.8rem !important;
   }
   #mlb2-41071627 .ml-form-embedPermissionsContent.privacy-policy p a {
-    color: var(--color-brand-primary-dark, #5e8a30) !important;
+    color: var(--color-brand-primary, #80b741) !important;
   }
 
   /* Success state */
   #mlb2-41071627 .ml-form-successContent h2 {
-    color: var(--color-brand-primary-dark, #5e8a30);
+    color: var(--color-brand-primary, #80b741);
     font-family: var(--font-display, 'Lora', Georgia, serif);
   }
   #mlb2-41071627 .ml-form-successContent p {
-    color: var(--color-ink, #2d3234);
+    color: var(--color-on-band-muted, #c3cbc1);
     line-height: 1.6;
   }
 

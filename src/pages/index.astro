@@ -8,6 +8,7 @@ import BlogPostCard from '../components/BlogPostCard.astro';
 import HoursTable from '../components/HoursTable.astro';
 import MapEmbed from '../components/MapEmbed.astro';
 import { clinic } from '../lib/site';
+import drRyanHero from '../assets/clinic/dr-ryan-denome.jpg';
 import pediatricAdjustment from '../assets/clinic/pediatric-adjustment.jpg';
 import adultAdjustment from '../assets/clinic/adult-adjustment.jpg';
 import labKitsFlatLay from '../assets/clinic/lab-kits-flat-lay.jpg';
@@ -122,48 +123,103 @@ const credentials = [
   'Works alongside your PCP',
 ];
 
+// Intrinsic sizes for every logo (SVGs included): without them an <img> in a
+// flex row has no width until it loads, and the SVG with no width/height
+// attribute collapsed to nothing, which is why the wall used to look sparse.
 const labPartners = [
   { src: '/images/partners/access.png', alt: 'Access Medical Labs', width: 548, height: 130 },
-  { src: '/images/partners/dutch.svg', alt: 'Dutch Test by Precision Analytical' },
-  { src: '/images/partners/genova.svg', alt: 'Genova Diagnostics' },
+  { src: '/images/partners/dutch.svg', alt: 'Dutch Test by Precision Analytical', width: 120, height: 26 },
+  { src: '/images/partners/genova.svg', alt: 'Genova Diagnostics', width: 159, height: 56 },
   { src: '/images/partners/immunolabs.jpg', alt: 'ImmunoLabs', width: 340, height: 100 },
-  { src: '/images/partners/mosaic.svg', alt: 'Mosaic Diagnostics (OAT and heavy metal testing)' },
+  { src: '/images/partners/mosaic.svg', alt: 'Mosaic Diagnostics (OAT and heavy metal testing)', width: 220, height: 56 },
 ];
+
+// Hero photo stack. Real clinic photos only; the two-line label names what
+// is in the frame (no dates, no claims). The first card is the LCP image.
+const heroPhotos = [
+  { src: drRyanHero,
+    alt: 'Dr. Ryan DeNome, DC at The Wellness Way - Mason', top: 'Dr. Ryan', bottom: 'DeNome, DC', pos: 'center 20%' },
+  { src: pediatricAdjustment,
+    alt: 'Gentle pediatric chiropractic adjustment at The Wellness Way - Mason', top: 'Pediatric', bottom: 'care', pos: 'center 40%' },
+  { src: adultAdjustment,
+    alt: 'Hands-on chiropractic adjustment at The Wellness Way - Mason', top: 'Hands-on', bottom: 'chiropractic', pos: '35% center' },
+  { src: labKitsFlatLay,
+    alt: 'Functional lab kits from Access, DUTCH, Genova, and ImmunoLabs at The Wellness Way - Mason', top: 'Functional', bottom: 'lab testing', pos: '40% center' },
+  { src: pediatricPlayRoom,
+    alt: 'Family-friendly pediatric play room with green tree bookshelf at The Wellness Way - Mason', top: 'Pediatric', bottom: 'play space', pos: 'center 70%' },
+] as const;
 ---
 
 <BaseLayout
   title="Chiropractor in Mason, OH | The Wellness Way"
   description="Chiropractic care and functional health testing in Mason, OH. Get clear pricing, targeted labs and a personalized plan from Dr. Ryan DeNome, DC."
 >
-  <!-- Section 1: Hero — full-bleed photo background with overlay -->
-  <section class="hero-bleed" aria-label="Hero">
-    <Image
-      class="hero-bleed-image"
-      src={pediatricAdjustment}
-      alt="Gentle pediatric chiropractic adjustment at The Wellness Way - Mason"
-      widths={[640, 960, 1280, 1920, 2560]}
-      sizes="100vw"
-      loading="eager"
-      fetchpriority="high"
-      quality={82}
-    />
-    <div class="hero-bleed-scrim" aria-hidden="true"></div>
-    <div class="hero-bleed-inner">
-      <div class="hero-bleed-text">
+  <!-- Section 1: Hero: heavy type on the page tint, real clinic photos as a
+       stack of tilted cards. The label over the stack names the front photo. -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-inner">
+      <div class="hero-text">
         <h1 class="hero-headline hero-stagger">
           <span class="hero-kicker">Chiropractic Care in Mason, OH</span>
-          <span class="hero-line">Your labs are normal.</span> <span class="hero-line">You still feel awful.</span>
+          <span class="hero-line">Your labs are normal.</span> <span class="hero-line accent">You still feel awful.</span>
         </h1>
         <p class="hero-lede hero-stagger">
           The body never does anything without a reason. We test to find yours.
         </p>
-        <div class="hero-bleed-ctas hero-stagger">
+        <div class="hero-ctas hero-stagger">
           <Button href={clinic.bookingUrl} variant="primary" size="lg" external iconAfter>
             Start Getting Answers
           </Button>
-          <Button href="/our-approach" variant="inverse" size="lg" iconAfter>
+          <Button href="/our-approach" variant="ghost" size="lg" iconAfter>
             See our approach
           </Button>
+        </div>
+      </div>
+
+      <div class="hero-stack" data-stack>
+        <ul class="stack-cards" role="list">
+          {heroPhotos.map((photo, i) => (
+            <li class="stack-card" data-pos={i} data-top={photo.top} data-bottom={photo.bottom}>
+              <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  widths={[360, 540, 720, 900]}
+                  sizes="(min-width: 1024px) 420px, 70vw"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={i === 0 ? 'high' : undefined}
+                  quality={80}
+                  style={`object-position: ${photo.pos}`}
+                />
+            </li>
+          ))}
+        </ul>
+        <p class="stack-label" aria-hidden="true">
+          <span class="stack-label-eyebrow">{clinic.brandName}</span>
+          <span class="stack-label-top" data-stack-top>{heroPhotos[0].top}</span>
+          <span class="stack-label-bottom accent" data-stack-bottom>{heroPhotos[0].bottom}</span>
+        </p>
+        <div class="stack-nav">
+          <ol class="stack-ticks" role="list">
+            {heroPhotos.map((photo, i) => (
+              <li>
+                <button
+                  type="button"
+                  class="stack-tick"
+                  data-stack-go={i}
+                  aria-label={`Show photo ${i + 1} of ${heroPhotos.length}: ${photo.top} ${photo.bottom}`}
+                  aria-current={i === 0 ? 'true' : undefined}
+                ></button>
+              </li>
+            ))}
+          </ol>
+          <div class="stack-arrows">
+            <button type="button" class="round-btn" data-stack-prev aria-label="Previous photo">
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 8h-11M6.5 4l-4 4 4 4" /></svg>
+            </button>
+            <button type="button" class="round-btn" data-stack-next aria-label="Next photo">
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -204,8 +260,8 @@ const labPartners = [
           they’re there.
         </p>
       </div>
-      <div class="ps-col ps-solution">
-        <h2 data-reveal>Find the fire, not just the alarm</h2>
+      <div class="ps-col ps-solution on-band">
+        <h2 data-reveal>Find the fire, <span class="accent">not just the alarm</span></h2>
         <p data-reveal="up-sm">
           A smoke alarm doing its job is loud, annoying, and right. Silencing it doesn’t
           put out the fire, and your symptoms work the same way: signals, not
@@ -226,29 +282,26 @@ const labPartners = [
     </div>
   </SectionContainer>
 
-  <!-- Section 4: Lab partners — single slow marquee, the receipt for "we test" -->
-  <SectionContainer width="wide" spacing="md" background="paper-soft" ariaLabel="Lab partners">
-    <div class="lab-strip">
-      <p class="lab-strip-eyebrow" data-reveal>Lab partners we trust</p>
-      <div class="lab-marquee">
-        <div class="lab-track">
-          <ul class="lab-strip-list" role="list">
+  <!-- Section 4: Lab partners: a real logo wall, the receipt for "we test".
+       Four copies of the list (two per half of the track) so the row always
+       outruns the widest viewport and the loop never shows a gap. -->
+  <section class="lab-wall" aria-label="Lab partners">
+    <p class="lab-wall-eyebrow" data-reveal="fade">Lab partners we trust</p>
+    <div class="lab-marquee">
+      <div class="lab-track">
+        {[0, 1, 2, 3].map((copy) => (
+          <ul class="lab-list" role={copy === 0 ? 'list' : 'presentation'} aria-hidden={copy === 0 ? undefined : 'true'}>
             {labPartners.map((p) => (
-              <li><img src={p.src} alt={p.alt} loading="lazy" width={p.width} height={p.height} /></li>
+              <li><img src={p.src} alt={copy === 0 ? p.alt : ''} loading="lazy" decoding="async" width={p.width} height={p.height} /></li>
             ))}
           </ul>
-          <ul class="lab-strip-list" role="presentation" aria-hidden="true">
-            {labPartners.map((p) => (
-              <li><img src={p.src} alt="" loading="lazy" width={p.width} height={p.height} /></li>
-            ))}
-          </ul>
-        </div>
+        ))}
       </div>
-      <p class="lab-strip-caption" data-reveal="up-sm">
-        We work with Access, Dutch, Genova, ImmunoLabs, and Mosaic (for OAT and heavy metal panels), so health restoration reaches the depth that standard panels miss.
-      </p>
     </div>
-  </SectionContainer>
+    <p class="lab-wall-caption" data-reveal="up-sm">
+      We work with Access, Dutch, Genova, ImmunoLabs, and Mosaic (for OAT and heavy metal panels), so health restoration reaches the depth that standard panels miss.
+    </p>
+  </section>
 
   <!-- Section 5: The 3 T’s: image-led, alternating layout -->
   <SectionContainer width="default" spacing="xl" background="paper-soft">
@@ -279,7 +332,7 @@ const labPartners = [
 
   <!-- Section 6: First visit — proof panel: walkthrough, transparent pricing,
        verifiable credentials. Everything here is checkable before you visit. -->
-  <SectionContainer width="default" spacing="xl" background="paper-warm-tint" ariaLabel="Your first visit">
+  <SectionContainer width="default" spacing="xl" background="band" ariaLabel="Your first visit">
     <div class="visit-grid">
       <div class="visit-intro" data-reveal>
         <h2>What your first visit looks like.</h2>
@@ -289,7 +342,7 @@ const labPartners = [
         </p>
         <div class="price-card">
           <p class="price-title">Every new patient visit</p>
-          <p class="price-amount">$99<span class="price-flat">flat</span></p>
+          <p class="price-amount"><span class="price-figure accent">$99</span><span class="price-flat">flat</span></p>
           <p class="price-body">
             For chiropractic, that covers your exam, X-rays if they’re needed, and your
             first adjustment. Follow-up adjustments are $50 with soft tissue work,
@@ -342,9 +395,9 @@ const labPartners = [
   </SectionContainer>
 
   <!-- Section 7: Conditions — refined typography list, not card grid -->
-  <SectionContainer width="narrow" spacing="lg">
+  <SectionContainer width="default" spacing="lg">
     <div class="section-head">
-      <h2>Common, but not normal.</h2>
+      <h2>Common, <span class="accent">but not normal.</span></h2>
       <p class="section-lede">
         Patients often walk through our doors after being told their labs are “normal” while still
         feeling anything but. Here are some of the patterns we see most.
@@ -352,7 +405,7 @@ const labPartners = [
     </div>
     <ul class="conditions-list">
       {conditions.map((c) => (
-        <li><a href={c.href}><svg class="cond-chevron" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5" /></svg>{c.label}</a></li>
+        <li><a href={c.href}>{c.label}<svg class="cond-chevron" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5" /></svg></a></li>
       ))}
     </ul>
     <div class="section-cta">
@@ -540,11 +593,61 @@ const labPartners = [
   </section>
 </BaseLayout>
 
+
+<script>
+  // Hero photo stack. Moving a card to the back is only a data-pos change;
+  // CSS does the motion. Auto-advances through one full cycle, then rests.
+  // Any interaction stops it for good, and reduced-motion never starts it.
+  const root = document.querySelector<HTMLElement>('[data-stack]');
+  if (root) {
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('.stack-card'));
+    const ticks = Array.from(root.querySelectorAll<HTMLElement>('[data-stack-go]'));
+    const top = root.querySelector<HTMLElement>('[data-stack-top]');
+    const bottom = root.querySelector<HTMLElement>('[data-stack-bottom]');
+    const n = cards.length;
+    let index = 0;
+    let timer: number | undefined;
+
+    const show = (next: number) => {
+      index = (next + n) % n;
+      cards.forEach((card, i) => { card.dataset.pos = String((i - index + n) % n); });
+      ticks.forEach((tick, i) => {
+        if (i === index) tick.setAttribute('aria-current', 'true');
+        else tick.removeAttribute('aria-current');
+      });
+      if (top) top.textContent = cards[index].dataset.top ?? '';
+      if (bottom) bottom.textContent = cards[index].dataset.bottom ?? '';
+    };
+    const stop = () => {
+      if (timer !== undefined) window.clearInterval(timer);
+      timer = undefined;
+    };
+
+    root.querySelector('[data-stack-next]')?.addEventListener('click', () => { stop(); show(index + 1); });
+    root.querySelector('[data-stack-prev]')?.addEventListener('click', () => { stop(); show(index - 1); });
+    ticks.forEach((tick, i) => tick.addEventListener('click', () => { stop(); show(i); }));
+    root.querySelector('.stack-cards')?.addEventListener('click', () => { stop(); show(index + 1); });
+    root.addEventListener('focusin', stop);
+    root.addEventListener('pointerenter', stop);
+    root.addEventListener('pointerdown', stop);
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let steps = 0;
+      timer = window.setInterval(() => {
+        if (document.hidden) return;
+        show(index + 1);
+        steps += 1;
+        if (steps >= n) stop();
+      }, 4500);
+    }
+  }
+</script>
+
 <style>
   .section-head {
     margin-bottom: 3.5rem;
     text-align: center;
-    max-width: 60ch;
+    max-width: 46rem;
     margin-left: auto;
     margin-right: auto;
   }
@@ -552,13 +655,13 @@ const labPartners = [
   .section-head h2 {
     margin: 0 0 1.25rem;
     font-size: var(--text-fluid-h2);
-    letter-spacing: -0.02em;
     color: var(--color-ink-strong);
   }
   .section-lede {
     color: var(--color-ink-muted);
     font-size: var(--text-lg);
-    margin: 0;
+    margin: 0 auto;
+    max-width: 58ch;
     line-height: 1.6;
   }
   .section-cta {
@@ -566,14 +669,249 @@ const labPartners = [
     margin-top: 2.5rem;
   }
 
-  /* === Hook — editorial validation moment === */
-  .hook h2 {
-    font-family: var(--font-display);
-    font-size: var(--text-fluid-h2-sm);
-    line-height: 1.12;
-    color: var(--color-ink-strong);
+  /* === Hero === */
+  .hero {
+    background: var(--color-paper-soft);
+    overflow: hidden;
+  }
+  .hero-inner {
+    /* Container plus its own side padding, so the text edge lines up with
+       SectionContainer content below. */
+    max-width: calc(var(--container-default) + 4rem);
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 3.5rem;
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  /* Keyword kicker lives INSIDE the h1 so the primary keyword is part of
+     the H1 text Google reads (Manus audit 2A), while the visitor-mirroring
+     headline keeps the visual punch. */
+  .hero-kicker {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin: 0 0 1.25rem;
+    font-weight: 700;
+  }
+  .hero-headline {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: var(--text-fluid-hero);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
     margin: 0 0 1.75rem;
-    max-width: 24ch;
+    color: var(--color-ink-strong);
+  }
+  /* One sentence per block: the turn between them is the whole headline. */
+  .hero-line { display: block; text-wrap: balance; }
+  .hero-lede {
+    color: var(--color-ink-muted);
+    font-size: var(--text-xl);
+    line-height: 1.45;
+    margin: 0 0 2.25rem;
+    max-width: 30ch;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  /* Entrance stagger walks the eye headline -> subtitle -> CTA in reading
+     order. JS-gated; reduced-motion renders static below. */
+  :global(html.js) .hero-stagger {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: hero-rise 850ms var(--ease-ios) forwards;
+  }
+  :global(html.js) .hero-stagger:nth-child(2) { animation-delay: 110ms; }
+  :global(html.js) .hero-stagger:nth-child(3) { animation-delay: 220ms; }
+  @keyframes hero-rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* --- Photo stack --- */
+  /* Without JS the controls can't do anything, so hide them. */
+  :global(html:not(.js)) .stack-nav { display: none; }
+  :global(html:not(.js)) .stack-cards { cursor: default; }
+  .hero-stack {
+    position: relative;
+    /* Narrower than the column on phones so the tilted back cards stay on screen. */
+    width: min(84%, 22rem);
+    margin: 0 auto;
+    /* Room for the tilted corners so nothing is clipped by .hero. */
+    padding: 0.75rem 1.5rem 0;
+  }
+  .stack-cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    aspect-ratio: 4 / 5;
+    cursor: pointer;
+  }
+  .stack-card {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--color-line-soft);
+    box-shadow: var(--shadow-photo);
+    transform-origin: 50% 85%;
+    transition:
+      transform 700ms var(--ease-ios),
+      opacity 400ms var(--ease-soft);
+    will-change: transform;
+  }
+  .stack-card :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .stack-card[data-pos="0"] { transform: rotate(-2.5deg); z-index: 5; }
+  .stack-card[data-pos="1"] { transform: translate(7%, 1.5%) rotate(5deg); z-index: 4; }
+  .stack-card[data-pos="2"] { transform: translate(-6%, 2.5%) rotate(-8deg); z-index: 3; }
+  .stack-card[data-pos="3"],
+  .stack-card[data-pos="4"] {
+    transform: translate(0, 3%) scale(0.94);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  /* Settle: the cards start squared up and fan out once. Transform only, so
+     the front photo (the LCP element) paints immediately. */
+  :global(html.js) .stack-card {
+    animation: stack-settle 1100ms var(--ease-ios) 150ms backwards;
+  }
+  @keyframes stack-settle {
+    from { transform: translateY(26px) scale(0.97); }
+  }
+  /* Caption card over the lower-left corner: names the front photo. */
+  .stack-label {
+    position: absolute;
+    z-index: 6;
+    left: 0;
+    bottom: 4.25rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0.85rem 1.1rem 0.9rem;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-float);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--color-ink-strong);
+    pointer-events: none;
+  }
+  .stack-label-eyebrow {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin-bottom: 0.5rem;
+  }
+  .stack-label-top { font-size: 1.25rem; }
+  .stack-label-bottom { font-size: 1.75rem; align-self: flex-start; }
+  .stack-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 6;
+  }
+  .stack-ticks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.125rem;
+  }
+  /* 24px hit area around a 3px tick. */
+  .stack-tick {
+    display: block;
+    width: 2rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    border-radius: var(--radius-sm);
+  }
+  .stack-tick::before {
+    content: "";
+    position: absolute;
+    left: 0.125rem;
+    right: 0.125rem;
+    top: 50%;
+    height: 3px;
+    margin-top: -1.5px;
+    border-radius: 3px;
+    background: var(--color-line);
+    transition: background-color var(--duration-normal) var(--ease-soft);
+  }
+  .stack-tick:hover::before { background: var(--color-mute); }
+  .stack-tick[aria-current="true"]::before { background: var(--color-brand-primary-dark); }
+  .stack-tick:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+  .stack-arrows { display: flex; gap: 0.5rem; }
+  .round-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--color-line);
+    background: var(--color-paper);
+    color: var(--color-ink-strong);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(21, 27, 22, 0.05);
+    transition:
+      background-color var(--duration-fast) var(--ease-soft),
+      color var(--duration-fast) var(--ease-soft),
+      border-color var(--duration-fast) var(--ease-soft),
+      transform var(--duration-fast) var(--ease-ios);
+  }
+  .round-btn:hover {
+    background: var(--color-band);
+    border-color: var(--color-band);
+    color: var(--color-paper);
+  }
+  .round-btn:active { transform: scale(0.94); transition-duration: var(--duration-press); }
+  .round-btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html.js) .hero-stagger {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    :global(html.js) .stack-card { animation: none; }
+    .stack-card { transition: none; }
+  }
+
+  /* === Hook: editorial validation moment === */
+  .hook h2 {
+    font-size: var(--text-fluid-h2);
+    color: var(--color-ink-strong);
+    margin: 0 0 2rem;
+    max-width: 20ch;
   }
   .hook p {
     color: var(--color-ink);
@@ -582,81 +920,193 @@ const labPartners = [
     margin: 0 0 1.25rem;
     max-width: 58ch;
   }
+  /* The serif voice: Lora carries the reassuring turn. */
   .hook-turn {
     font-family: var(--font-display);
     color: var(--color-ink-strong);
-    font-size: var(--text-xl);
-    line-height: 1.5;
+    font-size: var(--text-2xl);
+    line-height: 1.4;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--color-brand-primary);
+    margin-top: 2rem !important;
   }
 
-  /* === Problem / Solution bridge === */
+  /* === Problem / Solution: white card and dark card, side by side === */
   .ps-grid {
     display: grid;
-    gap: 3rem;
-    align-items: start;
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+  .ps-col {
+    border-radius: var(--radius-xl);
+    padding: 2rem 1.5rem;
+    background: var(--color-paper);
+    box-shadow: var(--shadow-card);
   }
   .ps-col h2 {
-    font-family: var(--font-display);
     font-size: var(--text-fluid-h2-sm);
-    line-height: 1.15;
+    line-height: 1.04;
     color: var(--color-ink-strong);
-    margin: 0 0 1.25rem;
-    max-width: 22ch;
+    margin: 0 0 1.5rem;
+    max-width: 16ch;
   }
   .ps-col p {
     color: var(--color-ink);
-    font-size: var(--text-lg);
-    line-height: 1.65;
+    font-size: var(--text-base);
+    line-height: 1.7;
     margin: 0 0 1rem;
   }
   .ps-col p:last-child { margin-bottom: 0; }
   /* Emphasis in running copy is italic only. Green is kept for actions. */
   .ps-col p em { font-style: italic; }
+  .ps-solution {
+    background: var(--color-band);
+    box-shadow: var(--shadow-float);
+  }
+  .ps-solution h2 { color: var(--color-on-band); }
+  .ps-solution p { color: var(--color-on-band-muted); }
   .ps-bridge {
-    margin-top: 1.5rem !important;
+    margin-top: 1.75rem !important;
+    padding-top: 1.5rem;
+    border-top: var(--hairline) solid var(--color-band-line);
     font-family: var(--font-display);
-    color: var(--color-ink-strong);
-    font-size: var(--text-xl);
-    line-height: 1.5;
+    color: var(--color-on-band) !important;
+    font-size: var(--text-xl) !important;
+    line-height: 1.45 !important;
+  }
+
+  /* === Lab partner logo wall === */
+  .lab-wall {
+    background: var(--color-paper);
+    border-block: var(--hairline) solid var(--color-line);
+    padding: 2.75rem 0 3rem;
+    text-align: center;
+  }
+  .lab-wall-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--color-brand-primary-dark);
+    margin: 0 1.25rem 2rem;
+    font-weight: 700;
+  }
+  .lab-marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 7%, black 93%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 7%, black 93%, transparent);
+    margin-bottom: 2rem;
+  }
+  .lab-track {
+    display: flex;
+    width: max-content;
+    animation: lab-drift 60s linear infinite;
+  }
+  .lab-marquee:hover .lab-track {
+    animation-play-state: paused;
+  }
+  @keyframes lab-drift {
+    to { transform: translateX(-50%); }
+  }
+  .lab-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .lab-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    padding: 0 2.25rem;
+    flex-shrink: 0;
+  }
+  /* Fixed height, natural width: every logo has intrinsic dimensions set in
+     the markup, so nothing collapses or reflows as files arrive. */
+  .lab-list img {
+    height: 2.5rem;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    /* The one JPG logo has a white matte; multiply drops it on the band. */
+    mix-blend-mode: multiply;
+  }
+  /* Wide wordmarks carry more ink per pixel of height: size them optically. */
+  .lab-list li:nth-child(2) img { height: 1.75rem; }
+  .lab-list li:nth-child(4) img { height: 2.75rem; }
+  .lab-list li:nth-child(5) img { height: 2.25rem; }
+  .lab-wall-caption {
+    color: var(--color-ink-muted);
+    font-size: var(--text-sm);
+    max-width: 54ch;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    line-height: 1.55;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lab-track {
+      animation: none;
+      width: 100%;
+      justify-content: center;
+    }
+    .lab-track .lab-list[aria-hidden="true"] { display: none; }
+    .lab-list {
+      flex-wrap: wrap;
+      flex-shrink: 1;
+      width: 100%;
+      justify-content: center;
+      row-gap: 1rem;
+    }
+    .lab-marquee {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
   }
 
   /* === 3 T's image-led rows === */
   .three-ts {
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 4rem;
   }
   .t-row {
     display: grid;
-    gap: 2.5rem;
+    gap: 2rem;
     align-items: center;
   }
   .t-image {
     position: relative;
     border-radius: var(--radius-xl);
     overflow: hidden;
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-photo);
+    transform: rotate(-1.5deg);
+    transition: transform 600ms var(--ease-ios);
   }
+  .t-row.reverse .t-image { transform: rotate(1.5deg); }
   .t-image img {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    transition: transform 600ms var(--ease-ios);
   }
-  /* Quiet zoom signals the whole row is one unit — the editorial-site tell. */
-  .t-row:hover .t-image img {
-    transform: scale(1.03);
+  /* The tilted photo squares up under the pointer: the row is one unit. */
+  .t-row:hover .t-image {
+    transform: rotate(0deg);
   }
   .t-text h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-3xl);
-    margin: 0 0 0.75rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);
+    letter-spacing: var(--tracking-display);
+    line-height: 1;
+    margin: 0 0 1rem;
     color: var(--color-ink-strong);
   }
   .t-short {
     font-style: italic;
     color: var(--color-brand-primary-dark);
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
     margin: 0 0 1rem;
     font-family: var(--font-display);
   }
@@ -666,60 +1116,60 @@ const labPartners = [
     margin: 0;
   }
 
-  /* === First visit proof panel === */
+  /* === First visit: dark band, with the price as the page's stat moment === */
   .visit-grid {
     display: grid;
     gap: 3rem;
     align-items: start;
   }
   .visit-intro h2 {
-    font-size: var(--text-fluid-h2-sm);
-    margin: 0 0 1rem;
-    color: var(--color-ink-strong);
+    font-size: var(--text-fluid-h2);
+    margin: 0 0 1.25rem;
   }
   .visit-lede {
-    color: var(--color-ink-muted);
     font-size: var(--text-lg);
     line-height: 1.6;
-    margin: 0 0 2rem;
+    margin: 0 0 2.25rem;
     max-width: 42ch;
   }
   .price-card {
-    background: var(--color-paper);
-    border-radius: var(--radius-lg);
-    padding: 1.75rem 2rem;
-    box-shadow: var(--shadow-card);
-    margin-bottom: 2rem;
+    border-top: var(--hairline) solid var(--color-band-line);
+    padding: 1.75rem 0 0;
+    margin-bottom: 2.25rem;
   }
   .price-title {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    color: var(--color-ink-muted);
-    font-weight: 500;
-    margin: 0 0 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--color-brand-primary) !important;
+    margin: 0 0 0.25rem;
   }
   .price-amount {
-    font-family: var(--font-display);
-    font-size: var(--text-6xl);
-    letter-spacing: -0.02em;
-    line-height: 1;
-    color: var(--color-ink-strong);
-    margin: 0 0 1rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: var(--text-fluid-stat);
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+    margin: 0 0 1.25rem;
     display: flex;
     align-items: baseline;
-    gap: 0.6rem;
+    gap: 0.9rem;
   }
   .price-flat {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: var(--text-xl);
-    color: var(--color-brand-primary-dark);
+    font-weight: 400;
+    letter-spacing: 0;
+    font-size: var(--text-3xl);
+    color: var(--color-on-band);
   }
   .price-body {
-    color: var(--color-ink-muted);
     font-size: var(--text-sm);
-    line-height: 1.6;
+    line-height: 1.65;
     margin: 0;
+    max-width: 46ch;
   }
   .visit-ctas {
     display: flex;
@@ -728,7 +1178,6 @@ const labPartners = [
     flex-wrap: wrap;
   }
   .reviews-link {
-    color: var(--color-ink-strong);
     font-weight: 500;
     font-size: var(--text-base);
   }
@@ -737,107 +1186,118 @@ const labPartners = [
     margin: 0 0 2.5rem;
     padding: 0;
   }
-  /* Steps are separated by space alone; the numerals carry the order. */
   .visit-steps li {
     display: grid;
-    grid-template-columns: 2.25rem 1fr;
+    grid-template-columns: 2.75rem 1fr;
     gap: 1.25rem;
+    padding: 1.5rem;
+    background: var(--color-band-raised);
+    border-radius: var(--radius-lg);
   }
-  .visit-steps li + li { margin-top: 2.25rem; }
+  .visit-steps li + li { margin-top: 0.75rem; }
   .visit-num {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: var(--tracking-display);
     font-size: var(--text-3xl);
     /* Match the h3's first-line box so numeral and title share a baseline. */
     line-height: calc(var(--text-xl) * 1.25);
-    color: var(--color-brand-primary-dark);
+    color: var(--color-brand-primary);
     font-variant-numeric: lining-nums;
   }
   .visit-steps h3 {
     font-size: var(--text-xl);
+    line-height: 1.25;
     margin: 0 0 0.5rem;
-    color: var(--color-ink-strong);
   }
   .visit-steps p {
     margin: 0;
-    color: var(--color-ink-muted);
     line-height: 1.6;
   }
-  .visit-photo {
+  .visit-steps-col :global(.visit-photo) {
     width: 100%;
     aspect-ratio: 3 / 2;
     object-fit: cover;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card);
   }
   .cred-strip {
     list-style: none;
     margin: 3.5rem 0 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
   }
   .cred-strip li {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    color: var(--color-ink-strong);
-    font-weight: 500;
+    gap: 0.5rem;
+    color: var(--color-on-band) !important;
+    font-weight: 600;
     font-size: var(--text-sm);
+    padding: 0.55rem 1rem 0.55rem 0.8rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--color-band-line);
   }
   .cred-strip svg {
-    color: var(--color-brand-primary-dark);
+    color: var(--color-brand-primary);
     flex-shrink: 0;
   }
 
-  /* === Conditions list (refined typography, interactive links) === */
+  /* === Conditions: chips, each a link === */
   .conditions-list {
     list-style: none;
     padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 0;
-  }
-  /* No rules between rows: the grid's own rhythm groups them. The chevron is
-     the same 1.75-stroke SVG family as the button arrows. */
-  .conditions-list li a {
+    margin: 0 auto;
+    max-width: 58rem;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.625rem;
+  }
+  .conditions-list li a {
+    display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.7rem 0.75rem;
-    margin: 0 -0.75rem;
-    border-radius: var(--radius-inner);
+    gap: 0.5rem;
+    padding: 0.7rem 0.9rem 0.7rem 1.15rem;
+    min-height: 44px;
+    box-sizing: border-box;
+    border-radius: var(--radius-pill);
+    background: var(--color-paper-soft);
     color: var(--color-ink-strong);
-    font-size: var(--text-lg);
-    font-family: var(--font-display);
-    font-weight: 400;
+    font-size: var(--text-base);
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     text-decoration: none;
     transition: color var(--duration-fast) var(--ease-soft),
                 background-color var(--duration-fast) var(--ease-soft);
   }
   .conditions-list li a:hover {
-    color: var(--color-brand-primary-dark);
-    background: var(--color-brand-primary-soft);
+    color: var(--color-paper);
+    background: var(--color-band);
   }
   .conditions-list :global(.cond-chevron) {
     flex-shrink: 0;
     color: var(--color-brand-primary-dark);
-    transition: transform var(--duration-fast) var(--ease-ios);
+    transition: transform var(--duration-fast) var(--ease-ios),
+                color var(--duration-fast) var(--ease-soft);
   }
   .conditions-list li a:hover :global(.cond-chevron) {
     transform: translateX(3px);
+    color: var(--color-brand-primary);
   }
 
   /* === Two-arms grid (chiro vs health restoration) === */
   .arms-grid {
     display: grid;
-    gap: 1.5rem;
+    gap: 1.25rem;
     grid-template-columns: 1fr;
   }
   .arm-tile {
     background: var(--color-paper);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
+    border-radius: var(--radius-xl);
+    padding: 2rem 1.5rem;
     box-shadow: var(--shadow-card);
     display: flex;
     flex-direction: column;
@@ -845,8 +1305,11 @@ const labPartners = [
   }
   .arm-tile > :global(.btn) { align-self: flex-start; margin-top: 0.5rem; }
   .arm-title {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: var(--tracking-display);
+    font-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
+    line-height: 1;
     margin: 0;
     color: var(--color-ink-strong);
   }
@@ -854,7 +1317,7 @@ const labPartners = [
     font-family: var(--font-display);
     font-style: italic;
     color: var(--color-brand-primary-dark);
-    font-size: var(--text-lg);
+    font-size: var(--text-xl);
     margin: 0;
   }
   .arm-body {
@@ -866,25 +1329,19 @@ const labPartners = [
   .arm-callout {
     background: var(--color-brand-primary-soft);
     color: var(--color-ink-strong);
-    /* Nested radius: sits inside the radius-lg tile. */
+    /* Nested radius: sits inside the padded tile. */
     border-radius: var(--radius-inner);
     padding: 1rem 1.25rem;
     font-size: var(--text-sm);
     line-height: 1.5;
   }
-  @media (min-width: 768px) {
-    .arms-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-  }
 
-  /* === 4-step process — vertical timeline with scroll-fill === */
+  /* === 4-step process: vertical timeline with scroll-fill === */
   .steps {
     list-style: none;
     padding: 0;
     margin: 0 auto;
-    max-width: 56rem;
+    max-width: 52rem;
     counter-reset: step;
     position: relative;
   }
@@ -904,7 +1361,7 @@ const labPartners = [
     width: 2px;
     background: var(--color-line);
   }
-  /* Green overlay line draws downward as each step reveals — the timeline
+  /* Green overlay line draws downward as each step reveals: the timeline
      "completes" itself while you scroll, enacting the 4-step narrative. */
   .steps li:not(:last-child)::after {
     content: "";
@@ -925,26 +1382,21 @@ const labPartners = [
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    background: var(--color-paper);
-    border: 2px solid var(--color-brand-primary);
-    color: var(--color-brand-primary-dark);
-    font-family: var(--font-display);
-    font-weight: 500;
+    background: var(--color-band);
+    color: var(--color-brand-primary);
+    font-family: var(--font-heading);
+    font-weight: 800;
     font-size: var(--text-xl);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     z-index: 1;
-    transition: background 400ms var(--ease-soft) 200ms;
-  }
-  .steps li:global(.is-visible) .step-num {
-    background: var(--color-brand-primary-soft);
   }
   .step-body { padding-top: 0.4rem; }
   .step-body h3 {
     margin: 0 0 0.5rem;
-    font-size: var(--text-xl);
+    font-size: var(--text-2xl);
     color: var(--color-ink-strong);
   }
   .step-body p {
@@ -960,88 +1412,6 @@ const labPartners = [
     grid-template-columns: 1fr;
   }
 
-  /* === Lab partners marquee === */
-  .lab-strip {
-    text-align: center;
-  }
-  .lab-strip-eyebrow {
-    font-size: var(--text-xs);
-    letter-spacing: var(--tracking-caps);
-    text-transform: uppercase;
-    color: var(--color-mute);
-    margin: 0 0 1.75rem;
-    font-weight: 500;
-  }
-  .lab-marquee {
-    overflow: hidden;
-    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
-    margin-bottom: 1.75rem;
-  }
-  .lab-track {
-    display: flex;
-    width: max-content;
-    animation: lab-drift 40s linear infinite;
-  }
-  .lab-marquee:hover .lab-track {
-    animation-play-state: paused;
-  }
-  @keyframes lab-drift {
-    to { transform: translateX(-50%); }
-  }
-  .lab-strip-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 4.5rem;
-    padding-right: 4.5rem;
-  }
-  .lab-strip-list li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 56px;
-  }
-  .lab-strip-list img {
-    max-height: 48px;
-    max-width: 190px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(100%) opacity(0.65);
-    transition: filter var(--duration-normal) var(--ease-soft);
-  }
-  .lab-strip-list li:hover img {
-    filter: grayscale(0%) opacity(1);
-  }
-  .lab-strip-caption {
-    color: var(--color-ink-muted);
-    font-size: var(--text-sm);
-    max-width: 50ch;
-    margin: 0 auto;
-    line-height: 1.55;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .lab-track {
-      animation: none;
-      width: 100%;
-      justify-content: center;
-    }
-    .lab-track .lab-strip-list[aria-hidden="true"] { display: none; }
-    .lab-strip-list {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem 2.5rem;
-      padding-right: 0;
-    }
-    .lab-marquee {
-      mask-image: none;
-      -webkit-mask-image: none;
-    }
-  }
-
   /* === Provider teaser === */
   .provider-teaser {
     display: grid;
@@ -1050,7 +1420,8 @@ const labPartners = [
   }
   .provider-text h2 {
     font-size: var(--text-fluid-h1);
-    margin: 0 0 1.25rem;
+    line-height: 0.98;
+    margin: 0 0 1.5rem;
   }
   /* On TWW Beige the green link text drops under AA (3.8:1), so the link
      takes ink here and keeps its underline. */
@@ -1064,8 +1435,8 @@ const labPartners = [
   .ryan-quote {
     font-family: var(--font-display);
     font-style: italic;
-    font-size: var(--text-lg);
-    line-height: 1.5;
+    font-size: var(--text-xl);
+    line-height: 1.45;
     margin: 1.5rem 0 2rem;
     /* Hanging punctuation: the opening quote mark sits in the margin so the
        text edge, not the mark, lines up with the copy above. */
@@ -1081,12 +1452,18 @@ const labPartners = [
     font-style: normal;
     font-family: var(--font-body);
   }
+  .provider-photo {
+    /* Keeps the tilted corners inside the column on phones. */
+    padding: 0 0.75rem;
+  }
   .provider-photo img {
     width: 100%;
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-photo);
     aspect-ratio: 4 / 5;
     object-fit: cover;
+    object-position: center 20%;
+    transform: rotate(2.5deg);
   }
 
   /* === Service area === */
@@ -1096,7 +1473,7 @@ const labPartners = [
     align-items: start;
   }
   .service-area-grid h2 {
-    margin: 0 0 1rem;
+    margin: 0 0 1.25rem;
     font-size: var(--text-fluid-h2-sm);
   }
   .service-lede {
@@ -1121,120 +1498,10 @@ const labPartners = [
     max-width: 28rem;
     margin: 0 auto;
     text-align: left;
-  }
-
-  /* === Full-bleed Hero === */
-  .hero-bleed {
-    position: relative;
-    min-height: 78vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    isolation: isolate;
-  }
-  .hero-bleed-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 35%;
-    z-index: -2;
-  }
-  /* One-shot 14s settle from 1.06 to 1.0 — a considered, expensive open.
-     Gated behind html.js so crawlers and no-JS visitors see a static hero. */
-  :global(html.js) .hero-bleed-image {
-    animation: hero-settle 14s var(--ease-ios) forwards;
-  }
-  @keyframes hero-settle {
-    from { transform: scale(1.06); }
-    to { transform: scale(1); }
-  }
-  .hero-bleed-scrim {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(105deg,
-        rgba(31, 34, 34, 0.78) 0%,
-        rgba(31, 34, 34, 0.55) 45%,
-        rgba(31, 34, 34, 0.18) 80%,
-        rgba(31, 34, 34, 0.05) 100%);
-    z-index: -1;
-  }
-  .hero-bleed-inner {
-    width: 100%;
-    max-width: var(--container-default);
-    margin: 0 auto;
-    padding: 5rem 1.5rem;
-    color: var(--color-paper);
-  }
-  .hero-bleed-text {
-    max-width: 44rem;
-  }
-  /* Entrance stagger walks the eye headline -> subtitle -> CTA in reading
-     order. JS-gated; reduced-motion renders static below. */
-  :global(html.js) .hero-stagger {
-    opacity: 0;
-    transform: translateY(18px);
-    animation: hero-rise 850ms var(--ease-ios) forwards;
-  }
-  :global(html.js) .hero-stagger:nth-child(2) { animation-delay: 110ms; }
-  :global(html.js) .hero-stagger:nth-child(3) { animation-delay: 220ms; }
-  @keyframes hero-rise {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    :global(html.js) .hero-stagger {
-      opacity: 1;
-      transform: none;
-      animation: none;
-    }
-    :global(html.js) .hero-bleed-image {
-      animation: none;
-    }
-  }
-  /* Keyword kicker lives INSIDE the h1 so the primary keyword is part of
-     the H1 text Google reads (Manus audit 2A), while the visitor-mirroring
-     headline keeps the visual punch. */
-  .hero-kicker {
-    display: block;
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    line-height: 1.4;
-    letter-spacing: var(--tracking-caps);
-    text-transform: uppercase;
-    color: var(--color-paper);
-    opacity: 0.9;
-    margin: 0 0 1.25rem;
-    font-weight: 500;
-  }
-  .hero-headline {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: var(--text-fluid-hero);
-    line-height: 1.06;
-    letter-spacing: -0.022em;
-    margin: 0 0 1.5rem;
-    color: var(--color-paper);
-  }
-  /* One sentence per line: the turn between them is the whole headline. */
-  .hero-line { display: block; }
-  .hero-lede {
-    color: var(--color-paper);
-    opacity: 0.94;
-    font-size: var(--text-xl);
-    line-height: 1.5;
-    margin: 0 0 2.5rem;
-    max-width: 34ch;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.35);
-  }
-  .hero-bleed-ctas {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    background: var(--color-paper);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 0.75rem 1.5rem;
   }
 
   /* === Full-bleed Atmosphere band === */
@@ -1246,7 +1513,7 @@ const labPartners = [
     overflow: hidden;
     isolation: isolate;
   }
-  .atmosphere-bleed-image {
+  .atmosphere-bleed :global(.atmosphere-bleed-image) {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -1259,25 +1526,25 @@ const labPartners = [
     position: absolute;
     inset: 0;
     background: linear-gradient(95deg,
-      rgba(31, 34, 34, 0.35) 0%,
-      rgba(31, 34, 34, 0.05) 60%);
+      rgba(21, 27, 22, 0.4) 0%,
+      rgba(21, 27, 22, 0.05) 60%);
     z-index: -1;
   }
   .atmosphere-bleed-inner {
     width: 100%;
-    max-width: var(--container-default);
+    box-sizing: border-box;
+    max-width: calc(var(--container-default) + 4rem);
     margin: 0 auto;
-    padding: 5rem 1.5rem;
+    padding: 5rem 1.25rem;
   }
   .atmosphere-card {
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    padding: 2.5rem;
+    padding: 2rem 1.5rem;
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-card);
-    max-width: 32rem;
-    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: var(--shadow-float);
+    max-width: 34rem;
   }
   .atmosphere-card h2 {
     margin: 0 0 1rem;
@@ -1293,13 +1560,13 @@ const labPartners = [
   /* === Full-bleed Final CTA === */
   .final-cta-bleed {
     position: relative;
-    min-height: 65vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     overflow: hidden;
     isolation: isolate;
   }
-  .final-cta-image {
+  .final-cta-bleed :global(.final-cta-image) {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -1313,24 +1580,24 @@ const labPartners = [
     inset: 0;
     background:
       linear-gradient(135deg,
-        rgba(128, 183, 65, 0.94) 0%,
-        rgba(110, 160, 55, 0.88) 100%);
+        rgba(128, 183, 65, 0.95) 0%,
+        rgba(110, 160, 55, 0.9) 100%);
     z-index: -1;
   }
   .final-cta-inner {
     width: 100%;
     max-width: var(--container-narrow);
     margin: 0 auto;
-    padding: 5rem 1.5rem;
+    padding: 5rem 1.25rem;
     text-align: center;
     color: var(--color-ink-strong);
   }
   .final-cta-inner h2 {
     color: var(--color-ink-strong);
     font-size: var(--text-fluid-h1);
-    line-height: 1.1;
-    margin: 0 0 1.5rem;
-    max-width: 22ch;
+    line-height: 0.98;
+    margin: 0 0 1.75rem;
+    max-width: 16ch;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1344,48 +1611,60 @@ const labPartners = [
 
   /* === Responsive === */
   @media (min-width: 768px) {
+    .hero-inner { padding: 3.5rem 2rem 5rem; }
+    .hero-stack { width: min(100%, 26rem); }
+    .stack-label { left: -1.5rem; bottom: 5rem; padding: 1rem 1.35rem 1.1rem; }
+    .stack-label-top { font-size: 1.625rem; }
+    .stack-label-bottom { font-size: 2.375rem; }
     .ps-grid {
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      gap: 1.5rem;
     }
+    .ps-col { padding: 3rem; }
     .t-row {
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
     }
     .t-row.reverse > .t-image { order: 2; }
-    .conditions-list {
-      grid-template-columns: 1fr 1fr;
-      column-gap: 2.5rem;
-    }
     .visit-grid {
       grid-template-columns: 5fr 6fr;
       gap: 4rem;
     }
-    .cred-strip {
-      grid-template-columns: repeat(4, auto);
-      justify-content: space-between;
-      margin-top: 4.5rem;
+    .cred-strip { margin-top: 4.5rem; }
+    .arms-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
     }
+    .arm-tile { padding: 2.75rem; }
     .post-grid { grid-template-columns: repeat(3, 1fr); }
     .provider-teaser { grid-template-columns: 1.4fr 1fr; gap: 4rem; }
+    .provider-photo { padding: 0; }
     .service-area-grid { grid-template-columns: 1fr 1.2fr; gap: 4rem; }
     .steps li { grid-template-columns: 5rem 1fr; gap: 2rem; }
     .step-num { width: 3.5rem; height: 3.5rem; font-size: var(--text-2xl); }
     .steps li:not(:last-child)::before,
     .steps li:not(:last-child)::after { left: 1.75rem; top: 4rem; }
-    .hero-bleed-inner { padding: 7rem 2rem; }
     .atmosphere-bleed-inner { padding: 7rem 2rem; }
+    .atmosphere-card { padding: 2.75rem; }
     .final-cta-inner { padding: 7rem 2rem; }
+    .lab-wall { padding: 3.25rem 0 3.5rem; }
+    .lab-list li { padding: 0 3rem; }
   }
   @media (min-width: 1024px) {
-    .hero-bleed { min-height: 86vh; }
+    .hero-inner {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 4rem;
+      padding: 4rem 2rem 6rem;
+    }
+    .hero-stack { margin-right: 1.5rem; }
+    .stack-label { left: -4.5rem; }
     .section-head { margin-bottom: 4rem; }
     .three-ts { gap: 6rem; }
-    /* Sticky intro column: the pricing card and CTA stay in view while the
-       walkthrough scrolls — booking is never more than a glance away. */
+    /* Sticky intro column: the price and CTA stay in view while the
+       walkthrough scrolls, so booking is never more than a glance away. */
     .visit-intro {
       position: sticky;
-      top: 6rem;
+      top: 6.5rem;
     }
   }
 </style>

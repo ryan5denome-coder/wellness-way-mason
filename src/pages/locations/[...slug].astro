@@ -259,7 +259,9 @@ const placeSchema = {
     border-color: var(--color-brand-primary-light);
   }
   .other-locations strong {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 700;
     font-size: var(--text-lg);
     color: var(--color-ink-strong);
     display: block;
@@ -323,7 +325,7 @@ const placeSchema = {
   }
   @media (min-width: 1024px) {
     .other-loc-heading,
-    .visit-block h2 { letter-spacing: -0.022em; }
+    .visit-block h2 {}
   }
   @media (prefers-reduced-motion: reduce) {
     .other-locations a,

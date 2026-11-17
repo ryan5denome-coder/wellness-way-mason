@@ -46,7 +46,7 @@ const personJsonLd = personSchema({ full: true });
     <div class="about-hero">
       <h1>
         <span class="page-kicker">About The Wellness Way - Mason, Ohio</span>
-        A clinic built to keep asking why.
+        A clinic built to <span class="accent">keep asking why.</span>
       </h1>
       <p class="lede">
         We’re part of a nationwide network of health restoration clinics that take on
@@ -205,8 +205,8 @@ const personJsonLd = personSchema({ full: true });
   </SectionContainer>
 
   <!-- Section 7: Final CTA — the story’s conversion moment -->
-  <SectionContainer width="narrow" spacing="lg" background="paper-warm-tint">
-    <div class="cta-block" data-reveal>
+  <SectionContainer width="narrow" spacing="lg" background="paper-soft">
+    <div class="cta-block cta-panel on-dark" data-reveal>
       <h2>Come tell us your story.</h2>
       <p>
         Every new patient visit is a flat $99, whether you’re coming in for chiropractic
@@ -224,7 +224,7 @@ const personJsonLd = personSchema({ full: true });
   .about-hero h1 {
     margin: 0;
     font-size: var(--text-fluid-h1);
-    line-height: 1.08;
+    line-height: 1;
   }
   /* .page-kicker (the SEO keyword line inside the H1) lives in global.css. */
   .lede {
@@ -237,7 +237,7 @@ const personJsonLd = personSchema({ full: true });
 
   /* === Story — editorial "why this clinic exists" moment === */
   .story h2 {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-size: var(--text-fluid-h2-sm);
     line-height: 1.12;
     color: var(--color-ink-strong);
@@ -254,8 +254,11 @@ const personJsonLd = personSchema({ full: true });
   .story-turn {
     font-family: var(--font-display);
     color: var(--color-ink-strong);
-    font-size: var(--text-xl);
-    line-height: 1.5;
+    font-size: var(--text-2xl);
+    line-height: 1.4;
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--color-brand-primary);
+    margin-block: 2rem !important;
   }
   .story-link {
     margin-bottom: 0 !important;
@@ -269,14 +272,20 @@ const personJsonLd = personSchema({ full: true });
   .values-head h2 {
     margin: 0;
     font-size: var(--text-fluid-h2);
-    letter-spacing: -0.02em;
     line-height: 1.15;
     color: var(--color-ink-strong);
   }
   .values {
     display: grid;
-    gap: 2.5rem 3rem;
+    gap: 1.25rem;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  /* White cards on the page tint. */
+  .value {
+    background: var(--color-paper);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    padding: 2rem;
   }
   .value h3 {
     color: var(--color-ink-strong);
@@ -300,7 +309,8 @@ const personJsonLd = personSchema({ full: true });
     aspect-ratio: 4 / 5;
     object-fit: cover;
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-photo);
+    transform: rotate(-1.5deg);
   }
   .our-space-text h2 {
     margin: 0 0 1.25rem;
@@ -321,8 +331,10 @@ const personJsonLd = personSchema({ full: true });
   .provider-photo img {
     width: 100%;
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-card);
+    box-shadow: var(--shadow-photo);
+    transform: rotate(1.5deg);
     object-fit: cover;
+    object-position: center 20%;
     aspect-ratio: 4 / 5;
   }
   .provider-bio h2 {
@@ -378,7 +390,6 @@ const personJsonLd = personSchema({ full: true });
   .section-head h2 {
     margin: 0 0 1rem;
     font-size: var(--text-fluid-h2);
-    letter-spacing: -0.02em;
     color: var(--color-ink-strong);
   }
   .section-lede {
