@@ -2,11 +2,12 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { site } from '../lib/site';
 import { clinic } from '../lib/site';
+import { isPublished } from '../lib/publish';
 
 export async function GET(context) {
   const posts = await getCollection('posts');
   const sorted = posts
-    .filter((p) => p.data.date)
+    .filter((p) => p.data.date && isPublished(p.data.date))
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({

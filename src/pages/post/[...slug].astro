@@ -6,9 +6,10 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Button from '../../components/Button.astro';
 import { clinic, site, bylines } from '../../lib/site';
 import { articleSchema } from '../../lib/schema';
+import { isPublished } from '../../lib/publish';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const posts = (await getCollection('posts')).filter((post) => isPublished(post.data.date));
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -41,7 +42,7 @@ const allConditions = await getCollection('conditions');
 
 const currentCategories = new Set(post.data.categories);
 const relatedPosts = allPosts
-  .filter((p) => p.id !== post.id)
+  .filter((p) => p.id !== post.id && isPublished(p.data.date))
   .map((p) => ({
     post: p,
     score: p.data.categories.filter((c) => currentCategories.has(c)).length,

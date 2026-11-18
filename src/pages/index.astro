@@ -8,6 +8,7 @@ import BlogPostCard from '../components/BlogPostCard.astro';
 import HoursTable from '../components/HoursTable.astro';
 import MapEmbed from '../components/MapEmbed.astro';
 import { clinic } from '../lib/site';
+import { isPublished } from '../lib/publish';
 import drRyanHero from '../assets/clinic/dr-ryan-denome.jpg';
 import pediatricAdjustment from '../assets/clinic/pediatric-adjustment.jpg';
 import adultAdjustment from '../assets/clinic/adult-adjustment.jpg';
@@ -15,6 +16,7 @@ import labKitsFlatLay from '../assets/clinic/lab-kits-flat-lay.jpg';
 import pediatricPlayRoom from '../assets/clinic/pediatric-play-room.jpg';
 
 const featured = (await getCollection('posts'))
+  .filter((post) => isPublished(post.data.date))
   .sort((a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0))
   .slice(0, 3);
 

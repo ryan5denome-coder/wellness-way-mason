@@ -72,3 +72,14 @@
 /knead-to-know /knead 301
 /bread /knead 301
 /glutenfree /knead 301
+
+# These drafts were written as /blog/<slug>. Live posts are /post/<slug>.
+# The destination page is not built until that post's publish date, so the
+# alias has nothing to show before then.
+/blog/period-pain-mason-oh /post/period-pain-mason-oh 301
+/blog/ivf-workup-checklist /post/ivf-workup-checklist 301
+/blog/thanksgiving-gut-friendly-recipes-mason-oh /post/thanksgiving-gut-friendly-recipes-mason-oh 301
+/blog/iron-and-ferritin-mason-oh /post/iron-and-ferritin-mason-oh 301
+/blog/holiday-stress-mason-oh /post/holiday-stress-mason-oh 301
+/blog/poppy-paloma-california-poppy-mocktail /post/poppy-paloma-california-poppy-mocktail 301
+/blog/local-real-food-mason-oh /post/local-real-food-mason-oh 301

@@ -4,6 +4,20 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 import cloudflare from '@astrojs/cloudflare';
+import {
+  cleanupPublishedHeroes,
+  preparePublishedHeroes,
+  rehypeScheduledPostLinks,
+} from './src/lib/rehype-scheduled-links.mjs';
+
+// Preview the site as of another Eastern calendar day. Unset in production.
+const publishAsOf = process.env.PUBLISH_AS_OF ?? '';
+
+// Hero files live outside public/. Copy only the ones whose posts are live,
+// then remove the copies so they are not left in the working tree.
+preparePublishedHeroes(publishAsOf);
+const cleanHeroCopies = () => cleanupPublishedHeroes();
+process.once('exit', cleanHeroCopies);
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,6 +29,14 @@ export default defineConfig({
   },
 
   integrations: [
+    {
+      name: 'scheduled-hero-cleanup',
+      hooks: {
+        'astro:build:done': () => {
+          cleanupPublishedHeroes();
+        },
+      },
+    },
     sitemap({
       filter: (page) =>
         !page.includes('/admin') &&
@@ -29,7 +51,14 @@ export default defineConfig({
     }),
   ],
 
+  markdown: {
+    rehypePlugins: [[rehypeScheduledPostLinks, { publishAsOf }]],
+  },
+
   vite: {
+    define: {
+      'import.meta.env.PUBLISH_AS_OF': JSON.stringify(publishAsOf),
+    },
     plugins: [tailwindcss()],
   },
 

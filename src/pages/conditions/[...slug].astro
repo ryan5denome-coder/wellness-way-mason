@@ -5,6 +5,7 @@ import SectionContainer from '../../components/SectionContainer.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Button from '../../components/Button.astro';
 import { clinic, site, bylines } from '../../lib/site';
+import { isPublished } from '../../lib/publish';
 
 export async function getStaticPaths() {
   const conditions = await getCollection('conditions');
@@ -26,7 +27,7 @@ const related = entry.data.relatedConditions
 
 const relatedPosts = entry.data.relatedPosts
   .map((slug) => allPosts.find((p) => p.id === slug))
-  .filter(Boolean);
+  .filter((p) => p && isPublished(p.data.date));
 
 const ttLabels: Record<string, string> = {
   traumas: 'Traumas',
