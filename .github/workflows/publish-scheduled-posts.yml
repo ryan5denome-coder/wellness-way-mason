@@ -3,8 +3,10 @@
 # arrived stays out of the build. This does not merge anything and it does
 # not publish early: the build itself drops future posts.
 #
-# The job only works after the CLOUDFLARE_PAGES_DEPLOY_HOOK secret exists.
-# Setup steps are in the pull request that added this file.
+# The live site is the Cloudflare Worker wellness-way-mason, built by
+# Workers Builds from Git. The job only works after the
+# CLOUDFLARE_WORKERS_DEPLOY_HOOK secret exists. Setup steps are in the
+# pull request that added this file.
 
 name: Publish scheduled blog posts
 
@@ -25,10 +27,10 @@ jobs:
     steps:
       - name: Ask Cloudflare to rebuild the production branch
         env:
-          HOOK: ${{ secrets.CLOUDFLARE_PAGES_DEPLOY_HOOK }}
+          HOOK: ${{ secrets.CLOUDFLARE_WORKERS_DEPLOY_HOOK }}
         run: |
           if [ -z "$HOOK" ]; then
-            echo "::error::CLOUDFLARE_PAGES_DEPLOY_HOOK is not set. Add the deploy hook secret before this schedule can publish anything. Steps are in the pull request description."
+            echo "::error::CLOUDFLARE_WORKERS_DEPLOY_HOOK is not set. Add the Workers Builds deploy hook secret before this schedule can publish anything. Steps are in the pull request description."
             exit 1
           fi
           status=$(curl --silent --show-error --output /tmp/hook-body --write-out '%{http_code}' --request POST "$HOOK")
