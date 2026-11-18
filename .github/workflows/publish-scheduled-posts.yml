@@ -1,0 +1,41 @@
+# Rebuilds the live Cloudflare site every morning, Eastern Time, so a blog
+# post whose date has arrived is included and a post whose date has not
+# arrived stays out of the build. This does not merge anything and it does
+# not publish early: the build itself drops future posts.
+#
+# The live site is the Cloudflare Worker wellness-way-mason, built by
+# Workers Builds from Git. The job only works after the
+# CLOUDFLARE_WORKERS_DEPLOY_HOOK secret exists. Setup steps are in the
+# pull request that added this file.
+
+name: Publish scheduled blog posts
+
+on:
+  schedule:
+    # 11:05 UTC is 6:05am EST and 7:05am EDT. November and December are EST.
+    # Morning, after the Eastern calendar day has changed, so a post cannot
+    # go out the evening before its date. GitHub may start the job a little late.
+    - cron: '5 11 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: none
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask Cloudflare to rebuild the production branch
+        env:
+          HOOK: ${{ secrets.CLOUDFLARE_WORKERS_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::error::CLOUDFLARE_WORKERS_DEPLOY_HOOK is not set. Add the Workers Builds deploy hook secret before this schedule can publish anything. Steps are in the pull request description."
+            exit 1
+          fi
+          status=$(curl --silent --show-error --output /tmp/hook-body --write-out '%{http_code}' --request POST "$HOOK")
+          if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then
+            echo "::error::Deploy hook returned HTTP ${status}."
+            exit 1
+          fi
+          echo "Deploy hook returned HTTP ${status}. Cloudflare will rebuild the production branch."
